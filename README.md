@@ -32,7 +32,7 @@ access to agents (users, groups and more) to perform various kinds of operations
   as opposed to in separate privileged subsystems (as they do in many operating
   systems).
 3. Users and groups are also identified by URLs (specifically, by
-  [Web IDs](https://github.com/solid/solid-spec#identity))
+  [WebIDs](https://github.com/solid/solid-spec#identity))
 4. It is *cross-domain* -- all of its components, such as resources, agent Web
   IDs, and even the documents containing the access control policies, can
   potentially reside on separate domains. In other words, you can give access
@@ -57,7 +57,7 @@ rest of the spec, the prefix `acl:` is assumed to mean
 ## Example WAC Document
 
 Below is an example WAC document (often referred to as an 'ACL resource') that
-specifies that Alice (as identified by her Web ID
+specifies that Alice (as identified by her WebID
 `https://alice.databox.me/profile/card#me`) has full access (Read, Write and
 Control) to one of her web resources, located at
 `https://alice.databox.me/file1`.
@@ -74,7 +74,7 @@ at `file1.acl`:
 
 <#authorization1>
     a acl:Authorization;
-    acl:agent <https://alice.databox.me/profile/card#me>;  # Alice's Web ID
+    acl:agent <https://alice.databox.me/profile/card#me>;  # Alice's WebID
     acl:accessTo <https://alice.databox.me/file1>;
     acl:mode
         acl:Read, acl:Write, acl:Control.
@@ -84,25 +84,25 @@ at `file1.acl`:
 
 In WAC, we use the term *Agent* to identify *who* is allowed access to various
 resources. In general, it is assumed to mean "someone or something that can
-be referenced with a Web ID", which covers users, groups (as well as companies
+be referenced with a WebID", which covers users, groups (as well as companies
 and organizations), and software agents such as applications or services.
 
 ### Singular Agent
 
 An authorization may list any number of individual agents (that are being given
-access) by using the `acl:agent` predicate, and using their Web ID URIs as
+access) by using the `acl:agent` predicate, and using their WebID URIs as
 subjects.
 
 ### Groups of Agents
 
 If you need to give access to a particular group of agents, you can instead use
 the `acl:agentClass` predicate, and point it to a resource which lists the
-Web IDs of the individual members of that group.
+WebIDs of the individual members of that group.
 
 #### All Agents (Public)
 
 To specify that you're giving a particular mode of access to *everyone*
-(for example, that your Web ID Profile is public-readable), you can use
+(for example, that your WebID Profile is public-readable), you can use
 `acl:agentClass foaf:Agent` to denote that you're giving access to the class
 of *all* agents (the general public). For example:
 
@@ -152,7 +152,7 @@ To extend a [previous example](#example-wac-document):
 <#authorization2>
     a acl:Authorization;
     acl:accessTo <>;  # gives access to this document
-    acl:agent <https://alice.databox.me/profile/card#me>;  # to Alice's Web ID
+    acl:agent <https://alice.databox.me/profile/card#me>;  # to Alice's WebID
     acl:mode
         acl:Read, acl:Write, acl:Control.
 ```

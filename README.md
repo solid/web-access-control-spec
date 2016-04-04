@@ -7,7 +7,7 @@ subsequently evolved by the community, at
 [Web Access Control Wiki](https://www.w3.org/wiki/WebAccessControl). This spec
 is a particular subset of the options and extensions described in the wiki.
 
-**Current Spec version:** `v.0.1.0` (see [CHANGELOG.md](CHANGELOG.md))
+**Current Spec version:** `v.0.1.1` (see [CHANGELOG.md](CHANGELOG.md))
 
 ## Table of Contents
 
@@ -29,12 +29,12 @@ access to agents (users, groups and more) to perform various kinds of operations
 1. The resources are identified by URLs, and can refer to any web documents or
   resources.
 2. It is *declarative* -- access control policies live in regular web documents,
-  as opposed to in separate privileged subsystems (as they do in many operating
-  systems).
+  which can be exported/backed easily, using the same mechanism as you would
+  for backing up the rest of your data.
 3. Users and groups are also identified by URLs (specifically, by
   [WebIDs](https://github.com/solid/solid-spec#identity))
-4. It is *cross-domain* -- all of its components, such as resources, agent Web
-  IDs, and even the documents containing the access control policies, can
+4. It is *cross-domain* -- all of its components, such as resources, agent
+  WebIDs, and even the documents containing the access control policies, can
   potentially reside on separate domains. In other words, you can give access
   to a resource on one site to users and groups hosted on another site.
 
@@ -128,34 +128,10 @@ Since an ACL resource is a plain Web document in itself, what controls who
 has access to *it*? While an ACL resource *could* in theory have its own
 corresponding ACL document (for example, `file1.acl` controls access to `file1`,
 and `file1.acl.acl` could potentially control access to `file1.acl`), one
-quickly realize thats this recursion has to end somewhere.
+quickly realizes thats this recursion has to end somewhere.
 
-As mentioned in the Introduction, one of the design goals of Web Access Control
-is that the ACL resources themselves do not get any special treatment by
-the server -- they are plain Web resources with Linked Data statements in them,
-and so their own access has to be controlled by other Linked Data statements
-that have to live somewhere. To avoid multiple levels of recursion, it is
-recommended that the authorizations that control who has access to an ACL
-document are placed *in the ACL document itself*.
-
-In other words, an ACL document typically controls its own access, explicitly.
-To extend a [previous example](#example-wac-document):
-
-```ttl
-# Contents of https://alice.databox.me/file1.acl
-@prefix acl: <http://www.w3.org/ns/auth/acl#>.
-
-<#authorization1>
-    # ... statements controlling access to file1
-
-# This authorization concerns the ACL resource itself
-<#authorization2>
-    a acl:Authorization;
-    acl:accessTo <>;  # gives access to this document
-    acl:agent <https://alice.databox.me/profile/card#me>;  # to Alice's WebID
-    acl:mode
-        acl:Read, acl:Write, acl:Control.
-```
+Instead, the [`acl:Control` access mode](#aclcontrol) is used (see below), to
+specify who has access to alter (or even view) the ACL resource.
 
 ## Modes of Access
 
@@ -164,7 +140,8 @@ perform on a resource.
 
 ##### `acl:Read`
 gives access to a class of operations that can be described as "Read
-Access". In a typical REST API (such as the one used by Solid), this includes
+Access". In a typical REST API (such as the one used by
+[Solid](https://github.com/solid/solid-spec#https-rest-api)), this includes
 access to HTTP verbs `GET`, and `HEAD`. This also includes any kind of
 QUERY or SEARCH verbs, if supported.
 
@@ -183,10 +160,10 @@ mode usage would be a user's Inbox -- other agents can write (append)
 notifications to the inbox, but cannot alter or read existing ones.
 
 ##### `acl:Control`
-is a special-case access mode that gives an agent the ability to *modify the
-ACL of a resource*. Note that it doesn't automatically imply that the agent
-has `acl:Write` access to the resource itself, just to its corresponding ACL
-document. For example, a resource owner may disable their own Write access
-(to prevent accidental over-writing of a resource by an app), but be able to
-change their access levels at a later point (since they retain `acl:Control`
-access).
+is a special-case access mode that gives an agent the ability to *view and
+modify the ACL of a resource*. Note that it doesn't automatically imply that the
+agent has `acl:Read` or `acl:Write` access to the resource itself, just to its
+corresponding ACL document. For example, a resource owner may disable their own
+Write access (to prevent accidental over-writing of a resource by an app), but
+be able to change their access levels at a later point (since they retain
+`acl:Control` access).

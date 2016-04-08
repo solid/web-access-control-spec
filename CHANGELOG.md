@@ -1,3 +1,15 @@
+##### v.0.2.0
+
+- Add 'Access Control List Resources' sections, discuss individual vs
+  inherited ACLs.
+- Discuss the `acl` link relation and ACL discovery
+- Add a section on the ACL Inheritance Algorithm
+- Move the Vocabulary section into the 'Representation Format' section
+- Add a section for `acl:defaultForNew` ('Default (Inherited) Authorizations')
+- Add a 'Not Supported by Design' section
+- Added a side-note about how `acl:defaultForNew` will soon be renamed to
+  `acl:default`
+
 ##### v0.1.1
 
 - Change the [Referring to Resources](#referring-to-resources) section --

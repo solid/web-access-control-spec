@@ -81,7 +81,7 @@ location of its corresponding ACL by performing a `HEAD` (or a `GET`) request
 and parsing the `rel="acl"` link relation.
 
 Example request to discover the location of the ACL resource for a web document
-at `http://example.org/file1` is given below:
+at `http://example.org/docs/file1` is given below:
 
 ```http
 HEAD /docs/file1 HTTP/1.1

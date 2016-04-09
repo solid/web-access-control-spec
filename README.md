@@ -7,16 +7,23 @@ subsequently evolved by the community, at
 [Web Access Control Wiki](https://www.w3.org/wiki/WebAccessControl). This spec
 is a particular subset of the options and extensions described in the wiki.
 
-**Current Spec version:** `v.0.1.1` (see [CHANGELOG.md](CHANGELOG.md))
+**Current Spec version:** `v.0.2.0` (see [CHANGELOG.md](CHANGELOG.md))
 
 ## Table of Contents
 
 1. [Overview](#overview)
-2. [Vocabulary](#vocabulary)
-3. [Example WAC Document](#example-wac-document)
-4. [Describing Agents](#describing-agents)
-5. [Referring to Resources](#referring-to-resources)
-6. [Modes of Access](#modes-of-access)
+2. [Access Control List Resources](#access-control-list-resources)
+  * [Containers and Inherited ACLs](#containers-and-inherited-acls)
+  * [Individual Resource ACLs](#individual-resource-acls)
+  * [ACL Resource Location Discovery](#acl-resource-location-discovery)
+3. [ACL Inheritance Algorithm](#acl-inheritance-algorithm)
+4. [Representation Format](#representation-format)
+5. [Example WAC Document](#example-wac-document)
+6. [Describing Agents](#describing-agents)
+7. [Referring to Resources](#referring-to-resources)
+8. [Modes of Access](#modes-of-access)
+9. [Default (Inherited) Authorizations](#default-inherited-authorizations)
+10. [Not Supported by Design](#not-supported-by-design)
 
 ## Overview
 
@@ -38,44 +45,157 @@ access to agents (users, groups and more) to perform various kinds of operations
   potentially reside on separate domains. In other words, you can give access
   to a resource on one site to users and groups hosted on another site.
 
-WAC documents contain a number of *Authorizations*, in Linked Data format
+## Access Control List Resources
+
+In a system that uses Web Access Control, each web resource has a set of
+*Authorization* statements describing:
+
+1. Who has access to that resource (that is, who the authorized *agents* are)
+2. What types (or *modes*) of access they have
+
+These Authorizations are either explicitly set for an individual resource, or
+(more often) inherited from that resource's parent folder or container. In
+either case, the Authorization statements are placed into separate WAC
+documents called *Access Control List Resources* (or simply *ACLs*).
+
+### Containers and Inherited ACLs
+
+The WAC system assumes that web documents are placed in hierarchical containers
+or folders. For convenience, users do not have to specify permissions on each
+individual resource -- they can simply set permissions on a container, add a
+[`acl:defaultForNew`](#default-inherited-authorizations) predicate, and have all
+of the resources in that container [inherit](#acl-inheritance-algorithm) those
+permissions.
+
+### Individual Resource ACLs
+
+For fine-grained control, users can specify a set of permissions for each
+individual resource (which overrides any permissions of its parent container).
+See the [Example WAC Document](#example-wac-document) section to get an idea
+for what that would look like.
+
+### ACL Resource Location Discovery
+
+Given a URL for an individual resource or container, a client can discover the
+location of its corresponding ACL by performing a `HEAD` (or a `GET`) request
+and parsing the `rel="acl"` link relation.
+
+Example request to discover the location of the ACL resource for a web document
+at `http://example.org/file1` is given below:
+
+```http
+HEAD /docs/file1 HTTP/1.1
+Host: example.org
+
+HTTP/1.1 200 OK
+Link: <file1.acl>; rel="acl"
+```
+
+The request to discover the location of a container's ACL resource looks
+similar:
+
+```http
+HEAD /docs/ HTTP/1.1
+Host: example.org
+
+HTTP/1.1 200 OK
+Link: <.acl>; rel="acl"
+```
+
+Note that the `acl` link relation uses relative path URLs (the absolute URL of
+the ACL resource in the above example would be `/docs/.acl`).
+
+Clients MUST NOT assume that the location of an ACL resource can be
+deterministically derived from a document's URL. For example, given a document
+with a URL of `/docs/file1`, clients cannot rely on the assumption that an ACL
+resource exists at `/docs/file1.acl`, simply using `.acl` as a prefix. The
+actual naming convention for ACL resources can differ for each individual
+implementation (or even for each individual server). If one server locates the
+ACL resource by appending the suffix `.acl`, another server could place the ACL
+resources into a sub-container (locating it at `/docs/.acl/file1.acl` for the
+example above).
+
+## ACL Inheritance Algorithm
+
+The following algorithm is used by servers to determine which ACL resources
+(and hence which set of Authorization statements) apply to any given resource:
+
+1. Use the document's own ACL resource if it exists (in which case, stop here).
+2. Otherwise, look for authorizations to inherit from the ACL of the document's
+  container. If those are found, stop here.
+3. Failing that, check the container's *parent* container to see if *that* has
+  its own ACL file, and see if there are any permissions to inherit.
+4. Failing that, move up the container hierarchy until you find a container
+  with an existing ACL file, which has some permissions to inherit.
+5. The *root container* of a user's account MUST have an ACL resource specified.
+  (If all else fails, the search stops there.)
+
+It is considered an anti-pattern for a *client* to perform those steps, however.
+A client may [discover](#acl-resource-location-discovery) and load a document's
+individual resource (for example, for the purposes of editing its permissions).
+If such a resource does not exist, a client SHOULD NOT search for, or interact
+with, the inherited ACLs from an upstream container.
+
+### ACL Inheritance Algorithm Example
+
+*Note:* The server in the examples below is using the ACL naming convention of
+appending `.acl` to resource URLs, for simplicity. As mentioned in the section
+on [ACL discovery](#acl-resource-location-discovery), clients should not use
+or assume any naming convention.
+
+A request (to read or write) has arrived for a document located at
+`/documents/papers/paper1`. The server does as follows:
+
+1. First, it checks for the existence of an individual corresponding ACL
+  resource. (That is, it checks if `paper1.acl` exists.) If this individual ACL
+  resource exists, the server uses the Authorization statements in that ACL. No
+  other statements apply.
+2. If no individual ACL exists, the server next checks to see if the
+  `/documents/papers/` container (in which the document resides) has its own
+  ACL resource (here, `/documents/papers/.acl`). If it finds that, the server
+  reads each authorization in the container's ACL, and if any of them contain an
+  `acl:defaultForNew` predicate, the server will use them (as if they were
+  specified in `paper1.acl`). Again, if any such authorizations are found, the
+  process stops there and no other statements apply.
+3. If the document's container has no ACL resource of its own, the search
+  continues upstream, in the *parent* container. The server would check if
+  `/documents/.acl` exists, and then `/.acl`, until it finds some authorizations
+  that contain `acl:defaultForNew`.
+4. Since the root container (here, `/`) MUST have its own ACL resource, the
+  server would use the authorizations there as a last resort.
+
+See the [Default (Inherited) Authorizations](#default-inherited-authorizations)
+section below for an example of what a container's ACL resource might look like.
+
+## Representation Format
+
+The permissions in an ACL resource are stored in Linked Data format
 ([Turtle](http://www.w3.org/TR/turtle/) by default, but also available in other
-serializations). Each Authorization has statements describing: who the
-authorized *agents* are, which *resources* they have access to, and what types
-(*modes*) of access they are being granted.
+serializations).
 
-Note: A familiarity with Linked Data and
+*Note: A familiarity with Linked Data and
 [RDF Concepts](http://www.w3.org/TR/rdf11-concepts/) helps with understanding
-the terminology used in this spec.
+the terminology used in this spec.*
 
-## Vocabulary
-
-WAC uses the http://www.w3.org/ns/auth/acl ontology for its terms. Through the
-rest of the spec, the prefix `acl:` is assumed to mean
-`@prefix acl: <http://www.w3.org/ns/auth/acl#> .`
+WAC uses the [`http://www.w3.org/ns/auth/acl`](http://www.w3.org/ns/auth/acl)
+ontology for its terms. Through the rest of the spec, the prefix `acl:` is
+assumed to mean `@prefix acl: <http://www.w3.org/ns/auth/acl#> .`
 
 ## Example WAC Document
 
-Below is an example WAC document (often referred to as an 'ACL resource') that
-specifies that Alice (as identified by her WebID
-`https://alice.databox.me/profile/card#me`) has full access (Read, Write and
-Control) to one of her web resources, located at
-`https://alice.databox.me/file1`.
-
-The exact location of `file1`'s corresponding ACL resource is
-technically opaque (the naming convention may differ between various servers
-and implementations). In this example, for simplicity, we use the current
-[LDNode](https://github.com/linkeddata/ldnode) convention and locate it
-at `file1.acl`:
+Below is an example ACL resource that specifies that Alice (as identified by her
+WebID `https://alice.databox.me/profile/card#me`) has full access (Read, Write
+and Control) to one of her web resources, located at
+`https://alice.databox.me/docs/file1`.
 
 ```ttl
-# Contents of https://alice.databox.me/file1.acl
+# Contents of https://alice.databox.me/docs/file1.acl
 @prefix acl: <http://www.w3.org/ns/auth/acl#>.
 
 <#authorization1>
     a acl:Authorization;
     acl:agent <https://alice.databox.me/profile/card#me>;  # Alice's WebID
-    acl:accessTo <https://alice.databox.me/file1>;
+    acl:accessTo <https://alice.databox.me/docs/file1>;
     acl:mode
         acl:Read, acl:Write, acl:Control.
 ```
@@ -167,3 +287,58 @@ corresponding ACL document. For example, a resource owner may disable their own
 Write access (to prevent accidental over-writing of a resource by an app), but
 be able to change their access levels at a later point (since they retain
 `acl:Control` access).
+
+## Default (Inherited) Authorizations
+
+As previously mentioned, not every document needs its own individual ACL
+resource and its own authorizations. Instead, one can can create an
+Authorization for a container (in the container's own ACL resource), and then
+use the `acl:defaultForNew` predicate to denote that any resource within that
+container will *inherit* that authorization. To put it another way, if an
+Authorization contains `acl:defaultForNew`, it will be applied *by default* to
+any resource in that container.
+
+You can override the default inherited authorization for any resource by
+creating an individual ACL just for that resource.
+
+An example ACL for a container would look something like:
+
+```ttl
+# Contents of https://alice.databox.me/docs/.acl
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+
+<#authorization1>
+    a acl:Authorization;
+
+    # These statements specify access rules for the /docs/ container itself:
+    acl:agent <https://alice.databox.me/profile/card#me>;
+    acl:accessTo <https://alice.databox.me/docs/>;
+    acl:mode
+        acl:Read, acl:Write, acl:Control;
+
+    # defaultForNew says: this authorization (the statements above) will also
+    #   be inherited by any resource within that container that doesn't have its
+    #   own ACL.
+    acl:defaultForNew <>.
+```
+
+**Note:** The `acl:defaultForNew` predicate will soon be renamed to
+`acl:default`, both in the specs and in implementing servers. The semantics, as
+described here, will remain the same
+
+## Not Supported by Design
+
+This section describes some features or acl-related terms that are not included
+in this spec by design.
+
+##### Resource Owners
+WAC has no formal notion of a resource owner, and no explicit Owner access mode.
+For convenience/UI purposes, it may be assumed that Owners are agents that have
+Read, Write and Control permissions.
+
+##### acl:accessToClass
+The predicate `acl:accessToClass` is not supported.
+
+##### Regular Expressions
+The use of regular expressions in statements such as `acl:agentClass` is not
+supported.

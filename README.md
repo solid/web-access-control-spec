@@ -211,7 +211,7 @@ and organizations), and software agents such as applications or services.
 
 An authorization may list any number of individual agents (that are being given
 access) by using the `acl:agent` predicate, and using their WebID URIs as
-subjects.
+objects.
 
 ### Groups of Agents
 

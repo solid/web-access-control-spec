@@ -20,6 +20,9 @@ is a particular subset of the options and extensions described in the wiki.
 4. [Representation Format](#representation-format)
 5. [Example WAC Document](#example-wac-document)
 6. [Describing Agents](#describing-agents)
+  * [Singular Agent](#singular-agent)
+  * [Groups](#groups-of-agents)
+  * [Public Access (all Agents)](#public-access-all-agents)
 7. [Referring to Resources](#referring-to-resources)
 8. [Modes of Access](#modes-of-access)
 9. [Default (Inherited) Authorizations](#default-inherited-authorizations)
@@ -211,15 +214,69 @@ and organizations), and software agents such as applications or services.
 
 An authorization may list any number of individual agents (that are being given
 access) by using the `acl:agent` predicate, and using their WebID URIs as
-objects.
+objects. The example WAC document in a previous section grants access to Alice,
+as denoted by her WebID URI, `https://alice.databox.me/profile/card#me`.
 
 ### Groups of Agents
 
-If you need to give access to a particular group of agents, you can instead use
-the `acl:agentClass` predicate, and point it to a resource which lists the
-WebIDs of the individual members of that group.
+To give access to a group of agents, use the `acl:agentClass` predicate.
+The object of an `agentClass` statement is a hash fragment identifier that
+resolves to an RDF class statement in a **Group Listing** document.
+If a WebID is listed in that document, *and* it's of the specified class, it is
+given access.
 
-#### All Agents (Public)
+Example ACL resource, `shared-file1.acl`, containing a group permission:
+
+```ttl
+# Contents of https://alice.databox.me/docs/shared-file1.acl
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+
+# Individual authorization - Alice has Read/Write/Control access
+<#authorization1>
+    a acl:Authorization;
+    acl:accessTo <https://alice.example.com/docs/shared-file1>;
+    acl:mode acl:Read, acl:Write, acl:Control;
+    acl:agent <https://alice.example.com/profile/card#me>.
+
+# Group authorization, giving Read/Write access to two groups, which are
+# specified in the 'work-groups' document.
+<#authorization2>
+    a acl:Authorization;
+    acl:accessTo <https://alice.example.com/docs/shared-file1>;
+    acl:mode acl:Read, acl:Write;
+    acl:agentClass <https://alice.example.com/work-groups#Accounting>;
+    acl:agentClass <https://alice.example.com/work-groups#Management>.
+```
+
+Corresponding `work-groups` Group Listing document:
+
+```ttl
+# Contents of https://alice.example.com/work-groups
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+
+<> a acl:GroupListing.
+
+<#Employee> a rdfs:Class.
+<#Accounting> a rdfs:Class.
+<#Management> a rdfs:Class.
+
+<https://bob.example.com/profile/card#me> a <#Employee>, <#Accounting>.
+<https://candice.example.com/profile/card#me> a <#Employee>, <#Accounting>.
+
+<https://deb.example.com/profile/card#me> a <#Employee>, <#Management>.
+```
+
+##### Securing Group Listings
+
+Since Group Listing documents (which are linked to from ACL resources using
+the `acl:agentClass` predicate) are regular documents, care must be taken to
+secure them, by providing them with `.acl` resources of their own. For example,
+the `work-groups` document from the example above should have its own
+`work-groups.acl` resource, which restricts which users have Read/Write/etc
+access to it.
+
+### Public Access (All Agents)
 
 To specify that you're giving a particular mode of access to *everyone*
 (for example, that your WebID Profile is public-readable), you can use
@@ -236,6 +293,9 @@ of *all* agents (the general public). For example:
     acl:mode acl:Read;  # has Read-only access
     acl:accessTo <https://alice.databox.me/profile/card>. # to the public profile
 ```
+
+Note that this is a special case of `acl:agentClass` usage, since it doesn't
+point to a Group Listing document that's meant to be de-referenced.
 
 ## Referring to Resources
 

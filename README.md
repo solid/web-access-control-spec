@@ -269,8 +269,8 @@ Corresponding `work-groups` Group Listing document:
 
 #### Group Listings - Implementation Notes
 
-When implementing support for `acl:agentClass` and Group Listings, it is
-important to keep in mind the following issues:
+When implementing support for `acl:agentClass` and Group Listings, keep in mind
+the following issues:
 
 1. Group Listings are regular documents (and so can have their own `.acl`s)
 2. Infinite request loops during ACL resolution become possible, if an `.acl`
@@ -283,14 +283,14 @@ or change them. This fact, that `.acl`s point to Group Listings, which can have
 `.acl`s of their own, which can potentially also point to Group Listings, and so
 on, introduces the potential for infinite loops during ACL resolution.
 
-For example, imagine the following situation with two different servers:
+Take the following situation with two different servers:
 
 ```
 https://a.com                     https://b.com
 -------------        GET          ---------------
 group-listA        <------        group-listB.acl
     |                                  ^     contains:
-    |                                  |     agentClass <a.com/group-ListB>   
+    |                                  |     agentClass <a.com/group-ListA>   
     v                GET               |
 group-listA.acl    ------>        group-listB
   contains:

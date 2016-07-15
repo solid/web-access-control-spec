@@ -1,3 +1,8 @@
+##### v.0.3.0
+
+- Expand the agentClass / Group acl definition, clarifying usage of
+  `acl:agentClass`, discussing Group Listing documents
+
 ##### v.0.2.0
 
 - Add 'Access Control List Resources' sections, discuss individual vs

@@ -7,7 +7,7 @@ subsequently evolved by the community, at
 [Web Access Control Wiki](https://www.w3.org/wiki/WebAccessControl). This spec
 is a particular subset of the options and extensions described in the wiki.
 
-**Current Spec version:** `v.0.2.0` (see [CHANGELOG.md](CHANGELOG.md))
+**Current Spec version:** `v.0.3.0` (see [CHANGELOG.md](CHANGELOG.md))
 
 ## Table of Contents
 

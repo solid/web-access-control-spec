@@ -7,7 +7,7 @@ subsequently evolved by the community, at
 [Web Access Control Wiki](https://www.w3.org/wiki/WebAccessControl). This spec
 is a particular subset of the options and extensions described in the wiki.
 
-**Current Spec version:** `v.0.3.0` (see [CHANGELOG.md](CHANGELOG.md))
+**Current Spec version:** `v.0.3.1` (see [CHANGELOG.md](CHANGELOG.md))
 
 ## Table of Contents
 
@@ -267,14 +267,61 @@ Corresponding `work-groups` Group Listing document:
 <https://deb.example.com/profile/card#me> a <#Employee>, <#Management>.
 ```
 
-##### Securing Group Listings
+#### Group Listings - Implementation Notes
 
-Since Group Listing documents (which are linked to from ACL resources using
-the `acl:agentClass` predicate) are regular documents, care must be taken to
-secure them, by providing them with `.acl` resources of their own. For example,
-the `work-groups` document from the example above should have its own
-`work-groups.acl` resource, which restricts which users have Read/Write/etc
-access to it.
+When implementing support for `acl:agentClass` and Group Listings, it is
+important to keep in mind the following issues:
+
+1. Group Listings are regular documents (and so can have their own `.acl`s)
+2. Infinite request loops during ACL resolution become possible, if an `.acl`
+  points to a group listing on a different server.
+
+Since Group Listings (which are linked to from ACL resources using
+the `acl:agentClass` predicate) are regular documents, they can have their very
+own `.acl` resources that restrict which users (or groups) are allowed to access
+or change them. This fact, that `.acl`s point to Group Listings, which can have
+`.acl`s of their own, which can potentially also point to Group Listings, and so
+on, introduces the potential for infinite loops during ACL resolution.
+
+For example, imagine the following situation with two different servers:
+
+```
+https://a.com                     https://b.com
+-------------        GET          ---------------
+group-listA        <------        group-listB.acl
+    |                                  ^     contains:
+    |                                  |     agentClass <a.com/group-ListB>   
+    v                GET               |
+group-listA.acl    ------>        group-listB
+  contains:
+  agentClass <b.com/group-listB>
+```
+
+The access to `group-listA` is controlled by `group-listA.acl`. So far so good.
+But if `group-listA.acl` contains any `acl:agentClass` references to *another*
+group listing (say, points to `group-listB`), one runs into potential danger.
+In order to retrieve that other group listing, the ACL-checking engine on
+`https://b.com` will need to check the rules in `group-listB.acl`. And if
+`group-listB.acl` (by accident or malice) points back to `group-listA` a request
+will be made to access `group-listA` on the original server `https://a.com`,
+which would start an infinite cycle.
+
+To guard against these loops, implementers have two basic options:
+
+  A. Treat the ACL resources for Group Listings as special cases. This
+    assumes that the server has the ability to parse or query the contents of a
+    Group Listing document *before* resolving ACL checks -- a design decision
+    that some implementations may find unworkable. If the ACL checking engine
+    can inspect the contents of a document and know that it's a Group Listing,
+    it can put in various safeguards against loops, for example by not allowing
+    `agentClass` links to different servers (only for `.acl`s of Group Listings,
+    though). Note that even if you wanted to ensure that no `.acl`s are allowed
+    for Group Listings, and that all such documents would be public-readable,
+    you would still have to be able to tell Group Listings apart from other
+    documents, which would imply special-case treatment.
+  B. Keep track of request state and break request loops when they occur (see
+    issue [solid/solid#8](https://github.com/solid/solid/issues/8) for more
+    discussion).
 
 ### Public Access (All Agents)
 

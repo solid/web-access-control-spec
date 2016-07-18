@@ -7,7 +7,7 @@ subsequently evolved by the community, at
 [Web Access Control Wiki](https://www.w3.org/wiki/WebAccessControl). This spec
 is a particular subset of the options and extensions described in the wiki.
 
-**Current Spec version:** `v.0.3.0` (see [CHANGELOG.md](CHANGELOG.md))
+**Current Spec version:** `v.0.3.1` (see [CHANGELOG.md](CHANGELOG.md))
 
 ## Table of Contents
 
@@ -267,14 +267,127 @@ Corresponding `work-groups` Group Listing document:
 <https://deb.example.com/profile/card#me> a <#Employee>, <#Management>.
 ```
 
-##### Securing Group Listings
+#### Group Listings - Implementation Notes
 
-Since Group Listing documents (which are linked to from ACL resources using
-the `acl:agentClass` predicate) are regular documents, care must be taken to
-secure them, by providing them with `.acl` resources of their own. For example,
-the `work-groups` document from the example above should have its own
-`work-groups.acl` resource, which restricts which users have Read/Write/etc
-access to it.
+When implementing support for `acl:agentClass` and Group Listings, keep in mind
+the following issues:
+
+1. Group Listings are regular documents (potentially with their own `.acl`s).
+2. What authentication mechanism should the ACL checking engine use, when making
+  requests for Group Listing documents on other servers?
+3. Infinite request loops during ACL resolution become possible, if an `.acl`
+  points to a group listing on a different server.
+
+##### Group Listings - Authentication of External Requests
+
+Group Listings via `acl:agentClass` links introduce the possibility of an ACL
+checking engine having to make requests to other servers. Given that access to
+those external group listings can be protected, the question immediately arises:
+By what mechanism should the ACL checking engine authenticate its request to
+external servers?
+
+For example: Alice sends a GET request to a resource on the server
+`https://a.com`. The ACL for that resource links to a group listing on an
+external server, `https://b.com`. In the process of resolving the ACL, `a.com`
+must send a request to `b.com`, to get that group listing. Note that it's not
+Alice herself (or her application) that is sending that request, it's actually
+`a.com` sending it (as part of trying to resolve its own ACL). How should
+`a.com` authenticate itself? Does it have its own credentials, or does it have
+a way to say that it's acting on behalf of Alice? Or both?
+
+There are several implementation possibilities:
+
+**No authentication**. The ACL checking engine sends *un-authenticated* requests
+to external servers (to fetch group listings). This is the simplest method to
+implement, but suffers from the limitation that those external group listings
+need to be public-readable.
+
+**WebID-TLS Delegation**. If your implementation uses the WebID-TLS
+authentication method, it also needs to implement the ability to delegate its
+requests on behalf of the original user. For a discussion of such a capability,
+see the [Extending the WebID Protocol with Access
+Delegation](http://bblfish.net/tmp/2012/08/05/WebID_Delegation.pdf) paper.
+One thing to keep in mind is - if there are several hops (an ACL request chain
+across more than one other domain), how does this change the delegation
+confirmation algorithm? If the original server is explicitly authorized for
+delegation by the user, what about the subsequent ones?
+
+**ID Tokens/Bearer Tokens**. If you're using a token-based authentication system
+such as OpenID Connect or OAuth2 Bearer Tokens, it will also need to implement
+the ability to delegate its ACL requests on behalf of the original user. See
+[PoP/RFC7800](https://tools.ietf.org/html/rfc7800) and [Authorization Cross
+Domain Code](http://openid.bitbucket.org/draft-acdc-01.html) specs for relevant
+examples.
+
+##### Infinite Request Loops in Group Listings
+
+Since Group Listings (which are linked to from ACL resources using
+the `acl:agentClass` predicate) are regular documents, they can have their very
+own `.acl` resources that restrict which users (or groups) are allowed to access
+or change them. This fact, that `.acl`s point to Group Listings, which can have
+`.acl`s of their own, which can potentially also point to Group Listings, and so
+on, introduces the potential for infinite loops during ACL resolution.
+
+Take the following situation with two different servers:
+
+```
+https://a.com                     https://b.com
+-------------        GET          ---------------
+group-listA        <------        group-listB.acl
+    |                                  ^     contains:
+    |                                  |     agentClass <a.com/group-ListA>   
+    v                GET               |
+group-listA.acl    ------>        group-listB
+  contains:
+  agentClass <b.com/group-listB>
+```
+
+The access to `group-listA` is controlled by `group-listA.acl`. So far so good.
+But if `group-listA.acl` contains any `acl:agentClass` references to *another*
+group listing (say, points to `group-listB`), one runs into potential danger.
+In order to retrieve that other group listing, the ACL-checking engine on
+`https://b.com` will need to check the rules in `group-listB.acl`. And if
+`group-listB.acl` (by accident or malice) points back to `group-listA` a request
+will be made to access `group-listA` on the original server `https://a.com`,
+which would start an infinite cycle.
+
+To guard against these loops, implementers have several options:
+
+**A) Do not allow cross-domain Group Listing resolutions**.
+The simplest to implement (but also the most limited) option is to disallow
+cross-domain Group Listings resolution requests. That is, the ACL-checking code
+could detect `agentClass` links pointing to external servers during ACL
+resolution time, and treat those uniformly (as errors, or as automatic "access
+denied").
+
+**B) Treat Group Listings as special cases**.
+This assumes that the server has the ability to parse or query the contents of a
+Group Listing document *before* resolving ACL checks -- a design decision that
+some implementations may find unworkable. If the ACL checking engine can inspect
+the contents of a document and know that it's a Group Listing, it can put in
+various safeguards against loops. For example, it could validate ACLs when they
+are created, and disallow external Group Listing links, similar to option A
+above. Note that even if you wanted to ensure that no `.acl`s are allowed for
+Group Listings, and that all such documents would be public-readable, you would
+still have to be able to tell Group Listings apart from other documents, which
+would imply special-case treatment.
+
+**C) Create and pass along a tracking/state parameter**.
+For each ACL check request beyond the original server, it would be possible to
+create a nonce-type tracking parameter and pass it along with each subsequent
+request. Servers would then be able to use this parameter to detect loops on
+each particular request chain. However, this is a spec-level solution (instead
+of an individual implementation level), since all implementations have to play
+along for this to work. See issue
+[solid/solid#8](https://github.com/solid/solid/issues/8) for further
+discussion).
+
+**D) Ignore this issue and rely on timeouts.**
+It's worth noting that if an infinite group ACL loop was created by mistake,
+this will soon become apparent since requests for that resource will time out.
+If the loop was created by malicious actors, this is comparable to a very
+small, low volume DDOS attack, which experienced server operators know how to
+guard against. In either case, the consequences are not disastrous.
 
 ### Public Access (All Agents)
 

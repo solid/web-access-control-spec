@@ -1,3 +1,7 @@
+##### v.0.3.1
+
+- Add a discussion of infinite loops in Group ACL resolution
+
 ##### v.0.3.0
 
 - Expand the agentClass / Group acl definition, clarifying usage of

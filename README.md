@@ -12,7 +12,7 @@ Next](https://www.w3.org/community/ldpnext/)) type systems, such as the
 [Solid](https://github.com/solid/solid) project (see also the parent
 [spec](https://github.com/solid/solid-spec)).
 
-**Current Spec version:** `v.0.3.1` (see [CHANGELOG.md](CHANGELOG.md))
+**Current Spec version:** `v.0.4.0` (see [CHANGELOG.md](CHANGELOG.md))
 
 ## Table of Contents
 
@@ -224,10 +224,10 @@ as denoted by her WebID URI, `https://alice.databox.me/profile/card#me`.
 
 ### Groups of Agents
 
-To give access to a group of agents, use the `acl:agentClass` predicate.
-The object of an `agentClass` statement is a hash fragment identifier that
-resolves to an RDF class statement in a **Group Listing** document.
-If a WebID is listed in that document, *and* it's of the specified class, it is
+To give access to a group of agents, use the `acl:agentGroup` predicate.
+The object of an `agentGroup` statement is a link to a **Group Listing**
+document. The WebIDs of group members are listed in it, using the
+`vcard:hasMember` predicate. If a WebID is listed in that document, it is
 given access.
 
 Example ACL resource, `shared-file1.acl`, containing a group permission:
@@ -249,8 +249,8 @@ Example ACL resource, `shared-file1.acl`, containing a group permission:
     a acl:Authorization;
     acl:accessTo <https://alice.example.com/docs/shared-file1>;
     acl:mode acl:Read, acl:Write;
-    acl:agentClass <https://alice.example.com/work-groups#Accounting>;
-    acl:agentClass <https://alice.example.com/work-groups#Management>.
+    acl:agentGroup <https://alice.example.com/work-groups#Accounting>;
+    acl:agentGroup <https://alice.example.com/work-groups#Management>.
 ```
 
 Corresponding `work-groups` Group Listing document:
@@ -258,23 +258,31 @@ Corresponding `work-groups` Group Listing document:
 ```ttl
 # Contents of https://alice.example.com/work-groups
 @prefix acl: <http://www.w3.org/ns/auth/acl#>.
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 
 <> a acl:GroupListing.
 
-<#Employee> a rdfs:Class.
-<#Accounting> a rdfs:Class.
-<#Management> a rdfs:Class.
+<#Accounting>
+a vcard:Group;
+  vcard:hasUID <urn:uuid:8831CBAD-1111-2222-8563-F0F4787E5398:ABGroup>;
+  dc:created "2013-09-11T07:18:19+0000"^^xsd:dateTime;
+  dc:modified "2015-08-08T14:45:15+0000"^^xsd:dateTime;
 
-<https://bob.example.com/profile/card#me> a <#Employee>, <#Accounting>.
-<https://candice.example.com/profile/card#me> a <#Employee>, <#Accounting>.
+  # Accounting group members:
+  vcard:hasMember <https://bob.example.com/profile/card#me>;
+  vcard:hasMember <https://candice.example.com/profile/card#me>.
 
-<https://deb.example.com/profile/card#me> a <#Employee>, <#Management>.
+<#Management>
+a vcard:Group;
+  vcard:hasUID <urn:uuid:8831CBAD-3333-4444-8563-F0F4787E5398:ABGroup>;
+
+  # Management group members:
+  vcard:hasMember <https://deb.example.com/profile/card#me>.
 ```
 
 #### Group Listings - Implementation Notes
 
-When implementing support for `acl:agentClass` and Group Listings, keep in mind
+When implementing support for `acl:agentGroup` and Group Listings, keep in mind
 the following issues:
 
 1. Group Listings are regular documents (potentially with their own `.acl`s).
@@ -285,7 +293,7 @@ the following issues:
 
 ##### Group Listings - Authentication of External Requests
 
-Group Listings via `acl:agentClass` links introduce the possibility of an ACL
+Group Listings via `acl:agentGroup` links introduce the possibility of an ACL
 checking engine having to make requests to other servers. Given that access to
 those external group listings can be protected, the question immediately arises:
 By what mechanism should the ACL checking engine authenticate its request to
@@ -327,7 +335,7 @@ examples.
 ##### Infinite Request Loops in Group Listings
 
 Since Group Listings (which are linked to from ACL resources using
-the `acl:agentClass` predicate) are regular documents, they can have their very
+the `acl:agentGroup` predicate) are regular documents, they can have their very
 own `.acl` resources that restrict which users (or groups) are allowed to access
 or change them. This fact, that `.acl`s point to Group Listings, which can have
 `.acl`s of their own, which can potentially also point to Group Listings, and so
@@ -340,15 +348,15 @@ https://a.com                     https://b.com
 -------------        GET          ---------------
 group-listA        <------        group-listB.acl
     |                                  ^     contains:
-    |                                  |     agentClass <a.com/group-ListA>   
+    |                                  |     agentGroup <a.com/group-ListA>   
     v                GET               |
 group-listA.acl    ------>        group-listB
   contains:
-  agentClass <b.com/group-listB>
+  agentGroup <b.com/group-listB>
 ```
 
 The access to `group-listA` is controlled by `group-listA.acl`. So far so good.
-But if `group-listA.acl` contains any `acl:agentClass` references to *another*
+But if `group-listA.acl` contains any `acl:agentGroup` references to *another*
 group listing (say, points to `group-listB`), one runs into potential danger.
 In order to retrieve that other group listing, the ACL-checking engine on
 `https://b.com` will need to check the rules in `group-listB.acl`. And if
@@ -361,7 +369,7 @@ To guard against these loops, implementers have several options:
 **A) Do not allow cross-domain Group Listing resolutions**.
 The simplest to implement (but also the most limited) option is to disallow
 cross-domain Group Listings resolution requests. That is, the ACL-checking code
-could detect `agentClass` links pointing to external servers during ACL
+could detect `agentGroup` links pointing to external servers during ACL
 resolution time, and treat those uniformly (as errors, or as automatic "access
 denied").
 

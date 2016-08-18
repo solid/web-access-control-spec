@@ -335,11 +335,12 @@ examples.
 ##### Infinite Request Loops in Group Listings
 
 Since Group Listings (which are linked to from ACL resources using
-the `acl:agentGroup` predicate) are regular documents, they can have their very
-own `.acl` resources that restrict which users (or groups) are allowed to access
-or change them. This fact, that `.acl`s point to Group Listings, which can have
-`.acl`s of their own, which can potentially also point to Group Listings, and so
-on, introduces the potential for infinite loops during ACL resolution.
+the `acl:agentGroup` predicate) reside in regular documents, those documents
+will have their very own `.acl` resources that restrict which users (or groups)
+are allowed to access or change them. This fact, that `.acl`s point to Group
+Listings, which can have `.acl`s of their own, which can potentially also point
+to Group Listings, and so on, introduces the potential for infinite loops
+during ACL resolution.
 
 Take the following situation with two different servers:
 

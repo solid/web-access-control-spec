@@ -1,3 +1,9 @@
+##### v.0.4.0
+
+- Change Group ACL definition spec to one based on `vcard:hasMember` instead of
+  `acl:agentClass`. Move previous `agentClass` based section to `proposals/` for
+  archival purposes.
+
 ##### v.0.3.1
 
 - Add a discussion of infinite loops in Group ACL resolution

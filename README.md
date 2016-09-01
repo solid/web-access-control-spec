@@ -506,7 +506,7 @@ An example ACL for a container would look something like:
     # defaultForNew says: this authorization (the statements above) will also
     #   be inherited by any resource within that container that doesn't have its
     #   own ACL.
-    acl:defaultForNew <>.
+    acl:defaultForNew <https://alice.databox.me/docs/>.
 ```
 
 **Note:** The `acl:defaultForNew` predicate will soon be renamed to

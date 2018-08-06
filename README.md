@@ -422,7 +422,38 @@ of *all* agents (the general public). For example:
 ```
 
 Note that this is a special case of `acl:agentClass` usage, since it doesn't
-point to a Group Listing document that's meant to be de-referenced.
+point to a Class Listing document that's meant to be de-referenced.
+
+### Authenticated Agents (Anyone logged on)
+
+Authenticated access is a bit like public access
+but it is not anonymous.   Access is only given to people
+who have logged on and provided a specific ID.
+This allows the server to track the people who have used the resource.
+
+To specify that you're giving a particular mode of access to anyone *logged on*
+(for example, that your collaborative page is open to anyone but you want to know who they are),
+you can use
+`acl:agentClass acl:AuthenticatedAgent` to denote that you're giving access to the class
+of *all* authenticated agents. For example:
+
+```ttl
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<#authorization2>
+    a acl:Authorization;
+    acl:agentClass acl:AuthenticatedAgent;  # everyone
+    acl:mode acl:Read;  # has Read-only access
+    acl:accessTo <https://alice.databox.me/profile/card>. # to the public profile
+```
+
+Note that this is a special case of `acl:agentClass` usage, since it doesn't
+point to a Class Listing document that's meant to be de-referenced.
+
+An application of this feature is to throw a resource open to all logged on users
+for a specific amount of time, accumulate the list of those who case as a group,
+and then later restrict access to that group, to prevent spam.
 
 ## Referring to Resources
 

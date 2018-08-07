@@ -1,6 +1,8 @@
 Notes
 
-# Authorizing Web Apps: Discussion
+# Authorizing Web Apps: Background
+This short article is a very much simplified backgrounder on the protocols
+which web browser manufacturers have implemented to control access to data by web apps on different web sites.
 
 ## Background
 
@@ -10,13 +12,14 @@ The assumption that a web browser makes is that whenever the user is using a web
 
 ## Cross site scripting attacks
 
-The original attack which caused a lot of the current design of the browser is a cross-site scripting attack. In this attack, a malicious person Mallory sends a normal user Alice for example an email with a link to Mallory’ web site. Alice follows the link and loads the web page M. We allow JavaScript scripts to run in any web page by default, and M has a script which runs on Alice’s machine, accesses some data which Alice has access to,and then secretly sends the data back to some system Mallory controls. The private data maybe accessed by the script in various ways. One way is that the computer Alice is using may be inside a firewall which gives her implicit access, to say a webcam in her house, or a journal library in her university. It may be done, then, without any interaction with Alice, or it can also be done by asking her to log in to a system to get the script some credentials. Web site M could be a fake version of her bank, B, and ask her to authenticate to the bank, or to her social network, on some pretense. The data can typically be returned to Mallory say be encoding it in a URL on a site M controls and going a GET. There are many variations of the Cross Site Scripting (XSS) attack, but that is the general idea.
+The original attack which caused a lot of the current design of the browser is a cross-site scripting attack. In this sort of attack, a malicious person Mallory sends a normal user Alice for example an email with a link to Mallory’ web site. Alice follows the link and loads the web page M. We allow JavaScript scripts to run in any web page by default, and M has a script which runs on Alice’s machine, accesses some data which Alice has access to, and then secretly sends the data back to some system Mallory controls. The private data maybe accessed by the script in various ways. One way is that the computer Alice is using may be inside a firewall which gives her implicit access, to say a webcam in her house, or a journal library in her university. It may be done, then, without any interaction with Alice, or it can also be done by asking her to log in to a system to get the script some credentials. Web site M could be a fake version of her bank, B, and ask her to authenticate to the bank, or to her social network, on some pretense. The data can typically be returned to Mallory say be encoding it in a URL on a site M controls and going a GET. There are many variations of the Cross Site Scripting (XSS) attack, but that is the general idea.
 
 ## Cross-Origin Resource Sharing "CORS"
 
-The first impulse of a browser developer may have been to just prevent a web page script to do any web access at all, but clearly they need to be able to do network access. For example, a bank needs to load a script which can display a persons. Bank accounts by going back to the server B for more data about different accounts at different dates. Clearly that had to be enabled. But Mallory had to be blocked. This let to the Same Origin Policy that so long as a script running in a web page which came from the same internet domain name (like www.bankofamerica.com) then the script could interact as much as it liked with any server address in the same domain. The protocol and domain part of the URI aRe known as the Origin. Hence, Same Origin Policy (SOP). In general all data from a server Origin and form any script it runs is kept separate from any data from any other Origin. This allows banks to work pretty well.
+The first impulse of a browser developer may have been to just prevent a web page script to do any web access at all, but clearly they need to be able to do network access. For example, a bank needs to load a script which can display a person's
+bank accounts by going back to the server B for more data about different accounts at different dates. Clearly that had to be enabled. But Mallory had to be blocked. This let to the Same Origin Policy that so long as a script running in a web page which came from the same internet domain name (like www.bankofamerica.com) then the script could interact as much as it liked with any server address in the same domain. The protocol and domain part of the URI aRe known as the Origin. Hence, Same Origin Policy (SOP). In general all data from a server Origin and form any script it runs is kept separate from any data from any other Origin. This allows banks to work pretty well.
 
-Were there any use cases where the SOP does now work? Well, yes — anything which relies on a script being able to access other domains. One example is a service which provides for example a JavaScript program to validate, test,or assess another web page: it can’t access the data in the page to do its job.
+Were there any use cases where the SOP does now work? Well, yes — anything which relies on a script being able to access other domains. One example is a service which provides for example a JavaScript program to validate, test, or assess another web page: it can’t access the data in the page to do its job.
 Another example is a data mashup. When a large amount of open public data started to become available from governments and so on, there was a flourishing of sites which loaded data from many different sites and provide a “mashup” of the data — a combined visualization of data from many sources which would typically l	was to insights that you would not get from one data source alone. A typical client-based data mashup site in fact does not work nowadays work any more.
 
 What could be done? The browser manufacturers implemented some hooks to allow data to be shared across different origins, and called it Cross Origin Resource Sharing, or CORS. The core problem was — how in the browser to distinguish between data like a domestic webcam which was private, and open government data which was public? Not being able to change the webcam, they decided to make the data publishers change. They required that they add special CORS headers to their HTTP responses for any data which was public.
@@ -93,8 +96,10 @@ where the system manager would have no one else to blame for sing it on any reso
 which was secret, or was customized with a user's identity?  One might of thought.
 But that is not how CORS was done.
 
-So dat publishers of the world, went about putting CORS Origin reflector code
-in their servers.  In fact it is also really important to allow add the `Origin` to
+So, data publishers of the world went about putting CORS Origin reflector code
+in their servers.
+
+But once you are using the origin reflector technique, it becomes essential to allow add the `Origin` to
 the `Vary:` header is you have one, or, if not add a new
 ```
 Vary: Origin
@@ -107,7 +112,7 @@ Otherwise, this is the failure mode:
 - The browser caches that response
 - The user uses a different app on site B to look at the same data
 - The browser uses the cached copy -- but the origin A on it does not match the requesting site B.
-- The bowser silently blocks the the request to the puzzlement of user and developer.
+- The browser silently blocks the the request to the puzzlement of user and developer.
 
 So in a properly running CORS-based system, the server sends the Vary: Origin header, and forces the browser to keep a different copy of the data for every web app which asks for it, which is very ironic, given that it may be completely public data.
 
@@ -132,4 +137,12 @@ Origin”, which should prevent that same cached version being reused for
 a different origin.
 That was with Chrome Version 59.0.3071.115 (Official Build) (64-bit)
 
-It seems also hat Firefox showed the same behavior for  in 2018-07
+It seems also that Firefox showed the same behavior for  in 2018-07
+
+## References
+
+- [WXSS] [Wikipedia, "Cross-site scripting"](https://en.wikipedia.org/wiki/Cross-site_scripting)
+- [WCORS][Cross-origin resource sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
+- [WSOP] [Wikipedia, "
+Same-origin policy"](https://en.wikipedia.org/wiki/Same-origin_policy)
+- [W3C-SOP][W3C Wiki, Same Origin Policy](https://www.w3.org/Security/wiki/Same_Origin_Policy)

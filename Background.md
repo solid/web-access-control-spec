@@ -114,7 +114,7 @@ So in a properly running CORS-based system, the server sends the Vary: Origin he
 The CORS design most go down in history as the worst piece of design in the whole web. But that is the background against which now those designing a system such as Solid now have to create a system which will be immune to XSS attacks, data will be
 public and private under user's control, and web apps are be deemed trustworthy by various different social processes.
 
-## A second CORS twist
+## Epilog: A second CORS twist
 
 The second twist with CORS is the at the browser doesn't even actually implement the CORS with a twist
 algorithm completely.
@@ -133,7 +133,3 @@ a different origin.
 That was with Chrome Version 59.0.3071.115 (Official Build) (64-bit)
 
 It seems also hat Firefox showed the same behavior for  in 2018-07
-
-## CORS on a solid server
-
-## Adding trusted web apps

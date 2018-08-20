@@ -28,9 +28,9 @@ What could be done? The browser manufacturers implemented some hooks to allow da
 Access-control-allow-Origin: *
 ```
 At the same time they added a feature to allow the data publisher to specify other a limited set of other origins which would be allowed access. This makes running a bank easier if also the credit card company code can access your customers data.
-
+```
 Access-control-allow-Origin: credit card company.example.com
-
+```
 This meant that anyone publishing public data has to add
 
 ```
@@ -38,6 +38,24 @@ Access-control-allow-Origin: *
 ```
 in any response.  This meant a huge amount of work for random open data publishers
 all over the web, an effort which in many cases for many reasonable reasons was not done, leaving the data available to browsers, but unavailable to web apps.
+
+The browser actually looks for these headers not on the request itself, but in
+on a "Pre-flight" OPTIONS request which is inserted before the main request.  So while the developer may see in the browser console only the main request, the number of round trips has in fact increased.
+
+### Header blocking
+
+As well as blocking the data, the CORS system blocks headers from the server to the web app.
+To prevent this this, the server must send another  [header](https://www.w3.org/TR/cors/#access-control-allow-headers-response-header):
+```
+Access-Control-Allow-Headers: Authorization, User, Location, Link, Vary, Last-Modified, ETag, Accept-Patch, Accept-Post, Updates-Via, Allow, WAC-Allow, Content-Length, WWW-Authenticate
+```
+This must include things like the Link: header which are normal headers blocked by the browser, and also any new headers the app and serve are using for any purpose.
+
+### Method blocking
+
+### Example
+
+One solid server does CORS [this way](https://github.com/solid/node-solid-server/blob/master/lib/create-app.js#L26)
 
 ## The CORS twist
 
@@ -142,6 +160,8 @@ It seems also that Firefox showed the same behavior for  in 2018-07
 ## References
 
 - [WXSS] [Wikipedia, "Cross-site scripting"](https://en.wikipedia.org/wiki/Cross-site_scripting)
+- [CORS] [Cross-Origin Resource Sharing
+W3C Recommendation](https://www.w3.org/TR/cors/)  16 January 2014
 - [WCORS][Cross-origin resource sharing](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
 - [WSOP] [Wikipedia, "
 Same-origin policy"](https://en.wikipedia.org/wiki/Same-origin_policy)

@@ -394,22 +394,29 @@ In solid a maxim is, you have complete control of he data. Therefore it is up to
 - A writer could give in their profile a statement that they will allow readers to use a given app.
 
 ```
- <#me> acl:trusts <https://calendar.example.com>.
- <#me> acl:trustsForRead  <https://contacts.example.com>.
+ <#me> acl:trustedApp  [acl:origin <https://calendar.example.com> acl:mode acl:Read , acl:Append].
+ <#me> acl:trustedApp [acl:origin  <https://contacts.example.com>  acl:mode acl:Read , acl:Write, acl:Control] .
 ```
 
- - A reader can ask to use a given app, by publishing the fact that she trusts a given app.
+We define the owners of the resource as people given explicit Control access to it.
+(Possible future change: also anyone with Control access, even through a group, as the group can be used as a role)
 
- ```
-  <#me> acl:trustsForUse <https://calendar.example.com>.
-  <#me> acl:trustsForUseForRead  <https://contacts.example.com>.
- ```
+For each owner x, the server looks up the (extended?) profile, and looks in it for a
+triple of the form
 
-A writer could have also more sophisticated requirements, such as that any app Alice
-wants to use must be signed by developer from a given list, and so on.
+```
+?x  acl:trustedApp ?y .
+```
+The set of trust objects is the accumulated set of ?y found in this way.
 
-Therefore, by pulling the profiles of the reader and/or the writer, and/or the Origin app itself,
-the system can be adjusted to allow new apps to be added without bad things happening
+For the app ?z to have access, for every mode of access ?m required
+there must be some trust object ?y such that
+```
+?y  acl:origin ?z ; acl:mode ?m .
+```
+Note access to different modes may be given in the same or different trust objects.
+
+
 
 ## Referring to Resources
 
@@ -499,6 +506,10 @@ An example ACL for a container would look something like:
 **Note:** The `acl:defaultForNew` predicate will soon be renamed to
 `acl:default`, both in the specs and in implementing servers. The semantics, as
 described here, will remain the same
+
+## See also
+
+[Background on CORS](https://sold.github.io/web-access-control-spec/Background)
 
 ## Old discussion of access to group files
 
@@ -618,6 +629,23 @@ this will soon become apparent since requests for that resource will time out.
 If the loop was created by malicious actors, this is comparable to a very
 small, low volume DDOS attack, which experienced server operators know how to
 guard against. In either case, the consequences are not disastrous.
+
+
+### Other ideas about specifying trusted apps
+
+ - A reader can ask to use a given app, by publishing the fact that she trusts a given app.
+
+ ```
+ <#me> acl:trustsForUse  [acl:origin <https://calendar.example.com> acl:mode acl:Read , acl:Append].
+ <#me> acl:trustsForUse [acl:origin  <https://contacts.example.com>  acl:mode acl:Read , acl:Write, acl:Control] .
+ ```
+
+A writer could have also more sophisticated requirements, such as that any app Alice
+wants to use must be signed by developer from a given list, and so on.
+
+Therefore, by pulling the profiles of the reader and/or the writer, and/or the Origin app itself,
+the system can be adjusted to allow new apps to be added without bad things happening
+
 
 ## Not Supported by Design
 

@@ -29,6 +29,7 @@ Next](https://www.w3.org/community/ldpnext/)) type systems, such as the
   * [Groups](#groups-of-agents)
   * [Public Access (all Agents)](#public-access-all-agents)
   * [Anyone logged on (Authenticated Agents)](#authenticated-agents-anyone-logged-on)
+  * [Referring to Origins, i.e. Web Apps](#referring-to-origins-i-e-web-apps)
 7. [Referring to Resources](#referring-to-resources)
 8. [Modes of Access](#modes-of-access)
 9. [Default (Inherited) Authorizations](#default-inherited-authorizations)
@@ -351,12 +352,14 @@ and then later restrict access to that group, to prevent spam.
 
 ### Referring to Origins, i.e. Web Apps
 
+
 When a compliant server receives a request from a web application running
-in a browser, the brrowser will send an extra warning HTTP header, the Origin header.
+in a browser, the browser will send an extra warning HTTP header, the Origin header.
 
 ```
 Origin: https://scripts.example.com:8080
 ```
+(For background, see also [Backgrounder on Same Origin Policy and CORS](https://sold.github.io/web-access-control-spec/Background))
 Note that the origin comprises the protocol and the DNS and port but none of the  path,
 and no trailing slash.
 All scripts running on the same origin are assumed to be run by the same
@@ -365,20 +368,22 @@ social entity, and so trusted to the same extent.
 *When an Origin header is present then BOTH the authenticated agent AND
 the origin MUST be allowed access*
 
- As both the user and the web app get to read or write the data, then they most BOTH
- be trusted.
+ As both the user and the web app get to read or write (etc) the data, then they most BOTH
+ be trusted.  This is the algorithm the server must go through.
 
- - If the requested mode is available to the public, then suceed `200 OK`.
+ - If the requested mode is available to the public, then succeed `200 OK` with added CORS headers ACAO and ACAH **
  - If the user is *not* logged on, then fail `401 Unauthenticated`
  - Is the User authenticated is *not* allowed access required, AND the class AuthenticatedAgent is not allowed access, then fail `403 User Unauthorized`
  - If the Origin header is not present, the succeed `200 OK`
  - If the Origin is allowed by the ACL, then succeed `200 OK` with added CORS headers ACAO and ACAH
- - (In future proposed) Look up the user's webid to check for trusted apps declared there, and if match, succeed `200 OK`
+ - (In future proposed) Look up the owner's webid(s) to check for trusted apps declared there, and if match, succeed `200 OK` with added CORS headers ACAO and ACAH
  - Fail `403 Origin Unauthorized`
 
  Note it is a really good idea to make it clear both in the text of the status message and in the body of
  the message the difference between the user not being allowed and the web app they are using
  not bing trusted.
+
+ ** Possible future alternative:  Set ACAO header to `"*"` indicating that the document is public.  This will though block in the browser any access made using credentials.
 
 #### Adding trusted web apps.
 

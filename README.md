@@ -28,6 +28,7 @@ Next](https://www.w3.org/community/ldpnext/)) type systems, such as the
   * [Singular Agent](#singular-agent)
   * [Groups](#groups-of-agents)
   * [Public Access (all Agents)](#public-access-all-agents)
+  * [Anyone logged on (Authenticated Agents)](#authenticated-agents-anyone-logged-on)
 7. [Referring to Resources](#referring-to-resources)
 8. [Modes of Access](#modes-of-access)
 9. [Default (Inherited) Authorizations](#default-inherited-authorizations)
@@ -415,8 +416,6 @@ there must be some trust object ?y such that
 ?y  acl:origin ?z ; acl:mode ?m .
 ```
 Note access to different modes may be given in the same or different trust objects.
-
-
 
 ## Referring to Resources
 

@@ -381,13 +381,13 @@ the origin MUST be allowed access*
 
  Note it is a really good idea to make it clear both in the text of the status message and in the body of
  the message the difference between the user not being allowed and the web app they are using
- not bing trusted.
+ not being trusted.
 
  ** Possible future alternative:  Set ACAO header to `"*"` indicating that the document is public.  This will though block in the browser any access made using credentials.
 
 #### Adding trusted web apps.
 
-The authorization of trusted web app is a running battle between readers and writers on the web, and manevalent parties trying to break in to get unauthorized access.  The history or Cross-Site Scripting attacks and the introduction of the Same Origin Policy is not detailed here, The CORS specification in general prevents any web app from accessing any data from or associated with a different origin.  The web server can get around CORS. It is a pain to to do so, as it involves the server code echoing back the Orin header in the ACAO header, and also it must be done only when the web app in question actually is trustworthy.
+The authorization of trusted web app is a running battle between readers and writers on the web, and malevolent parties trying to break in to get unauthorized access.  The history or Cross-Site Scripting attacks and the introduction of the Same Origin Policy is not detailed here, The CORS specification in general prevents any web app from accessing any data from or associated with a different origin.  The web server can get around CORS. It is a pain to to do so, as it involves the server code echoing back the Origin header in the ACAO header, and also it must be done only when the web app in question actually is trustworthy.
 
 In solid a maxim is, you have complete control of he data. Therefore it is up to the owner of the data, the publisher, the controller of the ACL, or more broadly the person running the solid server, to specify who gets access, be it people or apps.   However another maxim is that you can chose which app you use.  So of Alice publishes data, and Bob want to use his favorite app,  then how does that happen?  
 

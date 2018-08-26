@@ -400,8 +400,8 @@ In solid a maxim is, you have complete control of he data. Therefore it is up to
 - A writer could give in their profile a statement that they will allow readers to use a given app.
 
 ```
- <#me> acl:trustedApp  [acl:origin <https://calendar.example.com> acl:mode acl:Read , acl:Append].
- <#me> acl:trustedApp [acl:origin  <https://contacts.example.com>  acl:mode acl:Read , acl:Write, acl:Control] .
+ <#me> acl:trustedApp [acl:origin <https://calendar.example.com>; acl:mode acl:Read , acl:Append].
+ <#me> acl:trustedApp [acl:origin <https://contacts.example.com>; acl:mode acl:Read , acl:Write, acl:Control] .
 ```
 
 We define the owners of the resource as people given explicit Control access to it.

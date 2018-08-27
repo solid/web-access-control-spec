@@ -203,12 +203,12 @@ and Control) to one of her web resources, located at
 @prefix  acl:  <http://www.w3.org/ns/auth/acl#>  .
 
 <#authorization1>
-    a             acl:Authorization                           ;
-    acl:agent     <https://alice.databox.me/profile/card#me>  ;  # Alice's WebID
-    acl:accessTo  <https://alice.databox.me/docs/file1>       ;
-    acl:mode      acl:Read                                    , 
-                  acl:Write                                   , 
-                  acl:Control                                 .
+    a             acl:Authorization;
+    acl:agent     <https://alice.databox.me/profile/card#me>;  # Alice's WebID
+    acl:accessTo  <https://alice.databox.me/docs/file1>;
+    acl:mode      acl:Read, 
+                  acl:Write, 
+                  acl:Control.
 ```
 
 ## Describing Agents
@@ -237,53 +237,53 @@ Example ACL resource, `shared-file1.acl`, containing a group permission:
 
 ```ttl
 # Contents of https://alice.databox.me/docs/shared-file1.acl
-@prefix  acl:  <http://www.w3.org/ns/auth/acl#>  .
+@prefix  acl:  <http://www.w3.org/ns/auth/acl#>.
 
 # Individual authorization - Alice has Read/Write/Control access
 <#authorization1>
-    a             acl:Authorization                              ;
-    acl:accessTo  <https://alice.example.com/docs/shared-file1>  ;
-    acl:mode      acl:Read                                       ,
-                  acl:Write                                      , 
-                  acl:Control                                    ;
-    acl:agent     <https://alice.example.com/profile/card#me>    .
+    a             acl:Authorization;
+    acl:accessTo  <https://alice.example.com/docs/shared-file1>;
+    acl:mode      acl:Read,
+                  acl:Write, 
+                  acl:Control;
+    acl:agent     <https://alice.example.com/profile/card#me>.
 
 # Group authorization, giving Read/Write access to two groups, which are
 # specified in the 'work-groups' document.
 <#authorization2>
-    a               acl:Authorization                                   ;
-    acl:accessTo    <https://alice.example.com/docs/shared-file1>       ;
-    acl:mode        acl:Read                                            ,
-                    acl:Write                                           ;
-    acl:agentGroup  <https://alice.example.com/work-groups#Accounting>  ;
-    acl:agentGroup  <https://alice.example.com/work-groups#Management>  .
+    a               acl:Authorization;
+    acl:accessTo    <https://alice.example.com/docs/shared-file1>;
+    acl:mode        acl:Read,
+                    acl:Write;
+    acl:agentGroup  <https://alice.example.com/work-groups#Accounting>;
+    acl:agentGroup  <https://alice.example.com/work-groups#Management>.
 ```
 
 Corresponding `work-groups` Group Listing document:
 
 ```ttl
 # Contents of https://alice.example.com/work-groups
-@prefix    acl:  <http://www.w3.org/ns/auth/acl#>   .
-@prefix  vcard:  <http://www.w3.org/2006/vcard/ns#> .
+@prefix    acl:  <http://www.w3.org/ns/auth/acl#>.
+@prefix  vcard:  <http://www.w3.org/2006/vcard/ns#>.
 
-<>  a  acl:GroupListing  .
+<>  a  acl:GroupListing.
 
 <#Accounting>
-    a                vcard:Group                                              ;
-    vcard:hasUID     <urn:uuid:8831CBAD-1111-2222-8563-F0F4787E5398:ABGroup>  ;
-    dc:created       "2013-09-11T07:18:19+0000"^^xsd:dateTime                 ;
-    dc:modified      "2015-08-08T14:45:15+0000"^^xsd:dateTime                 ;
+    a                vcard:Group;
+    vcard:hasUID     <urn:uuid:8831CBAD-1111-2222-8563-F0F4787E5398:ABGroup>;
+    dc:created       "2013-09-11T07:18:19+0000"^^xsd:dateTime;
+    dc:modified      "2015-08-08T14:45:15+0000"^^xsd:dateTime;
 
     # Accounting group members:
-    vcard:hasMember  <https://bob.example.com/profile/card#me>                ;
-    vcard:hasMember  <https://candice.example.com/profile/card#me>            .
+    vcard:hasMember  <https://bob.example.com/profile/card#me>;
+    vcard:hasMember  <https://candice.example.com/profile/card#me>.
 
 <#Management>
-    a                vcard:Group                                              ;
-    vcard:hasUID     <urn:uuid:8831CBAD-3333-4444-8563-F0F4787E5398:ABGroup>  ;
+    a                vcard:Group;
+    vcard:hasUID     <urn:uuid:8831CBAD-3333-4444-8563-F0F4787E5398:ABGroup>;
 
     # Management group members:
-    vcard:hasMember  <https://deb.example.com/profile/card#me>                .
+    vcard:hasMember  <https://deb.example.com/profile/card#me>.
 ```
 
 #### Group Listings - Implementation Notes
@@ -310,14 +310,14 @@ To specify that you're giving a particular mode of access to *everyone*
 of *all* agents (the general public). For example:
 
 ```ttl
-@prefix   acl:  <http://www.w3.org/ns/auth/acl#>  .
-@prefix  foaf:  <http://xmlns.com/foaf/0.1/>      .
+@prefix   acl:  <http://www.w3.org/ns/auth/acl#>.
+@prefix  foaf:  <http://xmlns.com/foaf/0.1/>.
 
 <#authorization2>
-    a               acl:Authorization                        ;
-    acl:agentClass  foaf:Agent                               ;  # everyone
-    acl:mode        acl:Read                                 ;  # has Read-only access
-    acl:accessTo    <https://alice.databox.me/profile/card>  .  # to the public profile
+    a               acl:Authorization;
+    acl:agentClass  foaf:Agent;                               # everyone
+    acl:mode        acl:Read;                                 # has Read-only access
+    acl:accessTo    <https://alice.databox.me/profile/card>.  # to the public profile
 ```
 
 Note that this is a special case of `acl:agentClass` usage, since it doesn't
@@ -337,14 +337,14 @@ you can use
 of *all* authenticated agents. For example:
 
 ```ttl
-@prefix   acl:  <http://www.w3.org/ns/auth/acl#>  .
-@prefix  foaf:  <http://xmlns.com/foaf/0.1/>      .
+@prefix   acl:  <http://www.w3.org/ns/auth/acl#>.
+@prefix  foaf:  <http://xmlns.com/foaf/0.1/>.
 
 <#authorization2>
-    a               acl:Authorization                        ;
-    acl:agentClass  acl:AuthenticatedAgent                   ;  # everyone
-    acl:mode        acl:Read                                 ;  # has Read-only access
-    acl:accessTo    <https://alice.databox.me/profile/card>  .  # to the public profile
+    a               acl:Authorization;
+    acl:agentClass  acl:AuthenticatedAgent;                   # everyone
+    acl:mode        acl:Read;                                 # has Read-only access
+    acl:accessTo    <https://alice.databox.me/profile/card>.  # to the public profile
 ```
 
 Note that this is a special case of `acl:agentClass` usage, since it doesn't
@@ -404,13 +404,13 @@ In solid a maxim is, you have complete control of he data. Therefore it is up to
 - A writer could give in their profile a statement that they will allow readers to use a given app.
 
 ```
- <#me> acl:trustedApp [  acl:origin  <https://calendar.example.com>  ;
-                         acl:mode    acl:Read                        , 
-                                     acl:Append                      ] .
- <#me> acl:trustedApp [  acl:origin  <https://contacts.example.com>  ;
-                         acl:mode    acl:Read                        , 
-                                     acl:Write                       , 
-                                     acl:Control                     ] .
+ <#me> acl:trustedApp [ acl:origin  <https://calendar.example.com>;
+                        acl:mode    acl:Read, 
+                                    acl:Append].
+ <#me> acl:trustedApp [ acl:origin  <https://contacts.example.com>;
+                        acl:mode    acl:Read, 
+                                    acl:Write, 
+                                    acl:Control].
 ```
 
 We define the owners of the resource as people given explicit Control access to it.
@@ -420,16 +420,15 @@ For each owner x, the server looks up the (extended?) profile, and looks in it f
 triple of the form
 
 ```
-?x  acl:trustedApp  ?y  .
+?x  acl:trustedApp  ?y.
 ```
 The set of trust objects is the accumulated set of ?y found in this way.
 
 For the app ?z to have access, for every mode of access ?m required
 there must be some trust object ?y such that
 ```
-?y  acl:origin  ?z 
-;   acl:mode    ?m
-.
+?y  acl:origin  ?z;
+    acl:mode    ?m.
 ```
 Note access to different modes may be given in the same or different trust objects.
 
@@ -501,22 +500,22 @@ An example ACL for a container would look something like:
 
 ```ttl
 # Contents of https://alice.databox.me/docs/.acl
-@prefix  acl:  <http://www.w3.org/ns/auth/acl#>  .
+@prefix  acl:  <http://www.w3.org/ns/auth/acl#>.
 
 <#authorization1>
-    a                  acl:Authorization                           ;
+    a                  acl:Authorization;
 
     # These statements specify access rules for the /docs/ container itself:
-    acl:agent          <https://alice.databox.me/profile/card#me>  ;
-    acl:accessTo       <https://alice.databox.me/docs/>            ;
-    acl:mode           acl:Read                                    , 
-                       acl:Write                                   , 
-                       acl:Control                                 ;
+    acl:agent          <https://alice.databox.me/profile/card#me>;
+    acl:accessTo       <https://alice.databox.me/docs/>;
+    acl:mode           acl:Read, 
+                       acl:Write, 
+                       acl:Control;
 
-    # defaultForNew says: this authorization (the statements above) will also
-    #   be inherited by any resource within that container that doesn't have its
-    #   own ACL.
-    acl:defaultForNew  <https://alice.databox.me/docs/>            .
+    # defaultForNew says: this authorization (the statements above) 
+    #   will also be inherited by any resource within that container 
+    #   that doesn't have its own ACL.
+    acl:defaultForNew  <https://alice.databox.me/docs/>.
 ```
 
 **Note:** The `acl:defaultForNew` predicate will soon be renamed to
@@ -558,9 +557,9 @@ need to be public-readable. THIS IS THE ONLY METHOD CURRENTLY IN USE
 **WebID-TLS Delegation**. If your implementation uses the WebID-TLS
 authentication method, it also needs to implement the ability to delegate its
 requests on behalf of the original user.
-(No, the original requester may not be akllowed access -- you don't have to ableForto
+(No, the original requester may not be allowed access -- you don't have to able to
 access a group to be in it)
- a discussion of such a capability,
+For a discussion of such a capability,
 see the [Extending the WebID Protocol with Access
 Delegation](http://bblfish.net/tmp/2012/08/05/WebID_Delegation.pdf) paper.
 One thing to keep in mind is - if there are several hops (an ACL request chain
@@ -652,13 +651,13 @@ guard against. In either case, the consequences are not disastrous.
  - A reader can ask to use a given app, by publishing the fact that she trusts a given app.
 
  ```
- <#me> acl:trustsForUse [  acl:origin  <https://calendar.example.com>  ;
-                           acl:mode    acl:Read                        , 
-                                       acl:Append                      ] .
- <#me> acl:trustsForUse [  acl:origin  <https://contacts.example.com>  ;  
-                           acl:mode    acl:Read                        , 
-                                       acl:Write                       , 
-                                       acl:Control                     ] .
+ <#me> acl:trustsForUse [ acl:origin  <https://calendar.example.com>;
+                          acl:mode    acl:Read, 
+                                      acl:Append].
+ <#me> acl:trustsForUse [ acl:origin  <https://contacts.example.com>; 
+                          acl:mode    acl:Read, 
+                                      acl:Write, 
+                                      acl:Control].
  ```
 
 A writer could have also more sophisticated requirements, such as that any app Alice

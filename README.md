@@ -359,7 +359,7 @@ in a browser, the browser will send an extra warning HTTP header, the Origin hea
 ```
 Origin: https://scripts.example.com:8080
 ```
-(For background, see also [Backgrounder on Same Origin Policy and CORS](https://sold.github.io/web-access-control-spec/Background))
+(For background, see also [Backgrounder on Same Origin Policy and CORS](https://solid.github.io/web-access-control-spec/Background))
 Note that the origin comprises the protocol and the DNS and port but none of the  path,
 and no trailing slash.
 All scripts running on the same origin are assumed to be run by the same
@@ -513,7 +513,7 @@ described here, will remain the same
 
 ## See also
 
-[Background on CORS](https://sold.github.io/web-access-control-spec/Background)
+[Background on CORS](https://solid.github.io/web-access-control-spec/Background)
 
 ## Old discussion of access to group files
 

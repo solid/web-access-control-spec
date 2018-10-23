@@ -266,8 +266,6 @@ Corresponding `work-groups` Group Listing document:
 @prefix    acl:  <http://www.w3.org/ns/auth/acl#>.
 @prefix  vcard:  <http://www.w3.org/2006/vcard/ns#>.
 
-<>  a  acl:GroupListing.
-
 <#Accounting>
     a                vcard:Group;
     vcard:hasUID     <urn:uuid:8831CBAD-1111-2222-8563-F0F4787E5398:ABGroup>;

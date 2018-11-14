@@ -320,9 +320,6 @@ of *all* agents (the general public). For example:
     acl:accessTo    <https://alice.databox.me/profile/card>.  # to the public profile
 ```
 
-Note that this is a special case of `acl:agentClass` usage, since it doesn't
-point to a Class Listing document that's meant to be de-referenced.
-
 ### Authenticated Agents (Anyone logged on)
 
 Authenticated access is a bit like public access

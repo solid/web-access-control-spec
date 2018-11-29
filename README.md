@@ -73,7 +73,7 @@ documents called *Access Control List Resources* (or simply *ACLs*).
 The WAC system assumes that web documents are placed in hierarchical containers
 or folders. For convenience, users do not have to specify permissions on each
 individual resource -- they can simply set permissions on a container, add a
-[`acl:defaultForNew`](#default-inherited-authorizations) predicate, and have all
+[`acl:default`](#default-inherited-authorizations) predicate, and have all
 of the resources in that container [inherit](#acl-inheritance-algorithm) those
 permissions.
 
@@ -164,13 +164,13 @@ A request (to read or write) has arrived for a document located at
   `/documents/papers/` container (in which the document resides) has its own
   ACL resource (here, `/documents/papers/.acl`). If it finds that, the server
   reads each authorization in the container's ACL, and if any of them contain an
-  `acl:defaultForNew` predicate, the server will use them (as if they were
+  `acl:default` predicate, the server will use them (as if they were
   specified in `paper1.acl`). Again, if any such authorizations are found, the
   process stops there and no other statements apply.
 3. If the document's container has no ACL resource of its own, the search
   continues upstream, in the *parent* container. The server would check if
   `/documents/.acl` exists, and then `/.acl`, until it finds some authorizations
-  that contain `acl:defaultForNew`.
+  that contain `acl:default`.
 4. Since the root container (here, `/`) MUST have its own ACL resource, the
   server would use the authorizations there as a last resort.
 
@@ -319,9 +319,6 @@ of *all* agents (the general public). For example:
     acl:mode        acl:Read;                                 # has Read-only access
     acl:accessTo    <https://alice.databox.me/profile/card>.  # to the public profile
 ```
-
-Note that this is a special case of `acl:agentClass` usage, since it doesn't
-point to a Class Listing document that's meant to be de-referenced.
 
 ### Authenticated Agents (Anyone logged on)
 
@@ -488,9 +485,9 @@ be able to change their access levels at a later point (since they retain
 As previously mentioned, not every document needs its own individual ACL
 resource and its own authorizations. Instead, one can can create an
 Authorization for a container (in the container's own ACL resource), and then
-use the `acl:defaultForNew` predicate to denote that any resource within that
+use the `acl:default` predicate to denote that any resource within that
 container will *inherit* that authorization. To put it another way, if an
-Authorization contains `acl:defaultForNew`, it will be applied *by default* to
+Authorization contains `acl:default`, it will be applied *by default* to
 any resource in that container.
 
 You can override the default inherited authorization for any resource by
@@ -512,15 +509,11 @@ An example ACL for a container would look something like:
                        acl:Write, 
                        acl:Control;
 
-    # defaultForNew says: this authorization (the statements above) 
+    # default says: this authorization (the statements above) 
     #   will also be inherited by any resource within that container 
     #   that doesn't have its own ACL.
-    acl:defaultForNew  <https://alice.databox.me/docs/>.
+    acl:default  <https://alice.databox.me/docs/>.
 ```
-
-**Note:** The `acl:defaultForNew` predicate will soon be renamed to
-`acl:default`, both in the specs and in implementing servers. The semantics, as
-described here, will remain the same
 
 ## See also
 

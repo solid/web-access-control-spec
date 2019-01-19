@@ -353,13 +353,33 @@ and then later restrict access to that group, to prevent spam.
 
 ### Referring to Origins, i.e. Web Apps
 
-
 When a compliant server receives a request from a web application running
 in a browser, the browser will send an extra warning HTTP header, the Origin header.
 
 ```
 Origin: https://scripts.example.com:8080
 ```
+In this case, not only must the user (directly or by class or group) be authorized, the origin must also be. This is done in the ACL with the
+`acl:origin` predicate.
+
+```
+    <#au1>  acl:origin  <https://scripts.example.com:8080> ;
+    ...
+```
+The origin is always given, note, with *no trailing slash*.  Here is the group example above but adding also the ability for people to use apps from the origin
+`https://apps.example.com` :
+
+```
+<#authorization2>
+    a               acl:Authorization;
+    acl:accessTo    <https://alice.example.com/docs/shared-file1>;
+    acl:mode        acl:Read,
+                    acl:Write;
+    acl:origin      <https://apps.example.com>;
+    acl:agentGroup  <https://alice.example.com/work-groups#Accounting>;
+    acl:agentGroup  <https://alice.example.com/work-groups#Management>.
+```
+
 (For background, see also [Backgrounder on Same Origin Policy and CORS](https://solid.github.io/web-access-control-spec/Background))
 Note that the origin comprises the protocol and the DNS and port but none of the  path,
 and no trailing slash.
@@ -370,7 +390,11 @@ social entity, and so trusted to the same extent.
 the origin MUST be allowed access*
 
  As both the user and the web app get to read or write (etc) the data, then they most BOTH
- be trusted.  This is the algorithm the server must go through.
+ be trusted.  
+
+#### Authorization function
+
+ This is the algorithm the server must go through.
 
  - If the requested mode is available to the public, then succeed `200 OK` with added CORS headers ACAO and ACAH **
  - If the user is *not* logged on, then fail `401 Unauthenticated`
@@ -384,9 +408,11 @@ the origin MUST be allowed access*
  the message the difference between the user not being allowed and the web app they are using
  not being trusted.
 
+ ## Informative Only
+
  ** Possible future alternative:  Set ACAO header to `"*"` indicating that the document is public.  This will though block in the browser any access made using credentials.
 
-#### Adding trusted web apps.
+#### Adding publisher-trusted web apps.
 
 The authorization of trusted web app is a running battle between readers and writers on the web, and malevolent parties trying to break in to get unauthorized access.  The history or Cross-Site Scripting attacks and the introduction of the Same Origin Policy is not detailed here, The CORS specification in general prevents any web app from accessing any data from or associated with a different origin.  The web server can get around CORS. It is a pain to to do so, as it involves the server code echoing back the Origin header in the ACAO header, and also it must be done only when the web app in question actually is trustworthy.
 

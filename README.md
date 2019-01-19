@@ -287,7 +287,7 @@ a vcard:Group;
 When implementing support for `acl:agentGroup` and Group Listings, keep in mind
 the following issues:
 
-1. Group Listings are regular documents (potentially with their own `.acl`s).
+1. Group Listings are regular documents (potentially each with its own with their own ACL file).
 2. What authentication mechanism should the ACL checking engine use, when making
   requests for Group Listing documents on other servers?
 3. Infinite request loops during ACL resolution become possible, if an `.acl`
@@ -400,11 +400,15 @@ In solid a maxim is, you have complete control of he data. Therefore it is up to
 - A writer could give in their profile a statement that they will allow readers to use a given app.
 
 ```
- <#me> acl:trustedApp [acl:origin <https://calendar.example.com>; acl:mode acl:Read , acl:Append].
- <#me> acl:trustedApp [acl:origin <https://contacts.example.com>; acl:mode acl:Read , acl:Write, acl:Control] .
+ <#me> acl:trustedApp [acl:origin <https://calendar.example.com>; acl:mode acl:Read, acl:Append].
+ <#me> acl:trustedApp [acl:origin <https://contacts.example.com>; acl:mode acl:Read, acl:Write, acl:Control] .
 ```
 
-We define the owners of the resource as people given explicit Control access to it.
+We define the owners of the resource as people given explicit Control access to it,
+that is, `?x` such that, according to the ACL file, if `?doc` is the document in question,
+```
+{  [ acl:agent ?x; :mode acl:Control; acl:accessTo ?doc ] }
+```
 (Possible future change: also anyone with Control access, even through a group, as the group can be used as a role)
 
 For each owner x, the server looks up the (extended?) profile, and looks in it for a

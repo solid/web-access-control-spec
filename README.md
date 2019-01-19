@@ -73,7 +73,7 @@ documents called *Access Control List Resources* (or simply *ACLs*).
 The WAC system assumes that web documents are placed in hierarchical containers
 or folders. For convenience, users do not have to specify permissions on each
 individual resource -- they can simply set permissions on a container, add a
-[`acl:defaultForNew`](#default-inherited-authorizations) predicate, and have all
+[`acl:default`](#default-inherited-authorizations) predicate, and have all
 of the resources in that container [inherit](#acl-inheritance-algorithm) those
 permissions.
 
@@ -164,13 +164,13 @@ A request (to read or write) has arrived for a document located at
   `/documents/papers/` container (in which the document resides) has its own
   ACL resource (here, `/documents/papers/.acl`). If it finds that, the server
   reads each authorization in the container's ACL, and if any of them contain an
-  `acl:defaultForNew` predicate, the server will use them (as if they were
+  `acl:default` predicate, the server will use them (as if they were
   specified in `paper1.acl`). Again, if any such authorizations are found, the
   process stops there and no other statements apply.
 3. If the document's container has no ACL resource of its own, the search
   continues upstream, in the *parent* container. The server would check if
   `/documents/.acl` exists, and then `/.acl`, until it finds some authorizations
-  that contain `acl:defaultForNew`.
+  that contain `acl:default`.
 4. Since the root container (here, `/`) MUST have its own ACL resource, the
   server would use the authorizations there as a last resort.
 
@@ -200,14 +200,15 @@ and Control) to one of her web resources, located at
 
 ```ttl
 # Contents of https://alice.databox.me/docs/file1.acl
-@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix  acl:  <http://www.w3.org/ns/auth/acl#>  .
 
 <#authorization1>
-    a acl:Authorization;
-    acl:agent <https://alice.databox.me/profile/card#me>;  # Alice's WebID
-    acl:accessTo <https://alice.databox.me/docs/file1>;
-    acl:mode
-        acl:Read, acl:Write, acl:Control.
+    a             acl:Authorization;
+    acl:agent     <https://alice.databox.me/profile/card#me>;  # Alice's WebID
+    acl:accessTo  <https://alice.databox.me/docs/file1>;
+    acl:mode      acl:Read,
+                  acl:Write,
+                  acl:Control.
 ```
 
 ## Describing Agents
@@ -236,50 +237,53 @@ Example ACL resource, `shared-file1.acl`, containing a group permission:
 
 ```ttl
 # Contents of https://alice.databox.me/docs/shared-file1.acl
-@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix  acl:  <http://www.w3.org/ns/auth/acl#>.
 
 # Individual authorization - Alice has Read/Write/Control access
 <#authorization1>
-    a acl:Authorization;
-    acl:accessTo <https://alice.example.com/docs/shared-file1>;
-    acl:mode acl:Read, acl:Write, acl:Control;
-    acl:agent <https://alice.example.com/profile/card#me>.
+    a             acl:Authorization;
+    acl:accessTo  <https://alice.example.com/docs/shared-file1>;
+    acl:mode      acl:Read,
+                  acl:Write,
+                  acl:Control;
+    acl:agent     <https://alice.example.com/profile/card#me>.
 
 # Group authorization, giving Read/Write access to two groups, which are
 # specified in the 'work-groups' document.
 <#authorization2>
-    a acl:Authorization;
-    acl:accessTo <https://alice.example.com/docs/shared-file1>;
-    acl:mode acl:Read, acl:Write;
-    acl:agentGroup <https://alice.example.com/work-groups#Accounting>;
-    acl:agentGroup <https://alice.example.com/work-groups#Management>.
+    a               acl:Authorization;
+    acl:accessTo    <https://alice.example.com/docs/shared-file1>;
+    acl:mode        acl:Read,
+                    acl:Write;
+    acl:agentGroup  <https://alice.example.com/work-groups#Accounting>;
+    acl:agentGroup  <https://alice.example.com/work-groups#Management>.
 ```
 
 Corresponding `work-groups` Group Listing document:
 
 ```ttl
 # Contents of https://alice.example.com/work-groups
-@prefix acl: <http://www.w3.org/ns/auth/acl#>.
-@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix    acl:  <http://www.w3.org/ns/auth/acl#>.
+@prefix  vcard:  <http://www.w3.org/2006/vcard/ns#>.
 
-<> a acl:GroupListing.
+<>  a  acl:GroupListing.
 
 <#Accounting>
-a vcard:Group;
-  vcard:hasUID <urn:uuid:8831CBAD-1111-2222-8563-F0F4787E5398:ABGroup>;
-  dc:created "2013-09-11T07:18:19+0000"^^xsd:dateTime;
-  dc:modified "2015-08-08T14:45:15+0000"^^xsd:dateTime;
+    a                vcard:Group;
+    vcard:hasUID     <urn:uuid:8831CBAD-1111-2222-8563-F0F4787E5398:ABGroup>;
+    dc:created       "2013-09-11T07:18:19+0000"^^xsd:dateTime;
+    dc:modified      "2015-08-08T14:45:15+0000"^^xsd:dateTime;
 
-  # Accounting group members:
-  vcard:hasMember <https://bob.example.com/profile/card#me>;
-  vcard:hasMember <https://candice.example.com/profile/card#me>.
+    # Accounting group members:
+    vcard:hasMember  <https://bob.example.com/profile/card#me>;
+    vcard:hasMember  <https://candice.example.com/profile/card#me>.
 
 <#Management>
-a vcard:Group;
-  vcard:hasUID <urn:uuid:8831CBAD-3333-4444-8563-F0F4787E5398:ABGroup>;
+    a                vcard:Group;
+    vcard:hasUID     <urn:uuid:8831CBAD-3333-4444-8563-F0F4787E5398:ABGroup>;
 
-  # Management group members:
-  vcard:hasMember <https://deb.example.com/profile/card#me>.
+    # Management group members:
+    vcard:hasMember  <https://deb.example.com/profile/card#me>.
 ```
 
 #### Group Listings - Implementation Notes
@@ -287,7 +291,7 @@ a vcard:Group;
 When implementing support for `acl:agentGroup` and Group Listings, keep in mind
 the following issues:
 
-1. Group Listings are regular documents (potentially each with its own with their own ACL file).
+1. Group Listings are regular documents (potentially each with its own ACL file).
 2. What authentication mechanism should the ACL checking engine use, when making
   requests for Group Listing documents on other servers?
 3. Infinite request loops during ACL resolution become possible, if an `.acl`
@@ -306,18 +310,15 @@ To specify that you're giving a particular mode of access to *everyone*
 of *all* agents (the general public). For example:
 
 ```ttl
-@prefix acl: <http://www.w3.org/ns/auth/acl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix   acl:  <http://www.w3.org/ns/auth/acl#>.
+@prefix  foaf:  <http://xmlns.com/foaf/0.1/>.
 
 <#authorization2>
-    a acl:Authorization;
-    acl:agentClass foaf:Agent;  # everyone
-    acl:mode acl:Read;  # has Read-only access
-    acl:accessTo <https://alice.databox.me/profile/card>. # to the public profile
+    a               acl:Authorization;
+    acl:agentClass  foaf:Agent;                               # everyone
+    acl:mode        acl:Read;                                 # has Read-only access
+    acl:accessTo    <https://alice.databox.me/profile/card>.  # to the public profile
 ```
-
-Note that this is a special case of `acl:agentClass` usage, since it doesn't
-point to a Class Listing document that's meant to be de-referenced.
 
 ### Authenticated Agents (Anyone logged on)
 
@@ -333,14 +334,14 @@ you can use
 of *all* authenticated agents. For example:
 
 ```ttl
-@prefix acl: <http://www.w3.org/ns/auth/acl#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix   acl:  <http://www.w3.org/ns/auth/acl#>.
+@prefix  foaf:  <http://xmlns.com/foaf/0.1/>.
 
 <#authorization2>
-    a acl:Authorization;
-    acl:agentClass acl:AuthenticatedAgent;  # everyone
-    acl:mode acl:Read;  # has Read-only access
-    acl:accessTo <https://alice.databox.me/profile/card>. # to the public profile
+    a               acl:Authorization;
+    acl:agentClass  acl:AuthenticatedAgent;                   # everyone
+    acl:mode        acl:Read;                                 # has Read-only access
+    acl:accessTo    <https://alice.databox.me/profile/card>.  # to the public profile
 ```
 
 Note that this is a special case of `acl:agentClass` usage, since it doesn't
@@ -359,7 +360,7 @@ in a browser, the browser will send an extra warning HTTP header, the Origin hea
 ```
 Origin: https://scripts.example.com:8080
 ```
-(For background, see also [Backgrounder on Same Origin Policy and CORS](https://sold.github.io/web-access-control-spec/Background))
+(For background, see also [Backgrounder on Same Origin Policy and CORS](https://solid.github.io/web-access-control-spec/Background))
 Note that the origin comprises the protocol and the DNS and port but none of the  path,
 and no trailing slash.
 All scripts running on the same origin are assumed to be run by the same
@@ -400,8 +401,13 @@ In solid a maxim is, you have complete control of he data. Therefore it is up to
 - A writer could give in their profile a statement that they will allow readers to use a given app.
 
 ```
- <#me> acl:trustedApp [acl:origin <https://calendar.example.com>; acl:mode acl:Read, acl:Append].
- <#me> acl:trustedApp [acl:origin <https://contacts.example.com>; acl:mode acl:Read, acl:Write, acl:Control] .
+ <#me> acl:trustedApp [ acl:origin  <https://calendar.example.com>;
+                        acl:mode    acl:Read,
+                                    acl:Append].
+ <#me> acl:trustedApp [ acl:origin  <https://contacts.example.com>;
+                        acl:mode    acl:Read,
+                                    acl:Write,
+                                    acl:Control].
 ```
 
 We define the owners of the resource as people given explicit Control access to it,
@@ -415,14 +421,15 @@ For each owner x, the server looks up the (extended?) profile, and looks in it f
 triple of the form
 
 ```
-?x  acl:trustedApp ?y .
+?x  acl:trustedApp  ?y.
 ```
 The set of trust objects is the accumulated set of ?y found in this way.
 
 For the app ?z to have access, for every mode of access ?m required
 there must be some trust object ?y such that
 ```
-?y  acl:origin ?z ; acl:mode ?m .
+?y  acl:origin  ?z;
+    acl:mode    ?m.
 ```
 Note access to different modes may be given in the same or different trust objects.
 
@@ -482,9 +489,9 @@ be able to change their access levels at a later point (since they retain
 As previously mentioned, not every document needs its own individual ACL
 resource and its own authorizations. Instead, one can can create an
 Authorization for a container (in the container's own ACL resource), and then
-use the `acl:defaultForNew` predicate to denote that any resource within that
+use the `acl:default` predicate to denote that any resource within that
 container will *inherit* that authorization. To put it another way, if an
-Authorization contains `acl:defaultForNew`, it will be applied *by default* to
+Authorization contains `acl:default`, it will be applied *by default* to
 any resource in that container.
 
 You can override the default inherited authorization for any resource by
@@ -494,30 +501,27 @@ An example ACL for a container would look something like:
 
 ```ttl
 # Contents of https://alice.databox.me/docs/.acl
-@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix  acl:  <http://www.w3.org/ns/auth/acl#>.
 
 <#authorization1>
-    a acl:Authorization;
+    a                  acl:Authorization;
 
     # These statements specify access rules for the /docs/ container itself:
-    acl:agent <https://alice.databox.me/profile/card#me>;
-    acl:accessTo <https://alice.databox.me/docs/>;
-    acl:mode
-        acl:Read, acl:Write, acl:Control;
+    acl:agent          <https://alice.databox.me/profile/card#me>;
+    acl:accessTo       <https://alice.databox.me/docs/>;
+    acl:mode           acl:Read,
+                       acl:Write,
+                       acl:Control;
 
-    # defaultForNew says: this authorization (the statements above) will also
-    #   be inherited by any resource within that container that doesn't have its
-    #   own ACL.
-    acl:defaultForNew <https://alice.databox.me/docs/>.
+    # default says: this authorization (the statements above)
+    #   will also be inherited by any resource within that container
+    #   that doesn't have its own ACL.
+    acl:default  <https://alice.databox.me/docs/>.
 ```
-
-**Note:** The `acl:defaultForNew` predicate will soon be renamed to
-`acl:default`, both in the specs and in implementing servers. The semantics, as
-described here, will remain the same
 
 ## See also
 
-[Background on CORS](https://sold.github.io/web-access-control-spec/Background)
+[Background on CORS](https://solid.github.io/web-access-control-spec/Background)
 
 ## Old discussion of access to group files
 
@@ -550,9 +554,9 @@ need to be public-readable. THIS IS THE ONLY METHOD CURRENTLY IN USE
 **WebID-TLS Delegation**. If your implementation uses the WebID-TLS
 authentication method, it also needs to implement the ability to delegate its
 requests on behalf of the original user.
-(No, the original requester may not be akllowed access -- you don't have to ableForto
+(No, the original requester may not be allowed access -- you don't have to able to
 access a group to be in it)
- a discussion of such a capability,
+For a discussion of such a capability,
 see the [Extending the WebID Protocol with Access
 Delegation](http://bblfish.net/tmp/2012/08/05/WebID_Delegation.pdf) paper.
 One thing to keep in mind is - if there are several hops (an ACL request chain
@@ -644,8 +648,13 @@ guard against. In either case, the consequences are not disastrous.
  - A reader can ask to use a given app, by publishing the fact that she trusts a given app.
 
  ```
- <#me> acl:trustsForUse  [acl:origin <https://calendar.example.com> acl:mode acl:Read , acl:Append].
- <#me> acl:trustsForUse [acl:origin  <https://contacts.example.com>  acl:mode acl:Read , acl:Write, acl:Control] .
+ <#me> acl:trustsForUse [ acl:origin  <https://calendar.example.com>;
+                          acl:mode    acl:Read,
+                                      acl:Append].
+ <#me> acl:trustsForUse [ acl:origin  <https://contacts.example.com>;
+                          acl:mode    acl:Read,
+                                      acl:Write,
+                                      acl:Control].
  ```
 
 A writer could have also more sophisticated requirements, such as that any app Alice

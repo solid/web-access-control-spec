@@ -265,6 +265,7 @@ Corresponding `work-groups` Group Listing document:
 # Contents of https://alice.example.com/work-groups
 @prefix    acl:  <http://www.w3.org/ns/auth/acl#>.
 @prefix  vcard:  <http://www.w3.org/2006/vcard/ns#>.
+@prefix     dc:  <http://purl.org/dc/terms/>.
 
 <>  a  acl:GroupListing.
 

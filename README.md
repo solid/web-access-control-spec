@@ -240,6 +240,27 @@ modification, it should be given as:
     acl:mode      acl:Read.
 ```
 
+Specialised systems may use these RDF metadata statements to perform
+relevant caching operations on individiual authorization resources.
+
+### HTTP caching implementation
+
+Systems should use these times if available to manage ACL caches. If
+the HTTP protocol is used, `dc:modified` should be used for
+[conditional requests](https://tools.ietf.org/html/rfc7232) and
+`dc:valid` for [caching](https://tools.ietf.org/html/rfc7234). Note
+that an ACL Resource may contain several
+`acl:Authorization`s. Therefore, if used, the server must set the
+`Last-Modified` header to the most recent `dc:modified`. Also, if the
+server uses `dc:valid` to set the `Expires` header and/or to compute
+`max-age`, it must use the `dct:valid` that is set to expire
+first. Note that an ACL cache must be private.
+
+This allows specialised clients or proxies to cache individual
+authorizations based on the RDF metadata alone, and for legacy Web
+caches to use cached copies of ACL Resources in their operations.
+
+
 
 ## Describing Agents
 

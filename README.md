@@ -211,6 +211,33 @@ and Control) to one of her web resources, located at
                   acl:Control.
 ```
 
+## Timestamps and temporal validity
+
+To help consuming systems manage authorizations, they should provide
+timestamps indicating time of issue, last modified and if possible, an
+estimate of future validity. For this purpose, properties from the
+[Dublin Core metadata terms vocabulary](http://dublincore.org/documents/dcmi-terms/)
+should be used, with the namespace `http://purl.org/dc/terms/`,
+`dc:issued`, `dc:modified` and `dc:valid` with a valid `xsd:dateTime`
+data type should be used, respectively.
+
+For example, to authorize Alice with read access to a certain Web
+resource, and commit to that it is also valid 5 years from last
+modification, it should be given as:
+
+@prefix  acl:  <http://www.w3.org/ns/auth/acl#>.
+@prefix  dc:   <http://purl.org/dc/terms/>.
+@prefix  xsd:  <http://www.w3.org/2001/XMLSchema#>.
+
+<#authorization1>
+    a             acl:Authorization;
+    dc:issued     "2013-09-11T07:18:19+0000"^^xsd:dateTime;
+    dc:modified   "2019-02-12T16:15:15+0000"^^xsd:dateTime;
+    dc:valid      "2024-02-12T16:15:15+0000"^^xsd:dateTime;
+    acl:agent     <https://alice.databox.me/profile/card#me>;  # Alice's WebID
+    acl:accessTo  <https://alice.databox.me/docs/file2>;
+    acl:mode      acl:Read.
+
 ## Describing Agents
 
 In WAC, we use the term *Agent* to identify *who* is allowed access to various
@@ -266,13 +293,14 @@ Corresponding `work-groups` Group Listing document:
 @prefix    acl:  <http://www.w3.org/ns/auth/acl#>.
 @prefix  vcard:  <http://www.w3.org/2006/vcard/ns#>.
 @prefix     dc:  <http://purl.org/dc/terms/>.
+@prefix    xsd:  <http://www.w3.org/2001/XMLSchema#>.
 
 <>  a  acl:GroupListing.
 
 <#Accounting>
     a                vcard:Group;
     vcard:hasUID     <urn:uuid:8831CBAD-1111-2222-8563-F0F4787E5398:ABGroup>;
-    dc:created       "2013-09-11T07:18:19+0000"^^xsd:dateTime;
+    dc:issued        "2013-09-11T07:18:19+0000"^^xsd:dateTime;
     dc:modified      "2015-08-08T14:45:15+0000"^^xsd:dateTime;
 
     # Accounting group members:

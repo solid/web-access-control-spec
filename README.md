@@ -225,6 +225,7 @@ For example, to authorize Alice with read access to a certain Web
 resource, and commit to that it is also valid 5 years from last
 modification, it should be given as:
 
+```ttl
 @prefix  acl:  <http://www.w3.org/ns/auth/acl#>.
 @prefix  dc:   <http://purl.org/dc/terms/>.
 @prefix  xsd:  <http://www.w3.org/2001/XMLSchema#>.
@@ -237,6 +238,8 @@ modification, it should be given as:
     acl:agent     <https://alice.databox.me/profile/card#me>;  # Alice's WebID
     acl:accessTo  <https://alice.databox.me/docs/file2>;
     acl:mode      acl:Read.
+```
+
 
 ## Describing Agents
 

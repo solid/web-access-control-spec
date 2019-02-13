@@ -243,6 +243,14 @@ modification, it should be given as:
 Specialised systems may use these RDF metadata statements to perform
 relevant caching operations on individiual authorization resources.
 
+While `dc:issued` and `dc:modified` can be set automatically, setting
+`dc:valid` requires a commitment from the author of the authorization
+that it will not change before the indicated time. Developers of
+applications that provides ACL editing are encouraged to help users
+set this sensibly, and to warn users that some systems may not update
+their ACL, and therefore yield unexpected results.
+
+
 ### HTTP caching implementation
 
 Systems should use these times if available to manage ACL caches. If

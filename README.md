@@ -273,6 +273,12 @@ This allows specialised clients or proxies to cache individual
 authorizations based on the RDF metadata alone, and for legacy Web
 caches to use cached copies of ACL Resources in their operations.
 
+Clients and proxies that
+[calculate heuristic freshness](https://tools.ietf.org/html/rfc7234#section-4.2.2)
+should take care to ensure the user is not lead to believe that an
+authorization is different from the actual authorization on the
+server.
+
 
 
 ## Describing Agents

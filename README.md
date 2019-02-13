@@ -24,16 +24,17 @@ Next](https://www.w3.org/community/ldpnext/)) type systems, such as the
 3. [ACL Inheritance Algorithm](#acl-inheritance-algorithm)
 4. [Representation Format](#representation-format)
 5. [Example WAC Document](#example-wac-document)
-6. [Describing Agents](#describing-agents)
+6. [Timestamps and temporal validity](#timestamps-and-temporal-validity)
+7. [Describing Agents](#describing-agents)
   * [Singular Agent](#singular-agent)
   * [Groups](#groups-of-agents)
   * [Public Access (all Agents)](#public-access-all-agents)
   * [Anyone logged on (Authenticated Agents)](#authenticated-agents-anyone-logged-on)
   * [Referring to Origins, i.e. Web Apps](#referring-to-origins-ie-web-apps)
-7. [Referring to Resources](#referring-to-resources)
-8. [Modes of Access](#modes-of-access)
-9. [Default (Inherited) Authorizations](#default-inherited-authorizations)
-10. [Not Supported by Design](#not-supported-by-design)
+8. [Referring to Resources](#referring-to-resources)
+9. [Modes of Access](#modes-of-access)
+10. [Default (Inherited) Authorizations](#default-inherited-authorizations)
+11. [Not Supported by Design](#not-supported-by-design)
 
 ## Overview
 

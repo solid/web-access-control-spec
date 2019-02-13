@@ -230,7 +230,7 @@ modification, it should be given as:
 @prefix  dc:   <http://purl.org/dc/terms/>.
 @prefix  xsd:  <http://www.w3.org/2001/XMLSchema#>.
 
-<#authorization1>
+<#authorization2>
     a             acl:Authorization;
     dc:issued     "2013-09-11T07:18:19+0000"^^xsd:dateTime;
     dc:modified   "2019-02-12T16:15:15+0000"^^xsd:dateTime;

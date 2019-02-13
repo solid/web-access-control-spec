@@ -250,6 +250,11 @@ applications that provides ACL editing are encouraged to help users
 set this sensibly, and to warn users that some systems may not update
 their ACL, and therefore yield unexpected results.
 
+Servers that evaluate authorizations to grant or deny access to
+resources and uses an ACL cache, must ensure that the ACL cache uses a
+current authorization even in the case that `dc:valid` has been set to
+a future date.
+
 
 ### HTTP caching implementation
 

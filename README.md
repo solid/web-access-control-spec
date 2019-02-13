@@ -374,6 +374,9 @@ the following issues:
 Possible future methods for a server to find out whether a given agent is a
 member of s group are a matter for future research and possible addition here.
 
+Group listings may also use timestamp predicates, and be cached along
+with ACL resources.
+
 ### Public Access (All Agents)
 
 To specify that you're giving a particular mode of access to *everyone*

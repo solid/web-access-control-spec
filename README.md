@@ -214,17 +214,18 @@ and Control) to one of her web resources, located at
 
 ## Timestamps and temporal validity
 
-To help consuming systems manage authorizations, they should provide
-timestamps indicating time of issue, last modified and if possible, an
-estimate of future validity. For this purpose, properties from the
+Servers should provide timestamps indicating time of issue, last
+modified and if possible, an estimate of future validity, to help
+systems that manage authorizations. For this purpose, properties from
+the
 [Dublin Core metadata terms vocabulary](http://dublincore.org/documents/dcmi-terms/)
 should be used, with the namespace `http://purl.org/dc/terms/`,
 `dc:issued`, `dc:modified` and `dc:valid` with a valid `xsd:dateTime`
 data type should be used, respectively.
 
-For example, to authorize Alice with read access to a certain Web
-resource, and commit to that it is also valid 5 years from last
-modification, it should be given as:
+For example, the below example authorizes Alice to have read access to
+a certain Web resource, and also says that the authorization is valid
+5 years from last modification:
 
 ```ttl
 @prefix  acl:  <http://www.w3.org/ns/auth/acl#>.
@@ -248,8 +249,7 @@ While `dc:issued` and `dc:modified` can be set automatically, setting
 `dc:valid` requires a commitment from the author of the authorization
 that it will not change before the indicated time. Developers of
 applications that provides ACL editing are encouraged to help users
-set this sensibly, and to warn users that some systems may not update
-their ACL, and therefore yield unexpected results.
+set this sensibly.
 
 Servers that evaluate authorizations to grant or deny access to
 resources and uses an ACL cache, must ensure that the ACL cache uses a
@@ -273,13 +273,6 @@ first. Note that an ACL cache must be private.
 This allows specialised clients or proxies to cache individual
 authorizations based on the RDF metadata alone, and for legacy Web
 caches to use cached copies of ACL Resources in their operations.
-
-Clients and proxies that
-[calculate heuristic freshness](https://tools.ietf.org/html/rfc7234#section-4.2.2)
-should take care to ensure the user is not lead to believe that an
-authorization is different from the actual authorization on the
-server.
-
 
 
 ## Describing Agents

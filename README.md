@@ -274,6 +274,28 @@ This allows specialised clients or proxies to cache individual
 authorizations based on the RDF metadata alone, and for legacy Web
 caches to use cached copies of ACL Resources in their operations.
 
+### Implementation notes
+
+Applications may use cached authorizations to improve responsiveness
+and usability. Since servers must always use the most recent
+authorizations for operations, discrepancies between a client/proxy
+cache and what the server uses may arise if an application uses a
+stale authorization. That will not be security critical (since the the
+server always uses the most recent authorization), but can result
+in poor security usability. Developers should in particular be aware of
+these two cases:
+
+  1. A user has previously set a `dct:valid`, but the current user
+     decides to modify the time and date even though the authorization
+     previously given would still be valid. In this case, the user
+     should be warned that some clients may not see the update, and
+     so, it will be confusing to its users.
+  1. Clients and proxies might use the timestamps to calculate heuristic
+     freshness
+     [(like suggested in the HTTP specification)](https://tools.ietf.org/html/rfc7234#section-4.2.2).
+     Like above, this may also result in that an expired authorization
+     is provided to applications. Heuristic freshness should only be
+     used with extreme care.
 
 ## Describing Agents
 

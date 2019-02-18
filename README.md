@@ -219,7 +219,7 @@ modified and if possible, an estimate of future validity, to help
 systems that manage authorizations. For this purpose, properties from
 the
 [Dublin Core metadata terms vocabulary](http://dublincore.org/documents/dcmi-terms/)
-should be used, with the namespace `http://purl.org/dc/terms/`,
+should be used: 
 `dc:issued`, `dc:modified` and `dc:valid` with a valid `xsd:dateTime`
 data type should be used, respectively.
 

@@ -223,7 +223,7 @@ should be used:
 `dc:issued`, `dc:modified` and `dc:valid` with a valid `xsd:dateTime`
 data type should be used, respectively.
 
-For example, the below example authorizes Alice to have read access to
+For example, the below authorizes Alice to have read access to
 a certain Web resource, and also says that the authorization is valid
 5 years from last modification:
 
@@ -267,7 +267,7 @@ that an ACL Resource may contain several
 `acl:Authorization`s. Therefore, if used, the server must set the
 `Last-Modified` header to the most recent `dc:modified`. Also, if the
 server uses `dc:valid` to set the `Expires` header and/or to compute
-`max-age`, it must use the `dct:valid` that is set to expire
+`max-age`, it must use the `dc:valid` that is set to expire
 first. Note that an ACL cache must be private.
 
 This allows specialised clients or proxies to cache individual
@@ -285,7 +285,7 @@ server always uses the most recent authorization), but can result
 in poor security usability. Developers should in particular be aware of
 these two cases:
 
-  1. A user has previously set a `dct:valid`, but the current user
+  1. A user has previously set a `dc:valid`, but the current user
      decides to modify the time and date even though the authorization
      previously given would still be valid. In this case, the user
      should be warned that some clients may not see the update, and

@@ -47,9 +47,9 @@ on a "Pre-flight" OPTIONS request which is inserted before the main request.  So
 As well as blocking the data, the CORS system blocks headers from the server to the web app.
 To prevent this this, the server must send another  [header](https://www.w3.org/TR/cors/#access-control-allow-headers-response-header):
 ```
-Access-Control-Allow-Headers: Authorization, User, Location, Link, Vary, Last-Modified, ETag, Accept-Patch, Accept-Post, Updates-Via, Allow, WAC-Allow, Content-Length, WWW-Authenticate
+Access-Control-Allow-Headers: Accept, Authorization, User, Location, Link, Vary, Last-Modified, ETag, Accept-Patch, Accept-Post, Updates-Via, Allow, WAC-Allow, Content-Length, WWW-Authenticate
 ```
-This must include things like the Link: header which are normal headers blocked by the browser, and also any new headers the app and serve are using for any purpose.
+This must include things like the Link: header which are normal headers blocked by the browser, and also any new headers the app and server are using for any purpose.
 
 ### Method blocking
 

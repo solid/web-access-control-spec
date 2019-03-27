@@ -12,17 +12,17 @@ The assumption that a web browser makes is that whenever the user is using a web
 
 ## Cross site scripting attacks
 
-The original attack which caused a lot of the current design of the browser is a cross-site scripting attack. In this sort of attack, a malicious person Mallory sends a normal user Alice for example an email with a link to Mallory’ web site. Alice follows the link and loads the web page M. We allow JavaScript scripts to run in any web page by default, and M has a script which runs on Alice’s machine, accesses some data which Alice has access to, and then secretly sends the data back to some system Mallory controls. The private data maybe accessed by the script in various ways. One way is that the computer Alice is using may be inside a firewall which gives her implicit access, to say a webcam in her house, or a journal library in her university. It may be done, then, without any interaction with Alice, or it can also be done by asking her to log in to a system to get the script some credentials. Web site M could be a fake version of her bank, B, and ask her to authenticate to the bank, or to her social network, on some pretense. The data can typically be returned to Mallory say be encoding it in a URL on a site M controls and going a GET. There are many variations of the Cross Site Scripting (XSS) attack, but that is the general idea.
+The original attack which caused a lot of the current design of the browser is a cross-site scripting attack. In this sort of attack, a malicious person Mallory sends a normal user Alice for example an email with a link to Mallory’ web site. Alice follows the link and loads the web page M. We allow JavaScript scripts to run in any web page by default, and M has a script which runs on Alice’s machine, accesses some data which Alice has access to, and then secretly sends the data back to some system Mallory controls. The private data may be accessed by the script in various ways. One way is that the computer Alice is using may be inside a firewall which gives her implicit access, to say a webcam in her house, or a journal library in her university. It may be done, then, without any interaction with Alice, or it can also be done by asking her to log in to a system to get the script some credentials. Web site M could be a fake version of her bank, B, and ask her to authenticate to the bank, or to her social network, on some pretense. The data can typically be returned to Mallory say be encoding it in a URL on a site M controls and going a GET. There are many variations of the Cross Site Scripting (XSS) attack, but that is the general idea.
 
-## Cross-Origin Resource Sharing "CORS"
+## Cross-Origin Resource Sharing “CORS”
 
-The first impulse of a browser developer may have been to just prevent a web page script to do any web access at all, but clearly they need to be able to do network access. For example, a bank needs to load a script which can display a person's
+The first impulse of a browser developer may have been to just prevent a web page script to do any web access at all, but clearly they need to be able to do network access. For example, a bank needs to load a script which can display a person’s
 bank accounts by going back to the server B for more data about different accounts at different dates. Clearly that had to be enabled. But Mallory had to be blocked. This let to the Same Origin Policy that so long as a script running in a web page which came from the same internet domain name (like www.bankofamerica.com) then the script could interact as much as it liked with any server address in the same domain. The protocol and domain part of the URI aRe known as the Origin. Hence, Same Origin Policy (SOP). In general all data from a server Origin and form any script it runs is kept separate from any data from any other Origin. This allows banks to work pretty well.
 
 Were there any use cases where the SOP does now work? Well, yes — anything which relies on a script being able to access other domains. One example is a service which provides for example a JavaScript program to validate, test, or assess another web page: it can’t access the data in the page to do its job.
 Another example is a data mashup. When a large amount of open public data started to become available from governments and so on, there was a flourishing of sites which loaded data from many different sites and provide a “mashup” of the data — a combined visualization of data from many sources which would typically l	was to insights that you would not get from one data source alone. A typical client-based data mashup site in fact does not work nowadays work any more.
 
-What could be done? The browser manufacturers implemented some hooks to allow data to be shared across different origins, and called it Cross Origin Resource Sharing, or CORS. The core problem was — how in the browser to distinguish between data like a domestic webcam which was private, and open government data which was public? Not being able to change the webcam, they decided to make the data publishers change. They required that they add special CORS headers to their HTTP responses for any data which was public.
+What could be done? The browser manufacturers implemented some hooks to allow data to be shared across different origins, and called it _Cross Origin Resource Sharing_, or CORS. The core problem was — how in the browser to distinguish between data like a domestic webcam which was private, and open government data which was public? Not being able to change the webcam, they decided to make the data publishers change. They required that they add special CORS headers to their HTTP responses for any data which was public.
 
 ```
 Access-control-allow-Origin: *
@@ -39,17 +39,26 @@ Access-control-allow-Origin: *
 in any response.  This meant a huge amount of work for random open data publishers
 all over the web, an effort which in many cases for many reasonable reasons was not done, leaving the data available to web apps, but unavailable to browsers.
 
-The browser actually looks for these headers not on the request itself, but in
-on a "Pre-flight" OPTIONS request which is inserted before the main request.  So while the developer may see in the browser console only the main request, the number of round trips has in fact increased.
-
 ### Header blocking
 
 As well as blocking the data, the CORS system blocks headers from the server to the web app.
-To prevent this this, the server must send another  [header](https://www.w3.org/TR/cors/#access-control-allow-headers-response-header):
+To prevent this this, the server must send another [header](https://www.w3.org/TR/cors/#access-control-expose-headers-response-header):
 ```
-Access-Control-Allow-Headers: Accept, Authorization, User, Location, Link, Vary, Last-Modified, ETag, Accept-Patch, Accept-Post, Updates-Via, Allow, WAC-Allow, Content-Length, WWW-Authenticate
+Access-Control-Expose-Headers: Authorization, User, Location, Link, Vary, Last-Modified, ETag, Accept-Patch, Accept-Post, Updates-Via, Allow, WAC-Allow, Content-Length, WWW-Authenticate
 ```
 This must include things like the Link: header which are normal headers blocked by the browser, and also any new headers the app and server are using for any purpose.
+
+### Preflight requests
+
+This is not enough for all requests however. When [for example an Accept header would exceed 128 bytes or when non-safelisted request headers](https://fetch.spec.whatwg.org/#cors-safelisted-request-header) are sent by the client,
+a preflight OPTIONS request will be triggered by the browser.
+The server then must respond with this [header](https://www.w3.org/TR/cors/#access-control-allow-headers-response-header):
+
+```
+Access-Control-Allow-Headers: Accept, Accept-Language, Content-Language, Content-Type
+```
+
+The wildcard * does not work however, as documented in this [Bugzilla ticket for Firefox](https://bugzilla.mozilla.org/show_bug.cgi?id=1309358).
 
 ### Method blocking
 

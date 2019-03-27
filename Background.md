@@ -37,7 +37,7 @@ This meant that anyone publishing public data has to add
 Access-control-allow-Origin: *
 ```
 in any response.  This meant a huge amount of work for random open data publishers
-all over the web, an effort which in many cases for many reasonable reasons was not done, leaving the data available to browsers, but unavailable to web apps.
+all over the web, an effort which in many cases for many reasonable reasons was not done, leaving the data available to web apps, but unavailable to browsers.
 
 The browser actually looks for these headers not on the request itself, but in
 on a "Pre-flight" OPTIONS request which is inserted before the main request.  So while the developer may see in the browser console only the main request, the number of round trips has in fact increased.

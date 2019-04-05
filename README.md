@@ -228,10 +228,10 @@ as denoted by her WebID URI, `https://alice.databox.me/profile/card#me`.
 ### Groups of Agents
 
 To give access to a group of agents, use the `acl:agentGroup` predicate.
-The object of an `agentGroup` statement is a link to a **Group Listing**
-document. The WebIDs of group members are listed in it, using the
-`vcard:hasMember` predicate. If a WebID is listed in that document, it is
-given access.
+The object of an `agentGroup` statement is an instance of `vcard:Group`.
+The WebIDs of group members are listed in it, using the
+`vcard:hasMember` predicate. If a WebID is listed as member of that group,
+it is given access.
 
 Example ACL resource, `shared-file1.acl`, containing a group permission:
 
@@ -265,8 +265,6 @@ Corresponding `work-groups` Group Listing document:
 # Contents of https://alice.example.com/work-groups
 @prefix    acl:  <http://www.w3.org/ns/auth/acl#>.
 @prefix  vcard:  <http://www.w3.org/2006/vcard/ns#>.
-
-<>  a  acl:GroupListing.
 
 <#Accounting>
     a                vcard:Group;

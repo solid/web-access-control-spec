@@ -24,16 +24,17 @@ Next](https://www.w3.org/community/ldpnext/)) type systems, such as the
 3. [ACL Inheritance Algorithm](#acl-inheritance-algorithm)
 4. [Representation Format](#representation-format)
 5. [Example WAC Document](#example-wac-document)
-6. [Describing Agents](#describing-agents)
+6. [Timestamps and temporal validity](#timestamps-and-temporal-validity)
+7. [Describing Agents](#describing-agents)
   * [Singular Agent](#singular-agent)
   * [Groups](#groups-of-agents)
   * [Public Access (all Agents)](#public-access-all-agents)
   * [Anyone logged on (Authenticated Agents)](#authenticated-agents-anyone-logged-on)
   * [Referring to Origins, i.e. Web Apps](#referring-to-origins-ie-web-apps)
-7. [Referring to Resources](#referring-to-resources)
-8. [Modes of Access](#modes-of-access)
-9. [Default (Inherited) Authorizations](#default-inherited-authorizations)
-10. [Not Supported by Design](#not-supported-by-design)
+8. [Referring to Resources](#referring-to-resources)
+9. [Modes of Access](#modes-of-access)
+10. [Default (Inherited) Authorizations](#default-inherited-authorizations)
+11. [Not Supported by Design](#not-supported-by-design)
 
 ## Overview
 
@@ -211,6 +212,91 @@ and Control) to one of her web resources, located at
                   acl:Control.
 ```
 
+## Timestamps and temporal validity
+
+Servers should provide timestamps indicating time of issue, last
+modified and if possible, an estimate of future validity, to help
+systems that manage authorizations. For this purpose, properties from
+the
+[Dublin Core metadata terms vocabulary](http://dublincore.org/documents/dcmi-terms/)
+should be used: 
+`dc:issued`, `dc:modified` and `dc:valid` with a valid `xsd:dateTime`
+data type should be used, respectively.
+
+For example, the below authorizes Alice to have read access to
+a certain Web resource, and also says that the authorization is valid
+5 years from last modification:
+
+```ttl
+@prefix  acl:  <http://www.w3.org/ns/auth/acl#>.
+@prefix  dc:   <http://purl.org/dc/terms/>.
+@prefix  xsd:  <http://www.w3.org/2001/XMLSchema#>.
+
+<#authorization2>
+    a             acl:Authorization;
+    dc:issued     "2013-09-11T07:18:19+0000"^^xsd:dateTime;
+    dc:modified   "2019-02-12T16:15:15+0000"^^xsd:dateTime;
+    dc:valid      "2024-02-12T16:15:15+0000"^^xsd:dateTime;
+    acl:agent     <https://alice.databox.me/profile/card#me>;  # Alice's WebID
+    acl:accessTo  <https://alice.databox.me/docs/file2>;
+    acl:mode      acl:Read.
+```
+
+Specialised systems may use these RDF metadata statements to perform
+relevant caching operations on individiual authorization resources.
+
+While `dc:issued` and `dc:modified` can be set automatically, setting
+`dc:valid` requires a commitment from the author of the authorization
+that it will not change before the indicated time. Developers of
+applications that provides ACL editing are encouraged to help users
+set this sensibly.
+
+Servers that evaluate authorizations to grant or deny access to
+resources and uses an ACL cache, must ensure that the ACL cache uses a
+current authorization even in the case that `dc:valid` has been set to
+a future date.
+
+
+### HTTP caching implementation
+
+Systems should use these times if available to manage ACL caches. If
+the HTTP protocol is used, `dc:modified` should be used for
+[conditional requests](https://tools.ietf.org/html/rfc7232) and
+`dc:valid` for [caching](https://tools.ietf.org/html/rfc7234). Note
+that an ACL Resource may contain several
+`acl:Authorization`s. Therefore, if used, the server must set the
+`Last-Modified` header to the most recent `dc:modified`. Also, if the
+server uses `dc:valid` to set the `Expires` header and/or to compute
+`max-age`, it must use the `dc:valid` that is set to expire
+first. Note that an ACL cache must be private.
+
+This allows specialised clients or proxies to cache individual
+authorizations based on the RDF metadata alone, and for legacy Web
+caches to use cached copies of ACL Resources in their operations.
+
+### Implementation notes
+
+Applications may use cached authorizations to improve responsiveness
+and usability. Since servers must always use the most recent
+authorizations for operations, discrepancies between a client/proxy
+cache and what the server uses may arise if an application uses a
+stale authorization. That will not be security critical (since the the
+server always uses the most recent authorization), but can result
+in poor security usability. Developers should in particular be aware of
+these two cases:
+
+  1. A user has previously set a `dc:valid`, but the current user
+     decides to modify the time and date even though the authorization
+     previously given would still be valid. In this case, the user
+     should be warned that some clients may not see the update, and
+     so, it will be confusing to its users.
+  1. Clients and proxies might use the timestamps to calculate heuristic
+     freshness
+     [(like suggested in the HTTP specification)](https://tools.ietf.org/html/rfc7234#section-4.2.2).
+     Like above, this may also result in that an expired authorization
+     is provided to applications. Heuristic freshness should only be
+     used with extreme care.
+
 ## Describing Agents
 
 In WAC, we use the term *Agent* to identify *who* is allowed access to various
@@ -265,11 +351,13 @@ Corresponding `work-groups` Group Listing document:
 # Contents of https://alice.example.com/work-groups
 @prefix    acl:  <http://www.w3.org/ns/auth/acl#>.
 @prefix  vcard:  <http://www.w3.org/2006/vcard/ns#>.
+@prefix     dc:  <http://purl.org/dc/terms/>.
+@prefix    xsd:  <http://www.w3.org/2001/XMLSchema#>.
 
 <#Accounting>
     a                vcard:Group;
     vcard:hasUID     <urn:uuid:8831CBAD-1111-2222-8563-F0F4787E5398:ABGroup>;
-    dc:created       "2013-09-11T07:18:19+0000"^^xsd:dateTime;
+    dc:issued        "2013-09-11T07:18:19+0000"^^xsd:dateTime;
     dc:modified      "2015-08-08T14:45:15+0000"^^xsd:dateTime;
 
     # Accounting group members:
@@ -299,6 +387,9 @@ the following issues:
 
 Possible future methods for a server to find out whether a given agent is a
 member of s group are a matter for future research and possible addition here.
+
+Group listings may also use timestamp predicates, and be cached along
+with ACL resources.
 
 ### Public Access (All Agents)
 

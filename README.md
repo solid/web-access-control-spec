@@ -461,6 +461,11 @@ API context, this would include `PUT`, `POST`, `DELETE` and `PATCH`. This also
 includes the ability to perform SPARQL queries that perform updates, if those
 are supported.
 
+Write permissions on a container means the right to delete that container.
+NB1: containers can only be deleted if they are empty.
+NB2: at least one implementation diverges from the spec at this point, see
+https://github.com/solid/web-access-control-spec/issues/47 for more details.
+
 ##### `acl:Append`
 gives a more limited ability to write to a resource -- Append-Only. This
 generally includes the HTTP verb `POST`, although some implementations may

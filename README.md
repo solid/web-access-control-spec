@@ -266,6 +266,7 @@ Corresponding `work-groups` Group Listing document:
 @prefix    acl:  <http://www.w3.org/ns/auth/acl#>.
 @prefix     dc:  <http://purl.org/dc/elements/1.1/>.
 @prefix  vcard:  <http://www.w3.org/2006/vcard/ns#>.
+@prefix    xsd:  <http://www.w3.org/2001/XMLSchema#>.
 
 <#Accounting>
     a                vcard:Group;

@@ -73,9 +73,10 @@ documents called *Access Control List Resources* (or simply *ACLs*).
 The WAC system assumes that web documents are placed in hierarchical containers
 or folders. For convenience, users do not have to specify permissions on each
 individual resource -- they can simply set default permissions on a container using a
-[`acl:default`](#default-inherited-authorizations) predicate, and have all
+[`acl:default`](#default-inherited-authorizations) predicate and the exact container URI
+as the object, and have all
 of the resources in that container [inherit](#acl-inheritance-algorithm) those
-permissions. Container URIs need to end in a `/`.
+permissions.
 
 ### Individual Resource ACLs
 
@@ -430,8 +431,7 @@ Note access to different modes may be given in the same or different trust objec
 ## Referring to Resources
 
 The `acl:accessTo` predicate specifies *which resources* you're giving access
-to, using their URLs as the objects. Object URLs for these triples need to end
-in a `/` if an only if they refer to a container.
+to, using their exact URLs as the objects.
 
 ### Referring to the ACL Resource Itself
 

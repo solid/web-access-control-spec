@@ -6,6 +6,8 @@ is based on Tim Berners-Lee's May 2009 proposal, as originally captured, and
 subsequently evolved by the community, at
 [Web Access Control Wiki](https://www.w3.org/wiki/WebAccessControl). This spec
 is a particular subset of the options and extensions described in the wiki.
+It is also different from WAC as defined by https://www.w3.org/ns/auth/acl (although it does refer to that namespace),
+and from OpenLink's "WebID ACL" system.
 
 For use with [LDP](https://www.w3.org/TR/ldp/) (and [LDP
 Next](https://www.w3.org/community/ldpnext/)) type systems, such as the

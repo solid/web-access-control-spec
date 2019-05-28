@@ -72,7 +72,7 @@ documents called *Access Control List Resources* (or simply *ACLs*).
 
 The WAC system assumes that web documents are placed in hierarchical containers
 or folders. For convenience, users do not have to specify permissions on each
-individual resource -- they can simply set permissions on a container, add a
+individual resource -- they can simply set default permissions on a container using a
 [`acl:default`](#default-inherited-authorizations) predicate, and have all
 of the resources in that container [inherit](#acl-inheritance-algorithm) those
 permissions.

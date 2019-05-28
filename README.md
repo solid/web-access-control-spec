@@ -75,7 +75,7 @@ or folders. For convenience, users do not have to specify permissions on each
 individual resource -- they can simply set default permissions on a container using a
 [`acl:default`](#default-inherited-authorizations) predicate, and have all
 of the resources in that container [inherit](#acl-inheritance-algorithm) those
-permissions.
+permissions. Container URIs need to end in a `/`.
 
 ### Individual Resource ACLs
 
@@ -430,7 +430,8 @@ Note access to different modes may be given in the same or different trust objec
 ## Referring to Resources
 
 The `acl:accessTo` predicate specifies *which resources* you're giving access
-to, using their URLs as the subjects.
+to, using their URLs as the subjects. Object URLs for these triples need to end
+in a `/` if an only if they refer to a container.
 
 ### Referring to the ACL Resource Itself
 

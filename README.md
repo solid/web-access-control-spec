@@ -430,7 +430,7 @@ Note access to different modes may be given in the same or different trust objec
 ## Referring to Resources
 
 The `acl:accessTo` predicate specifies *which resources* you're giving access
-to, using their URLs as the subjects. Object URLs for these triples need to end
+to, using their URLs as the objects. Object URLs for these triples need to end
 in a `/` if an only if they refer to a container.
 
 ### Referring to the ACL Resource Itself

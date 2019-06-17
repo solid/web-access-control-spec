@@ -389,17 +389,15 @@ the origin MUST be allowed access*
 
 #### Adding trusted web apps.
 
+** NB: this feature was only added recently and is still consider experimental. It's likely to change in the near future. **
+
 The authorization of trusted web app is a running battle between readers and writers on the web, and malevolent parties trying to break in to get unauthorized access.  The history or Cross-Site Scripting attacks and the introduction of the Same Origin Policy is not detailed here, The CORS specification in general prevents any web app from accessing any data from or associated with a different origin.  The web server can get around CORS. It is a pain to to do so, as it involves the server code echoing back the Origin header in the ACAO header, and also it must be done only when the web app in question actually is trustworthy.
 
 In solid a maxim is, you have complete control of he data. Therefore it is up to the owner of the data, the publisher, the controller of the ACL, or more broadly the person running the solid server, to specify who gets access, be it people or apps.   However another maxim is that you can chose which app you use.  So of Alice publishes data, and Bob want to use his favorite app,  then how does that happen?  
 
-##### Now:
-
- - The web server can run with a given trusted domain created by the solid developers.
- - A specific ACL can be be made to allow a given app to access a given file or folder of files.
-
-##### Possible future:
-- A writer could give in their profile a statement that they will allow readers to use a given app.
+ - A Web server MAY be configured such that a given list of origins is unconditionally trusted for incoming HTTP requests. The origin check is then bypassed for these domains, but all other access control mechanisms remain active.
+ - A specific ACL can be made to allow a given app to access a given file or folder of files, using `acl:origin`.
+ - Someone with `acl:Control` access to the resource could give in their profile a statement that they will allow users to use a given app.
 
 ```
  <#me> acl:trustedApp [ acl:origin  <https://calendar.example.com>;

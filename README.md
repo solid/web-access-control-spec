@@ -456,15 +456,15 @@ access to HTTP verbs `GET`, and `HEAD`. This also includes any kind of
 QUERY or SEARCH verbs, if supported.
 
 ##### `acl:Write`
-gives access to a class of operations that can modify the resource. In a REST
-API context, this would include `PUT`, `POST`, `DELETE` and `PATCH`. This also
+gives access to a class of operations that can modify an existing resource.
+There are two levels: write permissions on an existing resource allows modifying
+(but not deleting) that resource.
+In a REST API context, this would include `POST` and `PATCH`. This also
 includes the ability to perform SPARQL queries that perform updates, if those
 are supported.
-
-Write permissions on a container means the right to delete that container.
-NB1: containers can only be deleted if they are empty.
-NB2: at least one implementation diverges from the spec at this point, see
-https://github.com/solid/web-access-control-spec/issues/47 for more details.
+For creating or deleting a resource, write permissions on the container of which
+the resources is a member, are also needed.
+In a REST API context, this would include `PUT` and `DELETE`.
 
 ##### `acl:Append`
 gives a more limited ability to write to a resource -- Append-Only. This

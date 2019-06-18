@@ -462,8 +462,8 @@ There are two levels: write permissions on an existing resource allows modifying
 In a HTTP context, this would include `POST` and `PATCH`. This also
 includes the ability to perform SPARQL queries that perform updates, if those
 are supported.
-For creating or deleting a resource, write permissions on the container of which
-the resources is a member, are also needed.
+For creating or deleting a resource, write permissions are needed, not on the resource
+itself, but on the container of which the resource is a member.
 In a HTTP context, this would include `PUT` and `DELETE`.
 
 ##### `acl:Append`

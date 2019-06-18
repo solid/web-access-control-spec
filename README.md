@@ -450,7 +450,7 @@ perform on a resource.
 
 ##### `acl:Read`
 gives access to a class of operations that can be described as "Read
-Access". In a typical REST API (such as the one used by
+Access". In a typical HTTP (such as the one used by
 [Solid](https://github.com/solid/solid-spec#https-rest-api)), this includes
 access to HTTP verbs `GET`, and `HEAD`. This also includes any kind of
 QUERY or SEARCH verbs, if supported.
@@ -459,12 +459,12 @@ QUERY or SEARCH verbs, if supported.
 gives access to a class of operations that can modify an existing resource.
 There are two levels: write permissions on an existing resource allows modifying
 (but not deleting) that resource.
-In a REST API context, this would include `POST` and `PATCH`. This also
+In a HTTP context, this would include `POST` and `PATCH`. This also
 includes the ability to perform SPARQL queries that perform updates, if those
 are supported.
 For creating or deleting a resource, write permissions on the container of which
 the resources is a member, are also needed.
-In a REST API context, this would include `PUT` and `DELETE`.
+In a HTTP context, this would include `PUT` and `DELETE`.
 
 ##### `acl:Append`
 gives a more limited ability to write to a resource -- Append-Only. This

@@ -450,7 +450,7 @@ perform on a resource.
 
 ##### `acl:Read`
 gives access to a class of operations that can be described as "Read
-Access". In a typical HTTP (such as the one used by
+Access". In a typical REST API (such as the one used by
 [Solid](https://github.com/solid/solid-spec#https-rest-api)), this includes
 access to HTTP verbs `GET`, and `HEAD`. This also includes any kind of
 QUERY or SEARCH verbs, if supported.

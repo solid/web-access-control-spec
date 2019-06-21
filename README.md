@@ -490,7 +490,7 @@ under which circumstances:
 | GET |  |   |  Read |
 | POST | /foo/ | /foo/ exists | Append on /foo/ + Write on resulting resource |
 | PUT | /foo/bar | /foo/ exists | Append on /foo/ + Write on resulting resource |
-| PUT | /foo/bar | /foo/ does not exist | Append on / + Append on /foo/ + Write on /foo/bar |
+| PUT | /foo/bar | /foo/ gets created | Append on / + Append on /foo/ + Write on /foo/bar |
 | PATCH | /foo/bar | patch instructions contain deletions | Write on /foo/bar |
 | PATCH | /foo/bar | patch instructions contain only insertions | Append on /foo/bar |
 | DELETE | /foo/bar | | Write on /foo/bar |

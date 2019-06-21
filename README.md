@@ -479,6 +479,23 @@ Write access (to prevent accidental over-writing of a resource by an app), but
 be able to change their access levels at a later point (since they retain
 `acl:Control` access).
 
+##### Relation between HTTP verbs and modes of access
+The following table attempts to clarify which HTTP verb requires which access mode
+under which circumstances:
+
+| verb | path | if ... | permissions required |
+|-----|------|-----|----------------------|
+| OPTIONS |     |     | none |
+| HEAD |  |   |  Read |
+| GET |  |   |  Read |
+| POST | /foo/ | /foo/ exists | Append on /foo/ + Write on resulting resource |
+| PUT | /foo/bar | /foo/ exists | Append on /foo/ + Write on resulting resource |
+| PUT | /foo/bar | /foo/ does not exist | Append on / + Append on /foo/ + Write on /foo/bar |
+| PATCH | /foo/bar | patch instructions contain deletions | Write on /foo/bar |
+| PATCH | /foo/bar | patch instructions contain only insertions | Append on /foo/bar |
+| DELETE | /foo/bar | | Write on /foo/bar |
+| DELETE | /foo/ | /foo/ is empty | Write on /foo/ |
+
 ## Default (Inherited) Authorizations
 
 As previously mentioned, not every document needs its own individual ACL

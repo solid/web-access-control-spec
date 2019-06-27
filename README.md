@@ -489,12 +489,12 @@ under which circumstances:
 | HEAD |  |   |  Read |
 | GET |  |   |  Read |
 | POST | /foo/ | /foo/ exists | Append or Write on /foo/ + Write on resulting resource |
-| PUT | /foo/bar | /foo/ exists | Append or Write on /foo/ + Write on resulting resource |
-| PUT | /foo/bar | /foo/ gets created | Append or Write on / + Append or Write on /foo/ + Write on /foo/bar |
-| PATCH | /foo/bar | patch instructions contain deletions | Write on /foo/bar |
+| PUT | /foo/bar | /foo/ exists, will contain /foo/bar | Append or Write on /foo/ + Write on resulting resource |
+| PUT | /foo/bar | /foo/ gets created, will contain /foo/bar | Append or Write on / + Append or Write on /foo/ + Write on /foo/bar |
+| PATCH | /foo/bar | patch instructions contain deletions | Read and Write on /foo/bar |
 | PATCH | /foo/bar | patch instructions contain only insertions | Append or Write on /foo/bar |
 | DELETE | /foo/bar | | Write on /foo/bar |
-| DELETE | /foo/ | /foo/ is empty | Write on /foo/ |
+| DELETE | /foo/ | No resources other than /foo/ will get deleted | Write on /foo/ |
 
 ## Default (Inherited) Authorizations
 

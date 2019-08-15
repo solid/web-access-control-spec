@@ -389,7 +389,7 @@ the origin MUST be allowed access*
 
 #### Adding trusted web apps.
 
-** NB: this feature was only added recently and is still consider experimental. It's likely to change in the near future. **
+** NB: this feature was only added recently and is still considered experimental. It's likely to change in the near future. **
 
 The authorization of trusted web app is a running battle between readers and writers on the web, and malevolent parties trying to break in to get unauthorized access.  The history or Cross-Site Scripting attacks and the introduction of the Same Origin Policy is not detailed here, The CORS specification in general prevents any web app from accessing any data from or associated with a different origin.  The web server can get around CORS. It is a pain to to do so, as it involves the server code echoing back the Origin header in the ACAO header, and also it must be done only when the web app in question actually is trustworthy.
 

@@ -139,23 +139,7 @@ public and private under user's control, and web apps are be deemed trustworthy 
 
 ## Epilog: A second CORS twist
 
-The second twist with CORS is the at the browser doesn't even actually implement the CORS with a twist
-algorithm completely.
-
-https://lists.w3.org/Archives/Public/www-archive/2017Aug/0003.html
-
-Notwithstanding issues with the design of CORS, Chrome doesn’t in fact
-do it properly.
-
-If you request the same resource first from one origin and then from
-another, it serves the cached version, which then fails cord because the
- Origin and access-control-allow-origin
-headers don’t match.  This even when the returned headers have “Vary:
-Origin”, which should prevent that same cached version being reused for
-a different origin.
-That was with Chrome Version 59.0.3071.115 (Official Build) (64-bit)
-
-It seems also that Firefox showed the same behavior for  in 2018-07
+Note that serving a `Vary: Origin` header does not mean that http cache will never be shared across origins. If the ETags match, and the new ACAO header on the 304 is okay, then cached results from other origins may still be reused. That means that server implementers have to be careful and not reuse ETag values to mean different document contents across different origins.
 
 ## References
 

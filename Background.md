@@ -141,6 +141,8 @@ public and private under user's control, and web apps are be deemed trustworthy 
 
 Note that serving a `Vary: Origin` header does not mean that http cache will never be shared across origins. If the ETags match, and the new ACAO header on the 304 is okay, then cached results from other origins may still be reused. That means that server implementers have to be careful and not reuse ETag values to mean different document contents across different origins.
 
+See https://bugs.chromium.org/p/chromium/issues/detail?id=983532#c10 for more details.
+
 ## References
 
 - [WXSS] [Wikipedia, "Cross-site scripting"](https://en.wikipedia.org/wiki/Cross-site_scripting)

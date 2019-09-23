@@ -159,19 +159,20 @@ A request (to read or write) has arrived for a document located at
 
 1. First, it checks for the existence of an individual corresponding ACL
   resource. (That is, it checks if `paper1.acl` exists.) If this individual ACL
-  resource exists, the server uses the Authorization statements in that ACL. No
-  other statements apply.
+  resource exists, the server uses the
+  `acl:accessTo </documents/papers/paper1.acl>` statements in that ACL. No other
+  statements apply.
 2. If no individual ACL exists, the server next checks to see if the
   `/documents/papers/` container (in which the document resides) has its own
-  ACL resource (here, `/documents/papers/.acl`). If it finds that, the server
-  reads each authorization in the container's ACL, and if any of them contain an
-  `acl:default` predicate, the server will use them (as if they were
-  specified in `paper1.acl`). Again, if any such authorizations are found, the
-  process stops there and no other statements apply.
+  ACL resource (here, `/documents/papers/.acl`). If it finds that,
+  the server uses the `acl:default </documents/papers/>` statements
+  in that ACL. No other statements apply. Note that this behavior is likely to
+  change in the future, so that ACL docs that contain no `acl:default` statements
+  are skipped. Please join the discussion at https://github.com/solid/specification/issues/55.
 3. If the document's container has no ACL resource of its own, the search
   continues upstream, in the *parent* container. The server would check if
-  `/documents/.acl` exists, and then `/.acl`, until it finds some authorizations
-  that contain `acl:default`.
+  `/documents/.acl` exists, and then `/.acl`, until it finds some ACL document
+  that exists.
 4. Since the root container (here, `/`) MUST have its own ACL resource, the
   server would use the authorizations there as a last resort.
 

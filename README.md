@@ -119,7 +119,7 @@ the ACL resource in the above example would be `/docs/.acl`).
 Clients MUST NOT assume that the location of an ACL resource can be
 deterministically derived from a document's URL. For example, given a document
 with a URL of `/docs/file1`, clients cannot rely on the assumption that an ACL
-resource exists at `/docs/file1.acl`, simply using `.acl` as a prefix. The
+resource exists at `/docs/file1.acl`, simply using `.acl` as a suffix. The
 actual naming convention for ACL resources can differ for each individual
 implementation (or even for each individual server). If one server locates the
 ACL resource by appending the suffix `.acl`, another server could place the ACL

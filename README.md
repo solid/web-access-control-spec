@@ -301,7 +301,7 @@ the following issues:
   for group ACLs are public.
 
 Possible future methods for a server to find out whether a given agent is a
-member of s group are a matter for future research and possible addition here.
+member of a group are a matter for future research and possible addition here.
 
 ### Public Access (All Agents)
 

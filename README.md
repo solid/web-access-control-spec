@@ -439,7 +439,7 @@ Since an ACL resource is a plain Web document in itself, what controls who
 has access to *it*? While an ACL resource *could* in theory have its own
 corresponding ACL document (for example, `file1.acl` controls access to `file1`,
 and `file1.acl.acl` could potentially control access to `file1.acl`), one
-quickly realizes thats this recursion has to end somewhere.
+quickly realizes that this recursion has to end somewhere.
 
 Instead, the [`acl:Control` access mode](#aclcontrol) is used (see below), to
 specify who has access to alter (or even view) the ACL resource.

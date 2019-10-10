@@ -368,24 +368,24 @@ All scripts running on the same origin are assumed to be run by the same
 social entity, and so trusted to the same extent.
 
 *When an Origin header is present then BOTH the authenticated agent AND
-the origin MUST be allowed access*
+the origin MUST be allowed access.*
 
- As both the user and the web app get to read or write (etc) the data, then they most BOTH
- be trusted.  This is the algorithm the server must go through.
+As both the user and the web app get to read or write (etc) the data, then they must BOTH
+be trusted.  This is the algorithm the server must go through.
 
- - If the requested mode is available to the public, then succeed `200 OK` with added CORS headers ACAO and ACAH **
- - If the user is *not* logged on, then fail `401 Unauthenticated`
- - Is the User authenticated is *not* allowed access required, AND the class AuthenticatedAgent is not allowed access, then fail `403 User Unauthorized`
- - If the Origin header is not present, the succeed `200 OK`
- - If the Origin is allowed by the ACL, then succeed `200 OK` with added CORS headers ACAO and ACAH
- - (In future proposed) Look up the owner's webid(s) to check for trusted apps declared there, and if match, succeed `200 OK` with added CORS headers ACAO and ACAH
- - Fail `403 Origin Unauthorized`
+ - If the requested mode is available to the public, then succeed `200 OK` with added CORS headers ACAO and ACAH. **
+ - If the user is *not* logged on, then fail `401 Unauthenticated`.
+ - Is the authenticated user is *not* allowed access, AND the class AuthenticatedAgent is not allowed access, then fail `403 User Unauthorized`.
+ - If the Origin header is not present, then succeed `200 OK`.
+ - If the Origin is allowed by the ACL, then succeed `200 OK` with added CORS headers ACAO and ACAH.
+ - (In future proposed) Look up the owner's webid(s) to check for trusted apps declared there, and if match, succeed `200 OK` with added CORS headers ACAO and ACAH.
+ - Fail `403 Origin Unauthorized`.
 
- Note it is a really good idea to make it clear both in the text of the status message and in the body of
- the message the difference between the user not being allowed and the web app they are using
- not being trusted.
+Note it is a really good idea to make it clear both in the text of the status message and in the body of
+the message the difference between the user not being allowed and the web app they are using
+not being trusted.
 
- ** Possible future alternative:  Set ACAO header to `"*"` indicating that the document is public.  This will though block in the browser any access made using credentials.
+** Possible future alternative:  Set ACAO header to `"*"` indicating that the document is public.  This will though block in the browser any access made using credentials.
 
 #### Adding trusted web apps.
 

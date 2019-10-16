@@ -349,8 +349,8 @@ Note that this is a special case of `acl:agentClass` usage, since it doesn't
 point to a Class Listing document that's meant to be de-referenced.
 
 An application of this feature is to throw a resource open to all logged on users
-for a specific amount of time, accumulate the list of those who case as a group,
-and then later restrict access to that group, to prevent spam.
+for a specific amount of time, accumulate the list of those who access it within 
+that time as a group, and then later restrict access to that group, to prevent spam.
 
 ### Referring to Origins, i.e. Web Apps
 

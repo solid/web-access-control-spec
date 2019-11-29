@@ -126,6 +126,39 @@ ACL resource by appending the suffix `.acl`, another server could place the ACL
 resources into a sub-container (locating it at `/docs/.acl/file1.acl` for the
 example above).
 
+## ACL Schemas
+
+The following schema excerpts use these namespace prefixes:
+``` turtle
+PREFIX    acl:  <http://www.w3.org/ns/auth/acl#>
+PREFIX     dc:  <http://purl.org/dc/elements/1.1/>
+PREFIX  vcard:  <http://www.w3.org/2006/vcard/ns#>
+PREFIX    xsd:  <http://www.w3.org/2001/XMLSchema#>
+```
+### Authorization Schema
+``` turtle
+<#authShape> {
+  a [acl:Authorization] ;
+  acl:accessTo IRI ;
+  acl:mode [acl:Read acl:Write acl:Control]+ ;
+  (  acl:agent IRI ;
+   | acl:agentGroup @<#groupShape> +
+  ) ;
+}
+```
+
+### Group Schema
+
+``` turtle
+<#groupShape> {
+  a [vcard:Group] ;
+  vcard:hasUID IRI /^urn:uuid:/ ;
+  dc:created xsd:dateTime ? ;
+  dc:modified xsd:dateTime ? ;
+  vcard:hasMember IRI + ;
+}
+```
+
 ## ACL Inheritance Algorithm
 
 The following algorithm is used by servers to determine which ACL resources
@@ -272,8 +305,8 @@ Corresponding `work-groups` Group Listing document:
 <#Accounting>
     a                vcard:Group;
     vcard:hasUID     <urn:uuid:8831CBAD-1111-2222-8563-F0F4787E5398:ABGroup>;
-    dc:created       "2013-09-11T07:18:19+0000"^^xsd:dateTime;
-    dc:modified      "2015-08-08T14:45:15+0000"^^xsd:dateTime;
+    dc:created       "2013-09-11T07:18:19+00:00"^^xsd:dateTime;
+    dc:modified      "2015-08-08T14:45:15+00:00"^^xsd:dateTime;
 
     # Accounting group members:
     vcard:hasMember  <https://bob.example.com/profile/card#me>;
@@ -286,6 +319,7 @@ Corresponding `work-groups` Group Listing document:
     # Management group members:
     vcard:hasMember  <https://deb.example.com/profile/card#me>.
 ```
+[[test against schema](https://tinyurl.com/whcrhlo)]
 
 #### Group Listings - Implementation Notes
 

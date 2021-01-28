@@ -375,7 +375,7 @@ be trusted.  This is the algorithm the server must go through.
 
  - If the requested mode is available to the public, then succeed `200 OK` with added CORS headers ACAO and ACAH. **
  - If the user is *not* logged on, then fail `401 Unauthenticated`.
- - Is the authenticated user is *not* allowed access, AND the class AuthenticatedAgent is not allowed access, then fail `403 User Unauthorized`.
+ - If the authenticated user is *not* allowed access, AND the class AuthenticatedAgent is not allowed access, then fail `403 User Unauthorized`.
  - If the Origin header is not present, then succeed `200 OK`.
  - If the Origin is allowed by the ACL, then succeed `200 OK` with added CORS headers ACAO and ACAH.
  - (In future proposed) Look up the owner's webid(s) to check for trusted apps declared there, and if match, succeed `200 OK` with added CORS headers ACAO and ACAH.

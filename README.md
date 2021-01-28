@@ -14,10 +14,6 @@ Next](https://www.w3.org/community/ldpnext/)) type systems, such as the
 
 **Current Spec version:** `v.0.5.0` (see [CHANGELOG.md](CHANGELOG.md))
 
-**Editor** Solid Specification Repository Manager
-
-**Contributors** 
-
 ## Table of Contents
 
 1. [Overview](#overview)

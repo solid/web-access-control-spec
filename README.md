@@ -128,6 +128,8 @@ example above).
 
 ## ACL Schemas
 
+*This section is non-normative.* ( Issue: https://github.com/solid/specification/issues/169 )
+
 The following schema excerpts use these namespace prefixes:
 ``` turtle
 PREFIX    acl:  <http://www.w3.org/ns/auth/acl#>

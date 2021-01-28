@@ -307,8 +307,8 @@ Corresponding `work-groups` Group Listing document:
 <#Accounting>
     a                vcard:Group;
     vcard:hasUID     <urn:uuid:8831CBAD-1111-2222-8563-F0F4787E5398:ABGroup>;
-    dc:created       "2013-09-11T07:18:19+00:00"^^xsd:dateTime;
-    dc:modified      "2015-08-08T14:45:15+00:00"^^xsd:dateTime;
+    dc:created       "2013-09-11T07:18:19Z"^^xsd:dateTime;
+    dc:modified      "2015-08-08T14:45:15Z"^^xsd:dateTime;
 
     # Accounting group members:
     vcard:hasMember  <https://bob.example.com/profile/card#me>;

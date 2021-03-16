@@ -133,7 +133,7 @@ example above).
 The following schema excerpts use these namespace prefixes:
 ``` turtle
 PREFIX    acl:  <http://www.w3.org/ns/auth/acl#>
-PREFIX     dc:  <http://purl.org/dc/elements/1.1/>
+PREFIX     dc:  <http://purl.org/dc/terms/>
 PREFIX  vcard:  <http://www.w3.org/2006/vcard/ns#>
 PREFIX    xsd:  <http://www.w3.org/2001/XMLSchema#>
 ```
@@ -300,7 +300,7 @@ Corresponding `work-groups` Group Listing document:
 ```ttl
 # Contents of https://alice.example.com/work-groups
 @prefix    acl:  <http://www.w3.org/ns/auth/acl#>.
-@prefix     dc:  <http://purl.org/dc/elements/1.1/>.
+@prefix     dc:  <http://purl.org/dc/terms/>.
 @prefix  vcard:  <http://www.w3.org/2006/vcard/ns#>.
 @prefix    xsd:  <http://www.w3.org/2001/XMLSchema#>.
 

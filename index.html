@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Web Access Control</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" media="all" rel="stylesheet" title="W3C-ED" />
+<style>
+body {
+counter-reset:section;
+counter-reset:sub-section;
+}
+em.rfc2119 { color: #900; }
+code { color: #c83500; }
+pre code { color: #333; }
+dfn { font-style:inherit; }
+.do.fragment a { border-bottom:0; }
+.do.fragment a:hover { background:none; border-bottom:0; }
+section figure pre { margin:1em 0; display:block; }
+cite .bibref { font-style: normal; }
+.tabs nav ul li { margin:0; }
+div.issue, div.note, div.warning {
+clear: both;
+margin: 1em 0;
+padding: 1em 1.2em 0.5em;
+position: relative;
+}
+div.issue h4, div.note h4 {
+margin:0;
+text-transform: uppercase;
+font-weight:normal;
+}
+div.issue h4 {
+color:#ae1e1e;
+}
+div.note h4 {
+color:#22bb22;
+}
+figure .example-h {
+margin-top:0;
+text-align: left;
+text-transform: uppercase;
+color:#827017;
+}
+header address a[href] {
+float: right;
+margin: 1rem 0 0.2rem 0.4rem;
+background: transparent none repeat scroll 0 0;
+border: medium none;
+text-decoration: none;
+}
+header address img[src*="logos/W3C"] {
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+-moz-border-right-colors: none;
+-moz-border-top-colors: none;
+background: #1a5e9a none repeat scroll 0 0;
+border-color: #1a5e9a;
+border-image: none;
+border-radius: 0.4rem;
+border-style: solid;
+border-width: 0.65rem 0.7rem 0.6rem;
+color: white;
+display: block;
+font-weight: bold;
+}
+main article > h1 {
+font-size: 220%;
+font-weight:bold;
+}
+
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id="exit-criteria"]) {
+counter-increment:section;
+counter-reset:sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$="references"]):not([id="exit-criteria"]) {
+counter-increment:sub-section;
+counter-reset:sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$="references"]):not([id="exit-criteria"]) section {
+counter-increment:sub-sub-section;
+counter-reset:sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$="references"]):not([id="exit-criteria"]) section section {
+counter-increment:sub-sub-sub-section;
+counter-reset:sub-sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id="exit-criteria"]):not([id^=table-of-]) > h2:before {
+content:counter(section) ".\00a0";
+}
+section:not([id$="references"]):not([id^=change-log]):not([id="exit-criteria"]) > h3:before {
+content:counter(section) "." counter(sub-section) "\00a0";
+}
+section > h4:before {
+content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0";
+}
+
+aside.note.do blockquote dl.published,
+aside.note.do blockquote dl.license,
+aside.note.do blockquote dl.rights {
+top:-2em;
+left:4.5em;
+}
+
+#acknowledgements ul { padding: 0; margin:0 }
+#acknowledgements li { display:inline; }
+#acknowledgements li:after { content: ", "; }
+#acknowledgements li:last-child:after { content: ""; }
+
+.dfn-panel {
+    position: absolute;
+    z-index: 35;
+    height: auto;
+    width: -webkit-fit-content;
+    width: fit-content;
+    max-width: 300px;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.75em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: #DDDDDD;
+    color: black;
+    border: outset 0.2em;
+}
+.dfn-panel:not(.on) { display: none; }
+.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
+.dfn-panel > b { display: block; }
+.dfn-panel a { color: black; }
+.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+.dfn-panel > b + b { margin-top: 0.25em; }
+.dfn-panel ul { padding: 0; }
+.dfn-panel li { list-style: inside; }
+.dfn-panel.activated {
+    display: inline-block;
+    position: fixed;
+    left: .5em;
+    bottom: 2em;
+    margin: 0 auto;
+    max-width: calc(100vw - 1.5em - .4em - .5em);
+    max-height: 30vh;
+}
+
+.dfn-paneled { cursor: pointer; }
+</style>
+  </head>
+
+  <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# qb: http://purl.org/linked-data/cube# schema: http://schema.org/ doap: http://usefulinc.com/ns/doap# deo: http://purl.org/spar/deo/ fabio: http://purl.org/spar/fabio/ cito: http://purl.org/spar/cito/ as: https://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# earl: http://www.w3.org/ns/earl# rel: https://www.w3.org/ns/iana/link-relations/relation#" typeof="schema:CreativeWork prov:Entity as:Article">
+    <header>
+      <address>
+        <a class="logo" href="https://solidproject.org/"><img height="66" width="72" alt="W3C" src="https://solidproject.org/TR/solid.svg"/></a>
+      </address>
+    </header>
+
+    <main>
+      <article about="" typeof="schema:Article doap:Specification">
+        <h1 property="schema:name">Web Access Control</h1>
+        <h2>Editor’s Draft, 2021-03-29</h2>
+
+        <dl id="document-identifier">
+          <dt>This version</dt>
+          <dd><a href="https://solidproject.org/TR/web-access-control" rel="owl:sameAs doap:homepage">https://solidproject.org/TR/web-access-control</a></dd>
+        </dl>
+
+        <dl id="document-latest-version">
+          <dt>Latest Version</dt>
+          <dd><a href="https://solid.github.io/web-access-control-spec/" rel="rel:latest-version">https://solid.github.io/web-access-control-spec/</a></dd>
+        </dl>
+
+        <div id="authors">
+          <dl id="author-name">
+            <dt>Editors</dt>
+            <dd id="Sarven-Capadisli"><span about="" rel="schema:creator schema:author"><span about="https://csarven.ca/#i" typeof="schema:Person"><a rel="schema:url" href="https://csarven.ca/"><span about="https://csarven.ca/#i" property="schema:name"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></span></a></span></span></dd>
+          </dl>
+        </div>
+
+        <dl id="document-published">
+          <dt>Published</dt>
+          <dd><time content="2021-03-29T00:00:00Z" datatype="xsd:dateTime" datetime="2021-03-29T00:00:00Z" property="schema:datePublished">2021-03-29</time></dd>
+        </dl>
+
+        <dl id="document-modified">
+          <dt>Modified</dt>
+          <dd><time content="2021-04-11T00:00:00Z" datatype="xsd:dateTime" datetime="2021-04-11T00:00:00Z" property="schema:dateModified">2021-04-11</time></dd>
+        </dl>
+
+        <dl id="document-repository">
+          <dt>Repository</dt>
+          <dd><a href="https://github.com/solid/web-access-control-spec" rel="doap:repository">GitHub</a></dd>
+          <dd><a href="https://github.com/solid/web-access-control-spec/issues" rel="doap:bug-database">Issues</a></dd>
+        </dl>
+
+        <p class="copyright">MIT License. Copyright © 2021 <a href="http://www.w3.org/community/solid/">W3C Solid Community Group</a>.</p>
+
+        <div datatype="rdf:HTML" id="content" property="schema:description">
+          <section id="abstract">
+            <h2>Abstract</h2>
+            <div datatype="rdf:HTML" property="schema:abstract">
+              <p>Web Access Control (<abbr title="Web Access Control">WAC</abbr>) is a decentralized cross-domain access control system providing a way for Linked Data systems to set authorization conditions on HTTP resources using the Access Control Lists (ACL) model.</p>
+            </div>
+          </section>
+
+          <section id="sotd" inlist="" rel="schema:hasPart" resource="#sotd">
+            <h2 property="schema:name">Status of This Document</h2>
+            <div property="schema:description" datatype="rdf:HTML">
+              <p>This section describes the status of this document at the time of its publication.</p>
+
+              <p>This document was published by the <a href="https://www.w3.org/community/solid/">Solid Community Group</a> as an Editor’s Draft. The sections that have been incorporated have been reviewed following the <a href="https://github.com/solid/process">Solid process</a>. However, the information in this document is still subject to change. You are invited to <a href="https://github.com/solid/web-access-control-spec/issues">contribute</a> any feedback, comments, or questions you might have.</p>
+
+              <p>Publication as an Editor’s Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.</p>
+
+              <p>This document was produced by a group operating under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available.</p>
+            </div>
+          </section>
+
+          <nav id="toc">
+            <h2 id="table-of-contents">Table of Contents</h2>
+            <div>
+              <ol class="toc">
+                <li class="tocline">
+                  <a class="tocxref" href="#abstract">Abstract</a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#sotd">Status of This Document</a>
+                </li>
+              </ol>
+            </div>
+          </nav>
+        </div>
+      </article>
+    </main>
+
+    <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to top">↑</abbr></a></p>
+
+    <script src="//www.w3.org/scripts/TR/2016/fixup.js"></script>
+
+    <script type="text/javascript">// <![CDATA[
+/* script-dfn-panel */
+document.body.addEventListener("click", function(e) {
+    var queryAll = function(sel) { return [].slice.call(document.querySelectorAll(sel)); }
+    // Find the dfn element or panel, if any, that was clicked on.
+    var el = e.target;
+    var target;
+    var hitALink = false;
+    while(el.parentElement) {
+        if(el.tagName == "A") {
+            // Clicking on a link in a <dfn> shouldn't summon the panel
+            hitALink = true;
+        }
+        if(el.classList.contains("dfn-paneled")) {
+            target = "dfn";
+            break;
+        }
+        if(el.classList.contains("dfn-panel")) {
+            target = "dfn-panel";
+            break;
+        }
+        el = el.parentElement;
+    }
+    if(target != "dfn-panel") {
+        // Turn off any currently "on" or "activated" panels.
+        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(function(el){
+            el.classList.remove("on");
+            el.classList.remove("activated");
+        });
+    }
+    if(target == "dfn" && !hitALink) {
+        // open the panel
+        var dfnPanel = document.querySelector(".dfn-panel[data-for='" + el.id + "']");
+        if(dfnPanel) {
+            dfnPanel.classList.add("on");
+            var rect = el.getBoundingClientRect();
+            dfnPanel.style.left = window.scrollX + rect.right + 5 + "px";
+            dfnPanel.style.top = window.scrollY + rect.top + "px";
+            var panelRect = dfnPanel.getBoundingClientRect();
+            var panelWidth = panelRect.right - panelRect.left;
+            if(panelRect.right > document.body.scrollWidth && (rect.left - (panelWidth + 5)) > 0) {
+                // Reposition, because the panel is overflowing
+                dfnPanel.style.left = window.scrollX + rect.left - (panelWidth + 5) + "px";
+            }
+        } else {
+            console.log("Couldn't find .dfn-panel[data-for='" + el.id + "']");
+        }
+    } else if(target == "dfn-panel") {
+        // Switch it to "activated" state, which pins it.
+        el.classList.add("activated");
+        el.style.left = null;
+        el.style.top = null;
+    }
+
+});
+    // ]]></script>
+  </body>
+</html>

@@ -244,18 +244,24 @@ left:4.5em;
           <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
             <h2 about="#introduction" property="schema:name" typeof="deo:Introduction">Introduction</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <section id="definitions" inlist="" rel="schema:hasPart" resource="#definitions">
-                <h3 property="schema:name">Definitions</h3>
+              <section id="terminology" inlist="" rel="schema:hasPart" resource="#terminology">
+                <h3 property="schema:name">Terminology</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="authorization">authorization</dfn> is an abstract thing whose properties are defined in an <a href="#acl-resource">ACL resource</a>, indicating the <a href="#access-mode">access modes</a> that are granted to <a href="#agent">agents</a> to perform a set of operations on <a href="#resource">resources</a>.</p>
+                  <p><em>This section is non-normative.</em></p>
 
-                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="agent">agent</dfn> is a person, social entity or software identified by a dereferenceable URI.</p>
+                  <p>This section defines the terms used in this specification.</p>
+
+                  <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="uri">URI</dfn> provides the means for identifying resources [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>].</p>
 
                   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="resource">resource</dfn> is the target of an HTTP request identified by a URI [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</p>
 
-                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="acl-resource">ACL resource</dfn> is a document that includes a set of <a href="#authorization">authorization</a> policies.</p>
+                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="acl-resource">ACL resource</dfn> is an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that includes <a href="#authorization">authorization</a> policies.</p>
 
-                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="access-mode">access mode</dfn> denotes a class of operations that an <a href="#agent">agent</a> can perform on one or more resources.</p>
+                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="authorization">authorization</dfn> is an abstract thing identified by a URI whose properties are defined in an <a href="#acl-resource">ACL resource</a>, eg. <a href="#access-mode">access modes</a> granted to <a href="#agent">agents</a> to perform operations on <a href="#resource">resources</a>.</p>
+
+                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="access-mode">access mode</dfn> is a class of operations that can be performed on one or more resources.</p>
+
+                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="agent">agent</dfn> is a person, social entity or software identified by a URI, eg. a WebID denotes an agent [<cite><a class="bibref" href="#bib-webid">WEBID</a></cite>].</p>
                 </div>
               </section>
 

@@ -225,6 +225,7 @@ left:4.5em;
                 <li class="tocline">
                   <a class="tocxref" href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
                   <ol>
+                    <li><a href="#definitions"><span class="secno">1.1</span> <span class="content">Definitions</span></a></li>
                     <li><a href="#namespaces"><span class="secno">1.2</span> <span class="content">Namespaces</span></a></li>
                     <li><a href="#conformance"><span class="secno">1.3</span> <span class="content">Conformance</span></a></li>
                   </ol>
@@ -236,6 +237,21 @@ left:4.5em;
           <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
             <h2 about="#introduction" property="schema:name" typeof="deo:Introduction">Introduction</h2>
             <div datatype="rdf:HTML" property="schema:description">
+              <section id="definitions" inlist="" rel="schema:hasPart" resource="#definitions">
+                <h3 property="schema:name">Definitions</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="authorization">authorization</dfn> is an abstract thing whose properties are defined in an <a href="#acl-resource">ACL resource</a>, indicating the <a href="#access-mode">access modes</a> that are granted to <a href="#agent">agents</a> to perform a set of operations on <a href="#resource">resources</a>.</p>
+
+                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="agent">agent</dfn> is a person, social entity or software identified by a dereferenceable URI.</p>
+
+                  <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="resource">resource</dfn> is the target of an HTTP request identified by a URI [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</p>
+
+                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="acl-resource">ACL resource</dfn> is a document that includes a set of <a href="#authorization">authorization</a> policies.</p>
+
+                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="access-mode">access mode</dfn> denotes a class of operations that an <a href="#agent">agent</a> can perform on one or more resources.</p>
+                </div>
+              </section>
+
               <section id="namespaces" inlist="" rel="schema:hasPart" resource="#namespaces">
                 <h3 property="schema:name">Namespaces</h3>
                 <div datatype="rdf:HTML" property="schema:description">

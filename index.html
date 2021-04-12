@@ -195,7 +195,7 @@ left:4.5em;
           <section id="abstract">
             <h2>Abstract</h2>
             <div datatype="rdf:HTML" property="schema:abstract">
-              <p>Web Access Control (<abbr title="Web Access Control">WAC</abbr>) is a decentralized cross-domain access control system providing a way for Linked Data systems to set authorization conditions on HTTP resources using the Access Control List (ACL) model.</p>
+              <p>Web Access Control (<abbr title="Web Access Control">WAC</abbr>) is a decentralized cross-domain access control system providing a way for Linked Data systems to set authorization conditions on HTTP resources using the Access Control List (<abbr title="Access Control List">ACL</abbr>) model.</p>
             </div>
           </section>
 
@@ -244,6 +244,14 @@ left:4.5em;
           <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
             <h2 about="#introduction" property="schema:name" typeof="deo:Introduction">Introduction</h2>
             <div datatype="rdf:HTML" property="schema:description">
+              <p>Access controls within the storage layer helps to implement the social requirements of applications. The access control system can be enhanced by adding more inference or expressivity to express social constraints.</p>
+
+              <p>Web Access Control (<abbr title="Web Access Control">WAC</abbr>) is a decentralized cross-domain access control system providing a way for Linked Data systems to set authorization conditions on HTTP resources using the Access Control List (<abbr title="Access Control List">ACL</abbr>) model.</p>
+
+              <p>WAC uses the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite> to describe <a href="#authorization">authorization</a> policies. Each request for a Web <a href="#resource">resource</a> returns an HTTP document containing a <code>Link</code> header to an <a href="#acl-resource">ACL resource</a> which contains authorization policies. Any kind of access can be given to a resource as per the ACL ontology. This specification uses the <a href="#access-mode">access modes</a> currently defined by the ACL ontology, such as the class of operations to read, write, append and control resources. The requirements for new access modes is explained in the <cite><a href="#extensions-access-modes" rel="rdfs:seeAlso">Extending Access Modes</a></cite> section. An authorization may allow public access to resources or require agents to authenticate. Resources and agents can be on different origins.</p>
+
+              <p>WAC is compatible with servers implementing the Solid Protocol [<cite><a class="bibref" href="#bib-solid-protocol">SOLID-PROTOCOL</a></cite>].</p>
+
               <section id="terminology" inlist="" rel="schema:hasPart" resource="#terminology">
                 <h3 property="schema:name">Terminology</h3>
                 <div datatype="rdf:HTML" property="schema:description">
@@ -350,6 +358,8 @@ left:4.5em;
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc8174"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc8174">https://datatracker.ietf.org/doc/html/rfc8174</a></dd>
                     <dt id="bib-rfc8288">[RFC8288]</dt>
                     <dd><a href="https://httpwg.org/specs/rfc8288.html"><cite>Web Linking</cite></a>. M. Nottingham.  IETF. October 2017. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc8288.html">https://httpwg.org/specs/rfc8288.html</a></dd>
+                    <dt id="bib-solid-protocol">[SOLID-PROTOCOL]</dt>
+                    <dd><a href="https://solidproject.org/TR/protocol"><cite>The Solid Protocol</cite></a>. Sarven Capadisli; Tim Berners-Lee; Ruben Verborgh; Kjetil Kjernsmo; Justin Bingham; Dmitri Zagidulin.  W3C Solid Community Group. W3C Editor's Draft. URL: <a href="https://solidproject.org/TR/protocol">https://solidproject.org/TR/protocol</a></dd>
                     <dt id="bib-turtle">[Turtle]</dt>
                     <dd><a href="https://www.w3.org/TR/turtle/"><cite>RDF 1.1 Turtle</cite></a>. Eric Prud'hommeaux; Gavin Carothers.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/turtle/">https://www.w3.org/TR/turtle/</a></dd>
                     <dt id="bib-webarch">[WEBARCH]</dt>

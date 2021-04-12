@@ -342,6 +342,46 @@ left:4.5em;
           <section id="http-definitions" inlist="" rel="schema:hasPart" resource="#http-definitions">
             <h2 property="schema:name">HTTP Definitions</h2>
             <div datatype="rdf:HTML" property="schema:description">
+              <section id="wac-allow" inlist="" rel="schema:hasPart" resource="#wac-allow">
+                <h3 property="schema:name">WAC-Allow</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>A resource can advertise an ACL document that is directly associated by using the HTTP <code>Link</code> header with a <code>rel</code> value of <code>acl</code> <a href="#acl">acl</a>. [<a href="https://github.com/solid/specification/issues/31#issuecomment-548360553" rel="cito:citesAsSourceDocument">Source</a>]</p>
+
+                  <p>In the event that a server can’t apply an ACL to a resource, it MUST deny access. [<a href="https://github.com/solid/specification/issues/130#issue-532777017" rel="cito:citesAsSourceDocument">Source</a>]</p>
+
+                  <p>Servers exposing client’s access privileges on a resource URL MUST advertise by including the <code>WAC-Allow</code> HTTP header in the response of HTTP <code>HEAD</code> and <code>GET</code> requests.</p>
+
+                  <p>The syntax for the <code>WAC-Allow</code> header, using the ABNF syntax defined in Section 1.2 of [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>], is:</p>
+
+                  <pre class="def">wac-allow        = "WAC-Allow" ":" OWS #access-param OWS
+access-param     = permission-group OWS "=" OWS access-modes
+permission-group = 1*ALPHA
+access-modes     = DQUOTE OWS *1(access-mode *(RWS access-mode)) OWS DQUOTE
+access-mode      = "read" / "write" / "append" / "control"</pre>
+
+                  <p>The <code>WAC-Allow</code> HTTP header’s field-value is a comma-separated list of <code>access-param</code>s. <code>access-param</code> is a whitespace-separated list of <code>access-modes</code> granted to a <code>permission-group</code>.</p>
+
+                  <p class="issue">Issue: Incorporate extensions.</p>
+
+                  <p>This specification defines the following <code>permission-group</code>s:</p>
+
+                  <dl>
+                    <dt><code>user</code></dt>
+                    <dd>Permissions granted to the agent requesting the resource.</dd>
+                    <dt><code>public</code></dt>
+                    <dd>Permissions granted to the public.</dd>
+                  </dl>
+
+                  <p><code>access-mode</code> corresponds to the modes of access as defined in the ACL ontology (<code>acl:Read</code>, <code>acl:Write</code>, <code>acl:Append</code>, <code>acl:Control</code>).</p>
+
+                  <p>Clients can discover access privileges on a resource by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking the <code>WAC-Allow</code> header value for access parameters listing the allowed access modes per permission group.</p>
+
+                  <p>Clients' parsing algorithm for the <code>WAC-Allow</code> header should incorporate error handling. When the received message fails to match an allowed pattern, finds unrecognised access parameters or access modes, clients MUST ignore the received <code>WAC-Allow</code> header-field.</p>
+
+                  <p>[<a href="https://github.com/solid/specification/issues/171" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/170" rel="cito:citesAsSourceDocument">Source</a>] <a href="https://github.com/solid/specification/issues/181" rel="cito:citesAsSourceDocument">Source</a>] <a href="https://gitter.im/solid/specification?at=60101295d8bdab47395e6775" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                </div>
+              </section>
+
               <section id="link-relations" inlist="" rel="schema:hasPart" resource="#link-relations">
                 <h3 property="schema:name">Link Relations</h3>
                 <div datatype="rdf:HTML" property="schema:description">

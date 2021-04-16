@@ -254,6 +254,8 @@ left:4.5em;
           <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
             <h2 about="#introduction" property="schema:name" typeof="deo:Introduction">Introduction</h2>
             <div datatype="rdf:HTML" property="schema:description">
+              <p><em>This section is non-normative.</em></p>
+
               <p>Access controls within the storage layer helps to implement the social requirements of applications. The access control system can be enhanced by adding more inference or expressivity to express social constraints.</p>
 
               <p>Web Access Control (<abbr title="Web Access Control">WAC</abbr>) is a decentralized cross-domain access control system providing a way for Linked Data systems to set authorization conditions on HTTP resources using the Access Control List (<abbr title="Access Control List">ACL</abbr>) model.</p>
@@ -390,8 +392,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                   <section id="link-relation-acl" inlist="" rel="schema:hasPart" resource="#link-relation-acl">
                     <h4 property="schema:name">acl</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>The contents of this section were originally taken from <a href="https://www.w3.org/wiki/WebAccessControl">Web Access
-                      Control</a>.</p>
+                      <p>The contents of this section were originally taken from <a href="https://www.w3.org/wiki/WebAccessControl">Web Access Control</a>.</p>
 
                       <p>The following Link Relationship will be submitted to IANA for review, approval, and inclusion in the IANA Link Relations registry.</p>
 
@@ -422,7 +423,9 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
               <section id="extensions-access-modes" inlist="" rel="schema:hasPart" resource="#extensions-access-modes">
                 <h3 property="schema:name">Extending Access Modes</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>An extension to access modes is any mode that is not described in the <cite><a href="#modes-of-access">Modes of Access</a></cite> section part of the ACL ontology. Consuming implementations that encounter unfamiliar access modes MUST NOT stop processing or signal an error and MUST continue processing the access modes as if those properties were not present.</p>
+                  <p>An extension to access modes is any mode that is defined in the ACL ontology but not described in the <cite><a href="#modes-of-access">Modes of Access</a></cite> section of this specification. The ACL Processor that encounters unrecognised access modes MUST NOT stop processing or signal an error and MUST continue processing the access modes as if those properties were not present.</p>
+
+                  <p class="note" role="note"><span>Note:</span> Foreign-namespaced access modes are allowed in ACL resources, but no behaviour is defined by this specification.</p>
                 </div>
               </section>
             </div>

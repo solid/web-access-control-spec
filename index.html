@@ -447,6 +447,8 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>Servers are strongly discouraged from trusting the information returned by looking up an agent's WebID for access control purposes. The server operator can also provide the server with other trusted information to include in the search for a reason to give the requester the access.</p>
 
+                  <p>Transfer of authorization policies between a client and server over an open network creates the potential for those policies to be modified or disclosed without proper authorization. The requirements for the Web Access Control protocol discussed in this specification do not include cryptographic protection of authorization policy information, because it is assumed that this protection can be provided through HTTP over TLS. The path between client and server may be composed of multiple independent TLS connections, thus for end-to-end message integrity and authenticity of content within an HTTP message, implementors can use mechanisms such as <cite><a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-message-signatures.html" rel="cito:citesAsPotentialSolution">Signing HTTP Messages</a></cite>.</p>
+
                   <p>In addition to above considerations, implementors should consider the Security Considerations in context of the <cite><a href="https://solidproject.org/TR/protocol">Solid Protocol</a></cite></p>.
                 </div>
               </section>

@@ -361,6 +361,8 @@ left:4.5em;
 
               <p>When a server wants to enable applications to discover <a href="#authorization">authorization</a> policies associated with a given <a href="#resource">resource</a>, the server MUST advertise the <a href="#acl-resource">ACL resource</a> that is associated with a resource by responding to an HTTP request including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> (<cite><a href="#link-relation-acl">acl</a></cite> link relation) and the ACL resource as link target.</p>
 
+              <p>Servers MUST NOT directly associate more than one ACL resource to a resource.</p>
+
               <p>Clients can discover the ACL resource associated with a resource by making an HTTP request on the target URL, and checking the HTTP <code>Link</code> header with the <code>rel</code> parameter [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>].</p>
 
               <p>Clients MUST NOT assume that the URI of an ACL resource can be deterministically derived from the URI of a resource.</p>

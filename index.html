@@ -162,14 +162,14 @@ left:4.5em;
         </dl>
 
         <dl id="document-latest-version">
-          <dt>Latest Version</dt>
+          <dt>Latest version</dt>
           <dd><a href="https://solid.github.io/web-access-control-spec/" rel="rel:latest-version">https://solid.github.io/web-access-control-spec/</a></dd>
         </dl>
 
         <div id="authors">
           <dl id="author-name">
             <dt>Editors</dt>
-            <dd id="Sarven-Capadisli"><span about="" rel="schema:creator schema:author"><span about="https://csarven.ca/#i" typeof="schema:Person"><a rel="schema:url" href="https://csarven.ca/"><span about="https://csarven.ca/#i" property="schema:name"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></span></a></span></span></dd>
+            <dd id="Sarven-Capadisli"><span about="" rel="schema:creator schema:editor schema:author"><span about="https://csarven.ca/#i" typeof="schema:Person"><a rel="schema:url" href="https://csarven.ca/"><span about="https://csarven.ca/#i" property="schema:name"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></span></a></span></span></dd>
           </dl>
         </div>
 
@@ -180,7 +180,7 @@ left:4.5em;
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-04-11T00:00:00Z" datatype="xsd:dateTime" datetime="2021-04-11T00:00:00Z" property="schema:dateModified">2021-04-11</time></dd>
+          <dd><time content="2021-04-21T00:00:00Z" datatype="xsd:dateTime" datetime="2021-04-21T00:00:00Z" property="schema:dateModified">2021-04-21</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -225,7 +225,7 @@ left:4.5em;
                 <li class="tocline">
                   <a class="tocxref" href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
                   <ol>
-                    <li><a href="#definitions"><span class="secno">1.1</span> <span class="content">Definitions</span></a></li>
+                    <li><a href="#terminology"><span class="secno">1.1</span> <span class="content">Terminology</span></a></li>
                     <li><a href="#namespaces"><span class="secno">1.2</span> <span class="content">Namespaces</span></a></li>
                     <li><a href="#conformance"><span class="secno">1.3</span> <span class="content">Conformance</span></a></li>
                   </ol>
@@ -283,6 +283,8 @@ left:4.5em;
                   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="uri">URI</dfn> provides the means for identifying resources [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>].</p>
 
                   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="resource">resource</dfn> is the target of an HTTP request identified by a URI [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</p>
+
+                  <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="subject-resource">subject resource</dfn> is the context of a link relation with ACL resource as the link target [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>].</p>
 
                   <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="acl-resource">ACL resource</dfn> is an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that includes <a href="#authorization">authorization</a> policies.</p>
 
@@ -356,10 +358,6 @@ left:4.5em;
               <section id="wac-allow" inlist="" rel="schema:hasPart" resource="#wac-allow">
                 <h3 property="schema:name">WAC-Allow</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>A resource can advertise an ACL document that is directly associated by using the HTTP <code>Link</code> header with a <code>rel</code> value of <code>acl</code>. [<a href="https://github.com/solid/specification/issues/31#issuecomment-548360553" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
-                  <p>In the event that a server can’t apply an ACL to a resource, it MUST deny access. [<a href="https://github.com/solid/specification/issues/130#issue-532777017" rel="cito:citesAsSourceDocument">Source</a>]</p>
-
                   <p>Servers exposing client’s access privileges on a resource URL MUST advertise by including the <code>WAC-Allow</code> HTTP header in the response of HTTP <code>HEAD</code> and <code>GET</code> requests.</p>
 
                   <p>The syntax for the <code>WAC-Allow</code> header, using the ABNF syntax defined in Section 1.2 of [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>], is:</p>

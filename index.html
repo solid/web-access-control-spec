@@ -154,7 +154,7 @@ left:4.5em;
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Web Access Control</h1>
-        <h2>Editor’s Draft, 2021-03-29</h2>
+        <h2>Editor’s Draft, 2021-04-22</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -180,7 +180,7 @@ left:4.5em;
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-04-21T00:00:00Z" datatype="xsd:dateTime" datetime="2021-04-21T00:00:00Z" property="schema:dateModified">2021-04-21</time></dd>
+          <dd><time content="2021-04-21T00:00:00Z" datatype="xsd:dateTime" datetime="2021-04-22T00:00:00Z" property="schema:dateModified">2021-04-22</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -284,8 +284,6 @@ left:4.5em;
 
                   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="resource">resource</dfn> is the target of an HTTP request identified by a URI [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</p>
 
-                  <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="subject-resource">subject resource</dfn> is the context of a link relation with ACL resource as the link target [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>].</p>
-
                   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="container-resource">container resource</dfn> is a collection of resources that contains other resources, including containers.</p>
 
                   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="root-container">root container</dfn> is a container resource that is at the highest level of the collection hierarchy.</p>
@@ -359,13 +357,13 @@ left:4.5em;
           <section id="resources" inlist="" rel="schema:hasPart" resource="#resources">
             <h2 property="schema:name">Resources</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>A <a href="#resource">resource</a> can be anything identified by a URI [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>]. The slash character in the URI path indicates hierarchical relationship segments, and enables relative referencing [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>]. The semantics of the slash character is shared by servers and clients. Paths ending with a slash denote a <a href="#container-resource">container resource</a>.</p>
+              <p>A <a href="#resource">resource</a> can be anything identified by a URI [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>]. The slash (<code>/</code>) character in the URI path indicates hierarchical relationship segments, and enables relative referencing [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>]. The semantics of the slash character is shared by servers and clients. Paths ending with a slash denote a <a href="#container-resource">container resource</a>.</p>
 
-              <p>Servers MUST advertise the <a href="#acl-resource">ACL resource</a> that is associated with a given resource (hereafter referred as the <a href="#subject-resource">subject resource</a>) in the response of an HTTP request by including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> and target as the URI-Reference of the ACL resource (<cite><a href="#link-relation-acl">acl</a></cite> link relation).</p>
+              <p>When a server wants to enable applications to discover <a href="#authorization">authorization</a> policies associated with a given <a href="#resource">resource</a>, the server MUST advertise the <a href="#acl-resource">ACL resource</a> that is associated with a resource by responding to an HTTP request including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> (<cite><a href="#link-relation-acl">acl</a></cite> link relation) and the ACL resource as link target.</p>
 
-              <p>Servers MUST NOT directly associate more than one ACL resource to a subject resource.</p>
+              <p>Clients MUST NOT assume that the URI of an ACL resource can be deterministically derived from the URI of a resource.</p>
 
-              <p class="note" role="note"><span>Note:</span> The URI of an ACL resource is not intended to be secret or in itself pose a security threat (<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite> security considerations). This specification does not set constraints on the discoverability of ACL resources.</p>
+              <p class="note" role="note"><span>Note:</span> The URI of an ACL resource does not in itself pose a security threat (<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite> security considerations). This specification does not set access rights to limit the discoverability of ACL resources.</p>
 
               <p>The <a href="#root-container">root container</a> MUST have an ACL resource with a representation. The ACL resource of the root container MUST include an authorization policy allowing the <code>acl:Control</code> access privilege.</p>
             </div>
@@ -451,7 +449,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>An extension to access modes is any mode that is defined in the ACL ontology but not described in the <cite><a href="#modes-of-access">Modes of Access</a></cite> section of this specification. The ACL Processor that encounters unrecognised access modes MUST NOT stop processing or signal an error and MUST continue processing the access modes as if those properties were not present.</p>
 
-                  <p class="note" role="note"><span>Note:</span> Foreign-namespaced access modes are allowed in ACL resources, but no behaviour is defined by this specification.</p>
+                  <p>Foreign-namespaced access modes are allowed in ACL resources, but no behaviour is defined by this specification.</p>
                 </div>
               </section>
             </div>

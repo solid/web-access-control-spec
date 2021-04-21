@@ -260,7 +260,7 @@ left:4.5em;
 
               <p><dfn id="wac">Web Access Control</dfn> (<abbr title="Web Access Control">WAC</abbr>) is a decentralized cross-domain access control system providing a way for Linked Data systems to set authorization conditions on HTTP resources using the Access Control List (<abbr title="Access Control List">ACL</abbr>) model.</p>
 
-              <p>WAC uses the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite> to describe <a href="#authorization">authorization</a> policies. Each request for a Web <a href="#resource">resource</a> returns an HTTP document containing a <code>Link</code> header to an <a href="#acl-resource">ACL resource</a> which contains authorization policies to determine the <a href="#status-of-a-permission">status of a permission</a>. Any kind of access can be given to a resource as per the ACL ontology. This specification uses the <a href="#access-mode">access modes</a> currently defined by the ACL ontology, such as the class of operations to read, write, append and control resources. An authorization may allow public access to resources or require <a href="#agent">agents</a> to authenticate. Resources and agents can be on different origins.</p>
+              <p>The WAC specification describes how to enable applications to discover <a href="#authorization">authorization</a> policies associated with a given <a href="#resource">resource</a>, and to control such policies, as directed by an agent. Server manages the association between a resource and an <a href="#acl-resource">ACL resource</a>, and applies the authorization conditions on requested operations. Authorization policies are described using the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite> to express and determine the <a href="#status-of-a-permission">status of a permission</a> of a requested resource. Any kind of access can be given to a resource as per the ACL ontology. This specification uses the <a href="#access-mode">access modes</a> currently defined by the ACL ontology, such as the class of operations to read, write, append and control resources. An authorization may allow public access to resources or require <a href="#agent">agents</a> to authenticate. Resources and agents can be on different origins.</p>
 
               <p>The access control system can be enhanced by adding more inference or expressivity to express social constraints. The requirements for new access modes is explained in the <cite><a href="#extensions-access-modes" rel="rdfs:seeAlso">Extending Access Modes</a></cite> section.</p>
 
@@ -269,8 +269,8 @@ left:4.5em;
               <p>This specification is for:</p>
 
               <ul>
-                <li>Resource server owners who want to enable agents to obtain access to an HTTP service;</li>
-                <li>Application developers who want to implement a client to obtain access to an HTTP service.</li>
+                <li>Resource server owners who want to enable agents to obtain and control access to resources;</li>
+                <li>Application developers who want to implement a client to obtain and control access to resources.</li>
               </ul>
 
               <section id="terminology" inlist="" rel="schema:hasPart" resource="#terminology">

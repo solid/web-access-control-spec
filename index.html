@@ -459,7 +459,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
               <section id="extensions-access-modes" inlist="" rel="schema:hasPart" resource="#extensions-access-modes">
                 <h3 property="schema:name">Extending Access Modes</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>An extension to access modes is any mode that is defined in the ACL ontology but not described in the <cite><a href="#modes-of-access">Modes of Access</a></cite> section of this specification. The ACL Processor that encounters unrecognised access modes MUST NOT stop processing or signal an error and MUST continue processing the access modes as if those properties were not present.</p>
+                  <p>An extension to access modes is any mode that is defined in the ACL ontology, ie. the access class is a <code>rdfs:subClassOf</code> <code>acl:Access</code>, but not described in this specification (<cite><a href="#modes-of-access">Modes of Access</a></cite>). The ACL Processor that encounters unrecognised access modes MUST NOT stop processing or signal an error and MUST continue processing the access modes as if those properties were not present.</p>
 
                   <p>Foreign-namespaced access modes are allowed in ACL resources, but no behaviour is defined by this specification.</p>
                 </div>

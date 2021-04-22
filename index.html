@@ -25,16 +25,19 @@ margin: 1em 0;
 padding: 1em 1.2em 0.5em;
 position: relative;
 }
+div.issue h3, div.note h3,
 div.issue h4, div.note h4 {
 margin:0;
 text-transform: uppercase;
 font-weight:normal;
 }
+div.issue h3,
 div.issue h4 {
 color:#ae1e1e;
 }
+div.note h3,
 div.note h4 {
-color:#22bb22;
+color:#178217;
 }
 figure .example-h {
 margin-top:0;
@@ -381,6 +384,37 @@ left:4.5em;
             </div>
           </section>
 
+          <section id="modes-of-access" inlist="" rel="schema:hasPart" resource="#modes-of-access">
+            <h2 property="schema:name">Modes of Access</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p><em>This section is non-normative.</em></p>
+
+              <p>The <a href="#access-mode">access modes</a> described in this section are defined in the <a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a>, such as the class of operations to read, write, append and control resources. The requirements for new access modes is explained in the <cite><a href="#extensions-access-modes">Extending Access Modes</a></cite> section.</p>
+
+              <p>The <code>acl:mode</code> predicate denotes a class of operations that the agents can perform on a resource.</p>
+
+              <dl id="acl-access-modes">
+                <dt id="acl-mode-read"><code>acl:Read</code></dt>
+                <dd>Allows access to a class of read operations on a resource eg. to view the contents of a resource on HTTP <code>GET</code> requests.</dd>
+
+                <dt id="acl-mode-write"><code>acl:Write</code></dt>
+                <dd>Allows access to a class of write operations on a resource eg. to create, delete or modify resources on HTTP <code>PUT</code>, <code>POST</code>, <code>PATCH</code>, <code>DELETE</code> requests.</dd>
+
+                <dt id="acl-mode-append"><code>acl:Append</code></dt>
+                <dd>Allows access to a class of append operations on a resource eg. to add information but not remove information on HTTP <code>POST</code>, <code>PATCH</code> requests.</dd>
+
+                <dt id="acl-mode-control"><code>acl:Control</code></dt>
+                <dd>Allows access to a class of read and write operations on ACL resources eg. to view and modify the ACL resource associated with a resource.</dd>
+              </dl>
+
+              <p>The <code>acl:Write</code> access mode can allow <cite><a href="#sparql11-update">SPARQL 1.1 Update</a></cite> operations eg. with HTTP <code>PATCH</code> targeting the resource, if those are supported.</p>
+
+              <p>A typical example of the <code>acl:Append</code> access mode usage would be an agent's inbox (a container to receive notifications). Agents can write (append) notifications to the inbox eg. with HTTP <code>POST</code> request targeting the inbox, but cannot read or alter the inbox or the notifications. <code>acl:Append</code> can also allow an HTTP <code>PATCH</code> request including the SPARQL 1.1 Update's <code>INSERT DATA</code> operation (but not <code>DELETE DATA</code>).</p>
+
+              <p>Having <code>acl:Control</code> doesn't automatically imply that the agent has <code>acl:Read</code> or <code>acl:Write</code> access to the resource itself, just to its corresponding ACL resource. For example, a resource owner may disable their own write access (to prevent accidental over-writing of a resource by an application), but be able to change their access levels at a later point (since they retain <code>acl:Control</code> access).</p>
+            </div>
+          </section>
+
           <section id="http-definitions" inlist="" rel="schema:hasPart" resource="#http-definitions">
             <h2 property="schema:name">HTTP Definitions</h2>
             <div datatype="rdf:HTML" property="schema:description">
@@ -563,6 +597,10 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
               <section id="informative-references" inlist="" rel="schema:hasPart" resource="#informative-references">
                 <h3 property="schema:name">Informative References</h3>
                 <div datatype="rdf:HTML" property="schema:description">
+                  <dl class="bibliography" resource="">
+                    <dt id="bib-sparql11-update">[SPARQL11-UPDATE]</dt>
+                    <dd><a href="https://www.w3.org/TR/sparql11-update/"><cite>SPARQL 1.1 Update</cite></a>. Paula Gearon; Alexandre Passant; Axel Polleres.  W3C. 21 March 2013. W3C Recommendation. URL: <a href="https://www.w3.org/TR/sparql11-update/">https://www.w3.org/TR/sparql11-update/</a></dd>
+                  </dl>
                 </div>
               </section>
             </div>

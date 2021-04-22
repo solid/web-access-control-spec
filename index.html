@@ -359,7 +359,15 @@ left:4.5em;
             <div datatype="rdf:HTML" property="schema:description">
               <p>A <a href="#resource">resource</a> can be anything identified by a URI [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>]. The slash (<code>/</code>) character in the URI path indicates hierarchical relationship segments, and enables relative referencing [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>]. The semantics of the slash character is shared by servers and clients. Paths ending with a slash denote a <a href="#container-resource">container resource</a>.</p>
 
-              <p>When a server wants to enable applications to discover <a href="#authorization">authorization</a> policies associated with a given <a href="#resource">resource</a>, the server MUST advertise the <a href="#acl-resource">ACL resource</a> that is associated with a resource by responding to an HTTP request including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> (<cite><a href="#link-relation-acl">acl</a></cite> link relation) and the ACL resource as link target.</p>
+              <p>When a server wants to enable applications to discover <a href="#authorization">authorization</a> policies associated with a given <a href="#resource">resource</a>, the server MUST advertise the <a href="#acl-resource">ACL resource</a> that is associated with a resource by responding to an HTTP request including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> (<cite><a href="#link-relation-acl">acl</a></cite> link relation type) and the ACL resource as link target.</p>
+
+              <div class="issue">
+                <p>The possibility of using URIs as relation types interchangeably or as alternate to the <a href="#link-relation-acl"><code>acl</code></a> link relation type is under consideration:</p>
+
+                <ul>
+                  <li><code>http://www.w3.org/ns/auth/acl#accessControl</code> [<a href="https://github.com/solid/specification/issues/172#issuecomment-766840145">Issue</a>] [<a href="https://github.com/solid/web-access-control-spec/issues/21#issuecomment-769137284">Issue</a>]</li>
+                </ul>
+              </div>
 
               <p>Servers MUST NOT directly associate more than one ACL resource to a resource.</p>
 
@@ -565,7 +573,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
     <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to top">↑</abbr></a></p>
 
-    <script src="//www.w3.org/scripts/TR/2016/fixup.js"></script>
+    <script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
 
     <script type="text/javascript">// <![CDATA[
 /* script-dfn-panel */

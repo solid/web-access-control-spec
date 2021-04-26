@@ -265,7 +265,7 @@ left:4.5em;
 
               <p>The WAC specification describes how to enable applications to discover <a href="#authorization">authorization</a> policies associated with a given <a href="#resource">resource</a>, and to control such policies, as directed by an agent. Server manages the association between a resource and an <a href="#acl-resource">ACL resource</a>, and applies the authorization conditions on requested operations. Authorization policies are described using the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite> to express and determine the <a href="#status-of-a-permission">status of a permission</a> of a requested resource. Any kind of access can be given to a resource as per the ACL ontology. This specification uses the <a href="#access-mode">access modes</a> currently defined by the ACL ontology, such as the class of operations to read, write, append and control resources. An authorization may allow public access to resources or require <a href="#agent">agents</a> to authenticate. Resources and agents can be on different origins.</p>
 
-              <p>The access control system can be enhanced by adding more inference or expressivity to express social constraints. The requirements for new access modes is explained in the <cite><a href="#extensions-access-modes" rel="rdfs:seeAlso">Extending Access Modes</a></cite> section.</p>
+              <p>The access control system can be enhanced by adding more inference or expressivity to express social constraints. See the <cite><a href="#extensions" rel="rdfs:seeAlso">Extensions</a></cite> section.</p>
 
               <p>WAC is compatible with servers implementing the Solid Protocol [<cite><a class="bibref" href="#bib-solid-protocol">SOLID-PROTOCOL</a></cite>].</p>
 
@@ -389,7 +389,7 @@ left:4.5em;
             <div datatype="rdf:HTML" property="schema:description">
               <p><em>This section is non-normative.</em></p>
 
-              <p>The <a href="#access-mode">access modes</a> described in this section are defined in the <a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a>, such as the class of operations to read, write, append and control resources. The requirements for new access modes is explained in the <cite><a href="#extensions-access-modes">Extending Access Modes</a></cite> section.</p>
+              <p>The <a href="#access-mode">access modes</a> described in this section are defined in the <a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a>, such as the class of operations to read, write, append and control resources. The requirements for new access modes is explained in the <cite><a href="#access-mode-extensions">Access Mode Extensions</a></cite> section.</p>
 
               <p>The <code>acl:mode</code> predicate denotes a class of operations that the agents can perform on a resource.</p>
 
@@ -488,10 +488,19 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
           <section id="extensions" inlist="" rel="schema:hasPart" resource="#extensions">
             <h2 property="schema:name">Extensions</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>..</p>
+              <p>Extensions incorporate additional features beyond what is defined in this specification.</p>
 
-              <section id="extensions-access-modes" inlist="" rel="schema:hasPart" resource="#extensions-access-modes">
-                <h3 property="schema:name">Extending Access Modes</h3>
+              <section id="authorization-extensions" inlist="" rel="schema:hasPart" resource="#authorization-extensions">
+                <h3 property="schema:name">Authorization Extensions</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><em>This section is non-normative.</em></p>
+
+                  <p>As ACL resources are RDF sources, authorization policy descriptions may be further limited by constraints eg. temporal or spatial constraints, and duties eg. payments, may be imposed on permissions, but no behaviour is defined by this specification. For example, the <cite><a href="https://www.w3.org/TR/odrl-vocab/" rel="cito:citesAsPotentialSolution">ODRL Information Model</a></cite> can be used to set obligations required to be met by agents prior to accessing a resource.</p>
+                </div>
+              </section>
+
+              <section id="access-mode-extensions" inlist="" rel="schema:hasPart" resource="#access-mode-extensions">
+                <h3 property="schema:name">Access Mode Extensions</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>An extension to access modes is any mode that is defined in the ACL ontology, ie. the access class is a <code>rdfs:subClassOf</code> <code>acl:Access</code>, but not described in this specification (<cite><a href="#modes-of-access">Modes of Access</a></cite>). The ACL Processor that encounters unrecognised access modes MUST NOT stop processing or signal an error and MUST continue processing the access modes as if those properties were not present.</p>
 
@@ -598,6 +607,8 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                 <h3 property="schema:name">Informative References</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <dl class="bibliography" resource="">
+                    <dt id="bib-odrl-model">[ODRL-MODEL]</dt>
+                    <dd><a href="https://www.w3.org/TR/odrl-model/"><cite>ODRL Information Model 2.2</cite></a>. Renato Iannella; Serena Villata.  W3C. 15 February 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/odrl-model/">https://www.w3.org/TR/odrl-model/</a></dd>
                     <dt id="bib-sparql11-update">[SPARQL11-UPDATE]</dt>
                     <dd><a href="https://www.w3.org/TR/sparql11-update/"><cite>SPARQL 1.1 Update</cite></a>. Paula Gearon; Alexandre Passant; Axel Polleres.  W3C. 21 March 2013. W3C Recommendation. URL: <a href="https://www.w3.org/TR/sparql11-update/">https://www.w3.org/TR/sparql11-update/</a></dd>
                   </dl>

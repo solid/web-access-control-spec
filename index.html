@@ -157,7 +157,7 @@ left:4.5em;
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Web Access Control</h1>
-        <h2>Editor’s Draft, 2021-04-22</h2>
+        <h2>Editor’s Draft, 2021-04-28</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -183,7 +183,7 @@ left:4.5em;
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-04-21T00:00:00Z" datatype="xsd:dateTime" datetime="2021-04-22T00:00:00Z" property="schema:dateModified">2021-04-22</time></dd>
+          <dd><time content="2021-04-28T00:00:00Z" datatype="xsd:dateTime" datetime="2021-04-28T00:00:00Z" property="schema:dateModified">2021-04-28</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -361,7 +361,12 @@ left:4.5em;
             <h2 property="schema:name">Resources</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>A <a href="#resource">resource</a> can be anything identified by a URI [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>] with any origin [<cite><a class="bibref" href="#bib-rfc6454">RFC6454</a></cite>]. The slash (<code>/</code>) character in the URI path indicates hierarchical relationship segments, and enables relative referencing [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>]. The semantics of the slash character is shared by servers and clients. Paths ending with a slash denote a <a href="#container-resource">container resource</a>.</p>
+            </div>
+          </section>
 
+          <section id="acl-resources" inlist="" rel="schema:hasPart" resource="#acl-resources">
+            <h2 property="schema:name">ACL Resources</h2>
+            <div datatype="rdf:HTML" property="schema:description">
               <p>When a server wants to enable applications to discover <a href="#authorization">authorization</a> policies associated with a given <a href="#resource">resource</a>, the server MUST advertise the <a href="#acl-resource">ACL resource</a> that is associated with a resource by responding to an HTTP request including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> (<cite><a href="#link-relation-acl">acl</a></cite> link relation type) and the ACL resource as link target.</p>
 
               <div class="issue">

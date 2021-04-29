@@ -157,7 +157,7 @@ left:4.5em;
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Web Access Control</h1>
-        <h2>Editor’s Draft, 2021-04-28</h2>
+        <h2>Editor’s Draft, 2021-04-30</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -183,7 +183,7 @@ left:4.5em;
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-04-28T00:00:00Z" datatype="xsd:dateTime" datetime="2021-04-28T00:00:00Z" property="schema:dateModified">2021-04-28</time></dd>
+          <dd><time content="2021-04-30T00:00:00Z" datatype="xsd:dateTime" datetime="2021-04-30T00:00:00Z" property="schema:dateModified">2021-04-30</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -415,23 +415,17 @@ left:4.5em;
               <section id="acl-resource-discovery" inlist="" rel="schema:hasPart" resource="#acl-resource-discovery">
                 <h3 property="schema:name">ACL Resource Discovery</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>When a server wants to enable applications to discover <a href="#authorization">authorization</a> policies associated with a given <a href="#resource">resource</a>, the server MUST advertise the <a href="#acl-resource">ACL resource</a> that is associated with a resource by responding to an HTTP request including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> (<cite><a href="#acl-link-relation">acl</a></cite> link relation type) and the ACL resource as link target.</p>
+                  <p>When a server wants to enable applications to discover <a href="#authorization">authorization</a> policies associated with a given <a href="#resource">resource</a>, the server MUST advertise the <a href="#acl-resource">ACL resource</a> that is associated with a resource by responding to an HTTP request including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> (<cite><a href="#acl-link-relation">acl Link Relation</a></cite> type) and the ACL resource as link target.</p>
 
-                  <div class="issue">
-                    <p>The possibility of using URIs as relation types interchangeably or as alternate to the <a href="#acl-link-relation"><code>acl</code></a> link relation type is under consideration:</p>
-
-                    <ul>
-                      <li><code>http://www.w3.org/ns/auth/acl#accessControl</code> [<a href="https://github.com/solid/specification/issues/172#issuecomment-766840145">Issue</a>] [<a href="https://github.com/solid/web-access-control-spec/issues/21#issuecomment-769137284">Issue</a>]</li>
-                    </ul>
-                  </div>
+                  <p class="issue"><span>Issue:</span> The possibility of using URIs as relation types interchangeably or as alternate to the <a href="#acl-link-relation">acl Link Relation</a> type is under consideration, eg. <code>http://www.w3.org/ns/auth/acl#accessControl</code> [<a href="https://github.com/solid/specification/issues/172#issuecomment-766840145">Issue</a>] [<a href="https://github.com/solid/web-access-control-spec/issues/21#issuecomment-769137284">Issue</a>].</p>
 
                   <p>Servers MUST NOT directly associate more than one ACL resource to a resource.</p>
 
                   <p>Clients can discover the ACL resource associated with a resource by making an HTTP request on the target URL, and checking the HTTP <code>Link</code> header with the <code>rel</code> parameter [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>].</p>
 
-                  <p>Clients MUST NOT assume that the URI of an ACL resource can be deterministically derived from the URI of a resource.</p>
+                  <p class="note"><span>Note:</span> The URI of an ACL resource does not in itself pose a security threat (<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite> security considerations). This specification does not set access rights to limit the discoverability of ACL resources.</p>
 
-                  <p class="note" role="note"><span>Note:</span> The URI of an ACL resource does not in itself pose a security threat (<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite> security considerations). This specification does not set access rights to limit the discoverability of ACL resources.</p>
+                  <p>Clients are discouraged to assume that the URI of an ACL resource can be deterministically derived from the URI of a resource.</p>
                 </div>
               </section>
 

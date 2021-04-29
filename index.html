@@ -364,6 +364,21 @@ left:4.5em;
             </div>
           </section>
 
+          <section id="http-interactions" inlist="" rel="schema:hasPart" resource="#http-interactions">
+            <h2 property="schema:name">HTTP Interactions</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p><em>This section is non-normative.</em></p>
+
+              <p>Clients who want to perform read-write operations on ACL resources with respect to authorization policies which are stored on a server can do so within the framework of HTTP. This specification does not describe the use of HTTP for creating, reading, updating and deleting ACL resources from servers. Implementations are strongly encouraged to use existing approaches that provide an extension of the rules of <cite><a href="https://www.w3.org/DesignIssues/LinkedData" rel="cito:citesAsAuthority">Linked Data</a></cite>, eg. [<cite><a class="bibref" href="#bib-solid-protocol">SOLID-PROTOCOL</a></cite>], [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>].</p>
+
+              <p>When using the Solid Protocol:</p>
+
+              <p>Servers accepting HTTP requests to allow reading and writing of ACL resources can implement the server parts of the <cite><a href="https://solidproject.org/TR/protocol" rel="cito:citesAsPotentialSolution">Solid Protocol</a></cite>.</p>
+
+              <p>Clients who want to make HTTP requests to read and write ACL resources, can implement the client parts of the <cite><a href="https://solidproject.org/TR/protocol" rel="cito:citesAsPotentialSolution">Solid Protocol</a></cite>.</p>
+            </div>
+          </section>
+
           <section id="acl-resources" inlist="" rel="schema:hasPart" resource="#acl-resources">
             <h2 property="schema:name">ACL Resources</h2>
             <div datatype="rdf:HTML" property="schema:description">
@@ -386,19 +401,6 @@ left:4.5em;
               <p class="note" role="note"><span>Note:</span> The URI of an ACL resource does not in itself pose a security threat (<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite> security considerations). This specification does not set access rights to limit the discoverability of ACL resources.</p>
 
               <p>The <a href="#root-container">root container</a> MUST have an ACL resource with a representation. The ACL resource of the root container MUST include an authorization policy allowing the <code>acl:Control</code> access privilege.</p>
-            </div>
-          </section>
-
-          <section id="http-interactions" inlist="" rel="schema:hasPart" resource="#http-interactions">
-            <h2 property="schema:name">HTTP Interactions</h2>
-            <div datatype="rdf:HTML" property="schema:description">
-              <p><em>This section is non-normative.</em></p>
-
-              <p>Clients who want to perform read-write operations on ACL resources with respect to authorization policies which are stored on a server can do so within the framework of HTTP. This specification does not describe the use of HTTP for reading, creating, updating and deleting ACL resources from servers. Implementations are strongly encouraged to use existing approaches that provide extensions of the rules of Linked Data, eg. [<cite><a class="bibref" href="#bib-solid-protocol">SOLID-PROTOCOL</a></cite>], [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>].</p>
-
-              <p>Servers accepting HTTP requests to allow reading and writing of ACL resources can implement the server parts of the [<cite><a class="bibref" href="#bib-solid-protocol">SOLID-PROTOCOL</a></cite>].</p>
-
-              <p>Clients who want to make HTTP requests to read and write ACL reosurces, can implement the client parts of the [<cite><a class="bibref" href="#bib-solid-protocol">SOLID-PROTOCOL</a></cite>].</p>
             </div>
           </section>
 

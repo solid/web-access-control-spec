@@ -234,6 +234,36 @@ left:4.5em;
                   </ol>
                 </li>
                 <li class="tocline">
+                  <a class="tocxref" href="#resources"><span class="secno">2</span> <span class="content">Resources</span></a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#http-interactions"><span class="secno">3</span> <span class="content">HTTP Interactions</span></a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#acl-resources"><span class="secno">4</span> <span class="content">ACL Resources</span></a>
+                  <ol>
+                    <li><a href="#acl-resource-discovery"><span class="secno">4.1</span> <span class="content">ACL Resource Discovery</span></a></li>
+                    <li><a href="#acl-resource-representation"><span class="secno">4.2</span> <span class="content">ACL Resource Representation</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#modes-of-access"><span class="secno">5</span> <span class="content">Modes of Access</span></a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#http-definitions"><span class="secno">6</span> <span class="content">HTTP Definitions</span></a>
+                  <ol>
+                    <li><a href="#wac-allow"><span class="secno">6.1</span> <span class="content">wac-allow HTTP Header</span></a></li>
+                    <li><a href="#link-relation-acl"><span class="secno">6.2</span> <span class="content">acl Link Relation</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#extensions"><span class="secno">7</span> <span class="content">Extensions</span></a>
+                  <ol>
+                    <li><a href="#authorization-extensions"><span class="secno">7.1</span> <span class="content">Authorization Extensions</span></a></li>
+                    <li><a href="#access-mode-extensions"><span class="secno">7.2</span> <span class="content">Access Mode Extensions</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline">
                   <a class="tocxref" href="#considerations"><span class="secno">12</span> <span class="content">Considerations</span></a>
                   <ol>
                     <li><a href="#security-considerations"><span class="secno">12.1</span> <span class="content">Security Considerations</span></a></li>
@@ -455,7 +485,7 @@ left:4.5em;
             <h2 property="schema:name">HTTP Definitions</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <section id="wac-allow" inlist="" rel="schema:hasPart" resource="#wac-allow">
-                <h3 property="schema:name">WAC-Allow</h3>
+                <h3 property="schema:name">wac-allow HTTP Header</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>Servers exposing client’s access privileges on a resource URL MUST advertise by including the <code>WAC-Allow</code> HTTP header in the response of HTTP <code>HEAD</code> and <code>GET</code> requests.</p>
 

@@ -414,7 +414,7 @@ left:4.5em;
 
                   <p>Servers who want a resource to inherit authorization policies (see <cite><a href="#inheritance" rel="rdfs:seeAlso">Inheritance</a></cite>) MUST NOT initialise the ACL resource that is associated with the resource with a representation. When an authorized HTTP <code>GET</code> or <code>HEAD</code> request targets an ACL resource without an existing representation, the server MUST respond with the <code>404</code> status code as per [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</p>
 
-                  <p>The <a href="#root-container">root container</a> MUST have an ACL resource with a representation. The ACL resource of the root container MUST include an authorization policy allowing the <code>acl:Control</code> access privilege.</p>
+                  <p>The <a href="#root-container">root container</a> MUST have an ACL resource with a representation. The ACL resource of the root container MUST include an authorization policy allowing the <code>acl:Control</code> access privilege (<cite><a href="#acl-mode-control" rel="rdfs:seeAlso"><code>acl:Control</code></a></cite> access mode).</p>
                 </div>
               </section>
             </div>

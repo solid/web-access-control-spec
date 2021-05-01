@@ -323,7 +323,7 @@ left:4.5em;
 
                   <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="acl-resource">ACL resource</dfn> is an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that includes <a href="#authorization">authorization</a> policies.</p>
 
-                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="authorization">authorization</dfn> is an abstract thing identified by a URI whose properties are defined in an <a href="#acl-resource">ACL resource</a>, eg. <a href="#access-mode">access modes</a> granted to <a href="#agent">agents</a> to perform operations on <a href="#resource">resources</a>.</p>
+                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="authorization">authorization</dfn> is an abstract thing identified by a URI whose properties are defined in an <a href="#acl-resource">ACL resource</a>, eg. <a href="#access-mode">access modes</a> granted to <a href="#agent">agents</a> the ability to perform operations on <a href="#resource">resources</a>.</p>
 
                   <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="access-mode">access mode</dfn> is a class of operations that can be performed on one or more resources.</p>
 
@@ -451,7 +451,7 @@ left:4.5em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>An ACL resource is an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>].</p>
 
-                  <p>Servers MUST accept an HTTP <code>GET</code> request targeting an ACL resource when the value of the <code>Accept</code> header requests a representation in <code>text/turtle</code>.</p>
+                  <p>Servers MUST accept an HTTP <code>GET</code> request targeting an ACL resource when the value of the <code>Accept</code> header requests a representation in <code>text/turtle</code> [<cite><a class="bibref" href="#bib-turtle">TURTLE</a></cite>].</p>
 
                   <p>Servers who want a resource to inherit authorization policies (see <cite><a href="#inheritance" rel="rdfs:seeAlso">Inheritance</a></cite>) MUST NOT initialise the ACL resource that is associated with the resource with a representation. When an authorized HTTP <code>GET</code> or <code>HEAD</code> request targets an ACL resource without an existing representation, the server MUST respond with the <code>404</code> status code as per [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</p>
 
@@ -641,6 +641,8 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                   <dl class="bibliography" resource="">
                     <dt id="bib-fetch">[FETCH]</dt>
                     <dd><a href="https://fetch.spec.whatwg.org/"><cite>Fetch Standard</cite></a>. Anne van Kesteren.  WHATWG. Living Standard. URL: <a href="https://fetch.spec.whatwg.org/">https://fetch.spec.whatwg.org/</a></dd>
+                    <dt id="bib-foaf">[FOAF]</dt>
+                    <dd><a href="http://xmlns.com/foaf/spec"><cite>FOAF Vocabulary Specification 0.99 (Paddington Edition)</cite></a>. Dan Brickley; Libby Miller.  FOAF project. 14 January 2014. URL: <a href="http://xmlns.com/foaf/spec">http://xmlns.com/foaf/spec</a></dd>
                     <dt id="bib-rdf-schema">[RDF-SCHEMA]</dt>
                     <dd><a href="https://www.w3.org/TR/rdf-schema/"><cite>RDF Schema 1.1</cite></a>. Dan Brickley; Ramanathan Guha.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf-schema/">https://www.w3.org/TR/rdf-schema/</a></dd>
                     <dt id="bib-rdf11-concepts">[RDF11-CONCEPTS]</dt>
@@ -663,7 +665,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dd><a href="https://httpwg.org/specs/rfc8288.html"><cite>Web Linking</cite></a>. M. Nottingham.  IETF. October 2017. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc8288.html">https://httpwg.org/specs/rfc8288.html</a></dd>
                     <dt id="bib-solid-protocol">[SOLID-PROTOCOL]</dt>
                     <dd><a href="https://solidproject.org/TR/protocol"><cite>Solid Protocol</cite></a>. Sarven Capadisli; Tim Berners-Lee; Ruben Verborgh; Kjetil Kjernsmo; Justin Bingham; Dmitri Zagidulin.  W3C Solid Community Group. W3C Editor's Draft. URL: <a href="https://solidproject.org/TR/protocol">https://solidproject.org/TR/protocol</a></dd>
-                    <dt id="bib-turtle">[Turtle]</dt>
+                    <dt id="bib-turtle">[TURTLE]</dt>
                     <dd><a href="https://www.w3.org/TR/turtle/"><cite>RDF 1.1 Turtle</cite></a>. Eric Prud'hommeaux; Gavin Carothers.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/turtle/">https://www.w3.org/TR/turtle/</a></dd>
                     <dt id="bib-vcard-rdf">[VCARD-RDF]</dt>
                     <dd><a href="https://www.w3.org/TR/vcard-rdf/"><cite>vCard Ontology - for describing People and Organizations</cite></a>. Renato Iannella; James McKinney.  W3C. 22 May 2014. W3C Note. URL: <a href="https://www.w3.org/TR/vcard-rdf/">https://www.w3.org/TR/vcard-rdf/</a></dd>

@@ -410,7 +410,12 @@ left:4.5em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>When a server wants to enable applications to discover <a href="#authorization">authorization</a> policies associated with a given <a href="#resource">resource</a>, the server MUST advertise the <a href="#acl-resource">ACL resource</a> that is associated with a resource by responding to an HTTP request including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> (<cite><a href="#acl-link-relation">acl Link Relation</a></cite> type) and the ACL resource as link target.</p>
 
-                  <p class="issue"><span>Issue:</span> The possibility of using URIs as relation types interchangeably or as alternate to the <a href="#acl-link-relation">acl Link Relation</a> type is under consideration, eg. <code>http://www.w3.org/ns/auth/acl#accessControl</code> [<a href="https://github.com/solid/specification/issues/172#issuecomment-766840145">Issue</a>] [<a href="https://github.com/solid/web-access-control-spec/issues/21#issuecomment-769137284">Issue</a>].</p>
+                  <div class="issue" id="link-relation-type" rel="schema:hasPart" resource="link-relation-type">
+                    <h4 property="schema:name"><span>Issue</span>: Link Relation Type</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>The possibility of using URIs as relation types interchangeably or as alternate to the <a href="#acl-link-relation">acl Link Relation</a> type is under consideration, eg. <code>http://www.w3.org/ns/auth/acl#accessControl</code> [<a href="https://github.com/solid/specification/issues/172#issuecomment-766840145">Issue</a>] [<a href="https://github.com/solid/web-access-control-spec/issues/21#issuecomment-769137284">Issue</a>].</p>
+                    </div>
+                  </div>
 
                   <p>Servers MUST NOT directly associate more than one ACL resource to a resource.</p>
 

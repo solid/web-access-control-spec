@@ -582,11 +582,11 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>While this section attempts to highlight a set of security considerations, it is not a complete list. Implementers are urged to seek the advice of security professionals when implementing mission critical systems using the technology outlined in this specification.</p>
 
+                  <p>Implementations are encouraged to follow the security considerations that are found in URI <cite><a href="https://datatracker.ietf.org/doc/html/rfc3986#section-7" rel="cito:citesForInformation">Generic Syntax</a></cite>, HTTP/1.1 <cite><a  href="https://datatracker.ietf.org/doc/html/rfc7230#section-9" rel="cito:citesForInformation">Message Syntax and Routing</a></cite> and <cite><a href="https://datatracker.ietf.org/doc/html/rfc7231#section-9" rel="cito:citesForInformation">Semantics and Content</a></cite>, and the <cite><a href="https://solidproject.org/TR/protocol#security-considerations" rel="cito:citesForInformation">Solid Protocol</a></cite>.</p>
+
                   <p>Servers are strongly discouraged from trusting the information returned by looking up an agent's WebID for access control purposes. The server operator can also provide the server with other trusted information to include in the search for a reason to give the requester the access.</p>
 
                   <p>Transfer of authorization policies between a client and server over an open network creates the potential for those policies to be modified or disclosed without proper authorization. The requirements for the Web Access Control protocol discussed in this specification do not include cryptographic protection of authorization policy information, because it is assumed that this protection can be provided through HTTP over TLS. The path between client and application may be composed of multiple independent TLS connections, thus for end-to-end integrity and authenticity of content within an HTTP message, implementors can use mechanisms such as <cite><a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-message-signatures.html" rel="cito:citesAsPotentialSolution">Signing HTTP Messages</a></cite>. For cryptographic proof of authorization policies asserted by agents and protection from undetected modifications, implementors can use mechanisms such as <cite><a href="https://w3c-ccg.github.io/ld-proofs/" rel="cito:citesAsPotentialSolution">Linked Data Security</a></cite>.</p>
-
-                  <p>In addition to above considerations, implementors should consider the Security Considerations in context of the <cite><a href="https://solidproject.org/TR/protocol" rel="cito:citesForInformation">Solid Protocol</a></cite>.</p>
                 </div>
               </section>
 

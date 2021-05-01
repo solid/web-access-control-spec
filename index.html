@@ -28,8 +28,11 @@ position: relative;
 div.issue h3, div.note h3,
 div.issue h4, div.note h4 {
 margin:0;
-text-transform: uppercase;
 font-weight:normal;
+}
+div.issue h3 > span, div.note h3 > span,
+div.issue h4 > span, div.note h4 > span{
+text-transform: uppercase;
 }
 div.issue h3,
 div.issue h4 {
@@ -389,7 +392,7 @@ left:4.5em;
             <div datatype="rdf:HTML" property="schema:description">
               <p><em>This section is non-normative.</em></p>
 
-              <p>Clients who want to perform read-write operations on ACL resources with respect to authorization policies which are stored on a server can do so within the framework of HTTP. This specification does not describe the use of HTTP for creating, reading, updating and deleting ACL resources from servers. Implementations are strongly encouraged to use existing approaches that provide an extension of the rules of <cite><a href="https://www.w3.org/DesignIssues/LinkedData" rel="cito:citesAsAuthority">Linked Data</a></cite>, eg. [<cite><a class="bibref" href="#bib-solid-protocol">SOLID-PROTOCOL</a></cite>], [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>].</p>
+              <p>Clients who want to perform read-write operations on <a href="#acl-resource">ACL resources</a> with respect to authorization policies which are stored on a server can do so within the framework of HTTP. This specification does not describe the use of HTTP for creating, reading, updating and deleting ACL resources from servers. Implementations are strongly encouraged to use existing approaches that provide an extension of the rules of <cite><a href="https://www.w3.org/DesignIssues/LinkedData" rel="cito:citesAsAuthority">Linked Data</a></cite>, eg. [<cite><a class="bibref" href="#bib-solid-protocol">SOLID-PROTOCOL</a></cite>], [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>].</p>
 
               <p>When using the Solid Protocol:</p>
 
@@ -413,7 +416,12 @@ left:4.5em;
 
                   <p>Clients can discover the ACL resource associated with a resource by making an HTTP request on the target URL, and checking the HTTP <code>Link</code> header with the <code>rel</code> parameter [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>].</p>
 
-                  <p class="note"><span>Note:</span> The URI of an ACL resource does not in itself pose a security threat (<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite> security considerations). This specification does not set access rights to limit the discoverability of ACL resources.</p>
+                  <div class="note" id="uri-security" rel="schema:hasPart" resource="uri-security">
+                    <h4 property="schema:name"><span>Note</span>: URI Security</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>The URI of an ACL resource does not in itself pose a security threat (<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite> security considerations). This specification does not set access rights to limit the discoverability of ACL resources.</p>
+                    </div>
+                  </div>
 
                   <p>Clients are discouraged to assume that the URI of an ACL resource can be deterministically derived from the URI of a resource.</p>
                 </div>

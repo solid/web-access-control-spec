@@ -505,6 +505,13 @@ left:4.5em;
                 <dd>Allows access to a class of read and write operations on an ACL resource associated with a resource.</dd>
               </dl>
 
+              <div class="note" id="uri-ownership">
+                <h3>Note: URI ownership</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p><q>URI ownership</q>, as per <cite><a href="https://www.w3.org/TR/webarch/#uri-ownership">Architecture of the World Wide Web</a></cite> [<cite><a href="bib-webarch">WEBARCH</a></cite>], cannot be changed by modifying authorization policies.</p>
+                </div>
+              </div>
+
               <p>The <code>acl:Write</code> access mode can allow <cite><a href="#sparql11-update">SPARQL 1.1 Update</a></cite> operations eg. with HTTP <code>PATCH</code> targeting the resource, if those are supported.</p>
 
               <p>A typical example of the <code>acl:Append</code> access mode usage would be an agent's inbox (a container to receive notifications). Agents can write (append) notifications to the inbox eg. with HTTP <code>POST</code> request targeting the inbox, but cannot read or alter the inbox or the notifications. <code>acl:Append</code> can also allow an HTTP <code>PATCH</code> request including the SPARQL 1.1 Update's <code>INSERT DATA</code> operation (but not <code>DELETE DATA</code>).</p>

@@ -614,6 +614,13 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                   <p>Foreign-namespaced access modes are allowed in ACL resources, but no behaviour is defined by this specification.</p>
                 </div>
               </section>
+
+              <section id="permission-inheritance-extensions" inlist="" rel="schema:hasPart" resource="#permission-inheritance-extensions">
+                <h3 property="schema:name">Permission Inheritance Extensions</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>This specification describes permission inheritance based on determining the most significant <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource. Alternative strategies such as cumulative permissions (union of all the permissions from each ACL resource inherited from the ancestors of a resource) are allowed, but no behaviour is defined by this specification.</p>
+                 </div>
+              </section>
             </div>
           </section>
 

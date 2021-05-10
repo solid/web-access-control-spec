@@ -160,7 +160,7 @@ left:4.5em;
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Web Access Control</h1>
-        <h2>Editor’s Draft, 2021-05-06</h2>
+        <h2>Editor’s Draft, 2021-05-10</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -186,7 +186,7 @@ left:4.5em;
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-05-06T00:00:00Z" datatype="xsd:dateTime" datetime="2021-05-06T00:00:00Z" property="schema:dateModified">2021-05-06</time></dd>
+          <dd><time content="2021-05-10T00:00:00Z" datatype="xsd:dateTime" datetime="2021-05-10T00:00:00Z" property="schema:dateModified">2021-05-10</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -262,6 +262,8 @@ left:4.5em;
                   <ol>
                     <li><a href="#authorization-extensions"><span class="secno">6.1</span> <span class="content">Authorization Extensions</span></a></li>
                     <li><a href="#access-mode-extensions"><span class="secno">6.2</span> <span class="content">Access Mode Extensions</span></a></li>
+                    <li><a href="#permission-inheritance-extensions"><span class="secno">6.3</span> <span class="content">Permission Inheritance Extensions</span></a></li>
+                    <li><a href="#distinct-effective-acl-resource-extensions"><span class="secno">6.4</span> <span class="content">Distinct Effective ACL Resource Extensions</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -595,7 +597,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
           <section id="extensions" inlist="" rel="schema:hasPart" resource="#extensions">
             <h2 property="schema:name">Extensions</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>Extensions incorporate additional features beyond what is defined in this specification.</p>
+              <p>Extensions incorporate additional features beyond what is defined in this specification. The use of extensions must not contradict nor cause the non-conformance of functionality defined in the WAC specification.</p>
 
               <section id="authorization-extensions" inlist="" rel="schema:hasPart" resource="#authorization-extensions">
                 <h3 property="schema:name">Authorization Extensions</h3>
@@ -609,7 +611,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
               <section id="access-mode-extensions" inlist="" rel="schema:hasPart" resource="#access-mode-extensions">
                 <h3 property="schema:name">Access Mode Extensions</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>An extension to access modes is any mode that is defined in the ACL ontology, ie. the access class is a <code>rdfs:subClassOf</code> <code>acl:Access</code>, but not described in this specification (<cite><a href="#modes-of-access">Modes of Access</a></cite>). The ACL Processor that encounters unrecognised access modes MUST NOT stop processing or signal an error and MUST continue processing the access modes as if those properties were not present.</p>
+                  <p>An extension to access modes is any mode that is defined in the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite>, ie. as a subclass of <code>acl:Access</code>, but not described in this specification (<cite><a href="#modes-of-access">Modes of Access</a></cite>). The ACL Processor that encounters unrecognised access modes MUST NOT stop processing or signal an error and MUST continue processing the access modes as if those properties were not present.</p>
 
                   <p>Foreign-namespaced access modes are allowed in ACL resources, but no behaviour is defined by this specification.</p>
                 </div>
@@ -618,6 +620,8 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
               <section id="permission-inheritance-extensions" inlist="" rel="schema:hasPart" resource="#permission-inheritance-extensions">
                 <h3 property="schema:name">Permission Inheritance Extensions</h3>
                 <div datatype="rdf:HTML" property="schema:description">
+                  <p><em>This section is non-normative.</em></p>
+
                   <p>This specification describes permission inheritance based on determining the most significant <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource. Alternative strategies such as cumulative permissions (union of all the permissions from each ACL resource inherited from the ancestors of a resource) are allowed, but no behaviour is defined by this specification.</p>
                  </div>
               </section>
@@ -625,7 +629,9 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
               <section id="distinct-effective-acl-resource-extensions" inlist="" rel="schema:hasPart" resource="#distinct-effective-acl-resource-extensions">
                 <h3 property="schema:name">Distinct Effective ACL Resource Extensions</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>This specification describes the use of <code>acl</code> link relation for <cite><a href="#acl-resource-discovery" rel="rdfs:seeAlso">ACL Resource Discovery</a></cite> and the algorithm to determine the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource. Separate link relation type targeting the <em>effective ACL resource</em>, and thereby servers allowing clients to skip the discovery algorithm is allowed, but no behaviour is defined by this specification.</p>
+                  <p><em>This section is non-normative.</em></p>
+
+                  <p>This specification describes the use of <code>acl</code> link relation for <cite><a href="#acl-resource-discovery" rel="rdfs:seeAlso">ACL Resource Discovery</a></cite> and the algorithm to determine the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource. To enable clients to perform discovery faster, separate link relation type targeting the <em>effective ACL resource</em> is allowed,, but no behaviour is defined by this specification.</p>
                  </div>
               </section>
             </div>

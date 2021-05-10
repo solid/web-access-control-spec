@@ -508,6 +508,16 @@ left:4.5em;
                 <li>Avoid having an ACL resource for each resource. For example, changing permissions for a container would mean change individual children resource's ACL.</li>
                 <li>Define access control for resources that do not exist yet.</li>
               </ul>
+
+              <p>An authorization policy has the following properties:</p>
+
+              <ul>
+                <li>A policy MUST have one or more <code>acl:mode</code> property values (<cite><a href="#modes-of-access">Modes of Access</a></cite>).</li>
+                <li>A policy MUST have one <code>acl:accessTo</code> or <code>acl:default</code> property value.</li>
+                <li>A policy MUST have one <code>acl:agent</code> or <code>acl:agentGroup</code> or <code>acl:agentClass</code> property value.</li>
+              </ul>
+
+              <p>Implementations may infer the following triple: one whose subject is the authorization policy, whose predicate is <code>rdf:type</code>, and whose object is <code>acl:Authorization</code>, but there is no requirement to materialize this triple in the resource representation.</p>
             </div>
           </section>
 

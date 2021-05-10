@@ -499,7 +499,7 @@ left:4.5em;
           <section id="authorization-policies" inlist="" rel="schema:hasPart" resource="#authorization-policies">
             <h2 property="schema:name">Authorization Policies</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>An <a href="#authorization">authorization</a> policy (<code>acl:Authorization</code> is the most fundamental unit of access control describing rights granted to agents the ability to perform operations on resources. An authorization policy has no applicability for a given access request which do not match a description. The server evaluates the authorization policies associated with referenced resources in order to determine whether the necessary access rights are granted or denied for a given access.</p>
+              <p>An <a href="#authorization">authorization</a> policy (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing rights granted to agents the ability to perform operations on resources. An authorization policy has no applicability for a given access request which do not match a description. The server evaluates the authorization policies associated with referenced resources in order to determine whether the necessary access rights are granted or denied for a given access.</p>
 
               <p>As per determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource, an authorization policy can be evaluated explictly (via <code>acl:accessTo</code>) or inherited (via <code>acl:default</code>) against requested resources. That is, when an ACL resource associated with a resource has a representation, available authorization policies can be explictly checked against the requested resource. Alternatively, a container resource's ACL resource may apply on every access to a member resource, in specifying authorization policies for the requested resource.</p>
 
@@ -517,10 +517,10 @@ left:4.5em;
               <ul>
                 <li>A policy MUST have one or more <code>acl:mode</code> property values (<cite><a href="#modes-of-access">Modes of Access</a></cite>).</li>
                 <li>A policy MUST have one <code>acl:accessTo</code> or <code>acl:default</code> property value.</li>
-                <li>A policy MUST have one <code>acl:agent</code> or <code>acl:agentGroup</code> or <code>acl:agentClass</code> property value.</li>
+                <li>A policy MUST have one <code>acl:agent</code>, <code>acl:agentGroup</code> or <code>acl:agentClass</code> property value.</li>
               </ul>
 
-              <p>Implementations may infer the following triple: one whose subject is the authorization policy, whose predicate is <code>rdf:type</code>, and whose object is <code>acl:Authorization</code>, but there is no requirement to materialize this triple in the resource representation.</p>
+              <p>Implementations may infer the following triple: one whose subject is the authorization policy, whose predicate is <code>rdf:type</code>, and whose object is <code>acl:Authorization</code>, but there is no requirement to materialize this triple in the ACL resource representation.</p>
             </div>
           </section>
 

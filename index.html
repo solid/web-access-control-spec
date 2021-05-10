@@ -497,6 +497,17 @@ left:4.5em;
             <h2 property="schema:name">Authorization Policies</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>An <a href="#authorization">authorization</a> policy (<code>acl:Authorization</code> is the most fundamental unit of access control describing rights granted to agents the ability to perform operations on resources. An authorization policy has no applicability for a given access request which do not match a description. The server evaluates the authorization policies associated with referenced resources in order to determine whether the necessary access rights are granted or denied for a given access.</p>
+
+              <p>As per determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource, an authorization policy can be evaluated explictly (via <code>acl:accessTo</code>) or inherited (via <code>acl:default</code>) against requested resources. That is, when an ACL resource associated with a resource has a representation, available authorization policies can be explictly checked against the requested resource. Alternatively, a container resource's ACL resource may apply on every access to a member resource, in specifying authorization policies for the requested resource.</p>
+
+              <p class="issue"><span>Issue</span>: <code>acl:accessToClass</code>.</p>
+
+              <p>The need for inherited authorization policies from the most significant container's ACL resource is to:</p>
+
+              <ul>
+                <li>Avoid having an ACL resource for each resource. For example, changing permissions for a container would mean change individual children resource's ACL.</li>
+                <li>Define access control for resources that do not exist yet.</li>
+              </ul>
             </div>
           </section>
 

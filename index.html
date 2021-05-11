@@ -160,7 +160,7 @@ left:4.5em;
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Web Access Control</h1>
-        <h2>Editor’s Draft, 2021-05-10</h2>
+        <h2>Editor’s Draft, 2021-05-11</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -186,7 +186,7 @@ left:4.5em;
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-05-10T00:00:00Z" datatype="xsd:dateTime" datetime="2021-05-10T00:00:00Z" property="schema:dateModified">2021-05-10</time></dd>
+          <dd><time content="2021-05-11T00:00:00Z" datatype="xsd:dateTime" datetime="2021-05-11T00:00:00Z" property="schema:dateModified">2021-05-11</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -501,7 +501,7 @@ left:4.5em;
             <div datatype="rdf:HTML" property="schema:description">
               <p>An <a href="#authorization">authorization</a> policy (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing rights granted to agents the ability to perform operations on resources. An authorization policy has no applicability for a given access request which do not match a description. The server evaluates the authorization policies associated with referenced resources in order to determine whether the necessary access rights are granted or denied for a given access.</p>
 
-              <p>As per determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource, an authorization policy can be evaluated explictly (via <code>acl:accessTo</code>) or inherited (via <code>acl:default</code>) against requested resources. That is, when an ACL resource associated with a resource has a representation, available authorization policies can be explictly checked against the requested resource. Alternatively, a container resource's ACL resource may apply on every access to a member resource, in specifying authorization policies for the requested resource.</p>
+              <p>As per determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource, an authorization policy can be evaluated explicitly (via <code>acl:accessTo</code>) or inherited (via <code>acl:default</code>) against a particular request. That is, when an ACL resource associated with a resource has a representation, available authorization policies can be explicitly checked against the requested resource. Alternatively, a container resource's ACL resource may apply on every access to a member resource, in specifying authorization policies for the requested resource.</p>
 
               <p class="issue"><span>Issue</span>: <code>acl:accessToClass</code>.</p>
 

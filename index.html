@@ -521,6 +521,8 @@ left:4.5em;
               </ul>
 
               <p>Implementations may infer the following triple: one whose subject is the authorization policy, whose predicate is <code>rdf:type</code>, and whose object is <code>acl:Authorization</code>, but there is no requirement to materialize this triple in the ACL resource representation.</p>
+
+              <p>When a request to create or update an authorization policy does not meet the conformance requirements, the server MUST reject the request.</p>
             </div>
           </section>
 

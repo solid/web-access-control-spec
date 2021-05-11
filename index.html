@@ -484,7 +484,7 @@ left:4.5em;
               <section id="acl-resource-representation" inlist="" rel="schema:hasPart" resource="#acl-resource-representation">
                 <h3 property="schema:name">ACL Resource Representation</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>An ACL resource is an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>]. An ACL resource comprises an unordered set of authorization policies, any of which could permit an attempted access.</p>
+                  <p>An ACL resource is an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that can hold any information, typically comprises an unordered set of authorization policies, any of which could permit an attempted access.</p>
 
                   <p>Servers MUST accept an HTTP <code>GET</code> request targeting an ACL resource when the value of the <code>Accept</code> header requests a representation in <code>text/turtle</code> [<cite><a class="bibref" href="#bib-turtle">TURTLE</a></cite>].</p>
 
@@ -499,34 +499,24 @@ left:4.5em;
           <section id="authorization-policies" inlist="" rel="schema:hasPart" resource="#authorization-policies">
             <h2 property="schema:name">Authorization Policies</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>An <a href="#authorization">authorization</a> policy (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing rights granted to agents the ability to perform operations on resources. An authorization policy has no applicability for a given access request which do not match a description. The server evaluates the authorization policies associated with referenced resources in order to determine whether the necessary access rights are granted or denied for a given access.</p>
+              <p>An <a href="#authorization">authorization</a> policy (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access rights granted to agents the ability to perform operations on resources. An authorization policy may express any information but has no applicability for a given access request which do not match a description ie. a set of required RDF statements. The server evaluates the authorization policies associated with referenced resources in order to determine whether the necessary access rights are granted or denied for a particular request.</p>
 
-              <p>As per determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource, an authorization policy can be evaluated explicitly (via <code>acl:accessTo</code>) or inherited (via <code>acl:default</code>) against a particular request. That is, when an ACL resource associated with a resource has a representation, available authorization policies can be explicitly checked against the requested resource. Alternatively, a container resource's ACL resource may apply on every access to a member resource, in specifying authorization policies for the requested resource.</p>
+              <p>As per determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource, an authorization policy can be evaluated explicitly (via <code>acl:accessTo</code>) or inherited (via <code>acl:default</code>) against a particular request. Inheriting authorization policies from the most significant container's ACL resource is useful to avoid individually managing an ACL resource for each resource, as well as to define access control for resources that do not exist yet.</p>
 
               <p class="issue"><span>Issue</span>: <code>acl:accessToClass</code>.</p>
-
-              <p>The need for inherited authorization policies from the most significant container's ACL resource is to:</p>
-
-              <ul>
-                <li>Avoid having an ACL resource for each resource. For example, changing permissions for a container would mean change individual children resource's ACL.</li>
-                <li>Define access control for resources that do not exist yet.</li>
-              </ul>
 
               <section id="authorization-policy-conformance" inlist="" rel="schema:hasPart" resource="#authorization-policy-conformance">
                 <h3 property="schema:name">Authorization Policy Conformance</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-
-                  <p>An authorization policy has the following properties:</p>
+                  <p>An applicable authorization policy has the following properties:</p>
 
                   <ul>
-                    <li>A policy MUST have one or more <code>acl:mode</code> property values (<cite><a href="#modes-of-access">Modes of Access</a></cite>).</li>
-                    <li>A policy MUST have one <code>acl:accessTo</code> or <code>acl:default</code> property value.</li>
-                    <li>A policy MUST have one <code>acl:agent</code>, <code>acl:agentGroup</code> or <code>acl:agentClass</code> property value.</li>
+                    <li>One or more <code>acl:mode</code> property values (<cite><a href="#modes-of-access">Modes of Access</a></cite>).</li>
+                    <li>One <code>acl:accessTo</code> or <code>acl:default</code> property value (<cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite>).</li>
+                    <li>One <code>acl:agent</code>, <code>acl:agentGroup</code> or <code>acl:agentClass</code> property value.</li>
                   </ul>
 
                   <p>Implementations may infer the following triple: one whose subject is the authorization policy, whose predicate is <code>rdf:type</code>, and whose object is <code>acl:Authorization</code>, but there is no requirement to materialize this triple in the ACL resource representation.</p>
-
-                  <p>When a request to create or update an authorization policy does not meet the conformance requirements, the server MUST reject the request.</p>
                 </div>
               </section>
             </div>
@@ -643,7 +633,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
 
-                  <p>As ACL resources are RDF sources, authorization policy descriptions may be further limited by constraints eg. temporal or spatial constraints, and duties eg. payments, may be imposed on permissions, but no behaviour is defined by this specification. For example, the <cite><a href="https://www.w3.org/TR/odrl-vocab/" rel="cito:citesAsPotentialSolution">ODRL Information Model</a></cite> can be used to set obligations required to be met by agents prior to accessing a resource.</p>
+                  <p>As ACL resources are RDF sources, authorization policy descriptions may be extended or limited by constraints eg. temporal or spatial constraints, and duties eg. payments, may be imposed on permissions, but no behaviour is defined by this specification. For example, the <cite><a href="https://www.w3.org/TR/odrl-vocab/" rel="cito:citesAsPotentialSolution">ODRL Information Model</a></cite> can be used to set obligations required to be met by agents prior to accessing a resource.</p>
                 </div>
               </section>
 

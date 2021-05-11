@@ -250,8 +250,9 @@ left:4.5em;
                 <li class="tocline">
                   <a class="tocxref" href="#authorization-policies"><span class="secno">4</span> <span class="content">Authorization Policies</span></a>
                   <ol>
-                    <li><a class="tocxref" href="#modes-of-access"><span class="secno">4.1</span> <span class="content">Modes of Access</span></a></li>
-                    <li><a class="tocxref" href="#authorization-policy-conformance"><span class="secno">4.2</span> <span class="content">Authorization Policy Conformance</span></a></li>
+                    <li><a class="tocxref" href="#authorization-policy-conformance"><span class="secno">4.1</span> <span class="content">Authorization Policy Conformance</span></a></li>
+                    <li><a class="tocxref" href="#authorization-policy-context"><span class="secno">4.2</span> <span class="content">Authorization Policy Context</span></a></li>
+                    <li><a class="tocxref" href="#modes-of-access"><span class="secno">4.3</span> <span class="content">Modes of Access</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -512,12 +513,19 @@ left:4.5em;
                   <p>An applicable authorization policy has the following properties:</p>
 
                   <ul>
+                    <li>One <code>acl:accessTo</code> or <code>acl:default</code> property value (<cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite>).</li>
                     <li>One or more <code>acl:mode</code> property values (<cite><a href="#modes-of-access">Modes of Access</a></cite>).</li>
-                    <li>One <code>acl:accessTo</code> or <code>acl:default</code> property value (<cite><a href="#authorization-policy-context" rel="rdfs:seeAlso">Authorization Policy Context</a></cite>).</li>
                     <li>One <code>acl:agent</code>, <code>acl:agentGroup</code> or <code>acl:agentClass</code> property value.</li>
                   </ul>
 
                   <p>Implementations may infer the following triple: one whose subject is the authorization policy, whose predicate is <code>rdf:type</code>, and whose object is <code>acl:Authorization</code>, but there is no requirement to materialize this triple in the ACL resource representation.</p>
+                </div>
+              </section>
+
+              <section id="authorization-policy-context" inlist="" rel="schema:hasPart" resource="#authorization-policy-context">
+                <h3 property="schema:name">Authorization Policy Context</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+              <p>As per determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource, an authorization policy can be evaluated explicitly (via <code>acl:accessTo</code>) or inherited (via <code>acl:default</code>) against a particular request. Inheriting authorization policies from the most significant container's ACL resource is useful to avoid individually managing an ACL resource for each resource, as well as to define access control for resources that do not exist yet.</p>
                 </div>
               </section>
 
@@ -556,13 +564,6 @@ left:4.5em;
                   <p>A typical example of the <code>acl:Append</code> access mode usage would be an agent's inbox (a container to receive notifications). Agents can write (append) notifications to the inbox eg. with HTTP <code>POST</code> request targeting the inbox, but cannot read or alter the inbox or the notifications. <code>acl:Append</code> can also allow an HTTP <code>PATCH</code> request including the SPARQL 1.1 Update's <code>INSERT DATA</code> operation (but not <code>DELETE DATA</code>).</p>
 
                   <p>Having <code>acl:Control</code> doesn't imply that the agent has <code>acl:Read</code> or <code>acl:Write</code> access to the resource itself, just to its corresponding ACL resource. For example, a resource owner may disable their own write access (to prevent accidental over-writing of a resource by an application), but be able to change their access levels at a later point (since they retain <code>acl:Control</code> access).</p>
-                </div>
-              </section>
-
-              <section id="authorization-policy-context" inlist="" rel="schema:hasPart" resource="#authorization-policy-context">
-                <h3 property="schema:name">Authorization Policy Context</h3>
-                <div datatype="rdf:HTML" property="schema:description">
-              <p>As per determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource, an authorization policy can be evaluated explicitly (via <code>acl:accessTo</code>) or inherited (via <code>acl:default</code>) against a particular request. Inheriting authorization policies from the most significant container's ACL resource is useful to avoid individually managing an ACL resource for each resource, as well as to define access control for resources that do not exist yet.</p>
                 </div>
               </section>
             </div>

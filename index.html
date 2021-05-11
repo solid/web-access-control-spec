@@ -519,44 +519,44 @@ left:4.5em;
                   <p>Implementations may infer the following triple: one whose subject is the authorization policy, whose predicate is <code>rdf:type</code>, and whose object is <code>acl:Authorization</code>, but there is no requirement to materialize this triple in the ACL resource representation.</p>
                 </div>
               </section>
-            </div>
-          </section>
 
-          <section id="modes-of-access" inlist="" rel="schema:hasPart" resource="#modes-of-access">
-            <h2 property="schema:name">Modes of Access</h2>
-            <div datatype="rdf:HTML" property="schema:description">
-              <p><em>This section is non-normative.</em></p>
-
-              <p>The <a href="#access-mode">access modes</a> described in this section are defined in the <a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a>, such as the class of operations to read, write, append and control resources. The requirements for new access modes is explained in the <cite><a href="#access-mode-extensions">Access Mode Extensions</a></cite> section.</p>
-
-              <p>The <code>acl:mode</code> predicate denotes a class of operations that the agents can perform on a resource.</p>
-
-              <dl id="acl-access-modes">
-                <dt id="acl-mode-read"><code>acl:Read</code></dt>
-                <dd>Allows access to a class of read operations on a resource eg. to view the contents of a resource on HTTP <code>GET</code> requests.</dd>
-
-                <dt id="acl-mode-write"><code>acl:Write</code></dt>
-                <dd>Allows access to a class of write operations on a resource eg. to create, delete or modify resources on HTTP <code>PUT</code>, <code>POST</code>, <code>PATCH</code>, <code>DELETE</code> requests.</dd>
-
-                <dt id="acl-mode-append"><code>acl:Append</code></dt>
-                <dd>Allows access to a class of append operations on a resource eg. to add information but not remove information on HTTP <code>POST</code>, <code>PATCH</code> requests.</dd>
-
-                <dt id="acl-mode-control"><code>acl:Control</code></dt>
-                <dd>Allows access to a class of read and write operations on an ACL resource associated with a resource.</dd>
-              </dl>
-
-              <div class="note" id="uri-ownership">
-                <h3>Note: URI ownership</h3>
+              <section id="modes-of-access" inlist="" rel="schema:hasPart" resource="#modes-of-access">
+                <h3 property="schema:name">Modes of Access</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p><q>URI ownership</q>, as per <cite><a href="https://www.w3.org/TR/webarch/#uri-ownership">Architecture of the World Wide Web</a></cite> [<cite><a href="bib-webarch">WEBARCH</a></cite>], cannot be changed by modifying authorization policies.</p>
+                  <p><em>This section is non-normative.</em></p>
+
+                  <p>The <a href="#access-mode">access modes</a> described in this section are defined in the <a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a>, such as the class of operations to read, write, append and control resources. The requirements for new access modes is explained in the <cite><a href="#access-mode-extensions">Access Mode Extensions</a></cite> section.</p>
+
+                  <p>The <code>acl:mode</code> predicate denotes a class of operations that the agents can perform on a resource.</p>
+
+                  <dl id="acl-access-modes">
+                    <dt id="acl-mode-read"><code>acl:Read</code></dt>
+                    <dd>Allows access to a class of read operations on a resource eg. to view the contents of a resource on HTTP <code>GET</code> requests.</dd>
+
+                    <dt id="acl-mode-write"><code>acl:Write</code></dt>
+                    <dd>Allows access to a class of write operations on a resource eg. to create, delete or modify resources on HTTP <code>PUT</code>, <code>POST</code>, <code>PATCH</code>, <code>DELETE</code> requests.</dd>
+
+                    <dt id="acl-mode-append"><code>acl:Append</code></dt>
+                    <dd>Allows access to a class of append operations on a resource eg. to add information but not remove information on HTTP <code>POST</code>, <code>PATCH</code> requests.</dd>
+
+                    <dt id="acl-mode-control"><code>acl:Control</code></dt>
+                    <dd>Allows access to a class of read and write operations on an ACL resource associated with a resource.</dd>
+                  </dl>
+
+                  <div class="note" id="uri-ownership">
+                    <h3>Note: URI ownership</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p><q>URI ownership</q>, as per <cite><a href="https://www.w3.org/TR/webarch/#uri-ownership">Architecture of the World Wide Web</a></cite> [<cite><a href="bib-webarch">WEBARCH</a></cite>], cannot be changed by modifying authorization policies.</p>
+                    </div>
+                  </div>
+
+                  <p>The <code>acl:Write</code> access mode can allow <cite><a href="#sparql11-update">SPARQL 1.1 Update</a></cite> operations eg. with HTTP <code>PATCH</code> targeting the resource, if those are supported.</p>
+
+                  <p>A typical example of the <code>acl:Append</code> access mode usage would be an agent's inbox (a container to receive notifications). Agents can write (append) notifications to the inbox eg. with HTTP <code>POST</code> request targeting the inbox, but cannot read or alter the inbox or the notifications. <code>acl:Append</code> can also allow an HTTP <code>PATCH</code> request including the SPARQL 1.1 Update's <code>INSERT DATA</code> operation (but not <code>DELETE DATA</code>).</p>
+
+                  <p>Having <code>acl:Control</code> doesn't imply that the agent has <code>acl:Read</code> or <code>acl:Write</code> access to the resource itself, just to its corresponding ACL resource. For example, a resource owner may disable their own write access (to prevent accidental over-writing of a resource by an application), but be able to change their access levels at a later point (since they retain <code>acl:Control</code> access).</p>
                 </div>
-              </div>
-
-              <p>The <code>acl:Write</code> access mode can allow <cite><a href="#sparql11-update">SPARQL 1.1 Update</a></cite> operations eg. with HTTP <code>PATCH</code> targeting the resource, if those are supported.</p>
-
-              <p>A typical example of the <code>acl:Append</code> access mode usage would be an agent's inbox (a container to receive notifications). Agents can write (append) notifications to the inbox eg. with HTTP <code>POST</code> request targeting the inbox, but cannot read or alter the inbox or the notifications. <code>acl:Append</code> can also allow an HTTP <code>PATCH</code> request including the SPARQL 1.1 Update's <code>INSERT DATA</code> operation (but not <code>DELETE DATA</code>).</p>
-
-              <p>Having <code>acl:Control</code> doesn't imply that the agent has <code>acl:Read</code> or <code>acl:Write</code> access to the resource itself, just to its corresponding ACL resource. For example, a resource owner may disable their own write access (to prevent accidental over-writing of a resource by an application), but be able to change their access levels at a later point (since they retain <code>acl:Control</code> access).</p>
+              </section>
             </div>
           </section>
 

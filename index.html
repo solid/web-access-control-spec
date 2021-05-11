@@ -512,17 +512,23 @@ left:4.5em;
                 <li>Define access control for resources that do not exist yet.</li>
               </ul>
 
-              <p>An authorization policy has the following properties:</p>
+              <section id="authorization-policy-conformance" inlist="" rel="schema:hasPart" resource="#authorization-policy-conformance">
+                <h3 property="schema:name">Authorization Policy Conformance</h3>
+                <div datatype="rdf:HTML" property="schema:description">
 
-              <ul>
-                <li>A policy MUST have one or more <code>acl:mode</code> property values (<cite><a href="#modes-of-access">Modes of Access</a></cite>).</li>
-                <li>A policy MUST have one <code>acl:accessTo</code> or <code>acl:default</code> property value.</li>
-                <li>A policy MUST have one <code>acl:agent</code>, <code>acl:agentGroup</code> or <code>acl:agentClass</code> property value.</li>
-              </ul>
+                  <p>An authorization policy has the following properties:</p>
 
-              <p>Implementations may infer the following triple: one whose subject is the authorization policy, whose predicate is <code>rdf:type</code>, and whose object is <code>acl:Authorization</code>, but there is no requirement to materialize this triple in the ACL resource representation.</p>
+                  <ul>
+                    <li>A policy MUST have one or more <code>acl:mode</code> property values (<cite><a href="#modes-of-access">Modes of Access</a></cite>).</li>
+                    <li>A policy MUST have one <code>acl:accessTo</code> or <code>acl:default</code> property value.</li>
+                    <li>A policy MUST have one <code>acl:agent</code>, <code>acl:agentGroup</code> or <code>acl:agentClass</code> property value.</li>
+                  </ul>
 
-              <p>When a request to create or update an authorization policy does not meet the conformance requirements, the server MUST reject the request.</p>
+                  <p>Implementations may infer the following triple: one whose subject is the authorization policy, whose predicate is <code>rdf:type</code>, and whose object is <code>acl:Authorization</code>, but there is no requirement to materialize this triple in the ACL resource representation.</p>
+
+                  <p>When a request to create or update an authorization policy does not meet the conformance requirements, the server MUST reject the request.</p>
+                </div>
+              </section>
             </div>
           </section>
 

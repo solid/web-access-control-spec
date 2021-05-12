@@ -508,7 +508,7 @@ left:4.5em;
           <section id="authorization-policies" inlist="" rel="schema:hasPart" resource="#authorization-policies">
             <h2 property="schema:name">Authorization Policies</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>An <a href="#authorization">authorization</a> policy (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access rights granted to agents the ability to perform operations on resources. An authorization policy may express any information but has no applicability for a given access request which do not match a description ie. a set of required RDF statements. The server evaluates the authorization policies associated with referenced resources in order to determine whether the necessary access rights are granted or denied for a particular request.</p>
+              <p>An <a href="#authorization">authorization</a> policy (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access rights granted to agents the ability to perform operations on resources. An authorization policy may express any information but has no applicability for a given access request which do not match a description ie. a set of required RDF statements. The server <a href="#authorization-evaluation">evaluates the authorization policies</a> associated with referenced resources in order to determine whether the necessary access rights are granted or denied for a particular request.</p>
 
               <p class="issue"><span>Issue</span>: <code>acl:accessToClass</code>.</p>
 
@@ -520,7 +520,7 @@ left:4.5em;
                   <ul>
                     <li>At least one <code>acl:accessTo</code> or <code>acl:default</code> property value (<cite><a href="#authorization-policy-context" rel="rdfs:seeAlso">Authorization Policy Context</a></cite>).</li>
                     <li>At least one   <code>acl:mode</code> property value (<cite><a href="#modes-of-access">Modes of Access</a></cite>).</li>
-                    <li>At least one <code>acl:agent</code>, <code>acl:agentGroup</code> or <code>acl:agentClass</code> property value.</li>
+                    <li>At least one <code>acl:agent</code>, <code>acl:agentGroup</code> or <code>acl:agentClass</code> property value (<cite><a href="#authorization-policy-principals">Authorization Policy Principals</a></cite>).</li>
                   </ul>
 
                   <p>Implementations may infer the following triple: one whose subject is the authorization policy, whose predicate is <code>rdf:type</code>, and whose object is <code>acl:Authorization</code>, but there is no requirement to materialize this triple in the ACL resource representation.</p>
@@ -589,14 +589,14 @@ left:4.5em;
                     </div>
                   </div>
 
-                  <p>To give access to a <a href="#agent-group">group of agents</a>, the <code>acl:agentGroup</code> predicate. The object of an <code>acl:agentGroup</code> statement is an instance of <code>vcard:Group</code>, but there is no requirement to materialize this triple in the primary resource of the group. The identities of group members are listed in it, using the <code>vcard:hasMember</code> predicate. If an agent's identity is listed as member of that group, it is given access.</p>
+                  <p>The <code>acl:agentGroup</code> predicate is used to give access to a <a href="#agent-group">group of agents</a>. The object of an <code>acl:agentGroup</code> statement is an instance of <code>vcard:Group</code>, but there is no requirement to materialize this triple for the group. The identities of group members are listed in it, using the <code>vcard:hasMember</code> predicate. If an agent's identity is listed as member of that group, it is given access.</p>
                 </div>
               </section>
 
               <section id="authorization-evaluation" inlist="" rel="schema:hasPart" resource="#authorization-evaluation">
                 <h3 property="schema:name">Authorization Evaluation</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>Access evaluation is concerned with finding authorization policies that match the requirements of an access request. When a required authorization policy is found, then the requested operation is granted. Otherwise, the requested operation is denied.</p>
+                  <p>Access evaluation is concerned with finding authorization policies that match the requirements of an access request (<cite><a href="#authorization-policy-conformance" rel="rdfs:seeAlso">Authorization Policy Conformance</a></cite>). When a required authorization policy is found, then the requested operation is granted. Otherwise, the requested operation is denied.</p>
                 </div>
               </section>
             </div>

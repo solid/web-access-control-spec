@@ -587,6 +587,8 @@ left:4.5em;
                       <p>Implemenations that want to grant a class of write or control operations on resources are encouraged to require agents to be authenticated eg. for provenance records or accountability purposes.</p>
                     </div>
                   </div>
+
+                  <p>To give access to a <a href="#agent-group">group of agents</a>, the <code>acl:agentGroup</code> predicate. The object of an <code>acl:agentGroup</code> statement is an instance of <code>vcard:Group</code>, but there is no requirement to materialize this triple in the primary resource of the group. The identities of group members are listed in it, using the <code>vcard:hasMember</code> predicate. If an agent's identity is listed as member of that group, it is given access.</p>
                 </div>
               </section>
             </div>

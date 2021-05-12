@@ -571,6 +571,22 @@ left:4.5em;
                   <p>The principal subjects of an authorization policy can be set for specific agents, a class of agents, or a group.</p>
 
                   <p>Authorization policies specify identifiable <a href="#agent">agents</a> that access is being given to with the <code>acl:agent</code> predicate.</p>
+
+                  <p>The <code>acl:agentClass</code> predicate denotes a <a href="#agent-class">class of agents</a> being given the access right.</p>
+
+                  <dl>
+                    <dt id="acl-agent-class-foaf-agent"><code>foaf:Agent</code></dt>
+                    <dd>Allows access to any agent.</dd>
+                    <dt id="acl-agent-class-authenticated-agent"><code>acl:AuthenticatedAgent</code></dt>
+                    <dd>Allows access to any authenticated agent.</dd>
+                  </dl>
+
+                  <div class="note" id="social-expectations">
+                    <h3>Note: Social Expectations</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>Implemenations that want to grant a class of write or control operations on resources are encouraged to require agents to be authenticated eg. for provenance records or accountability purposes.</p>
+                    </div>
+                  </div>
                 </div>
               </section>
             </div>

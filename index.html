@@ -253,7 +253,8 @@ left:4.5em;
                     <li><a class="tocxref" href="#authorization-policy-conformance"><span class="secno">4.1</span> <span class="content">Authorization Policy Conformance</span></a></li>
                     <li><a class="tocxref" href="#authorization-policy-context"><span class="secno">4.2</span> <span class="content">Authorization Policy Context</span></a></li>
                     <li><a class="tocxref" href="#modes-of-access"><span class="secno">4.3</span> <span class="content">Modes of Access</span></a></li>
-                    <li><a class="tocxref" href="#authorizaiton-policy-principals"><span class="secno">4.4</span> <span class="content">Authorization Policy Principals</span></a></li>
+                    <li><a class="tocxref" href="#authorization-policy-principals"><span class="secno">4.4</span> <span class="content">Authorization Policy Principals</span></a></li>
+                    <li><a class="tocxref" href="#authorization-evaluation"><span class="secno">4.5</span> <span class="content">Authorization Evaluation</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -589,6 +590,13 @@ left:4.5em;
                   </div>
 
                   <p>To give access to a <a href="#agent-group">group of agents</a>, the <code>acl:agentGroup</code> predicate. The object of an <code>acl:agentGroup</code> statement is an instance of <code>vcard:Group</code>, but there is no requirement to materialize this triple in the primary resource of the group. The identities of group members are listed in it, using the <code>vcard:hasMember</code> predicate. If an agent's identity is listed as member of that group, it is given access.</p>
+                </div>
+              </section>
+
+              <section id="authorization-evaluation" inlist="" rel="schema:hasPart" resource="#authorization-evaluation">
+                <h3 property="schema:name">Authorization Evaluation</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>Access evaluation is concerned with finding authorization policies that match the requirements of an access request. When a required authorization policy is found, then the requested operation is granted. Otherwise, the requested operation is denied.</p>
                 </div>
               </section>
             </div>

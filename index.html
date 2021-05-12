@@ -597,6 +597,8 @@ left:4.5em;
                 <h3 property="schema:name">Authorization Evaluation</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>Access evaluation is concerned with finding authorization policies that match the requirements of an access request (<cite><a href="#authorization-policy-conformance" rel="rdfs:seeAlso">Authorization Policy Conformance</a></cite>). When a required authorization policy is found, then the requested operation is granted. Otherwise, the requested operation is denied.</p>
+
+                  <p>The <code>acl:accessTo</code> property value is used to check if access is allowed for a specific resource. When an authorization policy includes the <code>acl:default</code> property value (a container resource), the access rights can be be applied to the original requested resource.</p>
                 </div>
               </section>
             </div>

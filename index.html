@@ -589,14 +589,14 @@ left:4.5em;
                     </div>
                   </div>
 
-                  <p>The <code>acl:agentGroup</code> predicate is used to give access to a <a href="#agent-group">group of agents</a>. The object of an <code>acl:agentGroup</code> statement is an instance of <code>vcard:Group</code>, but there is no requirement to materialize this triple for the group. The identities of group members are listed in it, using the <code>vcard:hasMember</code> predicate. If an agent's identity is listed as member of that group, it is given access.</p>
+                  <p>The <code>acl:agentGroup</code> predicate is used to give access to a <a href="#agent-group">group of agents</a>. The object of an <code>acl:agentGroup</code> statement is an instance of <code>vcard:Group</code>, where the members of the group are specified with the <code>vcard:hasMember</code> predicate.</p>
                 </div>
               </section>
 
               <section id="authorization-evaluation" inlist="" rel="schema:hasPart" resource="#authorization-evaluation">
                 <h3 property="schema:name">Authorization Evaluation</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>Access evaluation is concerned with finding authorization policies that match the requirements of an access request (<cite><a href="#authorization-policy-conformance" rel="rdfs:seeAlso">Authorization Policy Conformance</a></cite>). When a required authorization policy is found, then the requested operation is granted. Otherwise, the requested operation is denied.</p>
+                  <p>Evaluation of authorization policies is concerned with matching the required parameters of an access request (<cite><a href="#authorization-policy-conformance" rel="rdfs:seeAlso">Authorization Policy Conformance</a></cite>). When a required authorization policy is found, then the requested operation is granted. Otherwise, the requested operation is denied.</p>
 
                   <p>The <code>acl:accessTo</code> property value is used to check if access is allowed for a specific resource. When an authorization policy includes the <code>acl:default</code> property value (a container resource), the access rights can be be applied to the original requested resource.</p>
                 </div>

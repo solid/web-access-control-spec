@@ -602,6 +602,8 @@ left:4.5em;
                   <p>Evaluation of authorization policies is concerned with matching the required parameters of an access request (<cite><a href="#authorization-policy-conformance" rel="rdfs:seeAlso">Authorization Policy Conformance</a></cite>). When a required authorization policy is found, then the requested operation is granted. Otherwise, the requested operation is denied.</p>
 
                   <p>The <code>acl:accessTo</code> property value is used to check if access is allowed for a specific resource. When an authorization policy includes the <code>acl:default</code> property value (the container resource in context), the access rights can be be applied to the original requested resource.</p>
+
+                  <p>When a request requires an access mode which is a limitation of another access mode, then access is granted if either mode is allowed by the authorization policy. For example, when a request requires <code>acl:Append</code>, then access will be granted to agents having the <code>acl:Write</code> privilege.</p>
                 </div>
               </section>
             </div>

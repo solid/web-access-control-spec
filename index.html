@@ -560,6 +560,15 @@ left:4.5em;
                     <dd>Allows access to a class of read and write operations on an ACL resource associated with a resource.</dd>
                   </dl>
 
+                  <div class="note" id="access-classes">
+                    <h3>Note: Access Classes</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p><code>acl:Access</code> is a superclass where specific access modes (entailing a class of operations) can be subclassed. It is not intended to be used for setting or matching access privileges.</p>
+
+                      <p><code>acl:Append</code> is a subclass of <code>acl:Write</code>.</p>
+                    </div>
+                  </div>
+
                   <div class="note" id="uri-ownership">
                     <h3>Note: URI ownership</h3>
                     <div datatype="rdf:HTML" property="schema:description">

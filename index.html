@@ -251,7 +251,7 @@ left:4.5em;
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#authorization-policies"><span class="secno">4</span> <span class="content">Authorization Policies</span></a>
+                  <a class="tocxref" href="#authorization"><span class="secno">4</span> <span class="content">Authorization</span></a>
                   <ol>
                     <li><a class="tocxref" href="#authorization-policy-conformance"><span class="secno">4.1</span> <span class="content">Authorization Policy Conformance</span></a></li>
                     <li><a class="tocxref" href="#authorization-policy-context"><span class="secno">4.2</span> <span class="content">Authorization Policy Context</span></a></li>
@@ -309,7 +309,7 @@ left:4.5em;
 
               <p><dfn id="wac">Web Access Control</dfn> (<abbr title="Web Access Control">WAC</abbr>) is a decentralized cross-domain access control system providing a way for Linked Data systems to set authorization conditions on HTTP resources using the Access Control List (<abbr title="Access Control List">ACL</abbr>) model.</p>
 
-              <p>The WAC specification describes how to enable applications to discover <a href="#authorization">authorization</a> policies associated with a given <a href="#resource">resource</a>, and to control such policies, as directed by an agent. Server manages the association between a resource and an <a href="#acl-resource">ACL resource</a>, and applies the authorization conditions on requested operations. Authorization policies are described using the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite> to express and determine the <a href="#status-of-a-permission">status of a permission</a> of a requested resource. Any kind of access can be given to a resource as per the ACL ontology. This specification uses the <a href="#access-mode">access modes</a> currently defined by the ACL ontology, such as the class of operations to read, write, append and control resources. An authorization may allow public access to resources or require <a href="#agent">agents</a> to authenticate. Resources and agents can be on different origins.</p>
+              <p>The WAC specification describes how to enable applications to discover <a href="#authorization-policy">authorization policies</a> associated with a given <a href="#resource">resource</a>, and to control such policies, as directed by an agent. Server manages the association between a resource and an <a href="#acl-resource">ACL resource</a>, and applies the authorization conditions on requested operations. Authorization policies are described using the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite> to express and determine the <a href="#status-of-a-permission">status of a permission</a> of a requested resource. Any kind of access can be given to a resource as per the ACL ontology. This specification uses the <a href="#access-mode">access modes</a> currently defined by the ACL ontology, such as the class of operations to read, write, append and control resources. An authorization may allow public access to resources or require <a href="#agent">agents</a> to authenticate. Resources and agents can be on different origins.</p>
 
               <p>The access control system can be enhanced by adding more inference or expressivity to express social constraints. See the <cite><a href="#extensions" rel="rdfs:seeAlso">Extensions</a></cite> section.</p>
 
@@ -335,9 +335,9 @@ left:4.5em;
 
                   <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="root-container">root container</dfn> is a container resource that is at the highest level of the collection hierarchy.</p>
 
-                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="acl-resource">ACL resource</dfn> is an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that includes <a href="#authorization">authorization</a> policies.</p>
+                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="acl-resource">ACL resource</dfn> is an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that includes <a href="#authorization-policy">authorization policies</a>.</p>
 
-                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="authorization">authorization</dfn> is an abstract thing identified by a URI whose properties are defined in an <a href="#acl-resource">ACL resource</a>, eg. <a href="#access-mode">access modes</a> granted to <a href="#agent">agents</a> the ability to perform operations on <a href="#resource">resources</a>.</p>
+                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="authorization-policy">authorization policy</dfn> is an abstract thing identified by a URI whose properties are defined in an <a href="#acl-resource">ACL resource</a>, eg. <a href="#access-mode">access modes</a> granted to <a href="#agent">agents</a> the ability to perform operations on <a href="#resource">resources</a>.</p>
 
                   <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="access-mode">access mode</dfn> is a class of operations that can be performed on one or more resources.</p>
 
@@ -417,7 +417,7 @@ left:4.5em;
             <div datatype="rdf:HTML" property="schema:description">
               <p><em>This section is non-normative.</em></p>
 
-              <p>Clients who want to perform read-write operations on <a href="#acl-resource">ACL resources</a> with respect to authorization policies which are stored on a server can do so within the framework of HTTP. This specification does not describe the use of HTTP for creating, reading, updating and deleting ACL resources from servers. Implementations are strongly encouraged to use existing approaches that provide an extension of the rules of <cite><a href="https://www.w3.org/DesignIssues/LinkedData" rel="cito:citesAsAuthority">Linked Data</a></cite>, eg. [<cite><a class="bibref" href="#bib-solid-protocol">SOLID-PROTOCOL</a></cite>], [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>].</p>
+              <p>Clients who want to perform read-write operations on <a href="#acl-resource">ACL resources</a> with respect to <a href="#authorization-policy">authorization policies</a> which are stored on a server can do so within the framework of HTTP. This specification does not describe the use of HTTP for creating, reading, updating and deleting ACL resources from servers. Implementations are strongly encouraged to use existing approaches that provide an extension of the rules of <cite><a href="https://www.w3.org/DesignIssues/LinkedData" rel="cito:citesAsAuthority">Linked Data</a></cite>, eg. [<cite><a class="bibref" href="#bib-solid-protocol">SOLID-PROTOCOL</a></cite>], [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>].</p>
 
               <p>When using the Solid Protocol:</p>
 
@@ -435,7 +435,7 @@ left:4.5em;
               <section id="acl-resource-discovery" inlist="" rel="schema:hasPart" resource="#acl-resource-discovery">
                 <h3 property="schema:name">ACL Resource Discovery</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>When a server wants to enable applications to discover <a href="#authorization">authorization</a> policies associated with a given <a href="#resource">resource</a>, the server MUST advertise the <a href="#acl-resource">ACL resource</a> that is associated with a resource by responding to an HTTP request including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> (<cite><a href="#acl-link-relation">acl Link Relation</a></cite> type) and the ACL resource as link target.</p>
+                  <p>When a server wants to enable applications to discover <a href="#authorization-policy">authorization policies</a> associated with a given <a href="#resource">resource</a>, the server MUST advertise the <a href="#acl-resource">ACL resource</a> that is associated with a resource by responding to an HTTP request including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> (<cite><a href="#acl-link-relation">acl Link Relation</a></cite> type) and the ACL resource as link target.</p>
 
                   <div class="issue" id="link-relation-type" rel="schema:hasPart" resource="link-relation-type">
                     <h4 property="schema:name"><span>Issue</span>: Link Relation Type</h4>
@@ -471,7 +471,7 @@ left:4.5em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>When an ACL resource associated with a resource has a representation (see <a href="#acl-resource-representation" rel="rdfs:seeAlso">ACL Resource Representation</a>), it is the <em>effective ACL resource</em> of the requested resource.</p>
 
-                  <p>When an ACL resource associated with a resource does not have a representation (see <a href="#acl-resource-representation" rel="rdfs:seeAlso">ACL Resource Representation</a>), no authorization policies can be immediately checked against the requested resource. In this case, a container resource's ACL resource may apply on every access to a member resource, in specifying authorization policies for the requested resource.</p>
+                  <p>When an ACL resource associated with a resource does not have a representation (see <a href="#acl-resource-representation" rel="rdfs:seeAlso">ACL Resource Representation</a>), no <a href="#authorization-policy">authorization policies</a> can be immediately checked against the requested resource. In this case, a container resource's ACL resource may apply on every access to a member resource, in specifying authorization policies for the requested resource.</p>
 
                   <p>WAC has the property of being recursive with respect to the container hierarchy, meaning that a member resource inherits authorization policies from the closest container resource (heading toward the root container).</p>
 
@@ -496,7 +496,7 @@ left:4.5em;
               <section id="acl-resource-representation" inlist="" rel="schema:hasPart" resource="#acl-resource-representation">
                 <h3 property="schema:name">ACL Resource Representation</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>An ACL resource is an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that can hold any information, typically comprises an unordered set of authorization policies, any of which could permit an attempted access.</p>
+                  <p>An ACL resource is an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that can hold any information, typically comprises an unordered set of <a href="#authorization-policy">authorization policies</a>, any of which could permit an attempted access.</p>
 
                   <p>Servers MUST accept an HTTP <code>GET</code> request targeting an ACL resource when the value of the <code>Accept</code> header requests a representation in <code>text/turtle</code> [<cite><a class="bibref" href="#bib-turtle">TURTLE</a></cite>].</p>
 
@@ -508,10 +508,10 @@ left:4.5em;
             </div>
           </section>
 
-          <section id="authorization-policies" inlist="" rel="schema:hasPart" resource="#authorization-policies">
-            <h2 property="schema:name">Authorization Policies</h2>
+          <section id="authorization" inlist="" rel="schema:hasPart" resource="#authorization">
+            <h2 property="schema:name">Authorization</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>An <a href="#authorization">authorization</a> policy (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access rights granted to agents the ability to perform operations on resources. An authorization policy may express any information but has no applicability for a given access request which do not match a description ie. a set of required RDF statements. The server <a href="#authorization-evaluation">evaluates the authorization policies</a> associated with referenced resources in order to determine whether the necessary access rights are granted or denied for a particular request.</p>
+              <p>An <a href="#authorization-policy">authorization policy</a> (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access rights granted to agents the ability to perform operations on resources. An authorization policy may express any information but has no applicability for a given access request which do not match a description ie. a set of required RDF statements. The server <a href="#authorization-evaluation">evaluates the authorization policies</a> associated with referenced resources in order to determine whether the necessary access rights are granted or denied for a particular request.</p>
 
               <p class="issue"><span>Issue</span>: <code>acl:accessToClass</code>.</p>
 
@@ -704,7 +704,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
 
-                  <p>As ACL resources are RDF sources, authorization policy descriptions may be extended or limited by constraints eg. temporal or spatial constraints, and duties eg. payments, may be imposed on permissions, but no behaviour is defined by this specification. For example, the <cite><a href="https://www.w3.org/TR/odrl-vocab/" rel="cito:citesAsPotentialSolution">ODRL Information Model</a></cite> can be used to set obligations required to be met by agents prior to accessing a resource.</p>
+                  <p>As ACL resources are RDF sources, <a href="#authorization-policy">authorization policies</a> descriptions may be extended or limited by constraints eg. temporal or spatial constraints, and duties eg. payments, may be imposed on permissions, but no behaviour is defined by this specification. For example, the <cite><a href="https://www.w3.org/TR/odrl-vocab/" rel="cito:citesAsPotentialSolution">ODRL Information Model</a></cite> can be used to set obligations required to be met by agents prior to accessing a resource.</p>
                 </div>
               </section>
 
@@ -751,11 +751,11 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>While this section attempts to highlight a set of security considerations, it is not a complete list. Implementers are urged to seek the advice of security professionals when implementing mission critical systems using the technology outlined in this specification.</p>
 
-                  <p>Implementations are encouraged to follow the security considerations that are found in URI <cite><a href="https://datatracker.ietf.org/doc/html/rfc3986#section-7" rel="cito:citesForInformation">Generic Syntax</a></cite>, HTTP/1.1 <cite><a  href="https://datatracker.ietf.org/doc/html/rfc7230#section-9" rel="cito:citesForInformation">Message Syntax and Routing</a></cite> and <cite><a href="https://datatracker.ietf.org/doc/html/rfc7231#section-9" rel="cito:citesForInformation">Semantics and Content</a></cite>, and the <cite><a href="https://solidproject.org/TR/protocol#security-considerations" rel="cito:citesForInformation">Solid Protocol</a></cite>.</p>
+                  <p>Implementations are encouraged to follow the security considerations that are found in URI <cite><a href="https://datatracker.ietf.org/doc/html/rfc3986#section-7" rel="cito:citesForInformation">Generic Syntax</a></cite>, HTTP/1.1 <cite><a  href="https://datatracker.ietf.org/doc/html/rfc7230#section-9" rel="cito:citesForInformation">Message Syntax and Routing</a></cite> and <cite><a href="https://datatracker.ietf.org/doc/html/rfc7231#section-9" rel="cito:citesForInformation">Semantics and Content</a></cite>.</p>
 
                   <p>Servers are strongly discouraged from trusting the information returned by looking up an agent's WebID for access control purposes. The server operator can also provide the server with other trusted information to include in the search for a reason to give the requester the access.</p>
 
-                  <p>Transfer of authorization policies between a client and server over an open network creates the potential for those policies to be modified or disclosed without proper authorization. The requirements for the Web Access Control protocol discussed in this specification do not include cryptographic protection of authorization policy information, because it is assumed that this protection can be provided through HTTP over TLS. The path between client and application may be composed of multiple independent TLS connections, thus for end-to-end integrity and authenticity of content within an HTTP message, implementors can use mechanisms such as <cite><a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-message-signatures.html" rel="cito:citesAsPotentialSolution">Signing HTTP Messages</a></cite>. For cryptographic proof of authorization policies asserted by agents and protection from undetected modifications, implementors can use mechanisms such as <cite><a href="https://w3c-ccg.github.io/ld-proofs/" rel="cito:citesAsPotentialSolution">Linked Data Security</a></cite>.</p>
+                  <p>Transfer of <a href="#authorization-policy">authorization policies</a> between a client and server over an open network creates the potential for those policies to be modified or disclosed without proper authorization. The requirements for the Web Access Control protocol discussed in this specification do not include cryptographic protection of authorization policy information, because it is assumed that this protection can be provided through HTTP over TLS. The path between client and application may be composed of multiple independent TLS connections, thus for end-to-end integrity and authenticity of content within an HTTP message, implementors can use mechanisms such as <cite><a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-message-signatures.html" rel="cito:citesAsPotentialSolution">Signing HTTP Messages</a></cite>. For cryptographic proof of authorization policies asserted by agents and protection from undetected modifications, implementors can use mechanisms such as <cite><a href="https://w3c-ccg.github.io/ld-proofs/" rel="cito:citesAsPotentialSolution">Linked Data Security</a></cite>.</p>
                 </div>
               </section>
 

@@ -608,11 +608,11 @@ left:4.5em;
               <section id="authorization-evaluation" inlist="" rel="schema:hasPart" resource="#authorization-evaluation">
                 <h3 property="schema:name">Authorization Evaluation</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>Evaluation of authorization policies is concerned with matching the required parameters of an access request (<cite><a href="#authorization-policy-conformance" rel="rdfs:seeAlso">Authorization Policy Conformance</a></cite>). When a required authorization policy is found, then the requested operation is granted. Otherwise, the requested operation is denied.</p>
+                  <p>The evaluation of an authorization is concerned with finding authorization policies that match the required parameters of an operation (<cite><a href="#authorization-policy-conformance" rel="rdfs:seeAlso">Authorization Policy Conformance</a></cite>). Evaluation stops when all requested access rights have been granted by one or more authorization policies. Authorization policies that do not match a required access right have no effect on the outcome of the evaluation. Access is granted when conforming authorization policies are matched, otherwise access is denied.</p>
 
                   <p>The <code>acl:accessTo</code> property value is used to check if access is allowed for a specific resource. When an authorization policy includes the <code>acl:default</code> property value (the container resource in context), the access rights can be be applied to the original requested resource.</p>
 
-                  <p>When a request requires an access mode which is a limitation of another access mode, then access is granted if either mode is allowed by the authorization policy. For example, when a request requires <code>acl:Append</code>, then access will be granted to agents having the <code>acl:Write</code> privilege.</p>
+                  <p>When a request requires an access mode (<code>acl:mode</code>) which is a limitation of another access mode, then access is granted if either mode is allowed by the authorization policy. For example, when a request requires <code>acl:Append</code>, then access will be granted to agents having <code>acl:Write</code>.</p>
                 </div>
               </section>
             </div>

@@ -613,6 +613,15 @@ left:4.5em;
                   <p>The <code>acl:accessTo</code> property value is used to check if access is allowed for a specific resource. When an authorization policy includes the <code>acl:default</code> property value (the container resource in context), the access rights can be be applied to the original requested resource.</p>
 
                   <p>When a request requires an access mode (<code>acl:mode</code>) which is a limitation of another access mode, then access is granted if either mode is allowed by the authorization policy. For example, when a request requires <code>acl:Append</code>, then access will be granted to agents having <code>acl:Write</code>.</p>
+
+                  <section id="authorization-policy-matching" inlist="" rel="schema:hasPart" resource="#authorization-policy-matching">
+                    <h4 property="schema:name">Authorization Policy Matching</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p><em>This section is non-normative.</em></p>
+
+                      <p>As authorization policies are RDF statements, can be at different origins and in diverse data stores, this specification does not impose a mechanism to check for their existence towards the evaluation of an authorization request. This section exemplifies access check via <cite><a href="#sparql11-query">SPARQL 1.1 Query Language</a></cite>'s <code>ASK</code> form to test whether or not an authorization policy pattern matches; returns boolean.</p>
+                    </div>
+                  </section>
                 </div>
               </section>
             </div>

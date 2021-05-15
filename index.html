@@ -247,36 +247,41 @@ left:4.5em;
                   <ol>
                     <li><a href="#acl-resource-discovery"><span class="secno">3.1</span> <span class="content">ACL Resource Discovery</span></a></li>
                     <li><a href="#acl-resource-representation"><span class="secno">3.2</span> <span class="content">ACL Resource Representation</span></a></li>
-                    <li><a class="tocxref" href="#access-objects"><span class="secno">3.3</span> <span class="content">Access Objects</span></a></li>
-                    <li><a class="tocxref" href="#access-modes"><span class="secno">3.4</span> <span class="content">Access Modes</span></a></li>
-                    <li><a class="tocxref" href="#access-subjects"><span class="secno">3.5</span> <span class="content">Access Subjects</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#authorization"><span class="secno">4</span> <span class="content">Authorization</span></a>
+                  <a class="tocxref" href="#authorization-policies"><span class="secno">4</span> <span class="content">Authorization Policies</span></a>
                   <ol>
-                    <li><a href="#effective-acl-resource"><span class="secno">4.1</span> <span class="content">Effective ACL Resource</span></a></li>
-                    <li><a class="tocxref" href="#authorization-policy-conformance"><span class="secno">4.2</span> <span class="content">Authorization Policy Conformance</span></a></li>
-                    <li><a class="tocxref" href="#authorization-evaluation"><span class="secno">4.3</span> <span class="content">Authorization Evaluation</span></a></li>
+                    <li><a class="tocxref" href="#access-objects"><span class="secno">4.1</span> <span class="content">Access Objects</span></a></li>
+                    <li><a class="tocxref" href="#access-modes"><span class="secno">4.2</span> <span class="content">Access Modes</span></a></li>
+                    <li><a class="tocxref" href="#access-subjects"><span class="secno">4.3</span> <span class="content">Access Subjects</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#examples"><span class="secno">5</span> <span class="content">Examples</span></a>
-                </li>
-                <li class="tocline">
-                  <a class="tocxref" href="#http-definitions"><span class="secno">6</span> <span class="content">HTTP Definitions</span></a>
+                  <a class="tocxref" href="#authorization"><span class="secno">5</span> <span class="content">Authorization</span></a>
                   <ol>
-                    <li><a href="#wac-allow"><span class="secno">6.1</span> <span class="content">wac-allow HTTP Header</span></a></li>
-                    <li><a href="#acl-link-relation"><span class="secno">6.2</span> <span class="content">acl Link Relation</span></a></li>
+                    <li><a href="#effective-acl-resource"><span class="secno">5.1</span> <span class="content">Effective ACL Resource</span></a></li>
+                    <li><a class="tocxref" href="#authorization-policy-conformance"><span class="secno">5.2</span> <span class="content">Authorization Policy Conformance</span></a></li>
+                    <li><a class="tocxref" href="#authorization-evaluation"><span class="secno">5.3</span> <span class="content">Authorization Evaluation</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#extensions"><span class="secno">7</span> <span class="content">Extensions</span></a>
+                  <a class="tocxref" href="#examples"><span class="secno">6</span> <span class="content">Examples</span></a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#http-definitions"><span class="secno">7</span> <span class="content">HTTP Definitions</span></a>
                   <ol>
-                    <li><a href="#authorization-extensions"><span class="secno">7.1</span> <span class="content">Authorization Extensions</span></a></li>
-                    <li><a href="#access-mode-extensions"><span class="secno">7.2</span> <span class="content">Access Mode Extensions</span></a></li>
-                    <li><a href="#permission-inheritance-extensions"><span class="secno">7.3</span> <span class="content">Permission Inheritance Extensions</span></a></li>
-                    <li><a href="#distinct-effective-acl-resource-extensions"><span class="secno">7.4</span> <span class="content">Distinct Effective ACL Resource Extensions</span></a></li>
+                    <li><a href="#wac-allow"><span class="secno">7.1</span> <span class="content">wac-allow HTTP Header</span></a></li>
+                    <li><a href="#acl-link-relation"><span class="secno">7.2</span> <span class="content">acl Link Relation</span></a></li>
+                  </ol>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#extensions"><span class="secno">8</span> <span class="content">Extensions</span></a>
+                  <ol>
+                    <li><a href="#authorization-extensions"><span class="secno">8.1</span> <span class="content">Authorization Extensions</span></a></li>
+                    <li><a href="#access-mode-extensions"><span class="secno">8.2</span> <span class="content">Access Mode Extensions</span></a></li>
+                    <li><a href="#permission-inheritance-extensions"><span class="secno">8.3</span> <span class="content">Permission Inheritance Extensions</span></a></li>
+                    <li><a href="#distinct-effective-acl-resource-extensions"><span class="secno">8.4</span> <span class="content">Distinct Effective ACL Resource Extensions</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -478,11 +483,18 @@ left:4.5em;
                   <p>The <a href="#root-container">root container</a> MUST have an ACL resource with a representation. The ACL resource of the root container MUST include an authorization policy allowing the <code>acl:Control</code> access privilege (<cite><a href="#acl-mode-control" rel="rdfs:seeAlso"><code>acl:Control</code></a></cite> access mode).</p>
                 </div>
               </section>
+            </div>
+          </section>
 
+          <section id="authorization-policies" inlist="" rel="schema:hasPart" resource="#authorization-policies">
+            <h2 property="schema:name">Authorization Policies</h2>
+            <div datatype="rdf:HTML" property="schema:description">
               <section id="access-objects" inlist="" rel="schema:hasPart" resource="#access-objects">
                 <h3 property="schema:name">Access Objects</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The <code>acl:accessTo</code> property value is used to check if access is allowed for a specific resource. When an authorization policy includes the <code>acl:default</code> property value (the container resource in context), the access rights can be applied to the original requested resource.</p>
+
+                  <p class="issue"><span>Issue</span>: <code>acl:accessToClass</code>.</p>
 
                   <p>Inheriting authorization policies from the most significant container's ACL resource is useful to avoid individually managing an ACL resource for each resource, as well as to define access control for resources that do not exist yet.</p>
                 </div>
@@ -560,8 +572,6 @@ left:4.5em;
             <h2 property="schema:name">Authorization</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>An <a href="#authorization-policy">authorization policy</a> (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access rights granted to agents the ability to perform operations on resources. An authorization policy may express any information but has no applicability for a given access request which do not match a description ie. a set of required RDF statements. The server <a href="#authorization-evaluation">evaluates the authorization policies</a> associated with referenced resources in order to determine whether the necessary access rights are granted or denied for a particular request.</p>
-
-              <p class="issue"><span>Issue</span>: <code>acl:accessToClass</code>.</p>
 
               <section id="effective-acl-resource" inlist="" rel="schema:hasPart" resource="#effective-acl-resource">
                 <h3 property="schema:name">Effective ACL Resource</h3>

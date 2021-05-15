@@ -249,7 +249,7 @@ left:4.5em;
                     <li><a href="#acl-resource-representation"><span class="secno">3.2</span> <span class="content">ACL Resource Representation</span></a></li>
                     <li><a class="tocxref" href="#access-objects"><span class="secno">3.3</span> <span class="content">Access Objects</span></a></li>
                     <li><a class="tocxref" href="#modes-of-access"><span class="secno">3.4</span> <span class="content">Modes of Access</span></a></li>
-                    <li><a class="tocxref" href="#authorization-policy-subjects"><span class="secno">3.5</span> <span class="content">Authorization Policy Subjects</span></a></li>
+                    <li><a class="tocxref" href="#access-subjects"><span class="secno">3.5</span> <span class="content">Access Subjects</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -527,8 +527,8 @@ left:4.5em;
                 </div>
               </section>
 
-              <section id="authorization-policy-subjects" inlist="" rel="schema:hasPart" resource="#authorization-policy-subjects">
-                <h3 property="schema:name">Authorization Policy Subjects</h3>
+              <section id="access-subjects" inlist="" rel="schema:hasPart" resource="#access-subjects">
+                <h3 property="schema:name">Access Subjects</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The subjects of an authorization policy can be set for specific agents, a class of agents, or a group.</p>
 
@@ -598,7 +598,7 @@ left:4.5em;
                   <ul>
                     <li>At least one <code>acl:accessTo</code> or <code>acl:default</code> property value (<cite><a href="#access-objects" rel="rdfs:seeAlso">Access Objects</a></cite>).</li>
                     <li>At least one <code>acl:mode</code> property value (<cite><a href="#modes-of-access">Modes of Access</a></cite>).</li>
-                    <li>At least one <code>acl:agent</code>, <code>acl:agentGroup</code> or <code>acl:agentClass</code> property value (<cite><a href="#authorization-policy-subjects">Authorization Policy Subjects</a></cite>).</li>
+                    <li>At least one <code>acl:agent</code>, <code>acl:agentGroup</code> or <code>acl:agentClass</code> property value (<cite><a href="#access-subjects">Access Subjects</a></cite>).</li>
                   </ul>
 
                   <p>Implementations may infer the following triple: one whose subject is the authorization policy, whose predicate is <code>rdf:type</code>, and whose object is <code>acl:Authorization</code>, but there is no requirement to materialize this triple in the ACL resource representation.</p>

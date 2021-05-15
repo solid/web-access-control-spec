@@ -248,7 +248,7 @@ left:4.5em;
                     <li><a href="#acl-resource-discovery"><span class="secno">3.1</span> <span class="content">ACL Resource Discovery</span></a></li>
                     <li><a href="#acl-resource-representation"><span class="secno">3.2</span> <span class="content">ACL Resource Representation</span></a></li>
                     <li><a class="tocxref" href="#access-objects"><span class="secno">3.3</span> <span class="content">Access Objects</span></a></li>
-                    <li><a class="tocxref" href="#modes-of-access"><span class="secno">3.4</span> <span class="content">Modes of Access</span></a></li>
+                    <li><a class="tocxref" href="#access-modes"><span class="secno">3.4</span> <span class="content">Access Modes</span></a></li>
                     <li><a class="tocxref" href="#access-subjects"><span class="secno">3.5</span> <span class="content">Access Subjects</span></a></li>
                   </ol>
                 </li>
@@ -488,8 +488,8 @@ left:4.5em;
                 </div>
               </section>
 
-              <section id="modes-of-access" inlist="" rel="schema:hasPart" resource="#modes-of-access">
-                <h3 property="schema:name">Modes of Access</h3>
+              <section id="access-modes" inlist="" rel="schema:hasPart" resource="#access-modes">
+                <h3 property="schema:name">Access Modes</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The <a href="#access-mode">access modes</a> described in this section are defined in the <a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a>, such as the class of operations to read, write, append and control resources. The requirements for new access modes is explained in the <cite><a href="#access-mode-extensions">Access Mode Extensions</a></cite> section.</p>
 
@@ -597,7 +597,7 @@ left:4.5em;
 
                   <ul>
                     <li>At least one <code>acl:accessTo</code> or <code>acl:default</code> property value (<cite><a href="#access-objects" rel="rdfs:seeAlso">Access Objects</a></cite>).</li>
-                    <li>At least one <code>acl:mode</code> property value (<cite><a href="#modes-of-access">Modes of Access</a></cite>).</li>
+                    <li>At least one <code>acl:mode</code> property value (<cite><a href="#access-modes">Access Modes</a></cite>).</li>
                     <li>At least one <code>acl:agent</code>, <code>acl:agentGroup</code> or <code>acl:agentClass</code> property value (<cite><a href="#access-subjects">Access Subjects</a></cite>).</li>
                   </ul>
 
@@ -697,7 +697,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dd>Permissions granted to the public.</dd>
                   </dl>
 
-                  <p><code>access-mode</code> corresponds to the modes of access as defined in the ACL ontology (<code>acl:Read</code>, <code>acl:Write</code>, <code>acl:Append</code>, <code>acl:Control</code>).</p>
+                  <p><code>access-mode</code> corresponds to the Access Modes as defined in the ACL ontology (<code>acl:Read</code>, <code>acl:Write</code>, <code>acl:Append</code>, <code>acl:Control</code>).</p>
 
                   <p>Clients can discover access privileges on a resource by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking the <code>WAC-Allow</code> header value for access parameters listing the allowed access modes per permission group.</p>
 
@@ -748,7 +748,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
               <section id="access-mode-extensions" inlist="" rel="schema:hasPart" resource="#access-mode-extensions">
                 <h3 property="schema:name">Access Mode Extensions</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>An extension to access modes is any mode that is defined in the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite>, ie. as a subclass of <code>acl:Access</code>, but not described in this specification (<cite><a href="#modes-of-access">Modes of Access</a></cite>). The ACL Processor that encounters unrecognised access modes MUST NOT stop processing or signal an error and MUST continue processing the access modes as if those properties were not present.</p>
+                  <p>An extension to access modes is any mode that is defined in the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite>, ie. as a subclass of <code>acl:Access</code>, but not described in this specification (<cite><a href="#access-modes">Access Modes</a></cite>). The ACL Processor that encounters unrecognised access modes MUST NOT stop processing or signal an error and MUST continue processing the access modes as if those properties were not present.</p>
 
                   <p>Foreign-namespaced access modes are allowed in ACL resources, but no behaviour is defined by this specification.</p>
                 </div>

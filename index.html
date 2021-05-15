@@ -435,7 +435,7 @@ left:4.5em;
           <section id="acl-resources" inlist="" rel="schema:hasPart" resource="#acl-resources">
             <h2 property="schema:name">ACL Resources</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>This section describes <a href="#acl-resource-discovery">ACL resource discovery</a>, determining the <a href="#effective-acl-resource">effective ACL resource</a> of a resource, and the <a href="#acl-resource-representation">representation of ACL resources</a>.</p>
+              <p>This section describes <a href="#acl-resource-discovery">ACL resource discovery</a>, and the <a href="#acl-resource-representation">representation of ACL resources</a>.</p>
 
               <section id="acl-resource-discovery" inlist="" rel="schema:hasPart" resource="#acl-resource-discovery">
                 <h3 property="schema:name">ACL Resource Discovery</h3>
@@ -489,6 +489,8 @@ left:4.5em;
           <section id="authorization-policies" inlist="" rel="schema:hasPart" resource="#authorization-policies">
             <h2 property="schema:name">Authorization Policies</h2>
             <div datatype="rdf:HTML" property="schema:description">
+              <p><a href="#authorization-policy">Authorization policy</a> (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access rights granted to agents the ability to perform operations on resources. Authorization polices are described with RDF statements and may express any information. This section describes the following characteristics of an authorization policy: <cite><a href="#access-objects" rel="rdfs:seeAlso">Access Objects</a></cite> to specify what can be accessed, <cite><a href="#access-modes" rel="rdfs:seeAlso">Access Modes</a></cite> to specify permissions, and <cite><a href="#access-subjects" rel="rdfs:seeAlso">Access Subjects</a></cite> to specify who can access the objects.</p>
+
               <section id="access-objects" inlist="" rel="schema:hasPart" resource="#access-objects">
                 <h3 property="schema:name">Access Objects</h3>
                 <div datatype="rdf:HTML" property="schema:description">
@@ -571,7 +573,9 @@ left:4.5em;
           <section id="authorization" inlist="" rel="schema:hasPart" resource="#authorization">
             <h2 property="schema:name">Authorization</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>An <a href="#authorization-policy">authorization policy</a> (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access rights granted to agents the ability to perform operations on resources. An authorization policy may express any information but has no applicability for a given access request which do not match a description ie. a set of required RDF statements. The server <a href="#authorization-evaluation">evaluates the authorization policies</a> associated with referenced resources in order to determine whether the necessary access rights are granted or denied for a particular request.</p>
+              <p>This section describes how implementations can determine the <a href="#effective-acl-resource">effective ACL resource</a> of a resource and hence which set of <a href="#authorization-policy-conformance">conforming authorization policies</a> to use.</p>
+
+              <p>Servers process authorization requests by <a href="#authorization-evaluation">evaluating the authorization policies</a> associated with referenced resources in order to determine whether the necessary access rights are granted or denied for a particular request.</p>
 
               <section id="effective-acl-resource" inlist="" rel="schema:hasPart" resource="#effective-acl-resource">
                 <h3 property="schema:name">Effective ACL Resource</h3>

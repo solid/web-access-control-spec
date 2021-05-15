@@ -489,7 +489,7 @@ left:4.5em;
           <section id="authorization-policies" inlist="" rel="schema:hasPart" resource="#authorization-policies">
             <h2 property="schema:name">Authorization Policies</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p><a href="#authorization-policy">Authorization policy</a> (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access rights granted to agents the ability to perform operations on resources. Authorization polices are described with RDF statements and may express any information. This section describes the following characteristics of an authorization policy: <cite><a href="#access-objects" rel="rdfs:seeAlso">Access Objects</a></cite> to specify what can be accessed, <cite><a href="#access-modes" rel="rdfs:seeAlso">Access Modes</a></cite> to specify permissions, and <cite><a href="#access-subjects" rel="rdfs:seeAlso">Access Subjects</a></cite> to specify who can access the objects.</p>
+              <p><a href="#authorization-policy">Authorization policy</a> (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access rights granted to agents the ability to perform operations on resources. Authorization polices are described with RDF statements and may express any information. This section describes the following characteristics of an authorization policy: <a href="#access-objects" rel="rdfs:seeAlso">access objects</a> to specify what can be accessed, <a href="#access-modes" rel="rdfs:seeAlso">access modes</a> to specify permissions, and <a href="#access-subjects" rel="rdfs:seeAlso">access subjects</a> to specify who can access the objects.</p>
 
               <section id="access-objects" inlist="" rel="schema:hasPart" resource="#access-objects">
                 <h3 property="schema:name">Access Objects</h3>
@@ -586,7 +586,7 @@ left:4.5em;
 
                   <p>WAC has the property of being recursive with respect to container hierarchy, meaning that a member resource inherits authorization policies from the closest container resource (heading toward the root container).</p>
 
-                  <p>To determine the <em>effective ACL resource</em> of a resource, perform the following steps. Returns <a href="https://infra.spec.whatwg.org/#strings">string</a>.</p>
+                  <p>To determine the <em>effective ACL resource</em> of a resource, perform the following steps. Returns <a href="https://infra.spec.whatwg.org/#strings">string</a> (the URI of an ACL Resource).</p>
 
                   <ol>
                     <li>Let <var>resource</var> be the <a href="#resource">resource</a>.</li>
@@ -773,7 +773,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
 
-                  <p>This specification describes permission inheritance based on determining the most significant <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource. Alternative strategies such as cumulative permissions (union of all the permissions from each ACL resource inherited from the ancestors of a resource) are allowed, but no behaviour is defined by this specification.</p>
+                  <p>This specification describes permission inheritance based on determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource. Alternative strategies such as cumulative permissions (union of all the permissions from each ACL resource inherited from the ancestors of a resource) are allowed, but no behaviour is defined by this specification.</p>
                  </div>
               </section>
 

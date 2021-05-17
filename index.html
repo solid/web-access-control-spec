@@ -526,8 +526,8 @@ left:4.5em;
                     <dd>Allows access to a class of read and write operations on an ACL resource associated with a resource.</dd>
                   </dl>
 
-                  <div class="note" id="access-classes">
-                    <h3>Note: Access Classes</h3>
+                  <div class="note" id="access-mode-classes">
+                    <h3>Note: Access Mode Classes</h3>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p><code>acl:Access</code> is a superclass where specific access modes (entailing a class of operations) can be subclassed. It is not intended to be used for setting or matching access privileges.</p>
 
@@ -563,7 +563,7 @@ left:4.5em;
                   <div class="note" id="social-expectations">
                     <h3>Note: Social Expectations</h3>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>Implementations that want to grant a class of write or control operations on resources are encouraged to require agents to be authenticated eg. for provenance records or accountability purposes.</p>
+                      <p>When agent authentication is required to access resources, it can be placed selectively on resources. Servers may employ different authentication protocols as well as credential verification methods.</p>
                     </div>
                   </div>
 
@@ -812,6 +812,8 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                   <p>Transfer of <a href="#authorization-policy">authorization policies</a> between a client and server over an open network creates the potential for those policies to be modified or disclosed without proper authorization. The requirements for the Web Access Control protocol discussed in this specification do not include cryptographic protection of authorization policy information, because it is assumed that this protection can be provided through HTTP over TLS. The path between client and application may be composed of multiple independent TLS connections, thus for end-to-end integrity and authenticity of content within an HTTP message, implementors can use mechanisms such as <cite><a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-message-signatures.html" rel="cito:citesAsPotentialSolution">Signing HTTP Messages</a></cite>. For cryptographic proof of authorization policies asserted by agents and protection from undetected modifications, implementors can use mechanisms such as <cite><a href="https://w3c-ccg.github.io/ld-proofs/" rel="cito:citesAsPotentialSolution">Linked Data Security</a></cite>.</p>
 
                   <p>Implementations are encouraged to use mechanisms to record activities about ACL resources for the purpose of accountability and integrity, eg. by having audit trails, notification of changes, reasons for change, preserving provenance information.</p>
+
+                  <p>Implementations that want to allow a class of write or control operations on resources are encouraged to require agents to be authenticated eg. for provenance records or accountability purposes.</p>
                 </div>
               </section>
 

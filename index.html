@@ -636,7 +636,7 @@ left:4.5em;
                     <div datatype="rdf:HTML" property="schema:description">
                       <p><em>This section is non-normative.</em></p>
 
-                      <p>As authorization policies are RDF statements, can be at different origins and in diverse data stores, this specification does not impose a mechanism to check for their existence towards the evaluation of an authorization request. This section exemplifies access check via <cite><a href="#sparql11-query">SPARQL 1.1 Query Language</a></cite>'s <code>ASK</code> form to test whether or not an authorization policy pattern matches; returns boolean.</p>
+                      <p>This section exemplifies access check via <cite><a href="#sparql11-query">SPARQL 1.1 Query Language</a></cite>'s <code>ASK</code> form to test whether or not an authorization policy pattern matches; returns boolean.</p>
 
                       <p>The <code>ASK</code> queries below exemplify atomic graph patterns that can be executed against the default graph of an RDF dataset including authorization policies. The examples use query variables marked with "?" to indicate any value, and "$" to indicate inputs for the query.</p>
 
@@ -647,7 +647,7 @@ left:4.5em;
 <code>    acl:accessTo $resource ;</code>
 <code>    acl:agent $agent ;</code>
 <code>    acl:mode $mode .</code>
-}</pre>
+<code>}</code></pre>
                         <figcaption property="schema:name"><code>ASK</code> query matching an authorization policy given inputs <var>resource</var>, <var>agent</var> and <var>mode</var>.</figcaption>
                       </figure>
 
@@ -662,8 +662,26 @@ left:4.5em;
 <code>    acl:mode ?mode .</code>
 <code></code>
 <code>  $requiredMode rdfs:subClassOf* ?mode .</code>
-}</pre>
+<code>}</code></pre>
                         <figcaption property="schema:name"><code>ASK</code> query matching an authorization policy given inputs <var>containerResource</var>, <var>agentClass</var> and <var>requiredMode</var> (which may be a subclass of another access mode).</figcaption>
+                      </figure>
+
+                      <p>The following query can be used to check if an agent is a member of any group that can access a resource:</p>
+
+                      <figure id="match-accessto-agentgroup-mode" class="example listing" rel="schema:hasPart" resource="#match-accessto-agentclass-mode">
+                        <p class="example-h"><span>Example</span>: Match an authorization policy with a specific resource, agent with any group membership, and specific access mode.</p>
+                        <pre about="#match-accessto-agent-mode" property="schema:description" typeof="fabio:Script"><code>ASK {</code>
+<code>  ?authorization</code>
+<code>    acl:accessTo $resource ;</code>
+<code>    acl:agentGroup ?agentGroup ;</code>
+<code>    acl:mode $mode .</code>
+<code></code>
+<code>  GRAPH ?groupResource {</code>
+<code>    ?agentGroup</code>
+<code>      vcard:hasMember $agent .</code>
+<code>  }</code>
+<code>}</code></pre>
+                        <figcaption property="schema:name"><code>ASK</code> query matching an authorization policy given inputs <var>resource</var>, <var>agent</var> and <var>mode</var> (which may be a subclass of another access mode).</figcaption>
                       </figure>
                     </div>
                   </section>

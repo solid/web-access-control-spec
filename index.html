@@ -664,12 +664,16 @@ left:4.5em;
                       <figure id="match-default-agentclass-mode" class="example listing" rel="schema:hasPart" resource="#match-accessto-agentclass-mode">
                         <p class="example-h"><span>Example</span>: Match an authorization policy with a specific container resource, agent class membership and access mode.</p>
                         <pre about="#match-accessto-agent-mode" property="schema:description" typeof="fabio:Script"><code>ASK {</code>
-<code>  ?authorization</code>
-<code>    acl:default $containerResource ;</code>
-<code>    acl:agentClass $agentClass ;</code>
-<code>    acl:mode ?mode .</code>
-<code></code>
-<code>  $requiredMode rdfs:subClassOf* ?mode .</code>
+<code>  GRAPH $aclResource {</code>
+<code>    ?authorization</code>
+<code>      acl:default $containerResource ;</code>
+<code>      acl:agentClass $agentClass ;</code>
+<code>      acl:mode ?mode .</code>
+<code>  }</code>
+<code>  UNION</code>
+<code>  GRAPH $aclOntologyResource {</code>
+<code>    $requiredMode rdfs:subClassOf* ?mode .</code>
+<code>  }</code>
 <code>}</code></pre>
                         <figcaption property="schema:name"><code>ASK</code> query matching an authorization policy given inputs <var>containerResource</var>, <var>agentClass</var> and <var>requiredMode</var> (which may be a subclass of another access mode).</figcaption>
                       </figure>

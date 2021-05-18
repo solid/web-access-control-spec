@@ -636,6 +636,13 @@ left:4.5em;
                     <h4 property="schema:name">Reading and Writing Resources</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>As container resources and member resources are hierarchically organised, permissions to create and delete resources are in context of the permissions of their containers.</p>
+
+                      <div class="note" id="reinstated-resource-permissions">
+                        <h3>Note: Reinstated Resource Permisions</h3>
+                        <div datatype="rdf:HTML" property="schema:description">
+                          <p>Implementations may perform cleanup tasks such as deleting ACL resources that are associated with a resource when the resource is deleted. As deleted resources may be reinstated with the same URI, access controls on the reinstated resource can change per the ACL inheritance algorithm.</p>
+                        </div>
+                      </div>
                     </div>
                   </section>
 

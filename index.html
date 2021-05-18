@@ -631,6 +631,14 @@ left:4.5em;
 
                   <p>When a request requires an access mode (<code>acl:mode</code>) which is a limitation of another access mode, then access is granted if either mode is allowed by the authorization policy. For example, when a request requires <code>acl:Append</code>, then access will be granted to agents having <code>acl:Write</code>.</p>
 
+
+                  <section id="reading-writing-resources" inlist="" rel="schema:hasPart" resource="#reading-writing-resources">
+                    <h4 property="schema:name">Reading and Writing Resources</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>As container resources and member resources are hierarchically organised, permissions to create and delete resources are in context of the permissions of their containers.</p>
+                    </div>
+                  </section>
+
                   <section id="authorization-policy-matching" inlist="" rel="schema:hasPart" resource="#authorization-policy-matching">
                     <h4 property="schema:name">Authorization Policy Matching</h4>
                     <div datatype="rdf:HTML" property="schema:description">

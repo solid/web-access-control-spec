@@ -361,7 +361,7 @@ left:4.5em;
 
                   <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" id="status-of-a-permission">status of a permission</dfn> is either access is <em>granted</em> or <em>denied</em>.</p>
 
-                  <p>In addition to the terminology above, this specification also uses terminology from the [<cite><a class="bibref" href="#bib-infra">INFRA</a></cite>] specification. When INFRA terminology is used, such as <a href="https://infra.spec.whatwg.org/#strings">string</a>, it is linked directly to that specification.</p>
+                  <p>In addition to the terminology above, this specification also uses terminology from the [<cite><a class="bibref" href="#bib-infra">INFRA</a></cite>] specification. When INFRA terminology is used, such as <a href="https://infra.spec.whatwg.org/#strings">string</a> and <a href="https://infra.spec.whatwg.org/#booleans">boolean</a>, it is linked directly to that specification.</p>
                 </div>
               </section>
 
@@ -636,7 +636,7 @@ left:4.5em;
                     <div datatype="rdf:HTML" property="schema:description">
                       <p><em>This section is non-normative.</em></p>
 
-                      <p>This specification does not impose a storage system that can be used to store authorization policies. Similarly, mechanisms that can be used to find required RDF statements of authorization policies is deliberately unspecified to allow for a wide variety of use. This section <em>exemplifies</em> access check via <cite><a href="#sparql11-query">SPARQL 1.1 Query Language</a></cite>'s <code>ASK</code> form to test whether or not an authorization policy pattern matches; returns boolean.</p>
+                      <p>This specification does not impose a storage system that can be used to store authorization policies. Similarly, mechanisms that can be used to find required RDF statements of authorization policies is deliberately unspecified to allow for a wide variety of use. This section <em>exemplifies</em> access check via <cite><a href="#sparql11-query">SPARQL 1.1 Query Language</a></cite>'s <code>ASK</code> form to test whether or not an authorization policy pattern matches; returns <a href="https://infra.spec.whatwg.org/#booleans">boolean</a>.</p>
 
                       <p>The <code>ASK</code> queries below exemplify atomic graph patterns that can be executed against the default graph of an RDF dataset using named graphs for resources. The examples use query variables marked with "<var>?</var>" to indicate any value, and "<var>$</var>" to indicate inputs passed to the query, eg. <samp>&lt;http://example.org/.acl&gt;</samp> as the IRI reference of the effective ACL resource of a request replaces <code>$aclResource</code> in the query, and likewise, <samp>acl:Write</samp> as input is intended to replace <code>$mode</code> in the examples.</p>
 

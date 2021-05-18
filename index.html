@@ -642,11 +642,17 @@ left:4.5em;
 
                       <figure id="match-accessto-agent-mode" class="example listing" rel="schema:hasPart" resource="#match-accessto-agent-mode">
                         <p class="example-h"><span>Example</span>: Match an authorization policy with a specific resource, agent and access mode.</p>
-                        <pre about="#match-accessto-agent-mode" property="schema:description" typeof="fabio:Script"><code>ASK {</code>
-<code>  ?authorization</code>
-<code>    acl:accessTo $resource ;</code>
-<code>    acl:agent $agent ;</code>
-<code>    acl:mode $mode .</code>
+                        <pre about="#match-accessto-agent-mode" property="schema:description" typeof="fabio:Script">PREFIX acl: &lt;http://www.w3.org/ns/auth/acl#&gt;
+<code>PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;</code>
+<code>PREFIX vcard: &lt;http://www.w3.org/2006/vcard/ns#&gt;</code>
+<code></code>
+<code>ASK {</code>
+<code>  GRAPH $aclResource {</code>
+<code>    ?authorization</code>
+<code>      acl:accessTo $resource ;</code>
+<code>      acl:agent $agent ;</code>
+<code>      acl:mode $mode .</code>
+<code>  }</code>
 <code>}</code></pre>
                         <figcaption property="schema:name"><code>ASK</code> query matching an authorization policy given inputs <var>resource</var>, <var>agent</var> and <var>mode</var>.</figcaption>
                       </figure>

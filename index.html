@@ -316,7 +316,7 @@ left:4.5em;
 
               <p>The WAC specification describes how to enable applications to discover <a href="#authorization-policy">authorization policies</a> associated with a given <a href="#resource">resource</a>, and to control such policies, as directed by an agent. Server manages the association between a resource and an <a href="#acl-resource">ACL resource</a>, and applies the authorization conditions on requested operations. Authorization policies are described using the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite> to express and determine the <a href="#status-of-a-permission">status of a permission</a> of a requested resource. Any kind of access can be given to a resource as per the ACL ontology. This specification uses the <a href="#access-mode">access modes</a> currently defined by the ACL ontology, such as the class of operations to read, write, append and control resources. An authorization may allow public access to resources or place the requirement for authenticated <a href="#agent">agents</a>. Resources and agents can be on different origins.</p>
 
-              <div class="note" id="specification-orthogonality" rel="schema:hasPart" resource="specification-orthogonality">
+              <div class="note" id="specification-orthogonality" rel="schema:hasPart" resource="#specification-orthogonality">
                 <h4 property="schema:name"><span>Note</span>: Specification Orthogonality</h4>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>This specification does not specify mechanisms for authentication or methods to verify assertions. It is assumed that systems using WAC have the ability to apply authentication and verification techniques when desired.</p>
@@ -445,7 +445,7 @@ left:4.5em;
 
                   <p>ACL Resource Discovery is used towards determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource.</p>
 
-                  <div class="issue" id="link-relation-type" rel="schema:hasPart" resource="link-relation-type">
+                  <div class="issue" id="link-relation-type" rel="schema:hasPart" resource="#link-relation-type">
                     <h4 property="schema:name"><span>Issue</span>: Link Relation Type</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>The possibility of using URIs as relation types interchangeably or as alternate to the <a href="#acl-link-relation">acl Link Relation</a> type is under consideration, eg. <code>http://www.w3.org/ns/auth/acl#accessControl</code> [<a href="https://github.com/solid/specification/issues/172#issuecomment-766840145">Issue</a>] [<a href="https://github.com/solid/web-access-control-spec/issues/21#issuecomment-769137284">Issue</a>].</p>
@@ -456,14 +456,14 @@ left:4.5em;
 
                   <p>Clients can discover the ACL resource associated with a resource by making an HTTP request on the target URL, and checking the HTTP <code>Link</code> header with the <code>rel</code> parameter [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>].</p>
 
-                  <div class="note" id="acl-resource-uri-security" rel="schema:hasPart" resource="uri-security">
+                  <div class="note" id="acl-resource-uri-security" rel="schema:hasPart" resource="#uri-security">
                     <h4 property="schema:name"><span>Note</span>: ACL Resource URI Security</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>The URI of an ACL resource does not in itself pose a security threat ([<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>] security considerations). This specification does not constrain the discoverability of ACL resources.</p>
                     </div>
                   </div>
 
-                  <div class="note" id="uri-origin" rel="schema:hasPart" resource="uri-origin">
+                  <div class="note" id="uri-origin" rel="schema:hasPart" resource="#uri-origin">
                     <h4 property="schema:name"><span>Note</span>: URI Origin</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>The resource and the associated ACL resource can be on different origins [<cite><a class="bibref" href="#bib-rfc6454">RFC6454</a></cite>].</p>
@@ -598,7 +598,7 @@ left:4.5em;
                     <li>Otherwise, repeat the steps using the <a href="#container-resource">container resource</a> of <var>resource</var>.</li>
                   </ol>
 
-                  <div class="note" id="effective-acl-resource-alternatives" rel="schema:hasPart" resource="effective-acl-resource-alternatives">
+                  <div class="note" id="effective-acl-resource-alternatives" rel="schema:hasPart" resource="#effective-acl-resource-alternatives">
                     <h4 property="schema:name"><span>Note</span>: Effective ACL Resource Alternatives</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>This specification does not constrain alternative methods to determine the effective ACL resource of a resource.</p>
@@ -637,8 +637,8 @@ left:4.5em;
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>As container resources and member resources are hierarchically organised, permissions to create and delete resources are in context of the permissions of their containers.</p>
 
-                      <div class="note" id="reinstated-resource-permissions">
-                        <h3>Note: Reinstated Resource Permisions</h3>
+                      <div class="note" id="reinstated-resource-permissions" rel="schema:hasPart" resource="#reinstated-resource-permissions">
+                        <h3 property="schema:name"><span>Note</span>: Reinstated Resource Permisions</h3>
                         <div datatype="rdf:HTML" property="schema:description">
                           <p>Implementations may perform cleanup tasks such as deleting ACL resources that are associated with a resource when the resource is deleted. As deleted resources may be reinstated with the same URI, access controls on the reinstated resource can change per the ACL inheritance algorithm.</p>
                         </div>

@@ -163,7 +163,7 @@ left:4.5em;
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Web Access Control</h1>
-        <h2>Editor’s Draft, 2021-05-18</h2>
+        <h2>Editor’s Draft, 2021-05-21</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -189,7 +189,7 @@ left:4.5em;
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-05-18T00:00:00Z" datatype="xsd:dateTime" datetime="2021-05-18T00:00:00Z" property="schema:dateModified">2021-05-18</time></dd>
+          <dd><time content="2021-05-21T00:00:00Z" datatype="xsd:dateTime" datetime="2021-05-21T00:00:00Z" property="schema:dateModified">2021-05-21</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -674,20 +674,24 @@ left:4.5em;
 
                       <p>From here on, <code>PREFIX</code>s in the query are assumed to be present.</p>
 
-                      <p>The following query is typically used in context of inheriting authorization policies (<code>acl:default</code>) from a container's ACL resource:</p>
+                      <p>The following query is typically used in context of inheriting authorization policies (<code>acl:default</code>) from a container's ACL resource. The query also demonstrates matching authorization policies that use a superclass of the required access mode (<cite><a href="#access-mode-classes" rel="rdfs:seeAlso">Access Mode Classes</a></cite>):</p>
 
                       <figure id="match-default-agentclass-mode" class="example listing" rel="schema:hasPart" resource="#match-accessto-agentclass-mode">
                         <p class="example-h"><span>Example</span>: Match an authorization policy with a specific container resource, agent class membership and access mode.</p>
                         <pre about="#match-accessto-agent-mode" property="schema:description" typeof="fabio:Script"><code>ASK {</code>
 <code>  GRAPH $aclResource {</code>
-<code>    ?authorization</code>
-<code>      acl:default $containerResource ;</code>
-<code>      acl:agentClass $agentClass ;</code>
-<code>      acl:mode ?mode .</code>
-<code>  }</code>
-<code>  UNION</code>
-<code>  GRAPH $aclOntologyResource {</code>
-<code>    $requiredMode rdfs:subClassOf* ?mode .</code>
+<code>    {</code>
+<code>      ?authorization</code>
+<code>        acl:default $containerResource ;</code>
+<code>        acl:agentClass $agentClass ;</code>
+<code>        acl:mode ?requiredMode .</code>
+<code>    }</code>
+<code>    {</code>
+<code>      ?authorization acl:mode ?mode .</code>
+<code>      GRAPH $aclOntologyResource {</code>
+<code>        $requiredMode rdfs:subClassOf* ?mode .</code>
+<code>      }</code>
+<code>    }</code>
 <code>  }</code>
 <code>}</code></pre>
                         <figcaption property="schema:name"><code>ASK</code> query matching an authorization policy given inputs <var>containerResource</var>, <var>agentClass</var> and <var>requiredMode</var> (which may be a subclass of another access mode).</figcaption>
@@ -704,7 +708,6 @@ left:4.5em;
 <code>      acl:agentGroup ?agentGroup ;</code>
 <code>      acl:mode $mode .</code>
 <code>  }</code>
-<code>  UNION</code>
 <code>  GRAPH ?groupResource {</code>
 <code>    ?agentGroup</code>
 <code>      vcard:hasMember $agent .</code>

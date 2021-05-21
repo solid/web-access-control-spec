@@ -631,7 +631,6 @@ left:4.5em;
 
                   <p>When a request requires an access mode (<code>acl:mode</code>) which is a limitation of another access mode, then access is granted if either mode is allowed by the authorization policy. For example, when a request requires <code>acl:Append</code>, then access will be granted to agents having <code>acl:Write</code>.</p>
 
-
                   <section id="reading-writing-resources" inlist="" rel="schema:hasPart" resource="#reading-writing-resources">
                     <h4 property="schema:name">Reading and Writing Resources</h4>
                     <div datatype="rdf:HTML" property="schema:description">
@@ -640,7 +639,7 @@ left:4.5em;
                       <div class="note" id="reinstated-resource-permissions" rel="schema:hasPart" resource="#reinstated-resource-permissions">
                         <h3 property="schema:name"><span>Note</span>: Reinstated Resource Permisions</h3>
                         <div datatype="rdf:HTML" property="schema:description">
-                          <p>Implementations may perform cleanup tasks such as deleting ACL resources that are associated with a resource when the resource is deleted. As deleted resources may be reinstated with the same URI, access controls on the reinstated resource can change per the ACL inheritance algorithm.</p>
+                          <p>Implementations may perform cleanup tasks such as deleting ACL resources that are associated with a resource when the resource is deleted. As deleted resources may be reinstated with the same URI, access permissions on the reinstated resource may change as per determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite>.</p>
                         </div>
                       </div>
                     </div>

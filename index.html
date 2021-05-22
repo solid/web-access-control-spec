@@ -163,7 +163,7 @@ left:4.5em;
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Web Access Control</h1>
-        <h2>Editor’s Draft, 2021-05-21</h2>
+        <h2>Editor’s Draft, 2021-05-22</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -189,7 +189,7 @@ left:4.5em;
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-05-21T00:00:00Z" datatype="xsd:dateTime" datetime="2021-05-21T00:00:00Z" property="schema:dateModified">2021-05-21</time></dd>
+          <dd><time content="2021-05-22T00:00:00Z" datatype="xsd:dateTime" datetime="2021-05-22T00:00:00Z" property="schema:dateModified">2021-05-22</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -636,7 +636,7 @@ left:4.5em;
                   <section id="reading-writing-resources" inlist="" rel="schema:hasPart" resource="#reading-writing-resources">
                     <h4 property="schema:name">Reading and Writing Resources</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>As container resources and member resources are hierarchically organised, permissions to create and delete resources are in context of the permissions of their containers.</p>
+                      <p>As container resources and member resources are hierarchically organised, requests to perform operations on resources are in the context of the their applicable container.</p>
 
                       <p>When an operation requests to create a resource as a member of a container resource, the server MUST match an authorization policy allowing the <code>acl:Append</code> (or <code>acl:Write</code>) access privilege on the container for new members.</p>
 

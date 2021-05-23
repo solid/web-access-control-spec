@@ -163,7 +163,7 @@ left:4.5em;
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Web Access Control</h1>
-        <h2>Editor’s Draft, 2021-05-22</h2>
+        <h2>Editor’s Draft, 2021-05-23</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -189,7 +189,7 @@ left:4.5em;
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-05-22T00:00:00Z" datatype="xsd:dateTime" datetime="2021-05-22T00:00:00Z" property="schema:dateModified">2021-05-22</time></dd>
+          <dd><time content="2021-05-23T00:00:00Z" datatype="xsd:dateTime" datetime="2021-05-23T00:00:00Z" property="schema:dateModified">2021-05-23</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -492,12 +492,12 @@ left:4.5em;
           <section id="authorization-policies" inlist="" rel="schema:hasPart" resource="#authorization-policies">
             <h2 property="schema:name">Authorization Policies</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p><a href="#authorization-policy">Authorization policy</a> (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access rights granted to agents the ability to perform operations on resources. Authorization polices are described with RDF statements and may express any information. This section describes the following characteristics of an authorization policy: <a href="#access-objects" rel="rdfs:seeAlso">access objects</a> to specify what can be accessed, <a href="#access-modes" rel="rdfs:seeAlso">access modes</a> to specify permissions, and <a href="#access-subjects" rel="rdfs:seeAlso">access subjects</a> to specify who can access the objects.</p>
+              <p><a href="#authorization-policy">Authorization policy</a> (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access permissions granted to agents the ability to perform operations on resources. Authorization polices are described with RDF statements and may express any information. This section describes the following characteristics of an authorization policy: <a href="#access-objects" rel="rdfs:seeAlso">access objects</a> to specify what can be accessed, <a href="#access-modes" rel="rdfs:seeAlso">access modes</a> to specify permissions, and <a href="#access-subjects" rel="rdfs:seeAlso">access subjects</a> to specify who can access the objects.</p>
 
               <section id="access-objects" inlist="" rel="schema:hasPart" resource="#access-objects">
                 <h3 property="schema:name">Access Objects</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The <code>acl:accessTo</code> property value is used to check if access is allowed for a specific resource. When an authorization policy includes the <code>acl:default</code> property value (the container resource in context), the access rights can be applied to the original requested resource.</p>
+                  <p>The <code>acl:accessTo</code> property value is used to check if access is allowed for a specific resource. When an authorization policy includes the <code>acl:default</code> property value (the container resource in context), then access permissions be applied to the original requested resource.</p>
 
                   <p class="issue"><span>Issue</span>: <code>acl:accessToClass</code>.</p>
 
@@ -549,9 +549,9 @@ left:4.5em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The ability of a <em>subject</em> to access a resource can be granted to identifiable agents, a class of agents, or a group of agents.</p>
 
-                  <p>The <code>acl:agent</code> predicate denotes an <a href="#agent">agent</a> being given the access right.</p>
+                  <p>The <code>acl:agent</code> predicate denotes an <a href="#agent">agent</a> being given the access permission.</p>
 
-                  <p>The <code>acl:agentClass</code> predicate denotes a <a href="#agent-class">class of agents</a> being given the access right.</p>
+                  <p>The <code>acl:agentClass</code> predicate denotes a <a href="#agent-class">class of agents</a> being given the access permission.</p>
 
                   <dl>
                     <dt id="acl-agent-class-foaf-agent"><code>foaf:Agent</code></dt>
@@ -567,7 +567,7 @@ left:4.5em;
                     </div>
                   </div>
 
-                  <p>The <code>acl:agentGroup</code> predicate denotes a <a href="#agent-group">group of agents</a> being given the access right. The object of an <code>acl:agentGroup</code> statement is an instance of <code>vcard:Group</code>, where the members of the group are specified with the <code>vcard:hasMember</code> predicate.</p>
+                  <p>The <code>acl:agentGroup</code> predicate denotes a <a href="#agent-group">group of agents</a> being given the access permission. The object of an <code>acl:agentGroup</code> statement is an instance of <code>vcard:Group</code>, where the members of the group are specified with the <code>vcard:hasMember</code> predicate.</p>
                 </div>
               </section>
             </div>
@@ -578,7 +578,7 @@ left:4.5em;
             <div datatype="rdf:HTML" property="schema:description">
               <p>This section describes how implementations can determine the <a href="#effective-acl-resource">effective ACL resource</a> of a resource and hence which set of <a href="#authorization-policy-conformance">conforming authorization policies</a> to use.</p>
 
-              <p>Servers process authorization requests by <a href="#authorization-evaluation">evaluating the authorization policies</a> associated with referenced resources in order to determine whether the necessary access rights are granted or denied for a particular request.</p>
+              <p>Servers process access requests by <a href="#authorization-evaluation">evaluating the authorization policies</a> associated with referenced resources in order to determine whether the necessary access permissions are granted or denied for a particular request.</p>
 
               <section id="effective-acl-resource" inlist="" rel="schema:hasPart" resource="#effective-acl-resource">
                 <h3 property="schema:name">Effective ACL Resource</h3>
@@ -627,7 +627,7 @@ left:4.5em;
               <section id="authorization-evaluation" inlist="" rel="schema:hasPart" resource="#authorization-evaluation">
                 <h3 property="schema:name">Authorization Evaluation</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The evaluation of an authorization is concerned with finding authorization policies that match the required parameters of an operation (<cite><a href="#authorization-policy-conformance" rel="rdfs:seeAlso">Authorization Policy Conformance</a></cite>). Evaluation stops when all requested access rights have been granted by one or more authorization policies. Authorization policies that do not match a required access right have no effect on the outcome of the evaluation. Access is granted when conforming authorization policies are matched, otherwise access is denied.</p>
+                  <p>The evaluation of an authorization is concerned with finding authorization policies that match the required parameters of an operation (<cite><a href="#authorization-policy-conformance" rel="rdfs:seeAlso">Authorization Policy Conformance</a></cite>). Evaluation stops when all access permission requests have been granted by one or more authorization policies. Authorization policies that do not match a required access permission have no effect on the outcome of the evaluation. Access is granted when conforming authorization policies are matched, otherwise access is denied.</p>
 
                   <p>As per determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource, an authorization policy can be evaluated explicitly (via <code>acl:accessTo</code>) or inherited (via <code>acl:default</code>) against a particular request.</p>
 

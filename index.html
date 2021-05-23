@@ -656,6 +656,8 @@ left:4.5em;
                           <p>Implementations may perform cleanup tasks such as deleting ACL resources that are associated with a resource when the resource is deleted. As deleted resources may be reinstated with the same URI, access permissions on the reinstated resource may change as per determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite>.</p>
                         </div>
                       </div>
+
+                      <p>When an operation requests read and write an ACL resource, the server MUST match an authoriation policy allowing the <code>acl:Control</code> access privilege on the resource.</p>
                     </div>
                   </section>
 

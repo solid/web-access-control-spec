@@ -786,7 +786,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>Clients can discover access privileges on a resource by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking the <code>WAC-Allow</code> header value for access parameters listing the allowed access modes per permission group.</p>
 
-                  <p>Clients' parsing algorithm for the <code>WAC-Allow</code> header should incorporate error handling. When the received message fails to match an allowed pattern, finds unrecognised access parameters or access modes, clients MUST ignore the received <code>WAC-Allow</code> header-field.</p>
+                  <p>Clients' parsing algorithm for the <code>WAC-Allow</code> header should incorporate error handling. When the received message fails to match an allowed pattern, clients MUST ignore the received <code>WAC-Allow</code> header-field. When unrecognised access parameters (permission groups and access modes) are found, clients MUST continue processing the access parameters as if those properties were not present.</p>
 
                   <p>[<a href="https://github.com/solid/specification/issues/171" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/170" rel="cito:citesAsSourceDocument">Source</a>] <a href="https://github.com/solid/specification/issues/181" rel="cito:citesAsSourceDocument">Source</a>] <a href="https://gitter.im/solid/specification?at=60101295d8bdab47395e6775" rel="cito:citesAsSourceDocument">Source</a>]</p>
                 </div>

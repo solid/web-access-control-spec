@@ -889,6 +889,8 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                   <p><em>This section is non-normative.</em></p>
 
                   <p>Access permission to append a new resource to a container resource is independently of access permission to read a container resource. Thus, servers are encouraged to prevent information leakage when a successful HTTP request appends a new resource to a container resource. For instance, while the knowledge of the URI-Reference in <code>Location</code> and <code>Content-Location</code> HTTP headers in the response of a <code>POST</code> does not in itself pose a security threat ([<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>]), servers should consider the risks when read access to the container is not granted to agents.</p>
+
+                  <p>Access permission to update a resource is independently of access permission to read a resource. Thus, servers are encouraged to prevent information leakage when an attempt to delete information in a resource may reveal the existence of the information. For instance, when an HTTP <code>PATCH</code> request uses SPARQL Update's <code>DELETE DATA</code> operation, servers should consider the risks of disclosing information by the chosen status code when read access to the resource is not granted to agents.</p>
                 </div>
               </section>
 

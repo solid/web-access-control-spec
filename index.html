@@ -877,8 +877,6 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>Transfer of <a href="#authorization-policy">authorization policies</a> between a client and server over an open network creates the potential for those policies to be modified or disclosed without proper authorization. The requirements for the Web Access Control protocol discussed in this specification do not include cryptographic protection of authorization policy information, because it is assumed that this protection can be provided through HTTP over TLS. The path between client and application may be composed of multiple independent TLS connections, thus for end-to-end integrity and authenticity of content within an HTTP message, implementors can use mechanisms such as <cite><a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-message-signatures.html" rel="cito:citesAsPotentialSolution">Signing HTTP Messages</a></cite>. For cryptographic proof of authorization policies asserted by agents and protection from undetected modifications, implementors can use mechanisms such as <cite><a href="https://w3c-ccg.github.io/ld-proofs/" rel="cito:citesAsPotentialSolution">Linked Data Security</a></cite>.</p>
 
-                  <p>Access permission to append a new resource to a container resource is independently of access permission to read a container resource. Thus, servers are encouraged to prevent information leakage when a successful HTTP request appends a new resource to a container resource. For instance, while the knowledge of the URI-Reference in <code>Location</code> and <code>Content-Location</code> HTTP headers in the response of a <code>POST</code> does not in itself pose a security threat ([<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>]), servers should consider the risks when read access to the container is not granted to agents.</p>
-
                   <p>Implementations are encouraged to use mechanisms to record activities about ACL resources for the purpose of accountability and integrity, eg. by having audit trails, notification of changes, reasons for change, preserving provenance information.</p>
 
                   <p>Implementations that want to allow a class of write or control operations on resources are encouraged to require agents to be authenticated eg. for provenance records or accountability purposes.</p>
@@ -889,6 +887,8 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                 <h3 property="schema:name">Privacy Considerations</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
+
+                  <p>Access permission to append a new resource to a container resource is independently of access permission to read a container resource. Thus, servers are encouraged to prevent information leakage when a successful HTTP request appends a new resource to a container resource. For instance, while the knowledge of the URI-Reference in <code>Location</code> and <code>Content-Location</code> HTTP headers in the response of a <code>POST</code> does not in itself pose a security threat ([<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>]), servers should consider the risks when read access to the container is not granted to agents.</p>
                 </div>
               </section>
 

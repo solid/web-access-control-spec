@@ -676,9 +676,9 @@ by the system and therefore cannot be forged.</p>
                   <section id="web-application-authorization" inlist="" rel="schema:hasPart" resource="#web-application-authorization">
                     <h4 property="schema:name">Web Application Authorization</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>User agents include the HTTP <code>Origin</code> header field to isolate different origins and permit controlled communication between origins. The <code>Origin</code> header warns the server that a possibly untrusted Web application is being used. In this scenario, both the access subjects and the origin MUST have the required access.</p>
+                      <p>User agents include the HTTP <code>Origin</code> header field to isolate different origins and permit controlled communication between origins. The <code>Origin</code> header warns the server that a possibly untrusted Web application is being used.</p>
 
-                      <p>When the value of <code>acl:origin</code> matches the value of an HTTP request's <code>Origin</code> header, and the <a href="#access-subjects">access subjects</a> on the same authorization policy are also allowed access to <a href="#access-objects">access objects</a>, then access request is granted.</p>
+                      <p>When an HTTP request includes the <code>Origin</code> header, the server MUST match an authorization policy allowing access to the same <code>acl:origin</code> value.</p>
                     </div>
                   </section>
 

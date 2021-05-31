@@ -663,7 +663,7 @@ by the system and therefore cannot be forged.</p>
                       <p>When an operation requests to delete a resource, the server MUST match authorization policies allowing the <code>acl:Write</code> access privilege on the resource and the containing container.</p>
 
                       <div class="note" id="reinstated-resource-permissions" rel="schema:hasPart" resource="#reinstated-resource-permissions">
-                        <h3 property="schema:name"><span>Note</span>: Reinstated Resource Permissions</h3>
+                        <h5 property="schema:name"><span>Note</span>: Reinstated Resource Permissions</h5>
                         <div datatype="rdf:HTML" property="schema:description">
                           <p>Implementations may perform cleanup tasks such as deleting ACL resources that are associated with a resource when the resource is deleted. As deleted resources may be reinstated with the same URI, access permissions on the reinstated resource may change as per determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite>.</p>
                         </div>
@@ -679,6 +679,13 @@ by the system and therefore cannot be forged.</p>
                       <p>User agents include the HTTP <code>Origin</code> header field to isolate different origins and permit controlled communication between origins. The <code>Origin</code> header warns the server that a possibly untrusted Web application is being used.</p>
 
                       <p>When an HTTP request includes the <code>Origin</code> header, the server MUST match an authorization policy allowing access to the same <code>acl:origin</code> value.</p>
+
+                      <div class="note" id="access-subject-origin-rejection-reason" rel="schema:hasPart" resource="#access-subject-origin-rejection-reason">
+                        <h5 property="schema:name"><span>Note</span>: Access Subject and Origin Rejection Reason</h5>
+                        <div datatype="rdf:HTML" property="schema:description">
+                          <p>Implementations are encouraged to describe reasons to reject the request in the HTTP response status text and the body of the message the difference between the access subject not being allowed and the Web application they are using not being granted access.</p>
+                        </div>
+                      </div>
                     </div>
                   </section>
 

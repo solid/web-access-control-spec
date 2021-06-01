@@ -661,9 +661,9 @@ by the system and therefore cannot be forged.</p>
 
                       <p>When an operation requests to read a resource, the server MUST match an authorization policy allowing the <code>acl:Read</code> access privilege on the resource.</p>
 
-                      <p>When an operation requests to create a resource as a member of a container resource, the server MUST match an authorization policy allowing the <code>acl:Append</code> (or <code>acl:Write</code>) access privilege on the container for new members.</p>
+                      <p>When an operation requests to create a resource as a member of a container resource, the server MUST match an authorization policy allowing the <code>acl:Append</code> or <code>acl:Write</code> access privilege on the container for new members.</p>
 
-                      <p>When an operation requests to update a resource, the server MUST match an authorization policy allowing the <code>acl:Write</code> access privilege on the resource.</p>
+                      <p>When an operation requests to update a resource, the server MUST match an authorization policy allowing the <code>acl:Append</code> or <code>acl:Write</code> access privilege on the resource.</p>
 
                       <p>When an operation requests to delete a resource, the server MUST match authorization policies allowing the <code>acl:Write</code> access privilege on the resource and the containing container.</p>
 

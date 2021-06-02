@@ -272,22 +272,19 @@ left:4.5em;
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#examples"><span class="secno">6</span> <span class="content">Examples</span></a>
-                </li>
-                <li class="tocline">
-                  <a class="tocxref" href="#http-definitions"><span class="secno">7</span> <span class="content">HTTP Definitions</span></a>
+                  <a class="tocxref" href="#http-definitions"><span class="secno">6</span> <span class="content">HTTP Definitions</span></a>
                   <ol>
-                    <li><a href="#wac-allow"><span class="secno">7.1</span> <span class="content">wac-allow HTTP Header</span></a></li>
-                    <li><a href="#acl-link-relation"><span class="secno">7.2</span> <span class="content">acl Link Relation</span></a></li>
+                    <li><a href="#wac-allow"><span class="secno">6.1</span> <span class="content">wac-allow HTTP Header</span></a></li>
+                    <li><a href="#acl-link-relation"><span class="secno">6.2</span> <span class="content">acl Link Relation</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#extensions"><span class="secno">8</span> <span class="content">Extensions</span></a>
+                  <a class="tocxref" href="#extensions"><span class="secno">7</span> <span class="content">Extensions</span></a>
                   <ol>
-                    <li><a href="#authorization-extensions"><span class="secno">8.1</span> <span class="content">Authorization Extensions</span></a></li>
-                    <li><a href="#access-mode-extensions"><span class="secno">8.2</span> <span class="content">Access Mode Extensions</span></a></li>
-                    <li><a href="#permission-inheritance-extensions"><span class="secno">8.3</span> <span class="content">Permission Inheritance Extensions</span></a></li>
-                    <li><a href="#distinct-effective-acl-resource-extensions"><span class="secno">8.4</span> <span class="content">Distinct Effective ACL Resource Extensions</span></a></li>
+                    <li><a href="#authorization-extensions"><span class="secno">7.1</span> <span class="content">Authorization Extensions</span></a></li>
+                    <li><a href="#access-mode-extensions"><span class="secno">7.2</span> <span class="content">Access Mode Extensions</span></a></li>
+                    <li><a href="#permission-inheritance-extensions"><span class="secno">7.3</span> <span class="content">Permission Inheritance Extensions</span></a></li>
+                    <li><a href="#distinct-effective-acl-resource-extensions"><span class="secno">7.4</span> <span class="content">Distinct Effective ACL Resource Extensions</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -786,17 +783,6 @@ by the system and therefore cannot be forged.</p>
                   </section>
                 </div>
               </section>
-            </div>
-          </section>
-
-          <section id="examples" inlist="" rel="schema:hasPart" resource="#examples">
-            <h2 property="schema:name">Examples</h2>
-            <div datatype="rdf:HTML" property="schema:description">
-              <p><em>This section is non-normative.</em></p>
-
-              <p>The <code>acl:Write</code> access mode can allow <cite><a href="#sparql11-update">SPARQL 1.1 Update</a></cite> operations eg. with HTTP <code>PATCH</code> targeting the resource, if those are supported.</p>
-
-              <p>A typical example of the <code>acl:Append</code> access mode usage would be an agent's inbox (a container to receive notifications). Agents can write (append) notifications to the inbox eg. with HTTP <code>POST</code> request targeting the inbox, but cannot read or alter the inbox or the notifications. <code>acl:Append</code> can also allow an HTTP <code>PATCH</code> request including the SPARQL 1.1 Update's <code>INSERT DATA</code> operation (but not <code>DELETE DATA</code>).</p>
             </div>
           </section>
 

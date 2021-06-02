@@ -168,7 +168,7 @@ left:4.5em;
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Web Access Control</h1>
-        <h2>Editor’s Draft, 2021-06-01</h2>
+        <h2>Editor’s Draft, 2021-06-02</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -194,7 +194,7 @@ left:4.5em;
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-06-01T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-01T00:00:00Z" property="schema:dateModified">2021-06-01</time></dd>
+          <dd><time content="2021-06-02T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-02T00:00:00Z" property="schema:dateModified">2021-06-02</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -659,10 +659,10 @@ by the system and therefore cannot be forged.</p>
 
                       <p>As container resources and member resources are hierarchically organised, requests to perform operations on resources are in the context of the their applicable container (effective ACL resource).</p>
 
-                      <div class="note" id="http-method-access-mode-relation" rel="schema:hasPart" resource="#http-method-access-mode-relation">
-                        <h5 property="schema:name"><span>Note</span>: HTTP Method and Access Mode Relation</h5>
+                      <div class="note" id="http-method-access-mode-mapping" rel="schema:hasPart" resource="#http-method-access-mode-mapping">
+                        <h5 property="schema:name"><span>Note</span>: HTTP Method and Access Mode Mapping</h5>
                         <div datatype="rdf:HTML" property="schema:description">
-                          <p>Depending on the HTTP method of the request, an operation may require <code>acl:Append</code> or <code>acl:Write</code>, eg. HTTP <code>POST</code> can be used to update resources but not remove resources or its contents with either <code>acl:Append</code> or <code>acl:Write</code>, whereas HTTP <code>PUT</code> would require <code>acl:Write</code>.</p>
+                          <p>When the target of the HTTP request is the ACL resource, the operation  can only be allowed with the <code>acl:Control</code> access mode.</p>
                         </div>
                       </div>
 

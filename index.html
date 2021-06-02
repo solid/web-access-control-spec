@@ -671,22 +671,22 @@ by the system and therefore cannot be forged.</p>
                         </div>
                       </div>
 
-                      <p>When an operation requests read and write an ACL resource, the server MUST match an authorization policy allowing the <code>acl:Control</code> access privilege on the resource.</p>
+                      <p>When an operation requests to read and write an ACL resource, the server MUST match an authorization policy allowing the <code>acl:Control</code> access privilege on the resource.</p>
 
                       <div class="note" id="http-method-access-mode-mapping" rel="schema:hasPart" resource="#http-method-access-mode-mapping">
                         <h5 property="schema:name"><span>Note</span>: HTTP Method and Access Mode Mapping</h5>
                         <div datatype="rdf:HTML" property="schema:description">
                           <p>When the target of the HTTP request is the ACL resource, the operation  can only be allowed with the <code>acl:Control</code> access mode.</p>
 
-                          <p>Having acl:Control doesn't imply that the agent has acl:Read or acl:Write access to the resource itself, just to its corresponding ACL resource. For example, a resource owner may disable their own write access (to prevent accidental over-writing of a resource by an application), but be able to change their access levels at a later point (since they retain acl:Control access).</p>
+                          <p>Having <code>acl:Control</code> does not imply that the agent has <code>acl:Read</code> or <code>acl:Write</code> access to the resource itself, just to its corresponding ACL resource. For example, a resource owner may disable their own write access (to prevent accidental over-writing of a resource by an application), but be able to change their access levels at a later point (since they retain <code>acl:Control</code> access).</p>
 
                           <p>The HTTP <code>GET</code> method request targeting a resource can only be allowed with the <code>acl:Read</code> access mode.</p>
 
-                          <p>The HTTP <code>POST</code> can be used to create new resource in a container or add information to existing resources (but not remove resources or its contents) with either <code>acl:Append</code> or <code>acl:Write</code>.</p>
+                          <p>The HTTP <code>POST</code> can be used to create a new resource in a container or add information to existing resources (but not remove resources or its contents) with either <code>acl:Append</code> or <code>acl:Write</code>.</p>
 
                           <p>As the HTTP <code>PUT</code> method requests to create or replace the resource state, the <code>acl:Write</code> access mode would be required.</p>
 
-                          <p>As the processing of HTTP <code>PATCH</code> method requests depends on the request semantics and content eg. <code>acl:Append</code> can allow requests using SPARQL 1.1 Update's <code>INSERT DATA</code> operation but not <code>DELETE DATA</code>, whereas <code>acl:Write</code> would allow both operations.</p>
+                          <p>As the processing of HTTP <code>PATCH</code> method requests depends on the request semantics and content eg. <code>acl:Append</code> can allow requests using <cite><a href="#sparql11-update">SPARQL 1.1 Update</a></cite>'s <code>INSERT DATA</code> operation but not <code>DELETE DATA</code>, whereas <code>acl:Write</code> would allow both operations.</p>
 
                           <p>As the HTTP <code>DELETE</code> method requests to remove a resource, the <code>acl:Write</code> access mode would be requried.</p>
                         </div>

@@ -168,7 +168,7 @@ left:4.5em;
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Web Access Control</h1>
-        <h2>Editor’s Draft, 2021-06-02</h2>
+        <h2>Editor’s Draft, 2021-06-03</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -194,7 +194,7 @@ left:4.5em;
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-06-02T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-02T00:00:00Z" property="schema:dateModified">2021-06-02</time></dd>
+          <dd><time content="2021-06-03T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-03T00:00:00Z" property="schema:dateModified">2021-06-03</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -699,7 +699,7 @@ by the system and therefore cannot be forged.</p>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>User agents include the HTTP <code>Origin</code> header field to isolate different origins and permit controlled communication between origins. The <code>Origin</code> header warns the server that a possibly untrusted Web application is being used.</p>
 
-                      <p>When an HTTP request includes the <code>Origin</code> header, the server MUST match an authorization policy allowing access to the same <code>acl:origin</code> value.</p>
+                      <p>When an HTTP request includes the <code>Origin</code> header, the server MUST match an authorization policy with an <code>acl:origin</code> property value that of the field-value.</p>
 
                       <div class="note" id="access-subject-origin-rejection-reason" rel="schema:hasPart" resource="#access-subject-origin-rejection-reason">
                         <h5 property="schema:name"><span>Note</span>: Access Subject and Origin Rejection Reason</h5>

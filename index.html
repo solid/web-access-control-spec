@@ -707,6 +707,8 @@ by the system and therefore cannot be forged.</p>
                           <p>Implementations are encouraged to describe reasons to reject the request in the HTTP response status text and the body of the message the difference between the access subject not being allowed and the Web application they are using not being granted access.</p>
                         </div>
                       </div>
+
+                      <p>When a server supports the <a href="wac-allow">WAC-Allow</a> HTTP header, the server MUST include the header in the <code>Access-Control-Expose-Headers</code> field-value.</p>
                     </div>
                   </section>
 

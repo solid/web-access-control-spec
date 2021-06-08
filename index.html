@@ -718,6 +718,13 @@ by the system and therefore cannot be forged.</p>
 
                       <p>Servers MUST advertise client’s access privileges on a resource by including the <code>WAC-Allow</code> HTTP header (see <cite><a href="#wac-allow">WAC-Allow</a></cite>) in the response of HTTP <code>GET</code> and <code>HEAD</code> requests.</p>
 
+                      <div class="note" id="clients-discovering-access-privileges" rel="schema:hasPart" resource="#client-discovering-access-privileges">
+                        <h5 property="schema:name"><span>Note</span>: Clients Discovering Access Privileges</h5>
+                        <div datatype="rdf:HTML" property="schema:description">
+                          <p>Clients can discover access privileges on a resource by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target resource, and checking the <code>WAC-Allow</code> header value for access parameters listing the allowed access modes per permission group  (see <cite><a href="#wac-allow">WAC-Allow</a></cite>).</p>
+                        </div>
+                      </div>
+
                       <p>When a server participates in the <abbr title="Cross-Origin Resource Sharing">CORS</abbr> protocol [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>], the server MUST include <code>WAC-Allow</code> in the <code>Access-Control-Expose-Headers</code> field-value in the HTTP response.</p>
                     </div>
                   </section>
@@ -825,9 +832,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dd>Permissions granted to the public.</dd>
                   </dl>
 
-                  <p><code>access-mode</code> corresponds to the Access Modes as defined in the ACL ontology (<code>acl:Read</code>, <code>acl:Write</code>, <code>acl:Append</code>, <code>acl:Control</code>).</p>
-
-                  <p>Clients can discover access privileges on a resource by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, and checking the <code>WAC-Allow</code> header value for access parameters listing the allowed access modes per permission group.</p>
+                  <p><code>access-mode</code> corresponds to the <cite><a href="#access-mods">Access Modes</a></cite> as defined in the ACL ontology (<code>acl:Read</code>, <code>acl:Write</code>, <code>acl:Append</code>, <code>acl:Control</code>).</p>
 
                   <p>Clients' parsing algorithm for the <code>WAC-Allow</code> header should incorporate error handling. When the received message fails to match an allowed pattern, clients MUST ignore the received <code>WAC-Allow</code> header-field. When unrecognised access parameters (permission groups and access modes) are found, clients MUST continue processing the access parameters as if those properties were not present.</p>
 

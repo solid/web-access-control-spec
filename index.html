@@ -260,7 +260,6 @@ left:4.5em;
                     <li><a class="tocxref" href="#access-objects"><span class="secno">4.1</span> <span class="content">Access Objects</span></a></li>
                     <li><a class="tocxref" href="#access-modes"><span class="secno">4.2</span> <span class="content">Access Modes</span></a></li>
                     <li><a class="tocxref" href="#access-subjects"><span class="secno">4.3</span> <span class="content">Access Subjects</span></a></li>
-                    <li><a class="tocxref" href="#access-origins"><span class="secno">4.4</span> <span class="content">Access Origins</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -497,7 +496,7 @@ left:4.5em;
           <section id="authorization-policies" inlist="" rel="schema:hasPart" resource="#authorization-policies">
             <h2 property="schema:name">Authorization Policies</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p><a href="#authorization-policy">Authorization policy</a> (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access permissions granted to agents the ability to perform operations on resources. Authorization polices are described with RDF statements and may express any information. This section describes the following characteristics of an authorization policy: <a href="#access-objects" rel="rdfs:seeAlso">access objects</a> to specify what can be accessed, <a href="#access-modes" rel="rdfs:seeAlso">access modes</a> to specify permissions, <a href="#access-subjects" rel="rdfs:seeAlso">access subjects</a>, and <a href="#access-origins">access origins</a> to specify who can access the objects.</p>
+              <p><a href="#authorization-policy">Authorization policy</a> (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access permissions granted to agents the ability to perform operations on resources. Authorization polices are described with RDF statements and may express any information. This section describes the following characteristics of an authorization policy: <a href="#access-objects" rel="rdfs:seeAlso">access objects</a> to specify what can be accessed, <a href="#access-modes" rel="rdfs:seeAlso">access modes</a> to specify permissions, and <a href="#access-subjects" rel="rdfs:seeAlso">access subjects</a> to specify who can access the objects.</p>
 
               <section id="access-objects" inlist="" rel="schema:hasPart" resource="#access-objects">
                 <h3 property="schema:name">Access Objects</h3>
@@ -581,12 +580,7 @@ by the system and therefore cannot be forged.</p>
                   </div>
 
                   <p>The <code>acl:agentGroup</code> predicate denotes a <a href="#agent-group">group of agents</a> being given the access permission. The object of an <code>acl:agentGroup</code> statement is an instance of <code>vcard:Group</code>, where the members of the group are specified with the <code>vcard:hasMember</code> predicate.</p>
-                </div>
-              </section>
 
-              <section id="access-origins" inlist="" rel="schema:hasPart" resource="#access-origins">
-                <h3 property="schema:name">Access Origins</h3>
-                <div datatype="rdf:HTML" property="schema:description">
                   <p>The <code>acl:origin</code> predicate denotes the <a href="#origin">origin</a> an HTTP request is being given the access permission.</p>
                 </div>
               </section>

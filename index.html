@@ -635,13 +635,12 @@ by the system and therefore cannot be forged.</p>
                   <p>An applicable authorization policy has the following properties:</p>
 
                   <ul>
+                    <li>At least one <code>rdf:type</code> property whose object is <code>acl:Authorization</code>.</li>
                     <li>At least one <code>acl:accessTo</code> or <code>acl:default</code> property value (<cite><a href="#access-objects" rel="rdfs:seeAlso">Access Objects</a></cite>).</li>
                     <li>At least one <code>acl:mode</code> property value (<cite><a href="#access-modes">Access Modes</a></cite>).</li>
                     <li>At least one <code>acl:agent</code>, <code>acl:agentGroup</code> or <code>acl:agentClass</code> property value (<cite><a href="#access-subjects">Access Subjects</a></cite>).</li>
                     <li>Zero or more <code>acl:origin</code> property value (<cite><a href="#access-origins">Access Origins</a></cite>).</li>
                   </ul>
-
-                  <p>Implementations may infer the following triple: one whose subject is the authorization policy, whose predicate is <code>rdf:type</code>, and whose object is <code>acl:Authorization</code>, but there is no requirement to materialize this triple in the ACL resource representation.</p>
                 </div>
               </section>
 

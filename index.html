@@ -726,7 +726,7 @@ by the system and therefore cannot be forged.</p>
 
                       <p>Servers exposing client’s access privileges on a resource MUST advertise by including the <code>WAC-Allow</code> HTTP header (see <cite><a href="#wac-allow">WAC-Allow</a></cite>) in the response of HTTP <code>HEAD</code> and <code>GET</code> requests.</p>
 
-                      <p>When a server supports the <a href="wac-allow">WAC-Allow</a> HTTP header, the server MUST include the header in the <code>Access-Control-Expose-Headers</code> field-value.</p>
+                      <p>When a server participates in the <abbr title="Cross-Origin Resource Sharing">CORS</abbr> protocol [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>], the server MUST include <code>WAC-Allow</code> in the <code>Access-Control-Expose-Headers</code> field-value in the HTTP response.</p>
                     </div>
                   </section>
 

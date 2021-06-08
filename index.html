@@ -724,6 +724,8 @@ by the system and therefore cannot be forged.</p>
                         </div>
                       </div>
 
+                      <p>Servers exposing client’s access privileges on a resource MUST advertise by including the <code>WAC-Allow</code> HTTP header in the response of HTTP <code>HEAD</code> and <code>GET</code> requests.</p>
+
                       <p>When a server supports the <a href="wac-allow">WAC-Allow</a> HTTP header, the server MUST include the header in the <code>Access-Control-Expose-Headers</code> field-value.</p>
                     </div>
                   </section>
@@ -810,8 +812,6 @@ by the system and therefore cannot be forged.</p>
               <section id="wac-allow" inlist="" rel="schema:hasPart" resource="#wac-allow">
                 <h3 property="schema:name">wac-allow HTTP Header</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>Servers exposing client’s access privileges on a resource URL MUST advertise by including the <code>WAC-Allow</code> HTTP header in the response of HTTP <code>HEAD</code> and <code>GET</code> requests.</p>
-
                   <p>The syntax for the <code>WAC-Allow</code> header, using the ABNF syntax defined in Section 1.2 of [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>], is:</p>
 
                   <pre class="def">wac-allow        = "WAC-Allow" ":" OWS #access-param OWS

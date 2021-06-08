@@ -168,7 +168,7 @@ left:4.5em;
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Web Access Control</h1>
-        <h2>Editor’s Draft, 2021-06-03</h2>
+        <h2>Editor’s Draft, 2021-06-08</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -194,7 +194,7 @@ left:4.5em;
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-06-03T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-03T00:00:00Z" property="schema:dateModified">2021-06-03</time></dd>
+          <dd><time content="2021-06-08T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-08T00:00:00Z" property="schema:dateModified">2021-06-08</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -680,7 +680,7 @@ by the system and therefore cannot be forged.</p>
                         <div datatype="rdf:HTML" property="schema:description">
                           <p>When the target of the HTTP request is the ACL resource, the operation  can only be allowed with the <code>acl:Control</code> access mode.</p>
 
-                          <p>Having <code>acl:Control</code> does not imply that the agent has <code>acl:Read</code> or <code>acl:Write</code> access to the resource itself, just to its corresponding ACL resource. For example, a resource owner may disable their own write access (to prevent accidental over-writing of a resource by an application), but be able to change their access levels at a later point (since they retain <code>acl:Control</code> access).</p>
+                          <p>Having <code>acl:Control</code> does not imply that the agent has <code>acl:Read</code> or <code>acl:Write</code> access to the resource itself, just to its corresponding ACL resource. For example, an agent with control access may disable their own write access (to prevent accidental over-writing of a resource by an application), but be able to change their access levels at a later point (since they retain <code>acl:Control</code> access).</p>
 
                           <p>The HTTP <code>GET</code> method request targeting a resource can only be allowed with the <code>acl:Read</code> access mode.</p>
 
@@ -690,7 +690,7 @@ by the system and therefore cannot be forged.</p>
 
                           <p>As the processing of HTTP <code>PATCH</code> method requests depends on the request semantics and content eg. <code>acl:Append</code> can allow requests using <cite><a href="#sparql11-update">SPARQL 1.1 Update</a></cite>'s <code>INSERT DATA</code> operation but not <code>DELETE DATA</code>, whereas <code>acl:Write</code> would allow both operations.</p>
 
-                          <p>As the HTTP <code>DELETE</code> method requests to remove a resource, the <code>acl:Write</code> access mode would be requried.</p>
+                          <p>As the HTTP <code>DELETE</code> method requests to remove a resource, the <code>acl:Write</code> access mode would be required.</p>
                         </div>
                       </div>
                     </div>

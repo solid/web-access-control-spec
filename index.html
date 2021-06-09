@@ -699,7 +699,13 @@ left:4.5em;
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>User agents include the HTTP <code>Origin</code> header field to isolate different origins and permit controlled communication between origins. The <code>Origin</code> header warns the server that a possibly untrusted Web application is being used.</p>
 
-                      <p>When an HTTP request includes the <code>Origin</code> header, the server MUST match an authorization policy with an <code>acl:origin</code> property value that of the field-value.</p>
+                      <p>When an HTTP request includes the <code>Origin</code> header, the requested operation is granted on the target resource when there is a match for:</p>
+
+                      <ul>
+                        <li>an authorization policy allowing access to the requesting agent (<code>acl:agent</code>, <code>acl:agentGroup</code>, <code>acl:agentClass</code>);</li>
+                        <li>an authorization policy with an <code>acl:origin</code> property value that of <code>Origin</code>'s field-value; and</li>
+                        <li>the required access mode is allowed for the requesting agent and the origin.</li>
+                      </ul>
 
                       <p>When an authorization is granted to an HTTP request including the <code>Origin</code> header, the server MUST include the HTTP <code>Access-Control-Allow-Origin</code> and <code>Access-Control-Allow-Headers</code> headers in the response of the HTTP request.</p>
 

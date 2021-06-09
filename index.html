@@ -168,7 +168,7 @@ left:4.5em;
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Web Access Control</h1>
-        <h2>Editor’s Draft, 2021-06-08</h2>
+        <h2>Editor’s Draft, 2021-06-09</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -194,7 +194,7 @@ left:4.5em;
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-06-08T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-08T00:00:00Z" property="schema:dateModified">2021-06-08</time></dd>
+          <dd><time content="2021-06-09T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-09T00:00:00Z" property="schema:dateModified">2021-06-09</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -747,6 +747,7 @@ by the system and therefore cannot be forged.</p>
 <code>ASK {</code>
 <code>  GRAPH $aclResource {</code>
 <code>    ?authorization</code>
+<code>      a acl:Authorization ;</code>
 <code>      acl:accessTo $resource ;</code>
 <code>      acl:agent $agent ;</code>
 <code>      acl:mode $mode .</code>
@@ -765,6 +766,7 @@ by the system and therefore cannot be forged.</p>
 <code>  GRAPH $aclResource {</code>
 <code>    {</code>
 <code>      ?authorization</code>
+<code>        a acl:Authorization ;</code>
 <code>        acl:default $containerResource ;</code>
 <code>        acl:agentClass $agentClass ;</code>
 <code>        acl:mode ?requiredMode .</code>
@@ -788,6 +790,7 @@ by the system and therefore cannot be forged.</p>
                         <pre about="#match-accessto-agent-mode" property="schema:description" typeof="fabio:Script"><code>ASK {</code>
 <code>  GRAPH $aclResource {</code>
 <code>    ?authorization</code>
+<code>      a acl:Authorization ;</code>
 <code>      acl:accessTo $resource ;</code>
 <code>      acl:agentGroup ?agentGroup ;</code>
 <code>      acl:mode $mode .</code>

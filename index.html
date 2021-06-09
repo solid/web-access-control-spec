@@ -699,7 +699,9 @@ left:4.5em;
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>User agents include the HTTP <code>Origin</code> header field to isolate different origins and permit controlled communication between origins. The <code>Origin</code> header warns the server that a possibly untrusted Web application is being used.</p>
 
-                      <p>When an HTTP request includes the <code>Origin</code> header, the server MUST match an authorization policy with an <code>acl:origin</code> property value that of the field-value. When an authorization is granted to an HTTP request including the <code>Origin</code> header, the server MUST include the HTTP <code>Access-Control-Allow-Origin</code> and <code>Access-Control-Allow-Headers</code> headers in the response of the HTTP request.</p>
+                      <p>When an HTTP request includes the <code>Origin</code> header, the server MUST match an authorization policy with an <code>acl:origin</code> property value that of the field-value.</p>
+
+                      <p>When an authorization is granted to an HTTP request including the <code>Origin</code> header, the server MUST include the HTTP <code>Access-Control-Allow-Origin</code> and <code>Access-Control-Allow-Headers</code> headers in the response of the HTTP request.</p>
 
                       <div class="note" id="access-subject-origin-rejection-reason" rel="schema:hasPart" resource="#access-subject-origin-rejection-reason">
                         <h5 property="schema:name"><span>Note</span>: Access Subject and Origin Rejection Reason</h5>

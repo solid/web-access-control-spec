@@ -429,7 +429,7 @@ left:4.5em;
                   <div class="issue" id="link-relation-type" rel="schema:hasPart" resource="#link-relation-type">
                     <h4 property="schema:name"><span>Issue</span>: Link Relation Type</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>The possibility of using URIs as relation types interchangeably or as alternate to the <a href="#acl-link-relation">acl Link Relation</a> type is under consideration, eg. <code>http://www.w3.org/ns/auth/acl#accessControl</code> [<a href="https://github.com/solid/specification/issues/172#issuecomment-766840145">Issue</a>] [<a href="https://github.com/solid/web-access-control-spec/issues/21#issuecomment-769137284">Issue</a>].</p>
+                      <p>The possibility of using URIs as relation types interchangeably or as alternate to the <a href="#acl-link-relation">acl Link Relation</a> type is under consideration, eg. <code>https://www.w3.org/ns/iana/link-relations/relation#acl</code> or <code>http://www.w3.org/ns/auth/acl#accessControl</code> [<a href="https://github.com/solid/specification/issues/172#issuecomment-766840145">Issue</a>] [<a href="https://github.com/solid/web-access-control-spec/issues/21#issuecomment-769137284">Issue</a>].</p>
                     </div>
                   </div>
 
@@ -480,7 +480,12 @@ left:4.5em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The <code>acl:accessTo</code> property value is used to check if access is allowed for a specific resource. When an authorization policy includes the <code>acl:default</code> property value (the container resource in context), then access permissions be applied to the original requested resource.</p>
 
-                  <p class="issue"><span>Issue</span>: <code>acl:accessToClass</code>.</p>
+                  <div class="issue" id="access-to-class" rel="schema:hasPart" resource="#access-to-class">
+                    <h4 property="schema:name"><span>Issue</span>: Access to Class</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>Whether <code>acl:accessToClass</code> is required by this specification or not [<a href="https://github.com/solid/web-access-control-spec/issues/22">Issue</a>]</p>
+                    </div>
+                  </div>
 
                   <p>Inheriting authorization policies from the most significant container's ACL resource is useful to avoid individually managing an ACL resource for each resource, as well as to define access control for resources that do not exist yet.</p>
                 </div>

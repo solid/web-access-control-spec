@@ -341,29 +341,43 @@ left:4.5em;
 
                   <p>This section defines the terms used in this specification.</p>
 
-                  <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="uri">URI</dfn> provides the means for identifying resources [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>].</p>
+                  <dl>
+                    <dt><dfn id="uri">URI</dfn></dt>
+                    <dd>A URI provides the means for identifying resources [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>].</dd>
 
-                  <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="resource">resource</dfn> is the target of an HTTP request identified by a URI [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</p>
+                    <dt><dfn id="resource">resource</dfn></dt>
+                    <dd>A resource is the target of an HTTP request identified by a URI [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</dd>
 
-                  <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="container-resource">container resource</dfn> is a hierarchical collection of resources that contains other resources, including containers.</p>
+                    <dt><dfn id="container-resource">container resource</dfn></dt>
+                    <dd>A container resource is a hierarchical collection of resources that contains other resources, including containers.</dd>
 
-                  <p>A <dfn class="dfn-paneled" data-dfn-type="dfn" id="root-container">root container</dfn> is a container resource that is at the highest level of the collection hierarchy.</p>
+                    <dt><dfn id="root-container">root container</dfn></dt>
+                    <dd>A root container is a container resource that is at the highest level of the collection hierarchy.</dd>
 
-                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="acl-resource">ACL resource</dfn> is represented by an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that includes <a href="#authorization-policy">authorization policies</a> to access resources.</p>
+                    <dt><dfn id="acl-resource">ACL resource</dfn></dt>
+                    <dd>An ACL resource is represented by an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that includes <a href="#authorization-policy">authorization policies</a> to access resources.</dd>
 
-                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="authorization-policy">authorization policy</dfn> is an abstract thing identified by a URI whose properties are defined in an <a href="#acl-resource">ACL resource</a>, eg. <a href="#access-mode">access modes</a> granted to <a href="#agent">agents</a> the ability to perform operations on <a href="#resource">resources</a>.</p>
+                    <dt><dfn id="authorization-policy">authorization policy</dfn></dt>
+                    <dd>An authorization policy is an abstract thing identified by a URI whose properties are defined in an <a href="#acl-resource">ACL resource</a>, eg. <a href="#access-mode">access modes</a> granted to <a href="#agent">agents</a> the ability to perform operations on <a href="#resource">resources</a>.</dd>
 
-                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="access-mode">access mode</dfn> is a class of operations that can be performed on one or more resources.</p>
+                    <dt><dfn id="access-mode">access mode</dfn></dt>
+                    <dd>An access mode is a class of operations that can be performed on one or more resources.</dd>
 
-                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="agent">agent</dfn> is a person, social entity or software identified by a URI, eg. a WebID denotes an agent [<cite><a class="bibref" href="#bib-webid">WEBID</a></cite>].</p>
+                    <dt><dfn id="agent">agent</dfn></dt>
+                    <dd>An agent is a person, social entity or software identified by a URI, eg. a WebID denotes an agent [<cite><a class="bibref" href="#bib-webid">WEBID</a></cite>].</dd>
 
-                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="agent-group">agent group</dfn> is a group of persons or entities identified by a URI.</p>
+                    <dt><dfn id="agent">agent</dfn></dt>
+                    <dd>An <dfn id="agent-group">agent group</dfn> is a group of persons or entities identified by a URI.</dd>
 
-                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="agent-class">agent class</dfn> is a class of persons or entities identified by a URI.</p>
+                    <dt><dfn id="agent-class">agent class</dfn></dt>
+                    <dd>An agent class is a class of persons or entities identified by a URI.</dd>
 
-                  <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" id="origin">origin</dfn> indicates where an HTTP request originates from [<cite><a class="bibref" href="#bib-rfc6454">RFC6454</a></cite>].</p>
+                    <dt><dfn id="origin">origin</dfn></dt>
+                    <dd>An origin indicates where an HTTP request originates from [<cite><a class="bibref" href="#bib-rfc6454">RFC6454</a></cite>].</dd>
 
-                  <p>The <dfn class="dfn-paneled" data-dfn-type="dfn" id="status-of-a-permission">status of a permission</dfn> is either access is <em>granted</em> or <em>denied</em>.</p>
+                    <dt><dfn id="status-of-a-permission">status of a permission</dfn></dt>
+                    <dd>The status of a permission is either access is <em>granted</em> or <em>denied</em>.</dd>
+                  </dl>
 
                   <p>In addition to the terminology above, this specification also uses terminology from the [<cite><a class="bibref" href="#bib-infra">INFRA</a></cite>] specification. When INFRA terminology is used, such as <a href="https://infra.spec.whatwg.org/#strings">string</a> and <a href="https://infra.spec.whatwg.org/#booleans">boolean</a>, it is linked directly to that specification.</p>
                 </div>

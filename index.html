@@ -168,7 +168,7 @@ left:4.5em;
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Web Access Control</h1>
-        <h2>Editor’s Draft, 2021-06-10</h2>
+        <h2>Editor’s Draft, 2021-06-11</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -194,7 +194,7 @@ left:4.5em;
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-06-10T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-10T00:00:00Z" property="schema:dateModified">2021-06-10</time></dd>
+          <dd><time content="2021-06-11T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-11T00:00:00Z" property="schema:dateModified">2021-06-11</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -255,7 +255,7 @@ left:4.5em;
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#authorization-policies"><span class="secno">4</span> <span class="content">Authorization Policies</span></a>
+                  <a class="tocxref" href="#authorization"><span class="secno">4</span> <span class="content">Authorization</span></a>
                   <ol>
                     <li><a class="tocxref" href="#access-objects"><span class="secno">4.1</span> <span class="content">Access Objects</span></a></li>
                     <li><a class="tocxref" href="#access-modes"><span class="secno">4.2</span> <span class="content">Access Modes</span></a></li>
@@ -263,10 +263,10 @@ left:4.5em;
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#authorization"><span class="secno">5</span> <span class="content">Authorization</span></a>
+                  <a class="tocxref" href="#authorization-process"><span class="secno">5</span> <span class="content">Authorization Process</span></a>
                   <ol>
                     <li><a href="#effective-acl-resource"><span class="secno">5.1</span> <span class="content">Effective ACL Resource</span></a></li>
-                    <li><a class="tocxref" href="#authorization-policy-conformance"><span class="secno">5.2</span> <span class="content">Authorization Policy Conformance</span></a></li>
+                    <li><a class="tocxref" href="#authorization-conformance"><span class="secno">5.2</span> <span class="content">Authorization Conformance</span></a></li>
                     <li><a class="tocxref" href="#authorization-evaluation"><span class="secno">5.3</span> <span class="content">Authorization Evaluation</span></a></li>
                   </ol>
                 </li>
@@ -493,8 +493,8 @@ left:4.5em;
             </div>
           </section>
 
-          <section id="authorization-policies" inlist="" rel="schema:hasPart" resource="#authorization-policies">
-            <h2 property="schema:name">Authorization Policies</h2>
+          <section id="authorization" inlist="" rel="schema:hasPart" resource="#authorization">
+            <h2 property="schema:name">Authorization</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p><a href="#authorization-policy">Authorization policy</a> (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access permissions granted to agents the ability to perform operations on resources. Authorization polices are described with RDF statements and may express any information. This section describes the following characteristics of an authorization policy: <a href="#access-objects" rel="rdfs:seeAlso">access objects</a> to specify what can be accessed, <a href="#access-modes" rel="rdfs:seeAlso">access modes</a> to specify permissions, and <a href="#access-subjects" rel="rdfs:seeAlso">access subjects</a> to specify who can access the objects.</p>
 
@@ -586,10 +586,10 @@ left:4.5em;
             </div>
           </section>
 
-          <section id="authorization" inlist="" rel="schema:hasPart" resource="#authorization">
-            <h2 property="schema:name">Authorization</h2>
+          <section id="authorization-process" inlist="" rel="schema:hasPart" resource="#authorization-process">
+            <h2 property="schema:name">Authorization Process</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>This section describes how implementations can determine the <a href="#effective-acl-resource">effective ACL resource</a> of a resource and hence which set of <a href="#authorization-policy-conformance">conforming authorization policies</a> to use.</p>
+              <p>This section describes how implementations can determine the <a href="#effective-acl-resource">effective ACL resource</a> of a resource and hence which set of <a href="#authorization-conformance">conforming authorizations</a> to use.</p>
 
               <p>Servers process access requests by <a href="#authorization-evaluation">evaluating the authorization policies</a> associated with referenced resources in order to determine whether the necessary access permissions are granted or denied for a particular request.</p>
 
@@ -622,10 +622,10 @@ left:4.5em;
                 </div>
               </section>
 
-              <section id="authorization-policy-conformance" inlist="" rel="schema:hasPart" resource="#authorization-policy-conformance">
-                <h3 property="schema:name">Authorization Policy Conformance</h3>
+              <section id="authorization-conformance" inlist="" rel="schema:hasPart" resource="#authorization-conformance">
+                <h3 property="schema:name">Authorization Conformance</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>An applicable authorization policy has the following properties:</p>
+                  <p>An applicable authorization has the following properties:</p>
 
                   <ul>
                     <li>At least one <code>rdf:type</code> property whose object is <code>acl:Authorization</code>.</li>
@@ -639,7 +639,7 @@ left:4.5em;
               <section id="authorization-evaluation" inlist="" rel="schema:hasPart" resource="#authorization-evaluation">
                 <h3 property="schema:name">Authorization Evaluation</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The evaluation of an authorization is concerned with finding authorization policies that match the required parameters of an operation (<cite><a href="#authorization-policy-conformance" rel="rdfs:seeAlso">Authorization Policy Conformance</a></cite>). Evaluation stops when all access permission requests have been granted by one or more authorization policies. Authorization policies that do not match a required access permission have no effect on the outcome of the evaluation. Access is granted when conforming authorization policies are matched, otherwise access is denied.</p>
+                  <p>The evaluation of an authorization is concerned with finding authorization policies that match the required parameters of an operation (<cite><a href="#authorization-conformance" rel="rdfs:seeAlso">Authorization Conformance</a></cite>). Evaluation stops when all access permission requests have been granted by one or more authorization policies. Authorization policies that do not match a required access permission have no effect on the outcome of the evaluation. Access is granted when conforming authorization policies are matched, otherwise access is denied.</p>
 
                   <p>As per determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource, an authorization policy can be evaluated explicitly (via <code>acl:accessTo</code>) or inherited (via <code>acl:default</code>) against a particular request.</p>
 

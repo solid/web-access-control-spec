@@ -216,7 +216,7 @@ left:4.5em;
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#authorization"><span class="secno">4</span> <span class="content">Authorization</span></a>
+                  <a class="tocxref" href="#authorization-rule"><span class="secno">4</span> <span class="content">Authorization Rule</span></a>
                   <ol>
                     <li><a class="tocxref" href="#access-objects"><span class="secno">4.1</span> <span class="content">Access Objects</span></a></li>
                     <li><a class="tocxref" href="#access-modes"><span class="secno">4.2</span> <span class="content">Access Modes</span></a></li>
@@ -277,7 +277,7 @@ left:4.5em;
 
               <p><dfn id="wac">Web Access Control</dfn> (<abbr title="Web Access Control">WAC</abbr>) is a decentralized cross-domain access control system providing a way for Linked Data systems to set authorization conditions on HTTP resources using the Access Control List (<abbr title="Access Control List">ACL</abbr>) model.</p>
 
-              <p>The WAC specification describes how to enable applications to discover <a href="#authorization-policy">authorization policies</a> associated with a given <a href="#resource">resource</a>, and to control such policies, as directed by an agent. Server manages the association between a resource and an <a href="#acl-resource">ACL resource</a>, and applies the authorization conditions on requested operations. Authorization policies are described using the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite> to express and determine the <a href="#status-of-a-permission">status of a permission</a> of a requested resource. Any kind of access can be given to a resource as per the ACL ontology. This specification uses the <a href="#access-mode">access modes</a> currently defined by the ACL ontology, such as the class of operations to read, write, append and control resources. An authorization may allow public access to resources or place the requirement for authenticated <a href="#agent">agents</a>. Resources and agents can be on different origins.</p>
+              <p>The WAC specification describes how to enable applications to discover <a href="#authorization">Authorizations</a> associated with a given <a href="#resource">resource</a>, and to control such policies, as directed by an agent. Server manages the association between a resource and an <a href="#acl-resource">ACL resource</a>, and applies the authorization conditions on requested operations. Authorizations are described using the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite> to express and determine the <a href="#status-of-a-permission">status of a permission</a> of a requested resource. Any kind of access can be given to a resource as per the ACL ontology. This specification uses the <a href="#access-mode">access modes</a> currently defined by the ACL ontology, such as the class of operations to read, write, append and control resources. An Authorization may allow public access to resources or place the requirement for authenticated <a href="#agent">agents</a>. Resources and agents can be on different origins.</p>
 
               <div class="note" id="specification-orthogonality" rel="schema:hasPart" resource="#specification-orthogonality">
                 <h4 property="schema:name"><span>Note</span>: Specification Orthogonality</h4>
@@ -302,7 +302,7 @@ left:4.5em;
 
                   <p property="skos:definition">The WAC specification defines the following terms. These terms are referenced throughout this specification.</p>
 
-                  <span rel="skos:hasTopConcept"><span resource="#uri"></span><span resource="#resource"></span><span resource="#container-resource"></span><span resource="#root-container"></span><span resource="#acl-resource"></span><span resource="#authorization-policy"></span><span resource="#access-mode"></span><span resource="#agent"></span><span resource="#agent-group"></span><span resource="#agent-class"></span><span resource="#origin"></span><span resource="#status-of-a-permission"></span></span>
+                  <span rel="skos:hasTopConcept"><span resource="#uri"></span><span resource="#resource"></span><span resource="#container-resource"></span><span resource="#root-container"></span><span resource="#acl-resource"></span><span resource="#authorization"></span><span resource="#access-mode"></span><span resource="#agent"></span><span resource="#agent-group"></span><span resource="#agent-class"></span><span resource="#origin"></span><span resource="#status-of-a-permission"></span></span>
 
                   <dl>
                     <dt about="#uri" property="skos:prefLabel" typeof="skos:Concept"><dfn id="uri">URI</dfn></dt>
@@ -318,10 +318,10 @@ left:4.5em;
                     <dd about="#root-container" property="skos:definition">A root container is a container resource that is at the highest level of the collection hierarchy.</dd>
 
                     <dt about="#acl-resource" property="skos:prefLabel" typeof="skos:Concept"><dfn id="acl-resource">ACL resource</dfn></dt>
-                    <dd about="#acl-resource" property="skos:definition">An ACL resource is represented by an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that includes <a href="#authorization-policy">authorization policies</a> to access resources.</dd>
+                    <dd about="#acl-resource" property="skos:definition">An ACL resource is represented by an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that includes <a href="#authorization">Authorizations</a> to access resources.</dd>
 
-                    <dt about="#authorization-policy" property="skos:prefLabel" typeof="skos:Concept"><dfn id="authorization-policy">authorization policy</dfn></dt>
-                    <dd about="#authorization-policy" property="skos:definition">An authorization policy is an abstract thing identified by a URI whose properties are defined in an <a href="#acl-resource">ACL resource</a>, eg. <a href="#access-mode">access modes</a> granted to <a href="#agent">agents</a> the ability to perform operations on <a href="#resource">resources</a>.</dd>
+                    <dt about="#authorization" property="skos:prefLabel" typeof="skos:Concept"><dfn id="authorization">Authorization</dfn></dt>
+                    <dd about="#authorization" property="skos:definition">An Authorization is an abstract thing identified by a URI whose properties are defined in an <a href="#acl-resource">ACL resource</a>, eg. <a href="#access-mode">access modes</a> granted to <a href="#agent">agents</a> the ability to perform operations on <a href="#resource">resources</a>.</dd>
 
                     <dt about="#access-mode" property="skos:prefLabel" typeof="skos:Concept"><dfn id="access-mode">access mode</dfn></dt>
                     <dd about="#access-mode" property="skos:definition">An access mode is a class of operations that can be performed on one or more resources.</dd>
@@ -410,7 +410,7 @@ left:4.5em;
             <div datatype="rdf:HTML" property="schema:description">
               <p><em>This section is non-normative.</em></p>
 
-              <p>Clients who want to perform read-write operations on <a href="#acl-resource">ACL resources</a> with respect to <a href="#authorization-policy">authorization policies</a> which are stored on a server can do so within the framework of HTTP. This specification does not describe the HTTP interaction to read-write resources. It is assumed that servers have a mapping to handle HTTP requests and the required authorization policies to grant operations on resources. Implementations are strongly encouraged to use existing approaches that provide an extension of the rules of <cite><a href="https://www.w3.org/DesignIssues/LinkedData" rel="cito:citesAsAuthority">Linked Data</a></cite>, eg. [<cite><a class="bibref" href="#bib-solid-protocol">SOLID-PROTOCOL</a></cite>], [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>].</p>
+              <p>Clients who want to perform read-write operations on <a href="#acl-resource">ACL resources</a> with respect to <a href="#authorization">Authorizations</a> which are stored on a server can do so within the framework of HTTP. This specification does not describe the HTTP interaction to read-write resources. It is assumed that servers have a mapping to handle HTTP requests and the required Authorizations to grant operations on resources. Implementations are strongly encouraged to use existing approaches that provide an extension of the rules of <cite><a href="https://www.w3.org/DesignIssues/LinkedData" rel="cito:citesAsAuthority">Linked Data</a></cite>, eg. [<cite><a class="bibref" href="#bib-solid-protocol">SOLID-PROTOCOL</a></cite>], [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>].</p>
             </div>
           </section>
 
@@ -422,7 +422,7 @@ left:4.5em;
               <section id="acl-resource-discovery" inlist="" rel="schema:hasPart" resource="#acl-resource-discovery">
                 <h3 property="schema:name">ACL Resource Discovery</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>When a server wants to enable applications to discover <a href="#authorization-policy">authorization policies</a> associated with a given <a href="#resource">resource</a>, the server MUST advertise the <a href="#acl-resource">ACL resource</a> that is associated with a resource by responding to an HTTP request including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> (<cite><a href="#acl-link-relation">acl Link Relation</a></cite> type) and the ACL resource as link target.</p>
+                  <p>When a server wants to enable applications to discover <a href="#authorization">Authorizations</a> associated with a given <a href="#resource">resource</a>, the server MUST advertise the <a href="#acl-resource">ACL resource</a> that is associated with a resource by responding to an HTTP request including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> (<cite><a href="#acl-link-relation">acl Link Relation</a></cite> type) and the ACL resource as link target.</p>
 
                   <p>ACL Resource Discovery is used towards determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource.</p>
 
@@ -458,27 +458,27 @@ left:4.5em;
               <section id="acl-resource-representation" inlist="" rel="schema:hasPart" resource="#acl-resource-representation">
                 <h3 property="schema:name">ACL Resource Representation</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>An ACL resource is an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that can hold any information, typically comprises an unordered set of <a href="#authorization-policy">authorization policies</a>, any of which could permit an attempted access.</p>
+                  <p>An ACL resource is an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that can hold any information, typically comprises an unordered set of <a href="#authorization">Authorizations</a>, any of which could permit an attempted access.</p>
 
                   <p>Servers MUST accept an HTTP <code>GET</code> request targeting an ACL resource when the value of the <code>Accept</code> header requests a representation in <code>text/turtle</code> [<cite><a class="bibref" href="#bib-turtle">TURTLE</a></cite>].</p>
 
-                  <p>Servers who want a resource to inherit authorization policies (see <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite>) from a container resource MUST NOT initialise the ACL resource that is associated with the resource with a representation. When an authorized HTTP <code>GET</code> or <code>HEAD</code> request targets an ACL resource without an existing representation, the server MUST respond with the <code>404</code> status code as per [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</p>
+                  <p>Servers who want a resource to inherit Authorizations (see <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite>) from a container resource MUST NOT initialise the ACL resource that is associated with the resource with a representation. When an authorized HTTP <code>GET</code> or <code>HEAD</code> request targets an ACL resource without an existing representation, the server MUST respond with the <code>404</code> status code as per [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</p>
 
-                  <p>The <a href="#root-container">root container</a> MUST have an ACL resource with a representation. The ACL resource of the root container MUST include an authorization policy allowing the <code>acl:Control</code> access privilege (<cite><a href="#acl-mode-control" rel="rdfs:seeAlso"><code>acl:Control</code></a></cite> access mode).</p>
+                  <p>The <a href="#root-container">root container</a> MUST have an ACL resource with a representation. The ACL resource of the root container MUST include an Authorization allowing the <code>acl:Control</code> access privilege (<cite><a href="#acl-mode-control" rel="rdfs:seeAlso"><code>acl:Control</code></a></cite> access mode).</p>
                 </div>
               </section>
             </div>
           </section>
 
-          <section id="authorization" inlist="" rel="schema:hasPart" resource="#authorization">
-            <h2 property="schema:name">Authorization</h2>
+          <section id="authorization-rule" inlist="" rel="schema:hasPart" resource="#authorization-rule">
+            <h2 property="schema:name">Authorization Rule</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p><a href="#authorization-policy">Authorization policy</a> (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access permissions granted to agents the ability to perform operations on resources. Authorization polices are described with RDF statements and may express any information. This section describes the following characteristics of an authorization policy: <a href="#access-objects" rel="rdfs:seeAlso">access objects</a> to specify what can be accessed, <a href="#access-modes" rel="rdfs:seeAlso">access modes</a> to specify permissions, and <a href="#access-subjects" rel="rdfs:seeAlso">access subjects</a> to specify who can access the objects.</p>
+              <p><a href="#authorization">Authorization</a> (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access permissions granted to agents the ability to perform operations on resources. Authorizations are described with RDF statements and may express any information. This section describes the following characteristics of an Authorization: <a href="#access-objects" rel="rdfs:seeAlso">access objects</a> to specify what can be accessed, <a href="#access-modes" rel="rdfs:seeAlso">access modes</a> to specify permissions, and <a href="#access-subjects" rel="rdfs:seeAlso">access subjects</a> to specify who can access the objects.</p>
 
               <section id="access-objects" inlist="" rel="schema:hasPart" resource="#access-objects">
                 <h3 property="schema:name">Access Objects</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The <code>acl:accessTo</code> property value is used to check if access is allowed for a specific resource. When an authorization policy includes the <code>acl:default</code> property value (the container resource in context), then access permissions be applied to the original requested resource.</p>
+                  <p>The <code>acl:accessTo</code> property value is used to check if access is allowed for a specific resource. When an Authorization includes the <code>acl:default</code> property value (the container resource in context), then access permissions be applied to the original requested resource.</p>
 
                   <div class="issue" id="access-to-class" rel="schema:hasPart" resource="#access-to-class">
                     <h4 property="schema:name"><span>Issue</span>: Access to Class</h4>
@@ -487,7 +487,7 @@ left:4.5em;
                     </div>
                   </div>
 
-                  <p>Inheriting authorization policies from the most significant container's ACL resource is useful to avoid individually managing an ACL resource for each resource, as well as to define access control for resources that do not exist yet.</p>
+                  <p>Inheriting Authorizations from the most significant container's ACL resource is useful to avoid individually managing an ACL resource for each resource, as well as to define access control for resources that do not exist yet.</p>
                 </div>
               </section>
 
@@ -524,14 +524,14 @@ left:4.5em;
                   <div class="note" id="uri-ownership" rel="schema:hasPart" resource="#uri-ownership">
                     <h3 property="schema:name"><span>Note</span>: URI Ownership</h3>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p><q>URI ownership</q>, as per <cite><a href="https://www.w3.org/TR/webarch/#uri-ownership">Architecture of the World Wide Web</a></cite> [<cite><a href="bib-webarch">WEBARCH</a></cite>], is outside the scope of this specification, and thus cannot be changed by modifying authorization policies.</p>
+                      <p><q>URI ownership</q>, as per <cite><a href="https://www.w3.org/TR/webarch/#uri-ownership">Architecture of the World Wide Web</a></cite> [<cite><a href="bib-webarch">WEBARCH</a></cite>], is outside the scope of this specification, and thus cannot be changed by modifying Authorizations.</p>
                     </div>
                   </div>
 
                   <div class="note" id="loss-of-control-mitigation" rel="schema:hasPart" resource="#loss-of-control-mitigation">
                     <h3 property="schema:name"><span>Note</span>: Loss of Control Mitigation</h3>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>It is assumed that systems using WAC have mechanisms to mitigate loss of control of the resources eg. by ensuring valid ACL resources and authorization policies, providing administrative functions on the storage, or implicit control over all resources in a storage to owners.</p>
+                      <p>It is assumed that systems using WAC have mechanisms to mitigate loss of control of the resources eg. by ensuring valid ACL resources and Authorizations, providing administrative functions on the storage, or implicit control over all resources in a storage to owners.</p>
                     </div>
                   </div>
                 </div>
@@ -573,18 +573,18 @@ left:4.5em;
             <div datatype="rdf:HTML" property="schema:description">
               <p>This section describes how implementations can determine the <a href="#effective-acl-resource">effective ACL resource</a> of a resource and hence which set of <a href="#authorization-conformance">conforming authorizations</a> to use.</p>
 
-              <p>Servers process access requests by <a href="#authorization-evaluation">evaluating the authorization policies</a> associated with referenced resources in order to determine whether the necessary access permissions are granted or denied for a particular request.</p>
+              <p>Servers process access requests by <a href="#authorization-evaluation">evaluating the Authorizations</a> associated with referenced resources in order to determine whether the necessary access permissions are granted or denied for a particular request.</p>
 
               <section id="effective-acl-resource" inlist="" rel="schema:hasPart" resource="#effective-acl-resource">
                 <h3 property="schema:name">Effective ACL Resource</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>Servers enforce the effective ACL resource of a resource, whereas clients determine the effective ACL resource of a resource to perform read and write <a href="#authorization-policy">authorization policies</a>.</p>
+                  <p>Servers enforce the effective ACL resource of a resource, whereas clients determine the effective ACL resource of a resource to perform read and write <a href="#authorization">Authorizations</a>.</p>
 
                   <p>When an ACL resource associated with a resource has a representation (see <a href="#acl-resource-representation" rel="rdfs:seeAlso">ACL Resource Representation</a>), it is the <em>effective ACL resource</em> of the requested resource.</p>
 
-                  <p>When an ACL resource associated with a resource does not have a representation (see <a href="#acl-resource-representation" rel="rdfs:seeAlso">ACL Resource Representation</a>), no authorization policies can be immediately checked against the requested resource. In this case, a container resource's ACL resource may apply on every access to a member resource, in specifying authorization policies for the requested resource.</p>
+                  <p>When an ACL resource associated with a resource does not have a representation (see <a href="#acl-resource-representation" rel="rdfs:seeAlso">ACL Resource Representation</a>), no Authorizations can be immediately checked against the requested resource. In this case, a container resource's ACL resource may apply on every access to a member resource, in specifying Authorizations for the requested resource.</p>
 
-                  <p>WAC has the property of being recursive with respect to container hierarchy, meaning that a member resource inherits authorization policies from the closest container resource (heading toward the root container).</p>
+                  <p>WAC has the property of being recursive with respect to container hierarchy, meaning that a member resource inherits Authorizations from the closest container resource (heading toward the root container).</p>
 
                   <p>To determine the <em>effective ACL resource</em> of a resource, perform the following steps. Returns <a href="https://infra.spec.whatwg.org/#strings">string</a> (the URI of an ACL Resource).</p>
 
@@ -607,7 +607,7 @@ left:4.5em;
               <section id="authorization-conformance" inlist="" rel="schema:hasPart" resource="#authorization-conformance">
                 <h3 property="schema:name">Authorization Conformance</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>An applicable authorization has the following properties:</p>
+                  <p>An applicable Authorization has the following properties:</p>
 
                   <ul>
                     <li>At least one <code>rdf:type</code> property whose object is <code>acl:Authorization</code>.</li>
@@ -621,11 +621,11 @@ left:4.5em;
               <section id="authorization-evaluation" inlist="" rel="schema:hasPart" resource="#authorization-evaluation">
                 <h3 property="schema:name">Authorization Evaluation</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The evaluation of an authorization is concerned with finding authorization policies that match the required parameters of an operation (<cite><a href="#authorization-conformance" rel="rdfs:seeAlso">Authorization Conformance</a></cite>). Evaluation stops when all access permission requests have been granted by one or more authorization policies. Authorization policies that do not match a required access permission have no effect on the outcome of the evaluation. Access is granted when conforming authorization policies are matched, otherwise access is denied.</p>
+                  <p>The evaluation of an authorization is concerned with finding Authorizations that match the required parameters of an operation (<cite><a href="#authorization-conformance" rel="rdfs:seeAlso">Authorization Conformance</a></cite>). Evaluation stops when all access permission requests have been granted by one or more Authorizations. Authorizations that do not match a required access permission have no effect on the outcome of the evaluation. Access is granted when conforming Authorizations are matched, otherwise access is denied.</p>
 
-                  <p>As per determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource, an authorization policy can be evaluated explicitly (via <code>acl:accessTo</code>) or inherited (via <code>acl:default</code>) against a particular request.</p>
+                  <p>As per determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource, an Authorization can be evaluated explicitly (via <code>acl:accessTo</code>) or inherited (via <code>acl:default</code>) against a particular request.</p>
 
-                  <p>When a request requires an access mode (<code>acl:mode</code>) which is a limitation of another access mode, then access is granted if either mode is allowed by the authorization policy. For example, when a request requires <code>acl:Append</code>, then access will be granted to agents having <code>acl:Write</code>.</p>
+                  <p>When a request requires an access mode (<code>acl:mode</code>) which is a limitation of another access mode, then access is granted if either mode is allowed by an Authorization. For example, when a request requires <code>acl:Append</code>, then access will be granted to agents having <code>acl:Write</code>.</p>
 
                   <p>The presence of the <code>acl:origin</code> property and its value is taken into account in the evaluation only when the HTTP request includes the <code>Origin</code> header.</p>
 
@@ -638,13 +638,13 @@ left:4.5em;
 
                       <p>As container resources and member resources are hierarchically organised, requests to perform operations on resources are in the context of the applicable container (effective ACL resource).</p>
 
-                      <p>When an operation requests to read a resource, the server MUST match an authorization policy allowing the <code>acl:Read</code> access privilege on the resource.</p>
+                      <p>When an operation requests to read a resource, the server MUST match an Authorization allowing the <code>acl:Read</code> access privilege on the resource.</p>
 
-                      <p>When an operation requests to create a resource as a member of a container resource, the server MUST match an authorization policy allowing the <code>acl:Append</code> or <code>acl:Write</code> access privilege on the container for new members.</p>
+                      <p>When an operation requests to create a resource as a member of a container resource, the server MUST match an Authorization allowing the <code>acl:Append</code> or <code>acl:Write</code> access privilege on the container for new members.</p>
 
-                      <p>When an operation requests to update a resource, the server MUST match an authorization policy allowing the <code>acl:Append</code> or <code>acl:Write</code> access privilege on the resource.</p>
+                      <p>When an operation requests to update a resource, the server MUST match an Authorization allowing the <code>acl:Append</code> or <code>acl:Write</code> access privilege on the resource.</p>
 
-                      <p>When an operation requests to delete a resource, the server MUST match authorization policies allowing the <code>acl:Write</code> access privilege on the resource and the containing container.</p>
+                      <p>When an operation requests to delete a resource, the server MUST match Authorizations allowing the <code>acl:Write</code> access privilege on the resource and the containing container.</p>
 
                       <div class="note" id="reinstated-resource-permissions" rel="schema:hasPart" resource="#reinstated-resource-permissions">
                         <h5 property="schema:name"><span>Note</span>: Reinstated Resource Permissions</h5>
@@ -653,7 +653,7 @@ left:4.5em;
                         </div>
                       </div>
 
-                      <p>When an operation requests to read and write an ACL resource, the server MUST match an authorization policy allowing the <code>acl:Control</code> access privilege on the resource.</p>
+                      <p>When an operation requests to read and write an ACL resource, the server MUST match an Authorization allowing the <code>acl:Control</code> access privilege on the resource.</p>
 
                       <div class="note" id="http-method-access-mode-mapping" rel="schema:hasPart" resource="#http-method-access-mode-mapping">
                         <h5 property="schema:name"><span>Note</span>: HTTP Method and Access Mode Mapping</h5>
@@ -684,8 +684,8 @@ left:4.5em;
                       <p>When an HTTP request includes the <code>Origin</code> header, the requested operation is granted on the target resource when there is a match for:</p>
 
                       <ul>
-                        <li>an authorization policy allowing access to the requesting agent (<code>acl:agent</code>, <code>acl:agentGroup</code>, <code>acl:agentClass</code>);</li>
-                        <li>an authorization policy with an <code>acl:origin</code> property value that of <code>Origin</code>'s field-value; and</li>
+                        <li>an Authorization allowing access to the requesting agent (<code>acl:agent</code>, <code>acl:agentGroup</code>, <code>acl:agentClass</code>);</li>
+                        <li>an Authorization with an <code>acl:origin</code> property value that of <code>Origin</code>'s field-value; and</li>
                         <li>the required access mode is allowed for the requesting agent and the origin.</li>
                       </ul>
 
@@ -718,17 +718,17 @@ left:4.5em;
                     </div>
                   </section>
 
-                  <section id="authorization-policy-matching" inlist="" rel="schema:hasPart" resource="#authorization-policy-matching">
-                    <h4 property="schema:name">Authorization Policy Matching</h4>
+                  <section id="authorization-matching" inlist="" rel="schema:hasPart" resource="#authorization-matching">
+                    <h4 property="schema:name">Authorization Matching</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p><em>This section is non-normative.</em></p>
 
-                      <p>This specification does not impose a storage system that can be used to store authorization policies. Similarly, mechanisms that can be used to find required RDF statements of authorization policies is deliberately unspecified to allow for a wide variety of use. This section <em>exemplifies</em> access check via <cite><a href="#sparql11-query">SPARQL 1.1 Query Language</a></cite>'s <code>ASK</code> form to test whether or not an authorization policy pattern matches; returns <a href="https://infra.spec.whatwg.org/#booleans">boolean</a>.</p>
+                      <p>This specification does not impose a storage system that can be used to store Authorizations. Similarly, mechanisms that can be used to find required RDF statements of Authorizations is deliberately unspecified to allow for a wide variety of use. This section <em>exemplifies</em> access check via <cite><a href="#sparql11-query">SPARQL 1.1 Query Language</a></cite>'s <code>ASK</code> form to test whether or not an Authorization pattern matches; returns <a href="https://infra.spec.whatwg.org/#booleans">boolean</a>.</p>
 
                       <p>The <code>ASK</code> queries below exemplify atomic graph patterns that can be executed against the default graph of an RDF dataset using named graphs for resources. The examples use query variables marked with "<var>?</var>" to indicate any value, and "<var>$</var>" to indicate inputs passed to the query, eg. <samp>&lt;http://example.org/.acl&gt;</samp> as the IRI reference of the effective ACL resource of a request replaces <code>$aclResource</code> in the query, and likewise, <samp>acl:Write</samp> as input is intended to replace <code>$mode</code> in the examples.</p>
 
                       <figure id="match-accessto-agent-mode" class="example listing" rel="schema:hasPart" resource="#match-accessto-agent-mode">
-                        <p class="example-h"><span>Example</span>: Match an authorization policy with a specific resource, agent and access mode.</p>
+                        <p class="example-h"><span>Example</span>: Match an Authorization with a specific resource, agent and access mode.</p>
                         <pre about="#match-accessto-agent-mode" property="schema:description" typeof="fabio:Script">PREFIX acl: &lt;http://www.w3.org/ns/auth/acl#&gt;
 <code>PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;</code>
 <code>PREFIX vcard: &lt;http://www.w3.org/2006/vcard/ns#&gt;</code>
@@ -742,15 +742,15 @@ left:4.5em;
 <code>      acl:mode $mode .</code>
 <code>  }</code>
 <code>}</code></pre>
-                        <figcaption property="schema:name"><code>ASK</code> query matching an authorization policy given inputs <var>resource</var>, <var>agent</var> and <var>mode</var>.</figcaption>
+                        <figcaption property="schema:name"><code>ASK</code> query matching an Authorization given inputs <var>resource</var>, <var>agent</var> and <var>mode</var>.</figcaption>
                       </figure>
 
                       <p>From here on, <code>PREFIX</code>s in the query are assumed to be present.</p>
 
-                      <p>The following query is typically used in context of inheriting authorization policies (<code>acl:default</code>) from a container's ACL resource. The query also demonstrates matching authorization policies that use a superclass of the required access mode (<cite><a href="#access-mode-classes" rel="rdfs:seeAlso">Access Mode Classes</a></cite>):</p>
+                      <p>The following query is typically used in context of inheriting Authorizations (<code>acl:default</code>) from a container's ACL resource. The query also demonstrates matching Authorizations that use a superclass of the required access mode (<cite><a href="#access-mode-classes" rel="rdfs:seeAlso">Access Mode Classes</a></cite>):</p>
 
                       <figure id="match-default-agentclass-mode" class="example listing" rel="schema:hasPart" resource="#match-accessto-agentclass-mode">
-                        <p class="example-h"><span>Example</span>: Match an authorization policy with a specific container resource, agent class membership and access mode.</p>
+                        <p class="example-h"><span>Example</span>: Match an Authorization with a specific container resource, agent class membership and access mode.</p>
                         <pre about="#match-accessto-agent-mode" property="schema:description" typeof="fabio:Script"><code>ASK {</code>
 <code>  GRAPH $aclResource {</code>
 <code>    {</code>
@@ -769,13 +769,13 @@ left:4.5em;
 <code>    }</code>
 <code>  }</code>
 <code>}</code></pre>
-                        <figcaption property="schema:name"><code>ASK</code> query matching an authorization policy given inputs <var>containerResource</var>, <var>agentClass</var> and <var>requiredMode</var> (which may be a subclass of another access mode).</figcaption>
+                        <figcaption property="schema:name"><code>ASK</code> query matching an Authorization given inputs <var>containerResource</var>, <var>agentClass</var> and <var>requiredMode</var> (which may be a subclass of another access mode).</figcaption>
                       </figure>
 
                       <p>The following query can be used to check if an agent is a member of any group that can access a resource:</p>
 
                       <figure id="match-accessto-agentgroup-mode" class="example listing" rel="schema:hasPart" resource="#match-accessto-agentclass-mode">
-                        <p class="example-h"><span>Example</span>: Match an authorization policy with a specific resource, agent with any group membership, and specific access mode.</p>
+                        <p class="example-h"><span>Example</span>: Match an Authorization with a specific resource, agent with any group membership, and specific access mode.</p>
                         <pre about="#match-accessto-agent-mode" property="schema:description" typeof="fabio:Script"><code>ASK {</code>
 <code>  GRAPH $aclResource {</code>
 <code>    ?authorization</code>
@@ -788,7 +788,7 @@ left:4.5em;
 <code>    ?agentGroup vcard:hasMember $agent .</code>
 <code>  }</code>
 <code>}</code></pre>
-                        <figcaption property="schema:name"><code>ASK</code> query matching an authorization policy given inputs <var>resource</var>, <var>agent</var> and <var>mode</var> (which may be a subclass of another access mode).</figcaption>
+                        <figcaption property="schema:name"><code>ASK</code> query matching an Authorization given inputs <var>resource</var>, <var>agent</var> and <var>mode</var> (which may be a subclass of another access mode).</figcaption>
                       </figure>
                     </div>
                   </section>
@@ -864,14 +864,14 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
 
-                  <p>As ACL resources are RDF sources, <a href="#authorization-policy">authorization policies</a> descriptions may be extended or limited by constraints eg. temporal or spatial constraints, and duties eg. payments, may be imposed on permissions, but no behaviour is defined by this specification. For example, the <cite><a href="https://www.w3.org/TR/odrl-model/" rel="cito:citesAsPotentialSolution">ODRL Information Model</a></cite> can be used to set obligations required to be met by agents prior to accessing a resource.</p>
+                  <p>As ACL resources are RDF sources, <a href="#authorization">Authorizations</a> descriptions may be extended or limited by constraints eg. temporal or spatial constraints, and duties eg. payments, may be imposed on permissions, but no behaviour is defined by this specification. For example, the <cite><a href="https://www.w3.org/TR/odrl-model/" rel="cito:citesAsPotentialSolution">ODRL Information Model</a></cite> can be used to set obligations required to be met by agents prior to accessing a resource.</p>
                 </div>
               </section>
 
               <section id="access-mode-extensions" inlist="" rel="schema:hasPart" resource="#access-mode-extensions">
                 <h3 property="schema:name">Access Mode Extensions</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>An extension to access modes is any mode that is defined in the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite>, ie. as a subclass of <code>acl:Access</code>, but not described in this specification (<cite><a href="#access-modes">Access Modes</a></cite>). Consumers of authorization policies that encounter unrecognised access modes MUST NOT stop processing or signal an error and MUST continue processing the access modes as if those properties were not present.</p>
+                  <p>An extension to access modes is any mode that is defined in the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite>, ie. as a subclass of <code>acl:Access</code>, but not described in this specification (<cite><a href="#access-modes">Access Modes</a></cite>). Consumers of Authorizations that encounter unrecognised access modes MUST NOT stop processing or signal an error and MUST continue processing the access modes as if those properties were not present.</p>
 
                   <p>Foreign-namespaced access modes are allowed in ACL resources, but no behaviour is defined by this specification.</p>
                 </div>
@@ -915,7 +915,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>Servers are strongly discouraged from trusting the information returned by looking up an agent's WebID for access control purposes. The server operator can also provide the server with other trusted information to include in the search for a reason to give the requester the access.</p>
 
-                  <p>Transfer of <a href="#authorization-policy">authorization policies</a> between a client and server over an open network creates the potential for those policies to be modified or disclosed without proper authorization. The requirements for the Web Access Control protocol discussed in this specification do not include cryptographic protection of authorization policy information, because it is assumed that this protection can be provided through HTTP over TLS. The path between client and application may be composed of multiple independent TLS connections, thus for end-to-end integrity and authenticity of content within an HTTP message, implementors can use mechanisms such as <cite><a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-message-signatures.html" rel="cito:citesAsPotentialSolution">Signing HTTP Messages</a></cite>. For cryptographic proof of authorization policies asserted by agents and protection from undetected modifications, implementors can use mechanisms such as <cite><a href="https://w3c-ccg.github.io/ld-proofs/" rel="cito:citesAsPotentialSolution">Linked Data Security</a></cite>.</p>
+                  <p>Transfer of <a href="#authorization">Authorizations</a> between a client and server over an open network creates the potential for those policies to be modified or disclosed without proper authorization. The requirements for the Web Access Control protocol discussed in this specification do not include cryptographic protection of Authorization information, because it is assumed that this protection can be provided through HTTP over TLS. The path between client and application may be composed of multiple independent TLS connections, thus for end-to-end integrity and authenticity of content within an HTTP message, implementors can use mechanisms such as <cite><a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-message-signatures.html" rel="cito:citesAsPotentialSolution">Signing HTTP Messages</a></cite>. For cryptographic proof of Authorizations asserted by agents and protection from undetected modifications, implementors can use mechanisms such as <cite><a href="https://w3c-ccg.github.io/ld-proofs/" rel="cito:citesAsPotentialSolution">Linked Data Security</a></cite>.</p>
 
                   <p>Implementations are encouraged to use mechanisms to record activities about ACL resources for the purpose of accountability and integrity, eg. by having audit trails, notification of changes, reasons for change, preserving provenance information.</p>
 

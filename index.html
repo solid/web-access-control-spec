@@ -13,7 +13,7 @@ counter-reset:sub-section;
 em.rfc2119 { color: #900; }
 code, samp { color: #c83500; }
 pre code, pre samp { color: #000; }
-dfn { font-style:inherit; }
+dfn { font-weight:inherit; }
 .do.fragment a { border-bottom:0; }
 .do.fragment a:hover { background:none; border-bottom:0; }
 section figure pre { margin:1em 0; display:block; }
@@ -295,49 +295,51 @@ left:4.5em;
                 <li>Application developers who want to implement a client to obtain and control access to resources.</li>
               </ul>
 
-              <section id="terminology" inlist="" rel="schema:hasPart" resource="#terminology">
-                <h3 property="schema:name">Terminology</h3>
+              <section id="terminology" inlist="" rel="schema:hasPart" resource="#terminology" typeof="skos:ConceptScheme">
+                <h3 property="schema:name skos:prefLabel">Terminology</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
 
-                  <p>This section defines the terms used in this specification.</p>
+                  <p property="skos:definition">The WAC specification defines the following terms. These terms are referenced throughout this specification.</p>
+
+                  <span rel="skos:hasTopConcept"><span resource="#uri"></span><span resource="#resource"></span><span resource="#container-resource"></span><span resource="#root-container"></span><span resource="#acl-resource"></span><span resource="#authorization-policy"></span><span resource="#access-mode"></span><span resource="#agent"></span><span resource="#agent-group"></span><span resource="#agent-class"></span><span resource="#origin"></span><span resource="#status-of-a-permission"></span></span>
 
                   <dl>
-                    <dt><dfn id="uri">URI</dfn></dt>
-                    <dd>A URI provides the means for identifying resources [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>].</dd>
+                    <dt about="#uri" property="skos:prefLabel" typeof="skos:Concept"><dfn id="uri">URI</dfn></dt>
+                    <dd about="#uri" property="skos:definition">A <dfn>Uniform Resource Identifier</dfn> (<abbr title="Uniform Resource Identifier">URI</abbr>) provides the means for identifying resources [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>].</dd>
 
-                    <dt><dfn id="resource">resource</dfn></dt>
-                    <dd>A resource is the target of an HTTP request identified by a URI [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</dd>
+                    <dt about="#resource" property="skos:prefLabel" typeof="skos:Concept"><dfn id="resource">resource</dfn></dt>
+                    <dd about="#resource" property="skos:definition">A resource is the target of an HTTP request identified by a URI [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</dd>
 
-                    <dt><dfn id="container-resource">container resource</dfn></dt>
-                    <dd>A container resource is a hierarchical collection of resources that contains other resources, including containers.</dd>
+                    <dt about="#container-resource" property="skos:prefLabel" typeof="skos:Concept"><dfn id="container-resource">container resource</dfn></dt>
+                    <dd about="#container-resource" property="skos:definition">A container resource is a hierarchical collection of resources that contains other resources, including containers.</dd>
 
-                    <dt><dfn id="root-container">root container</dfn></dt>
-                    <dd>A root container is a container resource that is at the highest level of the collection hierarchy.</dd>
+                    <dt about="#root-container" property="skos:prefLabel" typeof="skos:Concept"><dfn id="root-container">root container</dfn></dt>
+                    <dd about="#root-container" property="skos:definition">A root container is a container resource that is at the highest level of the collection hierarchy.</dd>
 
-                    <dt><dfn id="acl-resource">ACL resource</dfn></dt>
-                    <dd>An ACL resource is represented by an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that includes <a href="#authorization-policy">authorization policies</a> to access resources.</dd>
+                    <dt about="#acl-resource" property="skos:prefLabel" typeof="skos:Concept"><dfn id="acl-resource">ACL resource</dfn></dt>
+                    <dd about="#acl-resource" property="skos:definition">An ACL resource is represented by an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that includes <a href="#authorization-policy">authorization policies</a> to access resources.</dd>
 
-                    <dt><dfn id="authorization-policy">authorization policy</dfn></dt>
-                    <dd>An authorization policy is an abstract thing identified by a URI whose properties are defined in an <a href="#acl-resource">ACL resource</a>, eg. <a href="#access-mode">access modes</a> granted to <a href="#agent">agents</a> the ability to perform operations on <a href="#resource">resources</a>.</dd>
+                    <dt about="#authorization-policy" property="skos:prefLabel" typeof="skos:Concept"><dfn id="authorization-policy">authorization policy</dfn></dt>
+                    <dd about="#authorization-policy" property="skos:definition">An authorization policy is an abstract thing identified by a URI whose properties are defined in an <a href="#acl-resource">ACL resource</a>, eg. <a href="#access-mode">access modes</a> granted to <a href="#agent">agents</a> the ability to perform operations on <a href="#resource">resources</a>.</dd>
 
-                    <dt><dfn id="access-mode">access mode</dfn></dt>
-                    <dd>An access mode is a class of operations that can be performed on one or more resources.</dd>
+                    <dt about="#access-mode" property="skos:prefLabel" typeof="skos:Concept"><dfn id="access-mode">access mode</dfn></dt>
+                    <dd about="#access-mode" property="skos:definition">An access mode is a class of operations that can be performed on one or more resources.</dd>
 
-                    <dt><dfn id="agent">agent</dfn></dt>
-                    <dd>An agent is a person, social entity or software identified by a URI, eg. a WebID denotes an agent [<cite><a class="bibref" href="#bib-webid">WEBID</a></cite>].</dd>
+                    <dt about="#agent" property="skos:prefLabel" typeof="skos:Concept"><dfn id="agent">agent</dfn></dt>
+                    <dd about="#agent" property="skos:definition">An agent is a person, social entity or software identified by a URI, eg. a WebID denotes an agent [<cite><a class="bibref" href="#bib-webid">WEBID</a></cite>].</dd>
 
-                    <dt><dfn id="agent">agent</dfn></dt>
-                    <dd>An <dfn id="agent-group">agent group</dfn> is a group of persons or entities identified by a URI.</dd>
+                    <dt about="#agent-group" property="skos:prefLabel" typeof="skos:Concept"><dfn id="agent-group">agent group</dfn></dt>
+                    <dd about="#agent-group" property="skos:definition">An agent group is a group of persons or entities identified by a URI.</dd>
 
-                    <dt><dfn id="agent-class">agent class</dfn></dt>
-                    <dd>An agent class is a class of persons or entities identified by a URI.</dd>
+                    <dt about="#agent-class" property="skos:prefLabel" typeof="skos:Concept"><dfn id="agent-class">agent class</dfn></dt>
+                    <dd about="#agent-class" property="skos:definition">An agent class is a class of persons or entities identified by a URI.</dd>
 
-                    <dt><dfn id="origin">origin</dfn></dt>
-                    <dd>An origin indicates where an HTTP request originates from [<cite><a class="bibref" href="#bib-rfc6454">RFC6454</a></cite>].</dd>
+                    <dt about="#origin" property="skos:prefLabel" typeof="skos:Concept"><dfn id="origin">origin</dfn></dt>
+                    <dd about="#origin" property="skos:definition">An origin indicates where an HTTP request originates from [<cite><a class="bibref" href="#bib-rfc6454">RFC6454</a></cite>].</dd>
 
-                    <dt><dfn id="status-of-a-permission">status of a permission</dfn></dt>
-                    <dd>The status of a permission is either access is <em>granted</em> or <em>denied</em>.</dd>
+                    <dt about="#status-of-a-permission" property="skos:prefLabel" typeof="skos:Concept"><dfn id="status-of-a-permission">status of a permission</dfn></dt>
+                    <dd about="#status-of-a-permission" property="skos:definition">The status of a permission is either access is <em>granted</em> or <em>denied</em>.</dd>
                   </dl>
 
                   <p>In addition to the terminology above, this specification also uses terminology from the [<cite><a class="bibref" href="#bib-infra">INFRA</a></cite>] specification. When INFRA terminology is used, such as <a href="https://infra.spec.whatwg.org/#strings">string</a> and <a href="https://infra.spec.whatwg.org/#booleans">boolean</a>, it is linked directly to that specification.</p>

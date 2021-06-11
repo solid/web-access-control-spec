@@ -540,7 +540,7 @@ left:4.5em;
               <section id="access-subjects" inlist="" rel="schema:hasPart" resource="#access-subjects">
                 <h3 property="schema:name">Access Subjects</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The ability of a <em>subject</em> to access a resource can be granted to identifiable agents, a class of agents, a group of agents, or an origin. Agent identification is provided by the system and therefore cannot be forged.</p>
+                  <p>The ability of a <em>subject</em> to access a resource can be granted to identifiable agents, a class of agents, a group of agents, or an origin.</p>
 
                   <p>The <code>acl:agent</code> predicate denotes an <a href="#agent">agent</a> being given the access permission.</p>
 
@@ -553,16 +553,16 @@ left:4.5em;
                     <dd>Allows access to any authenticated agent.</dd>
                   </dl>
 
-                  <div class="note" id="social-expectations" rel="schema:hasPart" resource="#social-expectations">
-                    <h3 property="schema:name"><span>Note</span>: Social Expectations</h3>
-                    <div datatype="rdf:HTML" property="schema:description">
-                      <p>When agent authentication is required to access resources, it can be placed selectively on resources. Servers may employ different authentication protocols as well as credential verification methods.</p>
-                    </div>
-                  </div>
-
                   <p>The <code>acl:agentGroup</code> predicate denotes a <a href="#agent-group">group of agents</a> being given the access permission. The object of an <code>acl:agentGroup</code> statement is an instance of <code>vcard:Group</code>, where the members of the group are specified with the <code>vcard:hasMember</code> predicate.</p>
 
                   <p>The <code>acl:origin</code> predicate denotes the <a href="#origin">origin</a> an HTTP request is being given the access permission.</p>
+
+                  <div class="note" id="subject-verification" rel="schema:hasPart" resource="#subject-verification">
+                    <h3 property="schema:name"><span>Note</span>: Subject Verification</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>Servers may accept different authentication protocols as well as credential verification methods. The guard verifies the claim that the agent is requesting the desired operation and verifies whether the applicable access permissions are granted for the operation.</p>
+                    </div>
+                  </div>
                 </div>
               </section>
             </div>

@@ -27,6 +27,7 @@ position: relative;
 }
 div.issue h3, div.note h3,
 div.issue h4, div.note h4,
+div.issue h5, div.note h5,
 div.issue h5, div.note h5 {
 margin:0;
 font-weight:normal;
@@ -47,6 +48,12 @@ div.note h4,
 div.note h5 {
 color:#178217;
 }
+
+[rel~="cito:citesAsSourceDocument"],
+[property~="cito:citesAsSourceDocument"] {
+background-color:#e9f0fb;
+}
+
 figure .example-h {
 margin-top:0;
 text-align: left;
@@ -402,6 +409,8 @@ left:4.5em;
                   <p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” are to be interpreted as described in <a href="https://tools.ietf.org/html/bcp14">BCP 14</a> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
                 </div>
               </section>
+
+              <p>Source: <a href="https://www.w3.org/wiki/WebAccessControl" rel="cito:citesAsSourceDocument">WebAccessControl</a>, <a href="https://github.com/solid/web-access-control-spec/blob/65034fd0fa1f270aff32af56cb59fd8949f64591/README.md">README.md</a></p>
             </div>
           </section>
 
@@ -452,6 +461,8 @@ left:4.5em;
                   </div>
 
                   <p>Clients MUST NOT derive the URI of the ACL resource through string operations on the URI of the resource.</p>
+
+                  <p>Source: <a href="https://github.com/solid/web-access-control-spec/issues/8" rel="cito:citesAsSourceDocument">issues/8</a>, <a href="https://github.com/solid/web-access-control-spec/issues/62" rel="cito:citesAsSourceDocument">issues/62</a>, <a href="https://github.com/solid/specification/issues/131" rel="cito:citesAsSourceDocument">issues/131</a>, <a href="https://github.com/solid/specification/issues/176" rel="cito:citesAsSourceDocument">issues/176</a></p>
                 </div>
               </section>
 
@@ -465,6 +476,8 @@ left:4.5em;
                   <p>Servers who want a resource to inherit Authorizations (see <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite>) from a container resource MUST NOT initialise the ACL resource that is associated with the resource with a representation. When an authorized HTTP <code>GET</code> or <code>HEAD</code> request targets an ACL resource without an existing representation, the server MUST respond with the <code>404</code> status code as per [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</p>
 
                   <p>The <a href="#root-container">root container</a> MUST have an ACL resource with a representation. The ACL resource of the root container MUST include an Authorization allowing the <code>acl:Control</code> access privilege (<cite><a href="#acl-mode-control" rel="rdfs:seeAlso"><code>acl:Control</code></a></cite> access mode).</p>
+
+                  <p>Source: <a href="https://github.com/solid/web-access-control-spec/issues/45" rel="cito:citesAsSourceDocument">issues/45</a></p>
                 </div>
               </section>
             </div>
@@ -481,6 +494,8 @@ left:4.5em;
                   <p>The <code>acl:accessTo</code> property value is used to check if access is allowed for a specific resource. When an Authorization includes the <code>acl:default</code> property value (the container resource in context), then access permissions be applied to the original requested resource.</p>
 
                   <p>Inheriting Authorizations from the most significant container's ACL resource is useful to avoid individually managing an ACL resource for each resource, as well as to define access control for resources that do not exist yet.</p>
+
+                  <p>Source: <a href="https://github.com/solid/web-access-control-spec/issues/59">issues/59</a></p>
                 </div>
               </section>
 
@@ -525,8 +540,12 @@ left:4.5em;
                     <h3 property="schema:name"><span>Note</span>: Loss of Control Mitigation</h3>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>It is assumed that systems using WAC have mechanisms to mitigate loss of control of the resources eg. by ensuring valid ACL resources and Authorizations, providing administrative functions on the storage, or implicit control over all resources in a storage to owners.</p>
+
+                      <p>Source: <a href="https://github.com/solid/specification/issues/67" rel="cito:citesAsSourceDocument">issues/67</a>, <a href="https://github.com/solid/specification/issues/153" rel="cito:citesAsSourceDocument">issues/153</a>, <a href="https://github.com/solid/specification/pull/264" rel="cito:citesAsSourceDocument">pull/264</a></p>
                     </div>
                   </div>
+
+                  <p>Source: <a href="https://github.com/solid/web-access-control-spec/issues/33" rel="cito:citesAsSourceDocument">issues/33</a></p>
                 </div>
               </section>
 
@@ -570,6 +589,8 @@ left:4.5em;
                       <p>Distinguishing social entities and clients [<a href="https://github.com/solid/web-access-control-spec/issues/81" rel="cito:citesAsRelated">Issue</a>].</p>
                     </div>
                   </div>
+
+                  <p>Source: <a href="https://github.com/solid/web-access-control-spec/issues/34" rel="cito:citesAsSourceDocument">issues/34</a>, <a href="https://github.com/solid/specification/issues/32" rel="cito:citesAsSourceDocument">issues/32</a>, <a href="https://github.com/solid/specification/issues/59">issues/59</a></p>
                 </div>
               </section>
             </div>
@@ -608,6 +629,8 @@ left:4.5em;
                       <p>This specification does not constrain alternative methods to determine the effective ACL resource of a resource.</p>
                     </div>
                   </div>
+
+                  <p>Source: <a href="https://github.com/solid/specification/issues/55" rel="cito:citesAsSourceDocument">issues/55</a>, <a href="https://github.com/solid/specification/issues/106">issues/106</a>, <a href="https://github.com/solid/specification/issues/130" rel="cito:citesAsSourceDocument">issues/130</a>, <a href="https://github.com/solid/specification/issues/257" rel="cito:citesAsSourceDocument">issues/257</a>, <a href="https://github.com/solid/specification/issues/251" rel="cito:citesAsSourceDocument">issues/251</a></p>
                 </div>
               </section>
 
@@ -622,6 +645,8 @@ left:4.5em;
                     <li>At least one <code>acl:mode</code> property value (<cite><a href="#access-modes" rel="rdfs:seeAlso">Access Modes</a></cite>).</li>
                     <li>At least one <code>acl:agent</code>, <code>acl:agentGroup</code>, <code>acl:agentClass</code> or <code>acl:origin</code> property value (<cite><a href="#access-subjects" rel="rdfs:seeAlso">Access Subjects</a></cite>).</li>
                   </ul>
+
+                  <p>Source: <a href="https://github.com/solid/specification/issues/56" rel="cito:citesAsSourceDocument">issues/56</a>, <a href="https://github.com/solid/specification/issues/57" rel="cito:citesAsSourceDocument">issues/57</a>, <a href="https://github.com/solid/specification/issues/169" rel="cito:citesAsSourceDocument">issues/169</a>, <a href="https://github.com/solid/specification/issues/186" rel="cito:citesAsSourceDocument">issues/186</a>, <a href="https://github.com/solid/specification/issues/193" rel="cito:citesAsSourceDocument">issues/193</a>, <a href="https://github.com/solid/web-access-control-spec/issues/17" rel="cito:citesAsSourceDocument">issues/17</a>, <a href="https://github.com/solid/web-access-control-spec/issues/18" rel="cito:citesAsSourceDocument">issues/18</a>, <a href="https://github.com/solid/web-access-control-spec/issues/63" rel="cito:citesAsSourceDocument">issues/38</a>, <a href="https://github.com/solid/web-access-control-spec/issues/68" rel="cito:citesAsSourceDocument">issues/68</a>, <a href="https://github.com/solid/web-access-control-spec/issues/78" rel="cito:citesAsSourceDocument">issues/78</a>, <a href="https://github.com/fcrepo/fcrepo-specification/issues/145" rel="cito:citesAsSourceDocument">issues/145</a></p>
                 </div>
               </section>
 
@@ -680,6 +705,8 @@ left:4.5em;
                           <p>As the HTTP <code>DELETE</code> method requests to remove a resource, the <code>acl:Write</code> access mode would be required.</p>
                         </div>
                       </div>
+
+                      <p>Source: <a href="https://github.com/solid/web-access-control-spec/issues/47" rel="cito:citesAsSourceDocument">issues/47</a>, <a href="https://github.com/solid/specification/issues/132" rel="cito:citesAsSourceDocument">issues/132</a>, <a href="https://github.com/solid/specification/issues/197" rel="cito:citesAsSourceDocument">issues/197</a>, <a href="https://github.com/solid/specification/issues/246" rel="cito:citesAsSourceDocument">issues/246</a></p>
                     </div>
                   </section>
 
@@ -835,7 +862,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>Clients' parsing algorithm for the <code>WAC-Allow</code> header should incorporate error handling. When the received message fails to match an allowed pattern, clients MUST ignore the received <code>WAC-Allow</code> header-field. When unrecognised access parameters (permission groups and access modes) are found, clients MUST continue processing the access parameters as if those properties were not present.</p>
 
-                  <p>[<a href="https://github.com/solid/specification/issues/171" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/170" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/specification/issues/181" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://gitter.im/solid/specification?at=60101295d8bdab47395e6775" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p>Source: <a href="https://github.com/solid/specification/issues/171" rel="cito:citesAsSourceDocument">issues/171</a>, <a href="https://github.com/solid/specification/issues/170" rel="cito:citesAsSourceDocument">issues/170</a>, <a href="https://github.com/solid/specification/issues/181" rel="cito:citesAsSourceDocument">issues/181</a>, <a href="https://gitter.im/solid/specification?at=60101295d8bdab47395e6775" rel="cito:citesAsSourceDocument">60101295d8bdab47395e6775</a></p>
                 </div>
               </section>
 
@@ -855,7 +882,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dd>Consumers of ACL resources should be aware of the source and chain of custody of the data.</dd>
                   </dl>
 
-                  <p>[<a href="https://github.com/solid/specification/issues/54" rel="cito:citesAsSourceDocument">Source</a>] [<a href="https://github.com/solid/web-access-control-spec/issues/21" rel="cito:citesAsSourceDocument">Source</a>]</p>
+                  <p>Source: <a href="https://github.com/solid/specification/issues/54" rel="cito:citesAsSourceDocument">issues/54</a>, <a href="https://github.com/solid/web-access-control-spec/issues/21" rel="cito:citesAsSourceDocument">issues/21</a></p>
                 </div>
               </section>
             </div>
@@ -873,8 +900,9 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>As ACL resources are RDF sources, <a href="#authorization">Authorizations</a> descriptions may be extended or limited by constraints eg. temporal or spatial constraints, and duties eg. payments, may be imposed on permissions, but no behaviour is defined by this specification. For example, the <cite><a href="https://www.w3.org/TR/odrl-model/" rel="cito:citesAsPotentialSolution">ODRL Information Model</a></cite> can be used to set obligations required to be met by agents prior to accessing a resource.</p>
 
-
                   <p>To allow access to a class of resources, implementations may want to use the <code>acl:accessToClass</code> predicate as defined in the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite>.</p>
+
+                  <p>Source: <a href="https://github.com/solid/web-access-control-spec/issues/10" rel="cito:citesAsSourceDocument">issues/10</a>, <a href="https://github.com/solid/web-access-control-spec/issues/22" rel="cito:citesAsSourceDocument">issues/22</a>, <a href="https://github.com/solid/web-access-control-spec/pull/37" rel="cito:citesAsSourceDocument">pull/37</a>, <a href="https://github.com/solid/specification/issues/20">issues/20</a></p>
                 </div>
               </section>
 

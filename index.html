@@ -429,7 +429,7 @@ left:4.5em;
                   <div class="issue" id="link-relation-type" rel="schema:hasPart" resource="#link-relation-type">
                     <h4 property="schema:name"><span>Issue</span>: Link Relation Type</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>The possibility of using URIs as relation types interchangeably or as alternate to the <a href="#acl-link-relation">acl Link Relation</a> type is under consideration, eg. <code>https://www.w3.org/ns/iana/link-relations/relation#acl</code> or <code>http://www.w3.org/ns/auth/acl#accessControl</code> [<a href="https://github.com/solid/specification/issues/172#issuecomment-766840145">Issue</a>] [<a href="https://github.com/solid/web-access-control-spec/issues/21#issuecomment-769137284">Issue</a>].</p>
+                      <p>The possibility of using URIs as relation types interchangeably or as alternate to the <a href="#acl-link-relation">acl Link Relation</a> type is under consideration, eg. <code>https://www.w3.org/ns/iana/link-relations/relation#acl</code> or <code>http://www.w3.org/ns/auth/acl#accessControl</code> [<a href="https://github.com/solid/specification/issues/172#issuecomment-766840145" rel="cito:citesAsRelated">Issue</a>] [<a href="https://github.com/solid/web-access-control-spec/issues/21#issuecomment-769137284" rel="cito:citesAsRelated">Issue</a>].</p>
                     </div>
                   </div>
 
@@ -483,7 +483,7 @@ left:4.5em;
                   <div class="issue" id="access-to-class" rel="schema:hasPart" resource="#access-to-class">
                     <h4 property="schema:name"><span>Issue</span>: Access to Class</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>Whether <code>acl:accessToClass</code> is required by this specification or not [<a href="https://github.com/solid/web-access-control-spec/issues/22">Issue</a>]</p>
+                      <p>Whether <code>acl:accessToClass</code> is required by this specification or not [<a href="https://github.com/solid/web-access-control-spec/issues/22" rel="cito:citesAsRelated">Issue</a>]</p>
                     </div>
                   </div>
 
@@ -494,7 +494,7 @@ left:4.5em;
               <section id="access-modes" inlist="" rel="schema:hasPart" resource="#access-modes">
                 <h3 property="schema:name">Access Modes</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The <a href="#access-mode">access modes</a> described in this section are defined in the <a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a>, such as the class of operations to read, write, append and control resources. The requirements for new access modes is explained in the <cite><a href="#access-mode-extensions">Access Mode Extensions</a></cite> section.</p>
+                  <p>The <a href="#access-mode">access modes</a> described in this section are defined in the <a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a>, such as the class of operations to read, write, append and control resources. The requirements for new access modes is explained in the <cite><a href="#access-mode-extensions" rel="rdfs:seeAlso">Access Mode Extensions</a></cite> section.</p>
 
                   <p>The <code>acl:mode</code> predicate denotes a class of operations that the agents can perform on a resource.</p>
 
@@ -524,7 +524,7 @@ left:4.5em;
                   <div class="note" id="uri-ownership" rel="schema:hasPart" resource="#uri-ownership">
                     <h3 property="schema:name"><span>Note</span>: URI Ownership</h3>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p><q>URI ownership</q>, as per <cite><a href="https://www.w3.org/TR/webarch/#uri-ownership">Architecture of the World Wide Web</a></cite> [<cite><a href="bib-webarch">WEBARCH</a></cite>], is outside the scope of this specification, and thus cannot be changed by modifying Authorizations.</p>
+                      <p><q>URI ownership</q>, as per <cite><a href="https://www.w3.org/TR/webarch/#uri-ownership" rel="cito:citesAsAuthority">Architecture of the World Wide Web</a></cite> [<cite><a class="bibref" href="#bib-webarch">WEBARCH</a></cite>], is outside the scope of this specification, and thus cannot be changed by modifying Authorizations.</p>
                     </div>
                   </div>
 
@@ -567,14 +567,14 @@ left:4.5em;
                   <div class="issue" id="origin-considerations" rel="schema:hasPart" resource="#origin-considerations">
                     <h4 property="schema:name"><span>Issue</span>: Origin Considerations</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p><code>acl:origin</code> relies on the presence of the <code>Origin</code> header, irrespective to its authenticity (<cite><a href="#subject-verification">Subject Verification</a></cite>) and is not strongly associated with the client (<cite><a href="#client-identification">Client Identification</a></cite>) that is making the HTTP request. [<a href="https://github.com/solid/web-access-control-spec/issues/34">Issue</a>].</p>
+                      <p><code>acl:origin</code> relies on the presence of the <code>Origin</code> header, irrespective to its authenticity (<cite><a href="#subject-verification" rel="rdfs:seeAlso">Subject Verification</a></cite>) and is not strongly associated with the client (<cite><a href="#client-identification" rel="rdfs:seeAlso">Client Identification</a></cite>) that is making the HTTP request. [<a href="https://github.com/solid/web-access-control-spec/issues/34" rel="cito:citesAsRelated">Issue</a>].</p>
                     </div>
                   </div>
 
                   <div class="issue" id="client-identification" rel="schema:hasPart" resource="#client-identification">
                     <h4 property="schema:name"><span>Issue</span>: Client Identification</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>Distinguishing social entities and clients [<a href="https://github.com/solid/web-access-control-spec/issues/81">Issue</a>]. Resolving this may address <cite><a href="#origin-considerations">Origin Considerations</a></cite></p>
+                      <p>Distinguishing social entities and clients [<a href="https://github.com/solid/web-access-control-spec/issues/81" rel="cito:citesAsRelated">Issue</a>]. Resolving this may address <cite><a href="#origin-considerations" rel="rdfs:seeAlso">Origin Considerations</a></cite></p>
                     </div>
                   </div>
                 </div>
@@ -626,8 +626,8 @@ left:4.5em;
                   <ul>
                     <li>At least one <code>rdf:type</code> property whose object is <code>acl:Authorization</code>.</li>
                     <li>At least one <code>acl:accessTo</code> or <code>acl:default</code> property value (<cite><a href="#access-objects" rel="rdfs:seeAlso">Access Objects</a></cite>).</li>
-                    <li>At least one <code>acl:mode</code> property value (<cite><a href="#access-modes">Access Modes</a></cite>).</li>
-                    <li>At least one <code>acl:agent</code>, <code>acl:agentGroup</code>, <code>acl:agentClass</code> or <code>acl:origin</code> property value (<cite><a href="#access-subjects">Access Subjects</a></cite>).</li>
+                    <li>At least one <code>acl:mode</code> property value (<cite><a href="#access-modes" rel="rdfs:seeAlso">Access Modes</a></cite>).</li>
+                    <li>At least one <code>acl:agent</code>, <code>acl:agentGroup</code>, <code>acl:agentClass</code> or <code>acl:origin</code> property value (<cite><a href="#access-subjects" rel="rdfs:seeAlso">Access Subjects</a></cite>).</li>
                   </ul>
                 </div>
               </section>
@@ -646,7 +646,7 @@ left:4.5em;
                   <section id="reading-writing-resources" inlist="" rel="schema:hasPart" resource="#reading-writing-resources">
                     <h4 property="schema:name">Reading and Writing Resources</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>Working alongside <cite><a href="#http-interaction">HTTP Interactions</a></cite>, WAC enables a standard set of operations which can be applied to different resource types for a given request based on the set of access modes which control those operations:</p>
+                      <p>Working alongside <cite><a href="#http-interaction" rel="rdfs:seeAlso">HTTP Interactions</a></cite>, WAC enables a standard set of operations which can be applied to different resource types for a given request based on the set of access modes which control those operations:</p>
 
                       <p>Generally, read operations attempt to know about the existence of a resource or view the contents of a resource. Write operations attempt to create, delete, or modify resources. Append operations attempt to create resources or add information to resources. Control operations attempt to create, delete, or modify ACL resources.</p>
 
@@ -682,7 +682,7 @@ left:4.5em;
 
                           <p>As the HTTP <code>PUT</code> method requests to create or replace the resource state, the <code>acl:Write</code> access mode would be required.</p>
 
-                          <p>As the processing of HTTP <code>PATCH</code> method requests depends on the request semantics and content eg. <code>acl:Append</code> can allow requests using <cite><a href="#sparql11-update">SPARQL 1.1 Update</a></cite>'s <code>INSERT DATA</code> operation but not <code>DELETE DATA</code>, whereas <code>acl:Write</code> would allow both operations.</p>
+                          <p>As the processing of HTTP <code>PATCH</code> method requests depends on the request semantics and content eg. <code>acl:Append</code> can allow requests using <cite><a href="#bib-sparql11-update">SPARQL 1.1 Update</a></cite>'s <code>INSERT DATA</code> operation but not <code>DELETE DATA</code>, whereas <code>acl:Write</code> would allow both operations.</p>
 
                           <p>As the HTTP <code>DELETE</code> method requests to remove a resource, the <code>acl:Write</code> access mode would be required.</p>
                         </div>
@@ -719,12 +719,12 @@ left:4.5em;
                         </div>
                       </div>
 
-                      <p>Servers MUST advertise client’s access privileges on a resource by including the <code>WAC-Allow</code> HTTP header (see <cite><a href="#wac-allow">WAC-Allow</a></cite>) in the response of HTTP <code>GET</code> and <code>HEAD</code> requests.</p>
+                      <p>Servers MUST advertise client’s access privileges on a resource by including the <code>WAC-Allow</code> HTTP header (see <cite><a href="#wac-allow" rel="rdfs:seeAlso">WAC-Allow</a></cite>) in the response of HTTP <code>GET</code> and <code>HEAD</code> requests.</p>
 
                       <div class="note" id="clients-discovering-access-privileges" rel="schema:hasPart" resource="#client-discovering-access-privileges">
                         <h5 property="schema:name"><span>Note</span>: Clients Discovering Access Privileges</h5>
                         <div datatype="rdf:HTML" property="schema:description">
-                          <p>Clients can discover access privileges on a resource by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target resource, and checking the <code>WAC-Allow</code> header value for access parameters listing the allowed access modes per permission group  (see <cite><a href="#wac-allow">WAC-Allow</a></cite>).</p>
+                          <p>Clients can discover access privileges on a resource by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target resource, and checking the <code>WAC-Allow</code> header value for access parameters listing the allowed access modes per permission group  (see <cite><a href="#wac-allow" rel="rdfs:seeAlso">WAC-Allow</a></cite>).</p>
                         </div>
                       </div>
 
@@ -838,7 +838,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dd>Permissions granted to the public.</dd>
                   </dl>
 
-                  <p><code>access-mode</code> corresponds to the <cite><a href="#access-mods">Access Modes</a></cite> as defined in the ACL ontology (<code>acl:Read</code>, <code>acl:Write</code>, <code>acl:Append</code>, <code>acl:Control</code>).</p>
+                  <p><code>access-mode</code> corresponds to the <cite><a href="#access-modes" rel="rdfs:seeAlso">Access Modes</a></cite> as defined in the ACL ontology (<code>acl:Read</code>, <code>acl:Write</code>, <code>acl:Append</code>, <code>acl:Control</code>).</p>
 
                   <p>Clients' parsing algorithm for the <code>WAC-Allow</code> header should incorporate error handling. When the received message fails to match an allowed pattern, clients MUST ignore the received <code>WAC-Allow</code> header-field. When unrecognised access parameters (permission groups and access modes) are found, clients MUST continue processing the access parameters as if those properties were not present.</p>
 
@@ -885,7 +885,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
               <section id="access-mode-extensions" inlist="" rel="schema:hasPart" resource="#access-mode-extensions">
                 <h3 property="schema:name">Access Mode Extensions</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>An extension to access modes is any mode that is defined in the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite>, ie. as a subclass of <code>acl:Access</code>, but not described in this specification (<cite><a href="#access-modes">Access Modes</a></cite>). Consumers of Authorizations that encounter unrecognised access modes MUST NOT stop processing or signal an error and MUST continue processing the access modes as if those properties were not present.</p>
+                  <p>An extension to access modes is any mode that is defined in the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite>, ie. as a subclass of <code>acl:Access</code>, but not described in this specification (<cite><a href="#access-modes" rel="rdfs:seeAlso">Access Modes</a></cite>). Consumers of Authorizations that encounter unrecognised access modes MUST NOT stop processing or signal an error and MUST continue processing the access modes as if those properties were not present.</p>
 
                   <p>Foreign-namespaced access modes are allowed in ACL resources, but no behaviour is defined by this specification.</p>
                 </div>

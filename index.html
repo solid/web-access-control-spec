@@ -563,6 +563,13 @@ left:4.5em;
                       <p>Servers may accept different authentication protocols as well as credential verification methods. The guard verifies the claim that the agent is requesting the desired operation and verifies whether the applicable access permissions are granted for the operation.</p>
                     </div>
                   </div>
+
+                  <div class="issue" id="origin-considerations" rel="schema:hasPart" resource="#origin-considerations">
+                    <h4 property="schema:name"><span>Issue</span>: Origin Considerations</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p><code>acl:origin</code> relies on the presence of the <code>Origin</code> header, irrespective to its authenticity (<cite><a href="#subject-verification">Subject Verification</a></cite>) and is not strongly associated with the client (<cite><a href="#client-identification">Client Identification</a></cite>) that is making the HTTP request. [<a href="https://github.com/solid/web-access-control-spec/issues/34">Issue</a>].</p>
+                    </div>
+                  </div>
                 </div>
               </section>
             </div>

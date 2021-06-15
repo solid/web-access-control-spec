@@ -480,13 +480,6 @@ left:4.5em;
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The <code>acl:accessTo</code> property value is used to check if access is allowed for a specific resource. When an Authorization includes the <code>acl:default</code> property value (the container resource in context), then access permissions be applied to the original requested resource.</p>
 
-                  <div class="issue" id="access-to-class" rel="schema:hasPart" resource="#access-to-class">
-                    <h4 property="schema:name"><span>Issue</span>: Access to Class</h4>
-                    <div datatype="rdf:HTML" property="schema:description">
-                      <p>Whether <code>acl:accessToClass</code> is required by this specification or not [<a href="https://github.com/solid/web-access-control-spec/issues/22" rel="cito:citesAsRelated">Issue</a>]</p>
-                    </div>
-                  </div>
-
                   <p>Inheriting Authorizations from the most significant container's ACL resource is useful to avoid individually managing an ACL resource for each resource, as well as to define access control for resources that do not exist yet.</p>
                 </div>
               </section>
@@ -879,6 +872,9 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                   <p><em>This section is non-normative.</em></p>
 
                   <p>As ACL resources are RDF sources, <a href="#authorization">Authorizations</a> descriptions may be extended or limited by constraints eg. temporal or spatial constraints, and duties eg. payments, may be imposed on permissions, but no behaviour is defined by this specification. For example, the <cite><a href="https://www.w3.org/TR/odrl-model/" rel="cito:citesAsPotentialSolution">ODRL Information Model</a></cite> can be used to set obligations required to be met by agents prior to accessing a resource.</p>
+
+
+                  <p>To allow access to a class of resources, implementations may want to use the <code>acl:accessToClass</code> predicate as defined in the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite>.</p>
                 </div>
               </section>
 

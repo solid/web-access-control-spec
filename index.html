@@ -840,7 +840,12 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>The <code>WAC-Allow</code> HTTP header’s field-value is a comma-separated list of <code>access-param</code>s. <code>access-param</code> is a whitespace-separated list of <code>access-modes</code> granted to a <code>permission-group</code>.</p>
 
-                  <p class="issue">Issue: Incorporate extensions.</p>
+                  <div class="issue" id="wac-allow-access-mode" rel="schema:hasPart" resource="#wac-allow-access-modes">
+                    <h3 property="schema:name"><span>Issue</span>: WAC-Allow Access Modes</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>Allow any access mode <a href="https://github.com/solid/web-access-control-spec/issues/82" rel="cito:citesAsRelated">issues/82</a>.</p>
+                    </div>
+                  </div>
 
                   <p>This specification defines the following <code>permission-group</code>s:</p>
 

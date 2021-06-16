@@ -277,7 +277,7 @@ left:4.5em;
 
               <p><dfn id="wac">Web Access Control</dfn> (<abbr title="Web Access Control">WAC</abbr>) is a decentralized cross-domain access control system providing a way for Linked Data systems to set authorization conditions on HTTP resources using the Access Control List (<abbr title="Access Control List">ACL</abbr>) model.</p>
 
-              <p>The WAC specification describes how to enable applications to discover <a href="#authorization">Authorizations</a> associated with a given <a href="#resource">resource</a>, and to control such policies, as directed by an agent. Server manages the association between a resource and an <a href="#acl-resource">ACL resource</a>, and applies the authorization conditions on requested operations. Authorizations are described using the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite> to express and determine the <a href="#status-of-a-permission">status of a permission</a> of a requested resource. Any kind of access can be given to a resource as per the ACL ontology. This specification uses the <a href="#access-mode">access modes</a> currently defined by the ACL ontology, such as the class of operations to read, write, append and control resources. An Authorization may allow public access to resources or place the requirement for authenticated <a href="#agent">agents</a>. Resources and agents can be on different origins.</p>
+              <p>The WAC specification describes how to enable applications to discover <a href="#authorization">Authorizations</a> associated with a given <a href="#resource">resource</a>, and to control such policies, as directed by an agent. Server manages the association between a resource and an <a href="#acl-resource">ACL resource</a>, and applies the authorization conditions on requested operations. Authorizations are described using the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite> to express and determine access privileges of a requested resource. Any kind of access can be given to a resource as per the ACL ontology. This specification uses the <a href="#access-mode">access modes</a> currently defined by the ACL ontology, such as the class of operations to read, write, append and control resources. An Authorization may allow public access to resources or place the requirement for authenticated <a href="#agent">agents</a>. Resources and agents can be on different origins.</p>
 
               <div class="note" id="specification-orthogonality" rel="schema:hasPart" resource="#specification-orthogonality">
                 <h4 property="schema:name"><span>Note</span>: Specification Orthogonality</h4>
@@ -302,7 +302,7 @@ left:4.5em;
 
                   <p property="skos:definition">The WAC specification defines the following terms. These terms are referenced throughout this specification.</p>
 
-                  <span rel="skos:hasTopConcept"><span resource="#uri"></span><span resource="#resource"></span><span resource="#container-resource"></span><span resource="#root-container"></span><span resource="#acl-resource"></span><span resource="#authorization"></span><span resource="#access-mode"></span><span resource="#agent"></span><span resource="#agent-group"></span><span resource="#agent-class"></span><span resource="#origin"></span><span resource="#status-of-a-permission"></span></span>
+                  <span rel="skos:hasTopConcept"><span resource="#uri"></span><span resource="#resource"></span><span resource="#container-resource"></span><span resource="#root-container"></span><span resource="#acl-resource"></span><span resource="#authorization"></span><span resource="#access-mode"></span><span resource="#agent"></span><span resource="#agent-group"></span><span resource="#agent-class"></span><span resource="#origin"></span></span>
 
                   <dl>
                     <dt about="#uri" property="skos:prefLabel" typeof="skos:Concept"><dfn id="uri">URI</dfn></dt>
@@ -337,9 +337,6 @@ left:4.5em;
 
                     <dt about="#origin" property="skos:prefLabel" typeof="skos:Concept"><dfn id="origin">origin</dfn></dt>
                     <dd about="#origin" property="skos:definition">An origin indicates where an HTTP request originates from [<cite><a class="bibref" href="#bib-rfc6454">RFC6454</a></cite>].</dd>
-
-                    <dt about="#status-of-a-permission" property="skos:prefLabel" typeof="skos:Concept"><dfn id="status-of-a-permission">status of a permission</dfn></dt>
-                    <dd about="#status-of-a-permission" property="skos:definition">The status of a permission is either access is <em>granted</em> or <em>denied</em>.</dd>
                   </dl>
 
                   <p>In addition to the terminology above, this specification also uses terminology from the [<cite><a class="bibref" href="#bib-infra">INFRA</a></cite>] specification. When INFRA terminology is used, such as <a href="https://infra.spec.whatwg.org/#strings">string</a> and <a href="https://infra.spec.whatwg.org/#booleans">boolean</a>, it is linked directly to that specification.</p>
@@ -594,7 +591,7 @@ left:4.5em;
             <div datatype="rdf:HTML" property="schema:description">
               <p>This section describes how implementations can determine the <a href="#effective-acl-resource">effective ACL resource</a> of a resource and hence which set of <a href="#authorization-conformance">conforming authorizations</a> to use.</p>
 
-              <p>Servers process access requests by <a href="#authorization-evaluation">evaluating the Authorizations</a> associated with referenced resources in order to determine whether the necessary access permissions are granted or denied for a particular request.</p>
+              <p>Servers process access requests by <a href="#authorization-evaluation">evaluating the Authorizations</a> associated with referenced resources in order to determine whether the necessary access permissions are granted for a particular request.</p>
 
               <section id="effective-acl-resource" inlist="" rel="schema:hasPart" resource="#effective-acl-resource">
                 <h3 property="schema:name">Effective ACL Resource</h3>

@@ -116,6 +116,11 @@ left:4.5em;
 #acknowledgements li { display:inline; }
 #acknowledgements li:after { content: ", "; }
 #acknowledgements li:last-child:after { content: ""; }
+
+dl[id^="document-"] ul {
+padding-left:0;
+list-style-type:none;
+}
 </style>
   </head>
 
@@ -162,6 +167,17 @@ left:4.5em;
           <dt>Repository</dt>
           <dd><a href="https://github.com/solid/web-access-control-spec" rel="doap:repository">GitHub</a></dd>
           <dd><a href="https://github.com/solid/web-access-control-spec/issues" rel="doap:bug-database">Issues</a></dd>
+        </dl>
+
+        <dl id="document-derived-from">
+          <dt>Derived From</dt>
+          <dd>
+            <ul>
+              <li><cite><a data-versiondate="2021-06-16T12:49:59Z" data-versionurl="https://web.archive.org/web/20210616124959/https://www.w3.org/wiki/WebAccessControl" href="https://www.w3.org/wiki/WebAccessControl" rel="prov:wasDerivedFrom">WebAccessControl</a></cite></li>
+              <li><cite><a data-versiondate="2021-06-16T12:53:07Z" data-versionurl="https://web.archive.org/web/20210616125307/https://github.com/solid/web-access-control-spec/blob/65034fd0fa1f270aff32af56cb59fd8949f64591/README.md" href="https://github.com/solid/web-access-control-spec/blob/65034fd0fa1f270aff32af56cb59fd8949f64591/README.md" rel="prov:wasDerivedFrom">solid/web-access-control-spec</a></cite></li>
+              <li><cite><a data-versiondate="2021-06-16T13:01:41Z" data-versionurl="https://web.archive.org/web/20210616130141/https://solidproject.org/TR/protocol" href="https://solidproject.org/TR/protocol" rel="prov:wasDerivedFrom">Solid Protocol</a></cite></li>
+            </ul>
+          </dd>
         </dl>
 
         <p class="copyright">MIT License. Copyright © 2021 <a href="http://www.w3.org/community/solid/">W3C Solid Community Group</a>.</p>
@@ -384,8 +400,6 @@ left:4.5em;
                   <p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” are to be interpreted as described in <a href="https://tools.ietf.org/html/bcp14">BCP 14</a> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
                 </div>
               </section>
-
-              <p class="advisement">Source: <a href="https://www.w3.org/wiki/WebAccessControl" rel="cito:citesAsSourceDocument">WebAccessControl</a>, <a href="https://github.com/solid/web-access-control-spec/blob/65034fd0fa1f270aff32af56cb59fd8949f64591/README.md" rel="cito:citesAsSourceDocument">README.md</a></p>
             </div>
           </section>
 

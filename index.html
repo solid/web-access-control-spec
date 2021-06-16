@@ -459,7 +459,7 @@ content: "";
                       </tr>
                       <tr>
                         <td>foaf</td>
-                        <td>http://http://xmlns.com/foaf/0.1/</td>
+                        <td>http://xmlns.com/foaf/0.1/</td>
                         <td>[<cite><a class="bibref" href="#bib-foaf">Friend of a Friend (FOAF) vocabulary</a></cite>]</td>
                       </tr>
                       <tr>
@@ -562,7 +562,7 @@ content: "";
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The <code>acl:accessTo</code> property value is used to check if access is allowed for a specific resource. When an Authorization includes the <code>acl:default</code> property value (the container resource in context), then access permissions be applied to the original requested resource.</p>
 
-                  <p>Inheriting Authorizations from the most significant container's ACL resource is useful to avoid individually managing an ACL resource for each resource, as well as to define access control for resources that do not exist yet.</p>
+                  <p>Inheriting Authorizations from the most significant container’s ACL resource is useful to avoid individually managing an ACL resource for each resource, as well as to define access control for resources that do not exist yet.</p>
 
                   <p class="advisement">Source: <a href="https://github.com/solid/web-access-control-spec/issues/59" rel="cito:citesAsSourceDocument">issues/59</a></p>
                 </div>
@@ -679,7 +679,7 @@ content: "";
 
                   <p>When an ACL resource associated with a resource has a representation (see <cite><a href="#acl-resource-representation" rel="rdfs:seeAlso">ACL Resource Representation</a></cite>), it is the <em>effective ACL resource</em> of the requested resource.</p>
 
-                  <p>When an ACL resource associated with a resource does not have a representation (see <cite><a href="#acl-resource-representation" rel="rdfs:seeAlso">ACL Resource Representation</a></cite>), no Authorizations can be immediately checked against the requested resource. In this case, a container resource's ACL resource may apply on every access to a member resource, in specifying Authorizations for the requested resource.</p>
+                  <p>When an ACL resource associated with a resource does not have a representation (see <cite><a href="#acl-resource-representation" rel="rdfs:seeAlso">ACL Resource Representation</a></cite>), no Authorizations can be immediately checked against the requested resource. In this case, a container resource’s ACL resource may apply on every access to a member resource, in specifying Authorizations for the requested resource.</p>
 
                   <p>WAC has the property of being recursive with respect to container hierarchy, meaning that a member resource inherits Authorizations from the closest container resource (heading toward the root container).</p>
 
@@ -769,7 +769,7 @@ content: "";
 
                           <p>As the HTTP <code>PUT</code> method requests to create or replace the resource state, the <code>acl:Write</code> access mode would be required.</p>
 
-                          <p>As the processing of HTTP <code>PATCH</code> method requests depends on the request semantics and content eg. <code>acl:Append</code> can allow requests using SPARQL 1.1 Update's [<cite><a href="#bib-sparql11-update">SPARQL11-UPDATE</a></cite>] <code>INSERT DATA</code> operation but not <code>DELETE DATA</code>, whereas <code>acl:Write</code> would allow both operations.</p>
+                          <p>As the processing of HTTP <code>PATCH</code> method requests depends on the request semantics and content eg. <code>acl:Append</code> can allow requests using SPARQL 1.1 Update’s [<cite><a href="#bib-sparql11-update">SPARQL11-UPDATE</a></cite>] <code>INSERT DATA</code> operation but not <code>DELETE DATA</code>, whereas <code>acl:Write</code> would allow both operations.</p>
 
                           <p>As the HTTP <code>DELETE</code> method requests to remove a resource, the <code>acl:Write</code> access mode would be required.</p>
                         </div>
@@ -788,7 +788,7 @@ content: "";
 
                       <ul>
                         <li>an Authorization allowing access to the requesting agent (<code>acl:agent</code>, <code>acl:agentGroup</code>, <code>acl:agentClass</code>);</li>
-                        <li>an Authorization with an <code>acl:origin</code> property value that of <code>Origin</code>'s field-value; and</li>
+                        <li>an Authorization with an <code>acl:origin</code> property value that of <code>Origin</code>’s field-value; and</li>
                         <li>the required access mode is allowed for the requesting agent and the origin.</li>
                       </ul>
 
@@ -826,7 +826,7 @@ content: "";
                     <div datatype="rdf:HTML" property="schema:description">
                       <p><em>This section is non-normative.</em></p>
 
-                      <p>This specification does not impose a storage system that can be used to store Authorizations. Similarly, mechanisms that can be used to find required RDF statements of Authorizations is deliberately unspecified to allow for a wide variety of use. This section <em>exemplifies</em> access check via SPARQL 1.1 Query Language's [<cite><a class="bibref" href="#bib-sparql11-query">SPARQL11-QUERY</a></cite>] <code>ASK</code> form to test whether or not an Authorization pattern matches; returns <a href="https://infra.spec.whatwg.org/#booleans">boolean</a>.</p>
+                      <p>This specification does not impose a storage system that can be used to store Authorizations. Similarly, mechanisms that can be used to find required RDF statements of Authorizations is deliberately unspecified to allow for a wide variety of use. This section <em>exemplifies</em> access check via SPARQL 1.1 Query Language’s [<cite><a class="bibref" href="#bib-sparql11-query">SPARQL11-QUERY</a></cite>] <code>ASK</code> form to test whether or not an Authorization pattern matches; returns <a href="https://infra.spec.whatwg.org/#booleans">boolean</a>.</p>
 
                       <p>The <code>ASK</code> queries below exemplify atomic graph patterns that can be executed against the default graph of an RDF dataset using named graphs for resources. The examples use query variables marked with "<var>?</var>" to indicate any value, and "<var>$</var>" to indicate inputs passed to the query, eg. <samp>&lt;http://example.org/.acl&gt;</samp> as the IRI reference of the effective ACL resource of a request replaces <code>$aclResource</code> in the query, and likewise, <samp>acl:Write</samp> as input is intended to replace <code>$mode</code> in the examples.</p>
 
@@ -850,7 +850,7 @@ content: "";
 
                       <p>From here on, <code>PREFIX</code>s in the query are assumed to be present.</p>
 
-                      <p>The following query is typically used in context of inheriting Authorizations (<code>acl:default</code>) from a container's ACL resource. The query also demonstrates matching Authorizations that use a superclass of the required access mode (<cite><a href="#access-mode-classes" rel="rdfs:seeAlso">Access Mode Classes</a></cite>):</p>
+                      <p>The following query is typically used in context of inheriting Authorizations (<code>acl:default</code>) from a container’s ACL resource. The query also demonstrates matching Authorizations that use a superclass of the required access mode (<cite><a href="#access-mode-classes" rel="rdfs:seeAlso">Access Mode Classes</a></cite>):</p>
 
                       <figure id="match-default-agentclass-mode" class="example listing" rel="schema:hasPart" resource="#match-default-agentclass-mode">
                         <p class="example-h"><span>Example</span>: Match an Authorization with a specific container resource, agent class membership and access mode.</p>
@@ -934,7 +934,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p><code>access-mode</code> corresponds to the <cite><a href="#access-modes" rel="rdfs:seeAlso">Access Modes</a></cite> as defined in the ACL ontology (<code>acl:Read</code>, <code>acl:Write</code>, <code>acl:Append</code>, <code>acl:Control</code>).</p>
 
-                  <p>Clients' parsing algorithm for the <code>WAC-Allow</code> header should incorporate error handling. When the received message fails to match an allowed pattern, clients MUST ignore the received <code>WAC-Allow</code> header-field. When unrecognised access parameters (permission groups and access modes) are found, clients MUST continue processing the access parameters as if those properties were not present.</p>
+                  <p>Clients’ parsing algorithm for the <code>WAC-Allow</code> header should incorporate error handling. When the received message fails to match an allowed pattern, clients MUST ignore the received <code>WAC-Allow</code> header-field. When unrecognised access parameters (permission groups and access modes) are found, clients MUST continue processing the access parameters as if those properties were not present.</p>
 
                   <p class="advisement">Source: <a href="https://github.com/solid/specification/issues/171" rel="cito:citesAsSourceDocument">issues/171</a>, <a href="https://github.com/solid/specification/issues/170" rel="cito:citesAsSourceDocument">issues/170</a>, <a href="https://github.com/solid/specification/issues/181" rel="cito:citesAsSourceDocument">issues/181</a>, <a href="https://gitter.im/solid/specification?at=60101295d8bdab47395e6775" rel="cito:citesAsSourceDocument">60101295d8bdab47395e6775</a>, <a href="https://github.com/solid/specification/pull/210">pull/210</a></p>
                 </div>
@@ -1025,7 +1025,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>Implementations are encouraged to follow the security considerations that are found in URI <cite><a href="https://datatracker.ietf.org/doc/html/rfc3986#section-7" rel="cito:citesForInformation">Generic Syntax</a></cite>, HTTP/1.1 <cite><a  href="https://datatracker.ietf.org/doc/html/rfc7230#section-9" rel="cito:citesForInformation">Message Syntax and Routing</a></cite> and <cite><a href="https://datatracker.ietf.org/doc/html/rfc7231#section-9" rel="cito:citesForInformation">Semantics and Content</a></cite>.</p>
 
-                  <p>Servers are strongly discouraged from trusting the information returned by looking up an agent's WebID for access control purposes. The server operator can also provide the server with other trusted information to include in the search for a reason to give the requester the access.</p>
+                  <p>Servers are strongly discouraged from trusting the information returned by looking up an agent’s WebID for access control purposes. The server operator can also provide the server with other trusted information to include in the search for a reason to give the requester the access.</p>
 
                   <p>Transfer of <a href="#authorization">Authorizations</a> between a client and server over an open network creates the potential for those policies to be modified or disclosed without proper authorization. The requirements for the Web Access Control protocol discussed in this specification do not include cryptographic protection of Authorization information, because it is assumed that this protection can be provided through HTTP over TLS. The path between client and application may be composed of multiple independent TLS connections, thus for end-to-end integrity and authenticity of content within an HTTP message, implementers can use mechanisms such as <cite><a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-message-signatures.html" rel="cito:citesAsPotentialSolution">Signing HTTP Messages</a></cite>. For cryptographic proof of Authorizations asserted by agents and protection from undetected modifications, implementers can use mechanisms such as <cite><a href="https://w3c-ccg.github.io/ld-proofs/" rel="cito:citesAsPotentialSolution">Linked Data Security</a></cite>.</p>
 
@@ -1044,7 +1044,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>Access permission to append a new resource to a container resource is independently of access permission to read a container resource. Thus, servers are encouraged to prevent information leakage when a successful HTTP request appends a new resource to a container resource. For instance, while the knowledge of the URI-Reference in <code>Location</code> and <code>Content-Location</code> HTTP headers in the response of a <code>POST</code> does not in itself pose a security threat ([<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>]), servers should consider the risks when read access to the container is not granted to agents.</p>
 
-                  <p>Access permission to update a resource is independently of access permission to read a resource. Thus, servers are encouraged to prevent information leakage when an attempt to delete information in a resource may reveal the existence of the information. For instance, when an HTTP <code>PATCH</code> request uses SPARQL Update's <code>DELETE DATA</code> operation, servers should consider the risks of disclosing information by the chosen status code when read access to the resource is not granted to agents.</p>
+                  <p>Access permission to update a resource is independently of access permission to read a resource. Thus, servers are encouraged to prevent information leakage when an attempt to delete information in a resource may reveal the existence of the information. For instance, when an HTTP <code>PATCH</code> request uses SPARQL Update’s <code>DELETE DATA</code> operation, servers should consider the risks of disclosing information by the chosen status code when read access to the resource is not granted to agents.</p>
                 </div>
               </section>
 
@@ -1111,7 +1111,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dt id="bib-webarch">[WEBARCH]</dt>
                     <dd><a href="https://www.w3.org/TR/webarch/" rel="citesAsAuthority"><cite>Architecture of the World Wide Web, Volume One</cite></a>. Ian Jacobs; Norman Walsh.  W3C. 15 December 2004. W3C Recommendation. URL: <a href="https://www.w3.org/TR/webarch/">https://www.w3.org/TR/webarch/</a></dd>
                     <dt id="bib-webid">[WEBID]</dt>
-                    <dd><a href="https://www.w3.org/2005/Incubator/webid/spec/identity/" rel="citesAsAuthority"><cite>WebID 1.0</cite></a>. Henry Story; Andrei Sambra; Stéphane Corlosquet.  W3C Editor's Draft. URL: <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/">https://www.w3.org/2005/Incubator/webid/spec/identity/</a></dd>
+                    <dd><a href="https://www.w3.org/2005/Incubator/webid/spec/identity/" rel="citesAsAuthority"><cite>WebID 1.0</cite></a>. Henry Story; Andrei Sambra; Stéphane Corlosquet.  W3C Editor’s Draft. URL: <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/">https://www.w3.org/2005/Incubator/webid/spec/identity/</a></dd>
                   </dl>
                 </div>
               </section>
@@ -1125,7 +1125,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dt id="bib-odrl-model">[ODRL-MODEL]</dt>
                     <dd><a href="https://www.w3.org/TR/odrl-model/" rel="cito:citesAsPotentialSolution"><cite>ODRL Information Model 2.2</cite></a>. Renato Iannella; Serena Villata.  W3C. 15 February 2018. W3C Recommendation. URL: <a href="https://www.w3.org/TR/odrl-model/">https://www.w3.org/TR/odrl-model/</a></dd>
                     <dt id="bib-solid-protocol">[SOLID-PROTOCOL]</dt>
-                    <dd><a href="https://solidproject.org/TR/protocol" rel="citesAsPotentialSolution"><cite>Solid Protocol</cite></a>. Sarven Capadisli; Tim Berners-Lee; Ruben Verborgh; Kjetil Kjernsmo; Justin Bingham; Dmitri Zagidulin.  W3C Solid Community Group. W3C Editor's Draft. URL: <a href="https://solidproject.org/TR/protocol">https://solidproject.org/TR/protocol</a></dd>
+                    <dd><a href="https://solidproject.org/TR/protocol" rel="citesAsPotentialSolution"><cite>Solid Protocol</cite></a>. Sarven Capadisli; Tim Berners-Lee; Ruben Verborgh; Kjetil Kjernsmo; Justin Bingham; Dmitri Zagidulin.  W3C Solid Community Group. W3C Editor’s Draft. URL: <a href="https://solidproject.org/TR/protocol">https://solidproject.org/TR/protocol</a></dd>
                     <dt id="bib-sparql11-query">[SPARQL11-QUERY]</dt>
                     <dd><a href="https://www.w3.org/TR/sparql11-query/" rel="cito:citesAsPotentialSolution"><cite>SPARQL 1.1 Query Language</cite></a>. Steven Harris; Andy Seaborne.  W3C. 21 March 2013. W3C Recommendation. URL: <a href="https://www.w3.org/TR/sparql11-query/">https://www.w3.org/TR/sparql11-query/</a></dd>
                     <dt id="bib-sparql11-update">[SPARQL11-UPDATE]</dt>

@@ -776,9 +776,9 @@ left:4.5em;
 
                       <p>The following query is typically used in context of inheriting Authorizations (<code>acl:default</code>) from a container's ACL resource. The query also demonstrates matching Authorizations that use a superclass of the required access mode (<cite><a href="#access-mode-classes" rel="rdfs:seeAlso">Access Mode Classes</a></cite>):</p>
 
-                      <figure id="match-default-agentclass-mode" class="example listing" rel="schema:hasPart" resource="#match-accessto-agentclass-mode">
+                      <figure id="match-default-agentclass-mode" class="example listing" rel="schema:hasPart" resource="#match-default-agentclass-mode">
                         <p class="example-h"><span>Example</span>: Match an Authorization with a specific container resource, agent class membership and access mode.</p>
-                        <pre about="#match-accessto-agent-mode" property="schema:description" typeof="fabio:Script"><code>ASK {</code>
+                        <pre about="#match-default-agentclass-mode" property="schema:description" typeof="fabio:Script"><code>ASK {</code>
 <code>  GRAPH $aclResource {</code>
 <code>    {</code>
 <code>      ?authorization</code>
@@ -801,9 +801,9 @@ left:4.5em;
 
                       <p>The following query can be used to check if an agent is a member of any group that can access a resource:</p>
 
-                      <figure id="match-accessto-agentgroup-mode" class="example listing" rel="schema:hasPart" resource="#match-accessto-agentclass-mode">
+                      <figure id="match-accessto-agentgroup-mode" class="example listing" rel="schema:hasPart" resource="#match-accessto-agentgroup-mode">
                         <p class="example-h"><span>Example</span>: Match an Authorization with a specific resource, agent with any group membership, and specific access mode.</p>
-                        <pre about="#match-accessto-agent-mode" property="schema:description" typeof="fabio:Script"><code>ASK {</code>
+                        <pre about="#match-accessto-agentgroup-mode" property="schema:description" typeof="fabio:Script"><code>ASK {</code>
 <code>  GRAPH $aclResource {</code>
 <code>    ?authorization</code>
 <code>      a acl:Authorization ;</code>

@@ -1072,6 +1072,9 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                     <dt about="#security-privacy-review-minimum-data" id="security-privacy-review-minimum-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#minimum-data">Do features in your specification expose the minimum amount of information necessary to enable their intended uses?</a></dt>
                     <dd about="#security-privacy-review-minimum-data"><span datatype="rdf:HTML" property="schema:description">Yes.</span></dd>
+
+                    <dt about="#security-privacy-review-personal-data" id="security-privacy-review-personal-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#personal-data">How do the features in your specification deal with personal information, personally-identifiable information (PII), or information derived from them?</a></dt>
+                    <dd about="#security-privacy-review-personal-data"><span datatype="rdf:HTML" property="schema:description">ACL resources may contain any data including that which identifies or refers to <cite><a href="#agent">agents</a></cite> and <cite><a href="#agent-group">agent groups</a></cite>. Access to ACL resources is only granted to <cite><a href="#access-subjects">Access Subjects</a></cite> with the <cite><a href="#acl-mode-control" rel="rdfs:seeAlso"><code>acl:Control</code></a></cite> access mode, and thus by definition, <a href="https://w3ctag.github.io/design-principles/#consent">meaningful consent</a> to any personal data that agents include about themselves is extended to other agents with control access on the ACL resource. Group resources are subject to the same Authorization conditions as any resource (that is not an ACL resource), and thus information may be exposed.</span></dd>
                   </dl>
                 </div>
               </section>

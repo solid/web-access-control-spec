@@ -1084,6 +1084,9 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                     <dt about="#security-privacy-review-underlying-platform-data" id="security-privacy-review-underlying-platform-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#underlying-platform-data">Do the features in your specification expose information about the underlying platform to origins?</a></dt>
                     <dd about="#security-privacy-review-underlying-platform-data"><span datatype="rdf:HTML" property="schema:description">No.</span></dd>
+
+                    <dt about="#security-privacy-review-send-to-platform" id="security-privacy-review-send-to-platform"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#send-to-platform">Does this specification allow an origin to send data to the underlying platform?</a></dt>
+                    <dd about="#security-privacy-review-send-to-platform"><span datatype="rdf:HTML" property="schema:description">No. <cite><a href="#acl-resource" rel="cito:discusses">ACL resources</a></cite> are described within the framework of HTTP as RDF documents <cite><a href="#acl-resource-representation" rel="cito:discusses">represented with the Turtle syntax</a></cite>. Servers may be able to redirect ACL resources ie. the <code>https:</code> URLs to <code>file:</code>, <code>data:</code>, or <code>blob:</code> URLs, but no behaviour is defined by this specification.</span></dd>
                   </dl>
                 </div>
               </section>

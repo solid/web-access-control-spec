@@ -739,7 +739,7 @@ content: "";
 
                       <p>Generally, read operations attempt to know about the existence of a resource or view the contents of a resource. Write operations attempt to create, delete, or modify resources. Append operations attempt to create resources or add information to resources. Control operations attempt to view, create, delete, or modify ACL resources.</p>
 
-                      <p>As container resources and member resources are hierarchically organised, requests to perform operations on resources are in the context of the applicable container (effective ACL resource).</p>
+                      <p>As container resources and member resources are hierarchically organised, requests to perform operations on resources are in the context of the applicable container (<cite><a href="#effective-acl-resource">Effective ACL Resource</a>).</p>
 
                       <p>When an operation requests to read a resource, the server MUST match an Authorization allowing the <code>acl:Read</code> access privilege on the resource.</p>
 

@@ -862,9 +862,13 @@ content: "";
 <code>    }</code>
 <code>    UNION</code>
 <code>    {</code>
-<code>      ?authorization acl:mode ?mode .</code>
+<code>      ?authorization</code>
+<code>        a acl:Authorization ;</code>
+<code>        acl:default $containerResource ;</code>
+<code>        acl:agentClass $agentClass ;</code>
+<code>        acl:mode ?mode .</code>
 <code>      GRAPH $aclOntologyResource {</code>
-<code>        $requiredMode rdfs:subClassOf* ?mode .</code>
+<code>        $requiredMode rdfs:subClassOf+ ?mode .</code>
 <code>      }</code>
 <code>    }</code>
 <code>  }</code>

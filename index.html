@@ -368,7 +368,7 @@ content: "";
 
               <p id="motivation" rel="schema:hasPart" resource="#motivation" typeof="deo:Motivation"><span datatype="rdf:HTML" property="schema:description">Unauthorized access or modification of Web resources could lead to unintended loss, damage or disclosure of data. To support read-write operations within the framework of HTTP, mechanisms for expressing and application of authorization conditions are needed to meet the social requirements of decentralised applications.</span></p>
 
-              <p><dfn id="wac">Web Access Control</dfn> (<abbr title="Web Access Control">WAC</abbr>) is a decentralized cross-domain access control system providing a way for Linked Data systems to set authorization conditions on HTTP resources using the Access Control List (<abbr title="Access Control List">ACL</abbr>) model.</p>
+              <p><dfn id="wac">Web Access Control</dfn> (<abbr title="Web Access Control">WAC</abbr>) is a decentralized cross-domain access control system providing a way for Linked Data systems to set authorization conditions on HTTP resources using the <dfn id="acl">Access Control List</dfn> (<abbr title="Access Control List">ACL</abbr>) model.</p>
 
               <p id="wac-overview" rel="schema:hasPart" resource="#wac-overview"><span datatype="rdf:HTML" property="schema:description">The WAC specification describes how to enable applications to discover <a href="#authorization">Authorizations</a> associated with a given <a href="#resource">resource</a>, and to control such policies, as directed by an agent. Server manages the association between a resource and an <a href="#acl-resource">ACL resource</a>, and applies the authorization conditions on requested operations. Authorizations are described using the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite> to express and determine access privileges of a requested resource. Any kind of access can be given to a resource as per the ACL ontology. This specification uses the <a href="#access-mode">access modes</a> currently defined by the ACL ontology, such as the class of operations to read, write, append and control resources. An Authorization may allow public access to resources or place the requirement for authenticated <a href="#agent">agents</a>. Resources and agents can be on different origins.</span></p>
 
@@ -479,7 +479,7 @@ content: "";
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>All assertions, diagrams, examples, and notes are non-normative, as are all sections explicitly marked non-normative. Everything else is normative.</p>
 
-                  <p>The key words “MUST” and “MUST NOT” are to be interpreted as described in <a href="https://tools.ietf.org/html/bcp14">BCP 14</a> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
+                  <p>The key words “MUST” and “MUST NOT” are to be interpreted as described in <cite><a href="https://tools.ietf.org/html/bcp14" rel="rdfs:seeAlso">BCP 14</a></cite> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
                 </div>
               </section>
             </div>
@@ -502,7 +502,7 @@ content: "";
               <section id="acl-resource-discovery" inlist="" rel="schema:hasPart" resource="#acl-resource-discovery">
                 <h3 property="schema:name">ACL Resource Discovery</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>When a server wants to enable applications to discover <a href="#authorization">Authorizations</a> associated with a given <a href="#resource">resource</a>, the server MUST advertise the <a href="#acl-resource">ACL resource</a> that is associated with a resource by responding to an HTTP request including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> (<cite><a href="#acl-link-relation">acl Link Relation</a></cite> type) and the ACL resource as link target.</p>
+                  <p>When a server wants to enable applications to discover <a href="#authorization">Authorizations</a> associated with a given <a href="#resource">resource</a>, the server MUST advertise the <a href="#acl-resource">ACL resource</a> that is associated with a resource by responding to an HTTP request including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> (<cite><a href="#acl-link-relation" rel="rdfs:seeAlso">acl Link Relation</a></cite>) and the ACL resource as link target.</p>
 
                   <p>ACL Resource Discovery is used towards determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource.</p>
 
@@ -579,13 +579,13 @@ content: "";
 
                   <dl id="acl-access-modes">
                     <dt id="acl-mode-read"><code>acl:Read</code></dt>
-                    <dd>Allows access to a class of read operations on a resource eg. to view the contents of a resource on HTTP <code>GET</code> requests.</dd>
+                    <dd>Allows access to a class of read operations on a resource, eg. to view the contents of a resource on HTTP <code>GET</code> requests.</dd>
 
                     <dt id="acl-mode-write"><code>acl:Write</code></dt>
-                    <dd>Allows access to a class of write operations on a resource eg. to create, delete or modify resources on HTTP <code>PUT</code>, <code>POST</code>, <code>PATCH</code>, <code>DELETE</code> requests.</dd>
+                    <dd>Allows access to a class of write operations on a resource, eg. to create, delete or modify resources on HTTP <code>PUT</code>, <code>POST</code>, <code>PATCH</code>, <code>DELETE</code> requests.</dd>
 
                     <dt id="acl-mode-append"><code>acl:Append</code></dt>
-                    <dd>Allows access to a class of append operations on a resource eg. to add information but not remove information on HTTP <code>POST</code>, <code>PATCH</code> requests.</dd>
+                    <dd>Allows access to a class of append operations on a resource, eg. to add information but not remove information on HTTP <code>POST</code>, <code>PATCH</code> requests.</dd>
 
                     <dt id="acl-mode-control"><code>acl:Control</code></dt>
                     <dd>Allows access to a class of read and write operations on an ACL resource associated with a resource.</dd>
@@ -610,7 +610,7 @@ content: "";
                   <div class="note" id="loss-of-control-mitigation" inlist="" rel="schema:hasPart" resource="#loss-of-control-mitigation">
                     <h3 property="schema:name"><span>Note</span>: Loss of Control Mitigation</h3>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>It is assumed that systems using WAC have mechanisms to mitigate loss of control of the resources eg. by ensuring valid ACL resources and Authorizations, providing administrative functions on the storage, or implicit control over all resources in a storage to owners.</p>
+                      <p>It is assumed that systems using WAC have mechanisms to mitigate loss of control of the resources, eg. by ensuring valid ACL resources and Authorizations, providing administrative functions on the storage, or implicit control over all resources in a storage to owners.</p>
 
                       <p class="advisement">Source: <a href="https://github.com/solid/specification/issues/67" rel="cito:citesAsSourceDocument">issues/67</a>, <a href="https://github.com/solid/specification/issues/153" rel="cito:citesAsSourceDocument">issues/153</a>, <a href="https://github.com/solid/specification/pull/264" rel="cito:citesAsSourceDocument">pull/264</a></p>
                     </div>
@@ -771,7 +771,7 @@ content: "";
 
                           <p>As the HTTP <code>PUT</code> method requests to create or replace the resource state, the <code>acl:Write</code> access mode would be required.</p>
 
-                          <p>As the processing of HTTP <code>PATCH</code> method requests depends on the request semantics and content eg. <code>acl:Append</code> can allow requests using SPARQL 1.1 Update’s [<cite><a href="#bib-sparql11-update">SPARQL11-UPDATE</a></cite>] <code>INSERT DATA</code> operation but not <code>DELETE DATA</code>, whereas <code>acl:Write</code> would allow both operations.</p>
+                          <p>As the processing of HTTP <code>PATCH</code> method requests depends on the request semantics and content, eg. <code>acl:Append</code> can allow requests using SPARQL 1.1 Update’s [<cite><a href="#bib-sparql11-update">SPARQL11-UPDATE</a></cite>] <code>INSERT DATA</code> operation but not <code>DELETE DATA</code>, whereas <code>acl:Write</code> would allow both operations.</p>
 
                           <p>As the HTTP <code>DELETE</code> method requests to remove a resource, the <code>acl:Write</code> access mode would be required.</p>
                         </div>
@@ -806,7 +806,7 @@ content: "";
                       <div class="note" id="trusted-origins" inlist="" rel="schema:hasPart" resource="#trusted-origins">
                         <h5 property="schema:name"><span>Note</span>: Trusted Origins</h5>
                         <div datatype="rdf:HTML" property="schema:description">
-                          <p>Implementations might implicitly allow a list of origins eg. the same-origin [<cite><a class="bibref" href="#bib-rfc6454">RFC6454</a></cite>].</p>
+                          <p>Implementations might implicitly allow a list of origins, eg. the same-origin [<cite><a class="bibref" href="#bib-rfc6454">RFC6454</a></cite>].</p>
                         </div>
                       </div>
 
@@ -940,7 +940,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p><code>access-mode</code> corresponds to the <cite><a href="#access-modes" rel="rdfs:seeAlso">Access Modes</a></cite> as defined in the ACL ontology (<code>acl:Read</code>, <code>acl:Write</code>, <code>acl:Append</code>, <code>acl:Control</code>).</p>
 
-                  <p>Clients’ parsing algorithm for <code>WAC-Allow</code> header's field-value should incorporate error handling. When the received message fails to match an allowed pattern, clients MUST ignore the received <code>WAC-Allow</code> header-field. When unrecognised access parameters (permission groups and access modes) are found, clients MUST continue processing the access parameters as if those properties were not present.</p>
+                  <p>Clients’ parsing algorithm for <code>WAC-Allow</code> header’s field-value should incorporate error handling. When the received message fails to match an allowed pattern, clients MUST ignore the received <code>WAC-Allow</code> header-field. When unrecognised access parameters (permission groups and access modes) are found, clients MUST continue processing the access parameters as if those properties were not present.</p>
 
                   <p class="advisement">Source: <a href="https://github.com/solid/specification/issues/171" rel="cito:citesAsSourceDocument">issues/171</a>, <a href="https://github.com/solid/specification/issues/170" rel="cito:citesAsSourceDocument">issues/170</a>, <a href="https://github.com/solid/specification/issues/181" rel="cito:citesAsSourceDocument">issues/181</a>, <a href="https://gitter.im/solid/specification?at=60101295d8bdab47395e6775" rel="cito:citesAsSourceDocument">60101295d8bdab47395e6775</a>, <a href="https://github.com/solid/specification/pull/210">pull/210</a></p>
                 </div>
@@ -978,7 +978,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
 
-                  <p>As ACL resources are RDF sources, <a href="#authorization">Authorizations</a> descriptions may be extended or limited by constraints eg. temporal or spatial constraints, and duties eg. payments, may be imposed on permissions, but no behaviour is defined by this specification. For example, the <cite><a href="https://www.w3.org/TR/odrl-model/" rel="cito:citesAsPotentialSolution">ODRL Information Model</a></cite> can be used to set obligations required to be met by agents prior to accessing a resource.</p>
+                  <p>As ACL resources are RDF sources, <a href="#authorization">Authorizations</a> descriptions may be extended or limited by constraints, eg. temporal or spatial constraints, and duties, eg. payments, may be imposed on permissions, but no behaviour is defined by this specification. For example, the <cite><a href="https://www.w3.org/TR/odrl-model/" rel="cito:citesAsPotentialSolution">ODRL Information Model</a></cite> can be used to set obligations required to be met by agents prior to accessing a resource.</p>
 
                   <p>To allow access to a class of resources, implementations may want to use the <code>acl:accessToClass</code> predicate as defined in the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite>.</p>
 
@@ -1009,7 +1009,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
 
-                  <p>This specification describes the use of <code>acl</code> link relation for <cite><a href="#acl-resource-discovery" rel="rdfs:seeAlso">ACL Resource Discovery</a></cite> and the algorithm to determine the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource. To enable clients to perform discovery faster, separate link relation type targeting the <em>effective ACL resource</em> is allowed, but no behaviour is defined by this specification.</p>
+                  <p>This specification describes the use of <cite><a href="#acl-link-relation" rel="rdfs:seeAlso">acl Link Relation</a></cite> for <cite><a href="#acl-resource-discovery" rel="rdfs:seeAlso">ACL Resource Discovery</a></cite> and the algorithm to determine the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource. To enable clients to perform discovery faster, separate link relation type targeting the <em>effective ACL resource</em> is allowed, but no behaviour is defined by this specification.</p>
                  </div>
               </section>
             </div>
@@ -1037,7 +1037,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>Implementations are encouraged to use mechanisms to record activities about ACL resources for the purpose of accountability and integrity, eg. by having audit trails, notification of changes, reasons for change, preserving provenance information.</p>
 
-                  <p>Implementations that want to allow a class of write or control operations on resources are encouraged to require agents to be authenticated eg. for provenance records or accountability purposes.</p>
+                  <p>Implementations that want to allow a class of write or control operations on resources are encouraged to require agents to be authenticated, eg. for provenance records or accountability purposes.</p>
                 </div>
               </section>
 
@@ -1073,7 +1073,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
 
-                  <p>These questions provide an overview of security and privacy considerations for this specification as guided by <cite><a class="bibref" href="#bib-security-privacy-questionnaire">Self-Review Questionnaire: Security and Privacy</a></cite>.</p>
+                  <p>These questions provide an overview of security and privacy considerations for this specification as guided by [<cite><a class="bibref" href="#bib-security-privacy-questionnaire">SECURITY-PRIVACY-QUESTIONNAIRE</a></cite>].</p>
 
                   <dl rel="schema:hasPart">
                     <dt about="#security-privacy-review-purpose" id="security-privacy-review-purpose"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#purpose" rel="cito:repliesTo">What information might this feature expose to Web sites or other parties, and for what purposes is that exposure necessary?</a></dt>
@@ -1086,7 +1086,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dd about="#security-privacy-review-personal-data"><span datatype="rdf:HTML" property="schema:description">ACL resources may contain any data including that which identifies or refers to <cite><a href="#agent">agents</a></cite> and <cite><a href="#agent-group">agent groups</a></cite>. Access to ACL resources is only granted to <cite><a href="#access-subjects">Access Subjects</a></cite> with the <cite><a href="#acl-mode-control" rel="rdfs:seeAlso"><code>acl:Control</code></a></cite> access mode, and thus by definition, <a href="https://w3ctag.github.io/design-principles/#consent">meaningful consent</a> to any personal data that agents include about themselves is extended to other agents with control access on the ACL resource. Group resources are subject to the same Authorization conditions as any resource (that is not an ACL resource), and thus information may be exposed.</span></dd>
 
                     <dt about="#security-privacy-review-sensitive-data" id="security-privacy-review-sensitive-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#sensitive-data">How do the features in your specification deal with sensitive information?</a></dt>
-                    <dd about="#security-privacy-review-sensitive-data"><span datatype="rdf:HTML" property="schema:description">Same implications as <cite><a href="#security-privacy-review-personal-data" rel="rdfs:seeAlso">personal information and personally-identifiable information</a></cite> in ACL resources and group resources. In the case of including sensitive information, the sender should be aware that changes to a group resource can allow non-members or new members to view membership.</span></dd>
+                    <dd about="#security-privacy-review-sensitive-data"><span datatype="rdf:HTML" property="schema:description">Same implications as <cite><a href="#security-privacy-review-personal-data" rel="rdfs:seeAlso">personal information and personally-identifiable information</a></cite> in ACL resources and group resources. In the case of including sensitive information, the sender should be aware that changes to a group resource’s ACL resource may allow non-members or new members to view membership.</span></dd>
 
                     <dt about="#security-privacy-review-persistent-origin-specific-state" id="security-privacy-review-persistent-origin-specific-state"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#persistent-origin-specific-state">Do the features in your specification introduce new state for an origin that persists across browsing sessions?</a></dt>
                     <dd about="#security-privacy-review-persistent-origin-specific-state"><span datatype="rdf:HTML" property="schema:description">No.</span></dd>
@@ -1095,7 +1095,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dd about="#security-privacy-review-underlying-platform-data"><span datatype="rdf:HTML" property="schema:description">No.</span></dd>
 
                     <dt about="#security-privacy-review-send-to-platform" id="security-privacy-review-send-to-platform"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#send-to-platform">Does this specification allow an origin to send data to the underlying platform?</a></dt>
-                    <dd about="#security-privacy-review-send-to-platform"><span datatype="rdf:HTML" property="schema:description">No. <cite><a href="#acl-resource" rel="cito:discusses">ACL resources</a></cite> are described within the framework of HTTP as RDF documents <cite><a href="#acl-resource-representation" rel="cito:discusses">represented with the Turtle syntax</a></cite>. Servers may be able to redirect ACL resources ie. the <code>https:</code> URLs to <code>file:</code>, <code>data:</code>, or <code>blob:</code> URLs, but no behaviour is defined by this specification.</span></dd>
+                    <dd about="#security-privacy-review-send-to-platform"><span datatype="rdf:HTML" property="schema:description">No. <cite><a href="#acl-resource" rel="cito:discusses">ACL resources</a></cite> are described within the framework of HTTP as RDF documents <cite><a href="#acl-resource-representation" rel="cito:discusses">represented with the Turtle syntax</a></cite>. Servers may be able to redirect ACL resources, ie. the <code>https:</code> URLs to <code>file:</code>, <code>data:</code>, or <code>blob:</code> URLs, but no behaviour is defined by this specification.</span></dd>
 
                     <dt about="#security-privacy-review-sensor-data" id="security-privacy-review-sensor-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#sensor-data">Do features in this specification allow an origin access to sensors on a user’s device</a></dt>
                     <dd about="#security-privacy-review-sensor-data"><span datatype="rdf:HTML" property="schema:description">No.</span></dd>
@@ -1116,10 +1116,10 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dd about="#security-privacy-review-temporary-id"><span datatype="rdf:HTML" property="schema:description">None.</span></dd>
 
                     <dt about="#security-privacy-review-first-third-party" id="security-privacy-review-first-third-party"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#first-third-party">How does this specification distinguish between behaviour in first-party and third-party contexts?</a></dt>
-                    <dd about="#security-privacy-review-first-third-party"><span datatype="rdf:HTML" property="schema:description">When an HTTP request includes the <code>Origin</code> header (typical Web browsers use <a href="#origin-considerations" rel="cito:discusses">origin based security</a> to warn servers), <a href="#web-application-authorization" rel="cito:discusses">Authorizations are matched</a> in context of the origin of the HTTP request in addition to requiring agent identification and allowed access modes. While the use of Origin is not intended as client identification, the implication is that unless servers have separate mechanisms to verify the original request made by an application, the <code>Origin</code> header’s field-value can differ. In order to distinguish social entities and clients supported by authentication protocols, an issue on <cite><a href="#client-identification" rel="cito:discusses">client identification</a></cite> is filed.</span></dd>
+                    <dd about="#security-privacy-review-first-third-party"><span datatype="rdf:HTML" property="schema:description">When an HTTP request includes the <code>Origin</code> header (typical Web browsers use <a href="#origin-considerations" rel="cito:discusses">origin based security</a> to warn servers), <a href="#web-application-authorization" rel="cito:discusses">Authorizations are matched</a> in context of the origin of the HTTP request in addition to requiring agent identification and allowed access modes. While the use of <code>Origin</code> is not intended as client identification, the implication is that unless servers have separate mechanisms to verify the original request made by an application, the <code>Origin</code> header’s field-value can differ. In order to distinguish social entities and clients supported by authentication protocols, an issue on <cite><a href="#client-identification" rel="cito:discusses">client identification</a></cite> is filed.</span></dd>
 
                     <dt about="#security-privacy-review-private-browsing" id="security-privacy-review-private-browsing"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#private-browsing">How do the features in this specification work in the context of a browser’s Private Browsing or Incognito mode?</a></dt>
-                    <dd about="#security-privacy-review-private-browsing"><span datatype="rdf:HTML" property="schema:description">No different than browser’s 'normal' state.</span></dd>
+                    <dd about="#security-privacy-review-private-browsing"><span datatype="rdf:HTML" property="schema:description">No different than <q>browser’s 'normal' state</q>.</span></dd>
 
                     <dt about="#security-privacy-review-considerations" id="security-privacy-review-considerations"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#considerations">Does this specification have both "Security Considerations" and "Privacy Considerations" sections?</a></dt>
                     <dd about="#security-privacy-review-considerations"><span datatype="rdf:HTML" property="schema:description">Yes, in <cite><a href="#security-considerations" rel="rdfs:seeAlso">Security Considerations</a></cite> and <cite><a href="#privacy-considerations" rel="rdfs:seeAlso">Privacy Considerations</a></cite>.</span></dd>

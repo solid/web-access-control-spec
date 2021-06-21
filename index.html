@@ -414,13 +414,13 @@ content: "";
                     <dd about="#acl-resource" property="skos:definition">An ACL resource is represented by an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that includes <a href="#authorization">Authorizations</a> to access resources.</dd>
 
                     <dt about="#authorization" property="skos:prefLabel" typeof="skos:Concept"><dfn id="authorization">Authorization</dfn></dt>
-                    <dd about="#authorization" property="skos:definition">An Authorization is an abstract thing identified by a URI whose properties are defined in an <a href="#acl-resource">ACL resource</a>, eg. <a href="#access-mode">access modes</a> granted to <a href="#agent">agents</a> the ability to perform operations on <a href="#resource">resources</a>.</dd>
+                    <dd about="#authorization" property="skos:definition">An Authorization is an abstract thing identified by a URI whose properties are defined in an <a href="#acl-resource">ACL resource</a>, e.g. <a href="#access-mode">access modes</a> granted to <a href="#agent">agents</a> the ability to perform operations on <a href="#resource">resources</a>.</dd>
 
                     <dt about="#access-mode" property="skos:prefLabel" typeof="skos:Concept"><dfn id="access-mode">access mode</dfn></dt>
                     <dd about="#access-mode" property="skos:definition">An access mode is a class of operations that can be performed on one or more resources.</dd>
 
                     <dt about="#agent" property="skos:prefLabel" typeof="skos:Concept"><dfn id="agent">agent</dfn></dt>
-                    <dd about="#agent" property="skos:definition">An agent is a person, social entity or software identified by a URI, eg. a WebID denotes an agent [<cite><a class="bibref" href="#bib-webid">WEBID</a></cite>].</dd>
+                    <dd about="#agent" property="skos:definition">An agent is a person, social entity or software identified by a URI, e.g. a WebID denotes an agent [<cite><a class="bibref" href="#bib-webid">WEBID</a></cite>].</dd>
 
                     <dt about="#agent-group" property="skos:prefLabel" typeof="skos:Concept"><dfn id="agent-group">agent group</dfn></dt>
                     <dd about="#agent-group" property="skos:definition">An agent group is a group of persons or entities identified by a URI.</dd>
@@ -490,7 +490,7 @@ content: "";
             <div datatype="rdf:HTML" property="schema:description">
               <p><em>This section is non-normative.</em></p>
 
-              <p>Clients who want to perform read-write operations on <a href="#acl-resource">ACL resources</a> with respect to <a href="#authorization">Authorizations</a> which are stored on a server can do so within the framework of HTTP. This specification does not describe the HTTP interaction to read-write resources. It is assumed that servers have a mapping to handle HTTP requests and the required Authorizations to grant operations on resources. Implementations are strongly encouraged to use existing approaches that provide an extension of the rules of <cite><a class="bibref" href="https://www.w3.org/DesignIssues/LinkedData" rel="cito:citesAsAuthority">Linked Data</a></cite>, eg. [<cite><a class="bibref" href="#bib-solid-protocol">SOLID-PROTOCOL</a></cite>], [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>].</p>
+              <p>Clients who want to perform read-write operations on <a href="#acl-resource">ACL resources</a> with respect to <a href="#authorization">Authorizations</a> which are stored on a server can do so within the framework of HTTP. This specification does not describe the HTTP interaction to read-write resources. It is assumed that servers have a mapping to handle HTTP requests and the required Authorizations to grant operations on resources. Implementations are strongly encouraged to use existing approaches that provide an extension of the rules of <cite><a class="bibref" href="https://www.w3.org/DesignIssues/LinkedData" rel="cito:citesAsAuthority">Linked Data</a></cite>, e.g. [<cite><a class="bibref" href="#bib-solid-protocol">SOLID-PROTOCOL</a></cite>], [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>].</p>
             </div>
           </section>
 
@@ -509,7 +509,7 @@ content: "";
                   <div class="issue" id="link-relation-type" rel="schema:hasPart" resource="#link-relation-type">
                     <h4 property="schema:name"><span>Issue</span>: Link Relation Type</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>The possibility of using URIs as relation types interchangeably or as alternate to the <cite><a href="#acl-link-relation" rel="rdfs:seeAlso">acl Link Relation</a></cite> type is under consideration, eg. <code>https://www.w3.org/ns/iana/link-relations/relation#acl</code> or <code>http://www.w3.org/ns/auth/acl#accessControl</code>: <a href="https://github.com/solid/web-access-control-spec/issues/21#issuecomment-769137284" rel="cito:citesAsRelated">issues/21</a>.</p>
+                      <p>The possibility of using URIs as relation types interchangeably or as alternate to the <cite><a href="#acl-link-relation" rel="rdfs:seeAlso">acl Link Relation</a></cite> type is under consideration, e.g. <code>https://www.w3.org/ns/iana/link-relations/relation#acl</code> or <code>http://www.w3.org/ns/auth/acl#accessControl</code>: <a href="https://github.com/solid/web-access-control-spec/issues/21#issuecomment-769137284" rel="cito:citesAsRelated">issues/21</a>.</p>
                     </div>
                   </div>
 
@@ -579,13 +579,13 @@ content: "";
 
                   <dl id="acl-access-modes">
                     <dt id="acl-mode-read"><code>acl:Read</code></dt>
-                    <dd>Allows access to a class of read operations on a resource, eg. to view the contents of a resource on HTTP <code>GET</code> requests.</dd>
+                    <dd>Allows access to a class of read operations on a resource, e.g. to view the contents of a resource on HTTP <code>GET</code> requests.</dd>
 
                     <dt id="acl-mode-write"><code>acl:Write</code></dt>
-                    <dd>Allows access to a class of write operations on a resource, eg. to create, delete or modify resources on HTTP <code>PUT</code>, <code>POST</code>, <code>PATCH</code>, <code>DELETE</code> requests.</dd>
+                    <dd>Allows access to a class of write operations on a resource, e.g. to create, delete or modify resources on HTTP <code>PUT</code>, <code>POST</code>, <code>PATCH</code>, <code>DELETE</code> requests.</dd>
 
                     <dt id="acl-mode-append"><code>acl:Append</code></dt>
-                    <dd>Allows access to a class of append operations on a resource, eg. to add information but not remove information on HTTP <code>POST</code>, <code>PATCH</code> requests.</dd>
+                    <dd>Allows access to a class of append operations on a resource, e.g. to add information, but not remove, information on HTTP <code>POST</code>, <code>PATCH</code> requests.</dd>
 
                     <dt id="acl-mode-control"><code>acl:Control</code></dt>
                     <dd>Allows access to a class of read and write operations on an ACL resource associated with a resource.</dd>
@@ -830,7 +830,7 @@ content: "";
 
                       <p>This specification does not impose a storage system that can be used to store Authorizations. Similarly, mechanisms that can be used to find required RDF statements of Authorizations is deliberately unspecified to allow for a wide variety of use. This section <em>exemplifies</em> access check via SPARQL 1.1 Query Language’s [<cite><a class="bibref" href="#bib-sparql11-query">SPARQL11-QUERY</a></cite>] <code>ASK</code> form to test whether or not an Authorization pattern matches; returns <a href="https://infra.spec.whatwg.org/#booleans">boolean</a>.</p>
 
-                      <p>The <code>ASK</code> queries below exemplify atomic graph patterns that can be executed against the default graph of an RDF dataset using named graphs for resources. The examples use query variables marked with "<var>?</var>" to indicate any value, and "<var>$</var>" to indicate inputs passed to the query, eg. <samp>&lt;http://example.org/.acl&gt;</samp> as the IRI reference of the effective ACL resource of a request replaces <code>$aclResource</code> in the query, and likewise, <samp>acl:Write</samp> as input is intended to replace <code>$mode</code> in the examples.</p>
+                      <p>The <code>ASK</code> queries below exemplify atomic graph patterns that can be executed against the default graph of an RDF dataset using named graphs for resources. The examples use query variables marked with "<var>?</var>" to indicate any value, and "<var>$</var>" to indicate inputs passed to the query, e.g. <samp>&lt;http://example.org/.acl&gt;</samp> as the IRI reference of the effective ACL resource of a request replaces <code>$aclResource</code> in the query, and likewise, <samp>acl:Write</samp> as input is intended to replace <code>$mode</code> in the examples.</p>
 
                       <figure id="match-accessto-agent-mode" class="example listing" rel="schema:hasPart" resource="#match-accessto-agent-mode">
                         <p class="example-h"><span>Example</span>: Match an Authorization with a specific resource, agent and access mode.</p>
@@ -978,7 +978,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
 
-                  <p>As ACL resources are RDF sources, <a href="#authorization">Authorizations</a> descriptions may be extended or limited by constraints, eg. temporal or spatial constraints, and duties, eg. payments, may be imposed on permissions, but no behaviour is defined by this specification. For example, the <cite><a href="https://www.w3.org/TR/odrl-model/" rel="cito:citesAsPotentialSolution">ODRL Information Model</a></cite> can be used to set obligations required to be met by agents prior to accessing a resource.</p>
+                  <p>As ACL resources are RDF sources; <a href="#authorization">Authorization</a> descriptions may be extended or limited by constraints, e.g. temporal or spatial constraints; and duties, e.g. payments, may be imposed on permissions; but no behaviour is defined by this specification. For example, the <cite><a href="https://www.w3.org/TR/odrl-model/" rel="cito:citesAsPotentialSolution">ODRL Information Model</a></cite> can be used to set obligations required to be met by agents prior to accessing a resource.</p>
 
                   <p>To allow access to a class of resources, implementations may want to use the <code>acl:accessToClass</code> predicate as defined in the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citeAsAuthority">ACL ontology</a></cite>.</p>
 
@@ -1035,9 +1035,9 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>Transfer of <a href="#authorization">Authorizations</a> between a client and server over an open network creates the potential for those policies to be modified or disclosed without proper authorization. The requirements for the Web Access Control protocol discussed in this specification do not include cryptographic protection of Authorization information, because it is assumed that this protection can be provided through HTTP over TLS. The path between client and application may be composed of multiple independent TLS connections, thus for end-to-end integrity and authenticity of content within an HTTP message, implementers can use mechanisms such as <cite><a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-message-signatures.html" rel="cito:citesAsPotentialSolution">Signing HTTP Messages</a></cite>. For cryptographic proof of Authorizations asserted by agents and protection from undetected modifications, implementers can use mechanisms such as <cite><a href="https://w3c-ccg.github.io/ld-proofs/" rel="cito:citesAsPotentialSolution">Linked Data Security</a></cite>.</p>
 
-                  <p>Implementations are encouraged to use mechanisms to record activities about ACL resources for the purpose of accountability and integrity, eg. by having audit trails, notification of changes, reasons for change, preserving provenance information.</p>
+                  <p>Implementations are encouraged to use mechanisms to record activities about ACL resources for the purpose of accountability and integrity, e.g. by having audit trails, notification of changes, reasons for change, preserving provenance information.</p>
 
-                  <p>Implementations that want to allow a class of write or control operations on resources are encouraged to require agents to be authenticated, eg. for provenance records or accountability purposes.</p>
+                  <p>Implementations that want to allow a class of write or control operations on resources are encouraged to require agents to be authenticated, e.g. for purposes of provenance or accountability.</p>
                 </div>
               </section>
 
@@ -1095,7 +1095,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dd about="#security-privacy-review-underlying-platform-data"><span datatype="rdf:HTML" property="schema:description">No.</span></dd>
 
                     <dt about="#security-privacy-review-send-to-platform" id="security-privacy-review-send-to-platform"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#send-to-platform">Does this specification allow an origin to send data to the underlying platform?</a></dt>
-                    <dd about="#security-privacy-review-send-to-platform"><span datatype="rdf:HTML" property="schema:description">No. <cite><a href="#acl-resource" rel="cito:discusses">ACL resources</a></cite> are described within the framework of HTTP as RDF documents <cite><a href="#acl-resource-representation" rel="cito:discusses">represented with the Turtle syntax</a></cite>. Servers may be able to redirect ACL resources, ie. the <code>https:</code> URLs to <code>file:</code>, <code>data:</code>, or <code>blob:</code> URLs, but no behaviour is defined by this specification.</span></dd>
+                    <dd about="#security-privacy-review-send-to-platform"><span datatype="rdf:HTML" property="schema:description">No. <cite><a href="#acl-resource" rel="cito:discusses">ACL resources</a></cite> are described within the framework of HTTP as RDF documents <cite><a href="#acl-resource-representation" rel="cito:discusses">represented with the Turtle syntax</a></cite>. Servers may be able to redirect ACL resources, (e.g. the <code>https:</code> URLs to <code>file:</code>, <code>data:</code>, or <code>blob:</code> URLs), but no behaviour is defined by this specification.</span></dd>
 
                     <dt about="#security-privacy-review-sensor-data" id="security-privacy-review-sensor-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#sensor-data">Do features in this specification allow an origin access to sensors on a user’s device</a></dt>
                     <dd about="#security-privacy-review-sensor-data"><span datatype="rdf:HTML" property="schema:description">No.</span></dd>

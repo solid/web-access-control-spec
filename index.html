@@ -138,7 +138,7 @@ content: "";
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Web Access Control</h1>
-        <h2>Editor’s Draft, 2021-06-18</h2>
+        <h2>Editor’s Draft, 2021-06-23</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -164,7 +164,7 @@ content: "";
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-06-18T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-18T00:00:00Z" property="schema:dateModified">2021-06-18</time></dd>
+          <dd><time content="2021-06-23T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-23T00:00:00Z" property="schema:dateModified">2021-06-23</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -677,13 +677,13 @@ content: "";
               <section id="effective-acl-resource" inlist="" rel="schema:hasPart" resource="#effective-acl-resource">
                 <h3 property="schema:name">Effective ACL Resource</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>Servers enforce the effective ACL resource of a resource, whereas clients determine the effective ACL resource of a resource to perform write operations.</p>
+                  <p>Servers enforce the effective ACL resource of a resource, whereas clients determine the effective ACL resource of a resource to perform control operations.</p>
 
                   <p>When an ACL resource associated with a resource has a representation (<cite><a href="#acl-resource-representation" rel="rdfs:seeAlso">ACL Resource Representation</a></cite>), it is the <em>effective ACL resource</em> of the requested resource.</p>
 
                   <p>When an ACL resource associated with a resource does not have a representation (<cite><a href="#acl-resource-representation" rel="rdfs:seeAlso">ACL Resource Representation</a></cite>), no Authorizations can be immediately checked against the requested resource. In this case, a container resource’s ACL resource may apply on every access to a member resource, in specifying Authorizations for the requested resource.</p>
 
-                  <p>WAC has the property of being recursive with respect to container hierarchy, meaning that a member resource inherits Authorizations from the closest container resource (heading toward the root container).</p>
+                  <p>WAC has the property of being recursive with respect to container hierarchy, meaning that a member resource inherits Authorizations from the closest container resource (heading towards the root container).</p>
 
                   <p>To determine the <em>effective ACL resource</em> of a resource, perform the following steps. Returns <a href="https://infra.spec.whatwg.org/#strings">string</a> (the URI of an ACL Resource).</p>
 

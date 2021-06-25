@@ -138,7 +138,7 @@ content: "";
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Web Access Control</h1>
-        <h2>Editor’s Draft, 2021-06-23</h2>
+        <h2>Editor’s Draft, 2021-06-25</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -164,7 +164,7 @@ content: "";
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-06-23T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-23T00:00:00Z" property="schema:dateModified">2021-06-23</time></dd>
+          <dd><time content="2021-06-25T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-25T00:00:00Z" property="schema:dateModified">2021-06-25</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -748,6 +748,15 @@ content: "";
                       <p>When an operation requests to update a resource, the server MUST match an Authorization allowing the <code>acl:Append</code> or <code>acl:Write</code> access privilege on the resource.</p>
 
                       <p>When an operation requests to delete a resource, the server MUST match Authorizations allowing the <code>acl:Write</code> access privilege on the resource and the containing container.</p>
+
+                      <div class="note" id="container-permissions" inlist="" rel="schema:hasPart" resource="#container-permissions">
+                        <h5 property="schema:name"><span>Note</span>: Container Permissions</h5>
+                        <div datatype="rdf:HTML" property="schema:description">
+                          <p>When a server supports the creation of intermediate containers in the process of creating a resource, the server must match Authorization policies allowing <code>acl:Write</code> on each container.</p>
+
+                          <p>When a server supports the recursive deletion of a container, the server must match Authorization policies allowing <code>acl:Write</code> on each member resource.</p>
+                        </div>
+                      </div>
 
                       <div class="note" id="reinstated-resource-permissions" inlist="" rel="schema:hasPart" resource="#reinstated-resource-permissions">
                         <h5 property="schema:name"><span>Note</span>: Reinstated Resource Permissions</h5>

@@ -542,7 +542,7 @@ content: "";
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>An ACL resource is an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that can hold any information, typically comprises an unordered set of <a href="#authorization">Authorizations</a>, any of which could permit an attempted access.</p>
 
-                  <p>Servers MUST accept an HTTP <code>GET</code> request targeting an ACL resource when the value of the <code>Accept</code> header requests a representation in <code>text/turtle</code> [<cite><a class="bibref" href="#bib-turtle">TURTLE</a></cite>].</p>
+                  <p>Servers MUST accept an HTTP <code>GET</code> and <code>HEAD</code> request targeting an ACL resource when the value of the <code>Accept</code> header requests a representation in <code>text/turtle</code> [<cite><a class="bibref" href="#bib-turtle">TURTLE</a></cite>].</p>
 
                   <p>Servers who want a resource to inherit Authorizations (<cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite>) from a container resource MUST NOT initialise the ACL resource that is associated with the resource with a representation.</p>
 
@@ -566,7 +566,7 @@ content: "";
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The <code>acl:accessTo</code> property value is used to check if access is allowed for a specific resource.</p>
 
-                  <p>When an Authorization includes the <code>acl:default</code> property value (the container resource in context), then access permissions be applied to the original requested resource.</p>
+                  <p>The <code>acl:default</code> property value (the container resource in context) is used to apply the Authorization to the original requested resource.</p>
 
                   <p>Inheriting Authorizations from the most significant container’s ACL resource is useful to avoid individually managing an ACL resource for each resource, as well as to define access control for resources that do not exist yet.</p>
 
@@ -634,9 +634,9 @@ content: "";
                   <p>The <code>acl:agentClass</code> predicate denotes a <a href="#agent-class">class of agents</a> being given the access permission.</p>
 
                   <dl>
-                    <dt id="acl-agent-class-foaf-agent"><code>foaf:Agent</code></dt>
+                    <dt id="acl-agentclass-foaf-agent"><code>foaf:Agent</code></dt>
                     <dd>Allows access to any agent.</dd>
-                    <dt id="acl-agent-class-authenticated-agent"><code>acl:AuthenticatedAgent</code></dt>
+                    <dt id="acl-agentclass-authenticated-agent"><code>acl:AuthenticatedAgent</code></dt>
                     <dd>Allows access to any authenticated agent.</dd>
                   </dl>
 

@@ -544,7 +544,9 @@ content: "";
 
                   <p>Servers MUST accept an HTTP <code>GET</code> request targeting an ACL resource when the value of the <code>Accept</code> header requests a representation in <code>text/turtle</code> [<cite><a class="bibref" href="#bib-turtle">TURTLE</a></cite>].</p>
 
-                  <p>Servers who want a resource to inherit Authorizations (<cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite>) from a container resource MUST NOT initialise the ACL resource that is associated with the resource with a representation. When an authorized HTTP <code>GET</code> or <code>HEAD</code> request targets an ACL resource without an existing representation, the server MUST respond with the <code>404</code> status code as per [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</p>
+                  <p>Servers who want a resource to inherit Authorizations (<cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite>) from a container resource MUST NOT initialise the ACL resource that is associated with the resource with a representation.</p>
+
+                  <p>When an authorized HTTP <code>GET</code> or <code>HEAD</code> request targets an ACL resource without an existing representation, the server MUST respond with the <code>404</code> status code as per [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</p>
 
                   <p>The <a href="#root-container">root container</a> MUST have an ACL resource with a representation. The ACL resource of the root container MUST include an Authorization allowing the <code>acl:Control</code> access privilege (<cite><a href="#acl-mode-control" rel="rdfs:seeAlso"><code>acl:Control</code></a></cite> access mode).</p>
 
@@ -562,7 +564,9 @@ content: "";
               <section id="access-objects" inlist="" rel="schema:hasPart" resource="#access-objects">
                 <h3 property="schema:name">Access Objects</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The <code>acl:accessTo</code> property value is used to check if access is allowed for a specific resource. When an Authorization includes the <code>acl:default</code> property value (the container resource in context), then access permissions be applied to the original requested resource.</p>
+                  <p>The <code>acl:accessTo</code> property value is used to check if access is allowed for a specific resource.</p>
+
+                  <p>When an Authorization includes the <code>acl:default</code> property value (the container resource in context), then access permissions be applied to the original requested resource.</p>
 
                   <p>Inheriting Authorizations from the most significant container’s ACL resource is useful to avoid individually managing an ACL resource for each resource, as well as to define access control for resources that do not exist yet.</p>
 
@@ -573,7 +577,7 @@ content: "";
               <section id="access-modes" inlist="" rel="schema:hasPart" resource="#access-modes">
                 <h3 property="schema:name">Access Modes</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The <a href="#access-mode">access modes</a> described in this section are defined in the <a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a>, such as the class of operations to read, write, append and control resources. The requirements for new access modes is explained in the <cite><a href="#access-mode-extensions" rel="rdfs:seeAlso">Access Mode Extensions</a></cite> section.</p>
+                  <p>The <a href="#access-mode">access modes</a> described in this section are defined in the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a></cite>, such as the class of operations to read, write, append and control resources. The requirements for new access modes is explained in the <cite><a href="#access-mode-extensions" rel="rdfs:seeAlso">Access Mode Extensions</a></cite> section.</p>
 
                   <p>The <code>acl:mode</code> predicate denotes a class of operations that the agents can perform on a resource.</p>
 
@@ -770,7 +774,7 @@ content: "";
                       <div class="note" id="http-method-access-mode-mapping" inlist="" rel="schema:hasPart" resource="#http-method-access-mode-mapping">
                         <h5 property="schema:name"><span>Note</span>: HTTP Method and Access Mode Mapping</h5>
                         <div datatype="rdf:HTML" property="schema:description">
-                          <p>When the target of the HTTP request is the ACL resource, the operation  can only be allowed with the <code>acl:Control</code> access mode.</p>
+                          <p>When the target of the HTTP request is the ACL resource, the operation can only be allowed with the <code>acl:Control</code> access mode.</p>
 
                           <p>Having <code>acl:Control</code> does not imply that the agent has <code>acl:Read</code> or <code>acl:Write</code> access to the resource itself, just to its corresponding ACL resource. For example, an agent with control access may disable their own write access (to prevent accidental over-writing of a resource by an application), but be able to change their access levels at a later point (since they retain <code>acl:Control</code> access).</p>
 
@@ -1042,7 +1046,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>Servers are strongly discouraged from trusting the information returned by looking up an agent’s WebID for access control purposes. The server operator can also provide the server with other trusted information to include in the search for a reason to give the requester the access.</p>
 
-                  <p>Transfer of <a href="#authorization">Authorizations</a> between a client and server over an open network creates the potential for those policies to be modified or disclosed without proper authorization. The requirements for the Web Access Control protocol discussed in this specification do not include cryptographic protection of Authorization information, because it is assumed that this protection can be provided through HTTP over TLS. The path between client and application may be composed of multiple independent TLS connections, thus for end-to-end integrity and authenticity of content within an HTTP message, implementers can use mechanisms such as <cite><a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-message-signatures.html" rel="cito:citesAsPotentialSolution">Signing HTTP Messages</a></cite>. For cryptographic proof of Authorizations asserted by agents and protection from undetected modifications, implementers can use mechanisms such as <cite><a href="https://w3c-ccg.github.io/ld-proofs/" rel="cito:citesAsPotentialSolution">Linked Data Security</a></cite>.</p>
+                  <p>Transfer of <a href="#authorization">Authorizations</a> between a client and server over an open network creates the potential for those policies to be modified or disclosed without proper authorization. The requirements for the WAC protocol discussed in this specification do not include cryptographic protection of Authorization information, because it is assumed that this protection can be provided through HTTP over TLS. The path between client and application may be composed of multiple independent TLS connections, thus for end-to-end integrity and authenticity of content within an HTTP message, implementers can use mechanisms such as <cite><a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-message-signatures.html" rel="cito:citesAsPotentialSolution">Signing HTTP Messages</a></cite>. For cryptographic proof of Authorizations asserted by agents and protection from undetected modifications, implementers can use mechanisms such as <cite><a href="https://w3c-ccg.github.io/ld-proofs/" rel="cito:citesAsPotentialSolution">Linked Data Security</a></cite>.</p>
 
                   <p>Implementations are encouraged to use mechanisms to record activities about ACL resources for the purpose of accountability and integrity, e.g., by having audit trails, notification of changes, reasons for change, preserving provenance information.</p>
 

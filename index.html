@@ -138,7 +138,7 @@ content: "";
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Web Access Control</h1>
-        <h2>Editor’s Draft, 2021-06-25</h2>
+        <h2>Editor’s Draft, 2021-06-28</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -164,7 +164,7 @@ content: "";
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-06-25T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-25T00:00:00Z" property="schema:dateModified">2021-06-25</time></dd>
+          <dd><time content="2021-06-28T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-28T00:00:00Z" property="schema:dateModified">2021-06-28</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -730,7 +730,7 @@ content: "";
 
                   <p>When a request requires an access mode (<code>acl:mode</code>) which is a limitation of another access mode, then access is granted if either mode is allowed by an Authorization. For example, when a request requires <code>acl:Append</code>, then access will be granted to agents having <code>acl:Write</code>.</p>
 
-                  <p>The presence of the <code>acl:origin</code> property and its value is taken into account in the evaluation only when the HTTP request includes the <code>Origin</code> header (<cite><a href="#web-application-authorization" rel="rdfs:seeAlso">Web Application Authorization</a></cite>). </p>
+                  <p>The presence of the <code>acl:origin</code> property and its value is taken into account in the evaluation only when the HTTP request includes the <code>Origin</code> header (<cite><a href="#web-origin-authorization" rel="rdfs:seeAlso">Web Origin Authorization</a></cite>). </p>
 
                   <section id="reading-writing-resources" inlist="" rel="schema:hasPart" resource="#reading-writing-resources">
                     <h4 property="schema:name">Reading and Writing Resources</h4>
@@ -790,8 +790,8 @@ content: "";
                     </div>
                   </section>
 
-                  <section id="web-application-authorization" inlist="" rel="schema:hasPart" resource="#web-application-authorization">
-                    <h4 property="schema:name">Web Application Authorization</h4>
+                  <section id="web-origin-authorization" inlist="" rel="schema:hasPart" resource="#web-origin-authorization">
+                    <h4 property="schema:name">Web Origin Authorization</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>User agents include the HTTP <code>Origin</code> header field to isolate different origins and permit controlled communication between origins. The <code>Origin</code> header warns the server that a possibly untrusted Web application is being used.</p>
 
@@ -1125,7 +1125,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dd about="#security-privacy-review-temporary-id"><span datatype="rdf:HTML" property="schema:description">None.</span></dd>
 
                     <dt about="#security-privacy-review-first-third-party" id="security-privacy-review-first-third-party"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#first-third-party">How does this specification distinguish between behaviour in first-party and third-party contexts?</a></dt>
-                    <dd about="#security-privacy-review-first-third-party"><span datatype="rdf:HTML" property="schema:description">When an HTTP request includes the <code>Origin</code> header (typical Web browsers use <a href="#origin-considerations" rel="cito:discusses">origin based security</a> to warn servers), <a href="#web-application-authorization" rel="cito:discusses">Authorizations are matched</a> in context of the origin of the HTTP request in addition to requiring agent identification and allowed access modes. While the use of <code>Origin</code> is not intended as client identification, the implication is that unless servers have separate mechanisms to verify the original request made by an application, the <code>Origin</code> header’s field-value can differ. In order to distinguish social entities and clients supported by authentication protocols, an issue on <cite><a href="#client-identification" rel="cito:discusses">client identification</a></cite> is filed.</span></dd>
+                    <dd about="#security-privacy-review-first-third-party"><span datatype="rdf:HTML" property="schema:description">When an HTTP request includes the <code>Origin</code> header (typical Web browsers use <a href="#origin-considerations" rel="cito:discusses">origin based security</a> to warn servers), <a href="#web-origin-authorization" rel="cito:discusses">Authorizations are matched</a> in context of the origin of the HTTP request in addition to requiring agent identification and allowed access modes. While the use of <code>Origin</code> is not intended as client identification, the implication is that unless servers have separate mechanisms to verify the original request made by an application, the <code>Origin</code> header’s field-value can differ. In order to distinguish social entities and clients supported by authentication protocols, an issue on <cite><a href="#client-identification" rel="cito:discusses">client identification</a></cite> is filed.</span></dd>
 
                     <dt about="#security-privacy-review-private-browsing" id="security-privacy-review-private-browsing"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#private-browsing">How do the features in this specification work in the context of a browser’s Private Browsing or Incognito mode?</a></dt>
                     <dd about="#security-privacy-review-private-browsing"><span datatype="rdf:HTML" property="schema:description">No different than <q>browser’s 'normal' state</q>.</span></dd>

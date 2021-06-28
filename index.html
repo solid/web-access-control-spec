@@ -803,11 +803,11 @@ content: "";
 
                       <ul>
                         <li>an Authorization allowing access to the requesting agent (<code>acl:agent</code>, <code>acl:agentGroup</code>, <code>acl:agentClass</code>);</li>
-                        <li>an Authorization with an <code>acl:origin</code> property value that of <code>Origin</code>’s field-value; and</li>
+                        <li>an Authorization with an <code>acl:origin</code> property value that of <code>Origin</code>’s field-value, when the required access mode is not available to all agents (<code>acl:agentClass foaf:Agent</code>); and</li>
                         <li>the required access mode is allowed for the requesting agent and the origin.</li>
                       </ul>
 
-                      <p>When an authorization is granted to an HTTP request including the <code>Origin</code> header, the server MUST include the HTTP <code>Access-Control-Allow-Origin</code> and <code>Access-Control-Allow-Headers</code> headers in the response of the HTTP request.</p>
+                      <p>When a server participates in the <abbr title="Cross-Origin Resource Sharing">CORS</abbr> protocol [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>] and authorization is granted to an HTTP request including the <code>Origin</code> header, the server MUST include the HTTP <code>Access-Control-Allow-Origin</code> and <code>Access-Control-Allow-Headers</code> headers in the response of the HTTP request.</p>
 
                       <div class="note" id="access-subject-origin-rejection-reason" inlist="" rel="schema:hasPart" resource="#access-subject-origin-rejection-reason">
                         <h5 property="schema:name"><span>Note</span>: Access Subject and Origin Rejection Reason</h5>

@@ -415,7 +415,7 @@ content: "";
                     <dd about="#acl-resource" property="skos:definition">An ACL resource is represented by an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that includes <a href="#authorization">Authorizations</a> determining access to resources.</dd>
 
                     <dt about="#authorization" property="skos:prefLabel" typeof="skos:Concept"><dfn id="authorization">Authorization</dfn></dt>
-                    <dd about="#authorization" property="skos:definition">An Authorization is an abstract thing identified by a URI whose properties are defined in an <a href="#acl-resource">ACL resource</a>, e.g., <a href="#access-mode">access modes</a> granted to <a href="#agent">agents</a> the ability to perform operations on <a href="#resource">resources</a>.</dd>
+                    <dd about="#authorization" property="skos:definition">An Authorization is an abstract thing which is identified by a URI and whose properties are defined in an <a href="#acl-resource">ACL resource</a>, e.g., <a href="#access-mode">access modes</a> granted to <a href="#agent">agents</a> the ability to perform operations on <a href="#resource">resources</a>.</dd>
 
                     <dt about="#access-mode" property="skos:prefLabel" typeof="skos:Concept"><dfn id="access-mode">access mode</dfn></dt>
                     <dd about="#access-mode" property="skos:definition">An access mode is a class of operations that can be performed on one or more resources.</dd>
@@ -567,9 +567,9 @@ content: "";
               <section id="access-objects" inlist="" rel="schema:hasPart" resource="#access-objects">
                 <h3 property="schema:name">Access Objects</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p id="acl-accessto">The <code>acl:accessTo</code> property value is used to check if access is allowed for a specific resource.</p>
+                  <p id="acl-accessto">The <code>acl:accessTo</code> predicate denotes the resource to which access is being granted.</p>
 
-                  <p id="acl-default">The <code>acl:default</code> property value (the container resource in context) is used to apply the Authorization to the original requested resource.</p>
+                  <p id="acl-default">The <code>acl:default</code> predicate denotes the container resource to which an Authorization can be applied to a resource lower in the collection hierarchy.</p>
 
                   <p>Inheriting Authorizations from the most significant container’s ACL resource is useful to avoid individually managing an ACL resource for each resource, as well as to define access control for resources that do not exist yet.</p>
 
@@ -636,17 +636,18 @@ content: "";
 
                   <p id="acl-agentclass">The <code>acl:agentClass</code> predicate denotes a <a href="#agent-class">class of agents</a> being given the access permission.</p>
 
-<p>Two agent classes are defined here:</p>
+                  <p>Two agent classes are defined here:</p>
+
                   <dl>
                     <dt id="acl-agentclass-foaf-agent"><code>foaf:Agent</code></dt>
-                    <dd>Allows access to any agent.</dd>
+                    <dd>Allows access to any agent, i.e., the public.</dd>
                     <dt id="acl-agentclass-authenticated-agent"><code>acl:AuthenticatedAgent</code></dt>
                     <dd>Allows access to any authenticated agent.</dd>
                   </dl>
 
                   <p id="acl-agentgroup">The <code>acl:agentGroup</code> predicate denotes a <a href="#agent-group">group of agents</a> being given the access permission. The object of an <code>acl:agentGroup</code> statement is an instance of <code>vcard:Group</code>, where the members of the group are specified with the <code>vcard:hasMember</code> predicate.</p>
 
-                  <p id="acl-origin">The <code>acl:origin</code> predicate denotes the <a href="#origin">origin</a> of an HTTP request is being given the access permission.</p>
+                  <p id="acl-origin">The <code>acl:origin</code> predicate denotes the <a href="#origin">origin</a> of an HTTP request that is being given the access permission.</p>
 
                   <div class="note" id="subject-verification" inlist="" rel="schema:hasPart" resource="#subject-verification">
                     <h3 property="schema:name"><span>Note</span>: Subject Verification</h3>

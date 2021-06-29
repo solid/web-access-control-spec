@@ -411,7 +411,7 @@ content: "";
                     <dd about="#root-container" property="skos:definition">A root container is a container resource that is at the highest level of the collection hierarchy.</dd>
 
                     <dt about="#acl-resource" property="skos:prefLabel" typeof="skos:Concept"><dfn id="acl-resource">ACL resource</dfn></dt>
-                    <dd about="#acl-resource" property="skos:definition">An ACL resource is represented by an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that includes <a href="#authorization">Authorizations</a> to access resources.</dd>
+                    <dd about="#acl-resource" property="skos:definition">An ACL resource is represented by an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that includes <a href="#authorization">Authorizations</a> determining access to resources.</dd>
 
                     <dt about="#authorization" property="skos:prefLabel" typeof="skos:Concept"><dfn id="authorization">Authorization</dfn></dt>
                     <dd about="#authorization" property="skos:definition">An Authorization is an abstract thing identified by a URI whose properties are defined in an <a href="#acl-resource">ACL resource</a>, e.g., <a href="#access-mode">access modes</a> granted to <a href="#agent">agents</a> the ability to perform operations on <a href="#resource">resources</a>.</dd>
@@ -561,7 +561,7 @@ content: "";
           <section id="authorization-rule" inlist="" rel="schema:hasPart" resource="#authorization-rule">
             <h2 property="schema:name">Authorization Rule</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p><a href="#authorization">Authorization</a> (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access permissions granted to agents the ability to perform operations on resources. Authorizations are described with RDF statements and may express any information. This section describes the following characteristics of an Authorization: <a href="#access-objects" rel="cito:discusses">access objects</a> to specify what can be accessed, <a href="#access-modes" rel="cito:discusses">access modes</a> to specify permissions, and <a href="#access-subjects" rel="cito:discusses">access subjects</a> to specify who can access the objects. See the <cite><a href="#authorization-conformance" rel="rdfs:seeAlso">Authorization Conformance</a></cite> section for applicable Authorizations towards <cite><a href="#authorization-evaluation" rel="rdfs:seeAlso">Authorization Evaluation</a></cite>.</p>
+              <p><a href="#authorization">Authorization</a> (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access permissions granting to agents the ability to perform operations on resources. Authorizations are described with RDF statements and may express any information. This section describes the following characteristics of an Authorization: <a href="#access-objects" rel="cito:discusses">access objects</a> to specify what can be accessed, <a href="#access-modes" rel="cito:discusses">access modes</a> to specify permissions, and <a href="#access-subjects" rel="cito:discusses">access subjects</a> to specify who can access the objects. See the <cite><a href="#authorization-conformance" rel="rdfs:seeAlso">Authorization Conformance</a></cite> section for applicable Authorizations towards <cite><a href="#authorization-evaluation" rel="rdfs:seeAlso">Authorization Evaluation</a></cite>.</p>
 
               <section id="access-objects" inlist="" rel="schema:hasPart" resource="#access-objects">
                 <h3 property="schema:name">Access Objects</h3>
@@ -635,6 +635,7 @@ content: "";
 
                   <p id="acl-agentclass">The <code>acl:agentClass</code> predicate denotes a <a href="#agent-class">class of agents</a> being given the access permission.</p>
 
+<p>Two agent classes are defined here:</p>
                   <dl>
                     <dt id="acl-agentclass-foaf-agent"><code>foaf:Agent</code></dt>
                     <dd>Allows access to any agent.</dd>
@@ -1063,9 +1064,9 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>The class of read and write operations require discrete access permissions:</p>
 
-                  <p id="consider-append-read-diff">Access permission to append a new resource to a container resource is independently of access permission to read a container resource. Thus, servers are encouraged to prevent information leakage when a successful HTTP request appends a new resource to a container resource. For instance, while the knowledge of the URI-Reference in <code>Location</code> and <code>Content-Location</code> HTTP headers in the response of a <code>POST</code> does not in itself pose a security threat ([<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>]), servers should consider the risks when read access to the container is not granted to agents.</p>
+                  <p id="consider-append-read-diff">Access permission to append a new resource to a container resource is independent of access permission to read a container resource. Thus, servers are encouraged to prevent information leakage when a successful HTTP request appends a new resource to a container resource. For instance, while the knowledge of the URI-Reference in <code>Location</code> and <code>Content-Location</code> HTTP headers in the response of a <code>POST</code> does not in itself pose a security threat ([<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>]), servers should consider the risks when read access to the container is not granted to agents.</p>
 
-                  <p id="consider-delete-read-diff">Access permission to update a resource is independently of access permission to read a resource. Thus, servers are encouraged to prevent information leakage when an attempt to delete information in a resource may reveal the existence of the information. For instance, when an HTTP <code>PATCH</code> request uses SPARQL Update’s <code>DELETE DATA</code> operation, servers should consider the risks of disclosing information by the chosen status code when read access to the resource is not granted to agents.</p>
+                  <p id="consider-delete-read-diff">Access permission to update a resource is independent of access permission to read a resource. Thus, servers are encouraged to prevent information leakage when an attempt to delete information in a resource may reveal the existence of the information. For instance, when an HTTP <code>PATCH</code> request uses SPARQL Update’s <code>DELETE DATA</code> operation, servers should consider the risks of disclosing information by the chosen status code when read access to the resource is not granted to agents.</p>
                 </div>
               </section>
 

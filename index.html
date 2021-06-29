@@ -138,7 +138,7 @@ content: "";
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Web Access Control</h1>
-        <h2>Editor’s Draft, 2021-06-28</h2>
+        <h2>Editor’s Draft, 2021-06-29</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -164,7 +164,7 @@ content: "";
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-06-28T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-28T00:00:00Z" property="schema:dateModified">2021-06-28</time></dd>
+          <dd><time content="2021-06-29T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-29T00:00:00Z" property="schema:dateModified">2021-06-29</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -322,6 +322,7 @@ content: "";
                     <li><a href="#effective-acl-resource"><span class="secno">5.1</span> <span class="content">Effective ACL Resource</span></a></li>
                     <li><a class="tocxref" href="#authorization-conformance"><span class="secno">5.2</span> <span class="content">Authorization Conformance</span></a></li>
                     <li><a class="tocxref" href="#authorization-evaluation"><span class="secno">5.3</span> <span class="content">Authorization Evaluation</span></a></li>
+                    <li><a class="tocxref" href="#access-privileges"><span class="secno">5.4</span> <span class="content">Access Privileges</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -825,17 +826,6 @@ content: "";
                           <p>Implementations might implicitly allow a list of origins, such as the same-origin [<cite><a class="bibref" href="#bib-rfc6454">RFC6454</a></cite>].</p>
                         </div>
                       </div>
-
-                      <p id="req-server-wac-allow">Servers MUST advertise client’s access privileges on a resource by including the <code>WAC-Allow</code> HTTP header (<cite><a href="#wac-allow" rel="rdfs:seeAlso">WAC-Allow</a></cite>) in the response of HTTP <code>GET</code> and <code>HEAD</code> requests.</p>
-
-                      <div class="note" id="clients-discovering-access-privileges" inlist="" rel="schema:hasPart" resource="#client-discovering-access-privileges">
-                        <h5 property="schema:name"><span>Note</span>: Clients Discovering Access Privileges</h5>
-                        <div datatype="rdf:HTML" property="schema:description">
-                          <p>Clients can discover access privileges on a resource by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target resource, and checking the <code>WAC-Allow</code> header value for access parameters listing the allowed access modes per permission group (<cite><a href="#wac-allow" rel="rdfs:seeAlso">WAC-Allow</a></cite>).</p>
-                        </div>
-                      </div>
-
-                      <p id="req-server-cors-aceh-wac-allow">When a server participates in the <abbr title="Cross-Origin Resource Sharing">CORS</abbr> protocol [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>], the server MUST include <code>WAC-Allow</code> in the <code>Access-Control-Expose-Headers</code> field-value in the HTTP response.</p>
                     </div>
                   </section>
 
@@ -915,6 +905,22 @@ content: "";
 <code>}</code></pre>
                         <figcaption property="schema:name"><code>ASK</code> query matching an Authorization given inputs <var>resource</var>, <var>agent</var> and <var>mode</var> (which may be a subclass of another access mode).</figcaption>
                       </figure>
+                    </div>
+                  </section>
+
+                  <section id="access-privileges" inlist="" rel="schema:hasPart" resource="#access-privileges">
+                    <h4 property="schema:name">Access Privileges</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p id="req-server-wac-allow">Servers MUST advertise client’s access privileges on a resource by including the <code>WAC-Allow</code> HTTP header (<cite><a href="#wac-allow" rel="rdfs:seeAlso">WAC-Allow</a></cite>) in the response of HTTP <code>GET</code> and <code>HEAD</code> requests.</p>
+
+                      <div class="note" id="clients-discovering-access-privileges" inlist="" rel="schema:hasPart" resource="#clients-discovering-access-privileges">
+                        <h5 property="schema:name"><span>Note</span>: Clients Discovering Access Privileges</h5>
+                        <div datatype="rdf:HTML" property="schema:description">
+                          <p>Clients can discover access privileges on a resource by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target resource, and checking the <code>WAC-Allow</code> header value for access parameters listing the allowed access modes per permission group (<cite><a href="#wac-allow" rel="rdfs:seeAlso">WAC-Allow</a></cite>).</p>
+                        </div>
+                      </div>
+
+                      <p id="req-server-cors-aceh-wac-allow">When a server participates in the <abbr title="Cross-Origin Resource Sharing">CORS</abbr> protocol [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>], the server MUST include <code>WAC-Allow</code> in the <code>Access-Control-Expose-Headers</code> field-value in the HTTP response.</p>
                     </div>
                   </section>
                 </div>

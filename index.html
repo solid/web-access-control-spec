@@ -138,7 +138,7 @@ content: "";
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Web Access Control</h1>
-        <h2>Editor’s Draft, 2021-06-29</h2>
+        <h2>Editor’s Draft, 2021-06-30</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -164,7 +164,7 @@ content: "";
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-06-29T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-29T00:00:00Z" property="schema:dateModified">2021-06-29</time></dd>
+          <dd><time content="2021-06-30T00:00:00Z" datatype="xsd:dateTime" datetime="2021-06-30T00:00:00Z" property="schema:dateModified">2021-06-30</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -503,7 +503,7 @@ content: "";
               <section id="acl-resource-discovery" inlist="" rel="schema:hasPart" resource="#acl-resource-discovery">
                 <h3 property="schema:name">ACL Resource Discovery</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p id="req-server-link-acl">When a server wants to enable applications to discover <a href="#authorization">Authorizations</a> associated with a given <a href="#resource">resource</a>, the server MUST advertise the <a href="#acl-resource">ACL resource</a> that is associated with a resource by responding to an HTTP request including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> (<cite><a href="#acl-link-relation" rel="rdfs:seeAlso">acl Link Relation</a></cite>) and the ACL resource as link target.</p>
+                  <p id="req-server-link-acl">When a server wants to enable applications to discover <a href="#authorization">Authorizations</a> associated with a given <a href="#resource">resource</a>, the server MUST advertise the <a href="#acl-resource">ACL resource</a> that is associated with a resource by responding to an HTTP request including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> (<cite><a href="#acl-link-relation" rel="rdfs:seeAlso">acl Link Relation</a></cite>) and the ACL resource as link target [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>].</p>
 
                   <p>ACL Resource Discovery is used towards determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource.</p>
 
@@ -516,7 +516,7 @@ content: "";
 
                   <p id="req-server-resource-acl-max">Servers MUST NOT directly associate more than one ACL resource to a resource.</p>
 
-                  <p id="client-link-acl">Clients can discover the ACL resource associated with a resource by making an HTTP request on the target URL, and checking the HTTP <code>Link</code> header with the <code>rel</code> parameter [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>].</p>
+                  <p id="client-link-acl">Clients can discover the ACL resource associated with a resource by making an HTTP request on the target URL, and checking the HTTP <code>Link</code> header with the <code>rel</code> parameter.</p>
 
                   <div class="note" id="acl-resource-uri-security" inlist="" rel="schema:hasPart" resource="#uri-security">
                     <h4 property="schema:name"><span>Note</span>: ACL Resource URI Security</h4>
@@ -914,12 +914,7 @@ content: "";
                     <div datatype="rdf:HTML" property="schema:description">
                       <p id="req-server-wac-allow">Servers MUST advertise client’s access privileges on a resource by including the <code>WAC-Allow</code> HTTP header (<cite><a href="#wac-allow" rel="rdfs:seeAlso">WAC-Allow</a></cite>) in the response of HTTP <code>GET</code> and <code>HEAD</code> requests.</p>
 
-                      <div class="note" id="clients-discovering-access-privileges" inlist="" rel="schema:hasPart" resource="#clients-discovering-access-privileges">
-                        <h5 property="schema:name"><span>Note</span>: Clients Discovering Access Privileges</h5>
-                        <div datatype="rdf:HTML" property="schema:description">
-                          <p>Clients can discover access privileges on a resource by making an HTTP <code>HEAD</code> or <code>GET</code> request on the target resource, and checking the <code>WAC-Allow</code> header value for access parameters listing the allowed access modes per permission group (<cite><a href="#wac-allow" rel="rdfs:seeAlso">WAC-Allow</a></cite>).</p>
-                        </div>
-                      </div>
+                      <p id="clients-discovering-access-privileges">Clients can discover access privileges on a resource by making an HTTP <code>GET</code> or <code>HEAD</code> request on the target resource, and checking the <code>WAC-Allow</code> header value for access parameters listing the allowed access modes per permission group (<cite><a href="#wac-allow" rel="rdfs:seeAlso">WAC-Allow</a></cite>).</p>
 
                       <p id="req-server-cors-aceh-wac-allow">When a server participates in the <abbr title="Cross-Origin Resource Sharing">CORS</abbr> protocol [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>], the server MUST include <code>WAC-Allow</code> in the <code>Access-Control-Expose-Headers</code> field-value in the HTTP response.</p>
                     </div>

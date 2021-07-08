@@ -694,14 +694,19 @@ content: "";
 
                   <p id="effective-acl-resource-container-hierarchy">WAC has the property of being recursive with respect to container hierarchy, meaning that a member resource inherits Authorizations from the closest container resource (heading towards the root container).</p>
 
-                  <p>To determine the <em>effective ACL resource</em> of a resource, perform the following steps. Returns <a href="https://infra.spec.whatwg.org/#strings">string</a> (the URI of an ACL Resource).</p>
+                  <dl id="req-effective-acl-resource-algorithm" rel="schema:hasPart" resource="#req-effective-acl-resource-algorithm">
+                    <dt property="schema:name">Effective ACL Resource Algorithm</dt>
+                    <dd datatye="rdf:HTML" property="schema:description">
+                      <p>To determine the <em>effective ACL resource</em> of a resource, perform the following steps. Returns <a href="https://infra.spec.whatwg.org/#strings">string</a> (the URI of an ACL Resource).</p>
 
-                  <ol id="req-effective-acl-resource-algorithm">
-                    <li>Let <var>resource</var> be the <a href="#resource">resource</a>.</li>
-                    <li>Let <var>aclResource</var> be the <a href="#acl-resource">ACL resource</a> of <var>resource</var>.</li>
-                    <li>If <var>resource</var> has an associated <var>aclResource</var> with a representation, return <var>aclResource</var>.</li>
-                    <li>Otherwise, repeat the steps using the <a href="#container-resource">container resource</a> of <var>resource</var>.</li>
-                  </ol>
+                      <ol>
+                        <li>Let <var>resource</var> be the <a href="#resource">resource</a>.</li>
+                        <li>Let <var>aclResource</var> be the <a href="#acl-resource">ACL resource</a> of <var>resource</var>.</li>
+                        <li>If <var>resource</var> has an associated <var>aclResource</var> with a representation, return <var>aclResource</var>.</li>
+                        <li>Otherwise, repeat the steps using the <a href="#container-resource">container resource</a> of <var>resource</var>.</li>
+                      </ol>
+                    </dd>
+                  </dl>
 
                   <div class="note" id="effective-acl-resource-alternatives" inlist="" rel="schema:hasPart" resource="#effective-acl-resource-alternatives">
                     <h4 property="schema:name"><span>Note</span>: Effective ACL Resource Alternatives</h4>

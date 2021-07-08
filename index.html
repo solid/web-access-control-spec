@@ -545,7 +545,7 @@ content: "";
 
                   <p id="req-server-get-acl-turtle">Servers MUST accept an HTTP <code>GET</code> and <code>HEAD</code> request targeting an ACL resource when the value of the <code>Accept</code> header requests a representation in <code>text/turtle</code> [<cite><a class="bibref" href="#bib-turtle">TURTLE</a></cite>].</p>
 
-                  <p id="req-server-acl-without-representation">Servers who want a resource to inherit Authorizations (<cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite>) from a container resource MUST NOT initialise the ACL resource that is associated with the resource with a representation.</p>
+                  <p id="req-server-acl-without-representation">Servers who want a resource to inherit Authorizations (<cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite>) from a container resource MUST NOT have a representation for the ACL resource that is associated with the resource.</p>
 
                   <p id="req-server-get-acl-without-representation">When an authorized HTTP <code>GET</code> or <code>HEAD</code> request targets an ACL resource without an existing representation, the server MUST respond with the <code>404</code> status code as per [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</p>
 

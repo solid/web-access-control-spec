@@ -503,7 +503,7 @@ content: "";
               <section id="acl-resource-discovery" inlist="" rel="schema:hasPart" resource="#acl-resource-discovery">
                 <h3 property="schema:name">ACL Resource Discovery</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p id="req-server-link-acl">When a server wants to enable applications to discover <a href="#authorization">Authorizations</a> associated with a given <a href="#resource">resource</a>, the server MUST advertise the <a href="#acl-resource">ACL resource</a> that is associated with a resource by responding to an HTTP request including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> (<cite><a href="#acl-link-relation" rel="rdfs:seeAlso">acl Link Relation</a></cite>) and the ACL resource as link target [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>].</p>
+                  <p id="server-link-acl">When a server wants to enable applications to discover <a href="#authorization">Authorizations</a> associated with a given <a href="#resource">resource</a>, the server MUST advertise the <a href="#acl-resource">ACL resource</a> that is associated with a resource by responding to an HTTP request including a <code>Link</code> header with the <code>rel</code> value of <code>acl</code> (<cite><a href="#acl-link-relation" rel="rdfs:seeAlso">acl Link Relation</a></cite>) and the ACL resource as link target [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>].</p>
 
                   <p>ACL Resource Discovery is used towards determining the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> of a resource.</p>
 
@@ -514,7 +514,7 @@ content: "";
                     </div>
                   </div>
 
-                  <p id="req-server-resource-acl-max">Servers MUST NOT directly associate more than one ACL resource to a resource.</p>
+                  <p id="server-resource-acl-max">Servers MUST NOT directly associate more than one ACL resource to a resource.</p>
 
                   <p id="client-link-acl">Clients can discover the ACL resource associated with a resource by making an HTTP request on the target URL, and checking the HTTP <code>Link</code> header with the <code>rel</code> parameter.</p>
 
@@ -532,7 +532,7 @@ content: "";
                     </div>
                   </div>
 
-                  <p id="req-client-acl-uri">Clients MUST NOT derive the URI of the ACL resource through string operations on the URI of the resource.</p>
+                  <p id="client-acl-uri">Clients MUST NOT derive the URI of the ACL resource through string operations on the URI of the resource.</p>
 
                   <p class="advisement">Source: <a href="https://github.com/solid/web-access-control-spec/issues/8" rel="cito:citesAsSourceDocument">issues/8</a>, <a href="https://github.com/solid/web-access-control-spec/issues/62" rel="cito:citesAsSourceDocument">issues/62</a>, <a href="https://github.com/solid/specification/issues/131" rel="cito:citesAsSourceDocument">issues/131</a>, <a href="https://github.com/solid/specification/issues/176" rel="cito:citesAsSourceDocument">issues/176</a></p>
                 </div>
@@ -543,15 +543,15 @@ content: "";
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>An ACL resource is an <em>RDF document</em> [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF11-CONCEPTS</a></cite>] that can hold any information, typically comprises an unordered set of <a href="#authorization">Authorizations</a>, any of which could permit an attempted access.</p>
 
-                  <p id="req-server-get-acl-turtle">Servers MUST accept an HTTP <code>GET</code> and <code>HEAD</code> request targeting an ACL resource when the value of the <code>Accept</code> header requests a representation in <code>text/turtle</code> [<cite><a class="bibref" href="#bib-turtle">TURTLE</a></cite>].</p>
+                  <p id="server-get-acl-turtle">Servers MUST accept an HTTP <code>GET</code> and <code>HEAD</code> request targeting an ACL resource when the value of the <code>Accept</code> header requests a representation in <code>text/turtle</code> [<cite><a class="bibref" href="#bib-turtle">TURTLE</a></cite>].</p>
 
-                  <p id="req-server-acl-without-representation">Servers who want a resource to inherit Authorizations (<cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite>) from a container resource MUST NOT have a representation for the ACL resource that is associated with the resource.</p>
+                  <p id="server-acl-without-representation">Servers who want a resource to inherit Authorizations (<cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite>) from a container resource MUST NOT have a representation for the ACL resource that is associated with the resource.</p>
 
-                  <p id="req-server-get-acl-without-representation">When an authorized HTTP <code>GET</code> or <code>HEAD</code> request targets an ACL resource without an existing representation, the server MUST respond with the <code>404</code> status code as per [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</p>
+                  <p id="server-get-acl-without-representation">When an authorized HTTP <code>GET</code> or <code>HEAD</code> request targets an ACL resource without an existing representation, the server MUST respond with the <code>404</code> status code as per [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</p>
 
-                  <p id="req-server-root-container-acl">The <a href="#root-container">root container</a> MUST have an ACL resource with a representation.</p>
+                  <p id="server-root-container-acl">The <a href="#root-container">root container</a> MUST have an ACL resource with a representation.</p>
 
-                  <p id="req-server-root-container-acl-authorization-control">The ACL resource of the root container MUST include an Authorization allowing the <code>acl:Control</code> access privilege (<cite><a href="#acl-mode-control" rel="rdfs:seeAlso"><code>acl:Control</code></a></cite> access mode).</p>
+                  <p id="server-root-container-acl-authorization-control">The ACL resource of the root container MUST include an Authorization allowing the <code>acl:Control</code> access privilege (<cite><a href="#acl-mode-control" rel="rdfs:seeAlso"><code>acl:Control</code></a></cite> access mode).</p>
 
                   <p class="advisement">Source: <a href="https://github.com/solid/web-access-control-spec/issues/45" rel="cito:citesAsSourceDocument">issues/45</a></p>
                 </div>
@@ -694,7 +694,7 @@ content: "";
 
                   <p id="effective-acl-resource-container-hierarchy">WAC has the property of being recursive with respect to container hierarchy, meaning that a member resource inherits Authorizations from the closest container resource (heading towards the root container).</p>
 
-                  <dl id="req-effective-acl-resource-algorithm" rel="schema:hasPart" resource="#req-effective-acl-resource-algorithm">
+                  <dl id="effective-acl-resource-algorithm" rel="schema:hasPart" resource="#req-effective-acl-resource-algorithm">
                     <dt property="schema:name">Effective ACL Resource Algorithm</dt>
                     <dd datatye="rdf:HTML" property="schema:description">
                       <p>To determine the <em>effective ACL resource</em> of a resource, perform the following steps. Returns <a href="https://infra.spec.whatwg.org/#strings">string</a> (the URI of an ACL Resource).</p>
@@ -755,13 +755,13 @@ content: "";
 
                       <p>As container resources and member resources are hierarchically organised, requests to perform operations on resources are in the context of the applicable container (<cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite>).</p>
 
-                      <p id="req-server-read-resource">When an operation requests to read a resource, the server MUST match an Authorization allowing the <code>acl:Read</code> access privilege on the resource.</p>
+                      <p id="server-read-resource">When an operation requests to read a resource, the server MUST match an Authorization allowing the <code>acl:Read</code> access privilege on the resource.</p>
 
-                      <p id="req-server-create-operation">When an operation requests to create a resource as a member of a container resource, the server MUST match an Authorization allowing the <code>acl:Append</code> or <code>acl:Write</code> access privilege on the container for new members.</p>
+                      <p id="server-create-operation">When an operation requests to create a resource as a member of a container resource, the server MUST match an Authorization allowing the <code>acl:Append</code> or <code>acl:Write</code> access privilege on the container for new members.</p>
 
-                      <p id="req-server-update-operation">When an operation requests to update a resource, the server MUST match an Authorization allowing the <code>acl:Append</code> or <code>acl:Write</code> access privilege on the resource.</p>
+                      <p id="server-update-operation">When an operation requests to update a resource, the server MUST match an Authorization allowing the <code>acl:Append</code> or <code>acl:Write</code> access privilege on the resource.</p>
 
-                      <p id="req-server-delete-operation">When an operation requests to delete a resource, the server MUST match Authorizations allowing the <code>acl:Write</code> access privilege on the resource and the containing container.</p>
+                      <p id="server-delete-operation">When an operation requests to delete a resource, the server MUST match Authorizations allowing the <code>acl:Write</code> access privilege on the resource and the containing container.</p>
 
                       <div class="note" id="container-permissions" inlist="" rel="schema:hasPart" resource="#container-permissions">
                         <h5 property="schema:name"><span>Note</span>: Container Permissions</h5>
@@ -779,7 +779,7 @@ content: "";
                         </div>
                       </div>
 
-                      <p id="req-server-control-operation">When an operation requests to read and write an ACL resource, the server MUST match an Authorization allowing the <code>acl:Control</code> access privilege on the resource.</p>
+                      <p id="server-control-operation">When an operation requests to read and write an ACL resource, the server MUST match an Authorization allowing the <code>acl:Control</code> access privilege on the resource.</p>
 
                       <div class="note" id="http-method-access-mode-mapping" inlist="" rel="schema:hasPart" resource="#http-method-access-mode-mapping">
                         <h5 property="schema:name"><span>Note</span>: HTTP Method and Access Mode Mapping</h5>
@@ -809,7 +809,7 @@ content: "";
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>User agents include the HTTP <code>Origin</code> header field to isolate different origins and permit controlled communication between origins. The <code>Origin</code> header warns the server that a possibly untrusted Web application is being used.</p>
 
-                      <p id="req-server-origin-authorization">When an HTTP request includes the <code>Origin</code> header, the requested operation is granted on the target resource when there is a match for:</p>
+                      <p id="server-origin-authorization">When an HTTP request includes the <code>Origin</code> header, the requested operation is granted on the target resource when there is a match for:</p>
 
                       <ul>
                         <li>an Authorization allowing access to the requesting agent (<code>acl:agent</code>, <code>acl:agentGroup</code>, <code>acl:agentClass</code>);</li>
@@ -817,7 +817,7 @@ content: "";
                         <li>the required access mode is allowed for the requesting agent and the origin.</li>
                       </ul>
 
-                      <p id="req-server-cors-acao-acah">When a server participates in the <abbr title="Cross-Origin Resource Sharing">CORS</abbr> protocol [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>] and authorization is granted to an HTTP request including the <code>Origin</code> header, the server MUST include the HTTP <code>Access-Control-Allow-Origin</code> and <code>Access-Control-Allow-Headers</code> headers in the response of the HTTP request.</p>
+                      <p id="server-cors-acao-acah">When a server participates in the <abbr title="Cross-Origin Resource Sharing">CORS</abbr> protocol [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>] and authorization is granted to an HTTP request including the <code>Origin</code> header, the server MUST include the HTTP <code>Access-Control-Allow-Origin</code> and <code>Access-Control-Allow-Headers</code> headers in the response of the HTTP request.</p>
 
                       <div class="note" id="access-subject-origin-rejection-reason" inlist="" rel="schema:hasPart" resource="#access-subject-origin-rejection-reason">
                         <h5 property="schema:name"><span>Note</span>: Access Subject and Origin Rejection Reason</h5>
@@ -917,11 +917,11 @@ content: "";
                   <section id="access-privileges" inlist="" rel="schema:hasPart" resource="#access-privileges">
                     <h4 property="schema:name">Access Privileges</h4>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p id="req-server-wac-allow">Servers MUST advertise client’s access privileges on a resource by including the <code>WAC-Allow</code> HTTP header (<cite><a href="#wac-allow" rel="rdfs:seeAlso">WAC-Allow</a></cite>) in the response of HTTP <code>GET</code> and <code>HEAD</code> requests.</p>
+                      <p id="server-wac-allow">Servers MUST advertise client’s access privileges on a resource by including the <code>WAC-Allow</code> HTTP header (<cite><a href="#wac-allow" rel="rdfs:seeAlso">WAC-Allow</a></cite>) in the response of HTTP <code>GET</code> and <code>HEAD</code> requests.</p>
 
                       <p id="clients-discovering-access-privileges">Clients can discover access privileges on a resource by making an HTTP <code>GET</code> or <code>HEAD</code> request on the target resource, and checking the <code>WAC-Allow</code> header value for access parameters listing the allowed access modes per permission group (<cite><a href="#wac-allow" rel="rdfs:seeAlso">WAC-Allow</a></cite>).</p>
 
-                      <p id="req-server-cors-aceh-wac-allow">When a server participates in the <abbr title="Cross-Origin Resource Sharing">CORS</abbr> protocol [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>], the server MUST include <code>WAC-Allow</code> in the <code>Access-Control-Expose-Headers</code> field-value in the HTTP response.</p>
+                      <p id="server-cors-aceh-wac-allow">When a server participates in the <abbr title="Cross-Origin Resource Sharing">CORS</abbr> protocol [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>], the server MUST include <code>WAC-Allow</code> in the <code>Access-Control-Expose-Headers</code> field-value in the HTTP response.</p>
                     </div>
                   </section>
                 </div>
@@ -1012,7 +1012,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
               <section id="access-mode-extensions" inlist="" rel="schema:hasPart" resource="#access-mode-extensions">
                 <h3 property="schema:name">Access Mode Extensions</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p id="req-extension-acl-mode">An extension to access modes is any mode that is defined in the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a></cite>, i.e., as a subclass of <code>acl:Access</code>, but not described in this specification (<cite><a href="#access-modes" rel="rdfs:seeAlso">Access Modes</a></cite>). Consumers of Authorizations that encounter unrecognised access modes MUST NOT stop processing or signal an error and MUST continue processing the access modes as if those properties were not present.</p>
+                  <p id="extension-acl-mode">An extension to access modes is any mode that is defined in the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a></cite>, i.e., as a subclass of <code>acl:Access</code>, but not described in this specification (<cite><a href="#access-modes" rel="rdfs:seeAlso">Access Modes</a></cite>). Consumers of Authorizations that encounter unrecognised access modes MUST NOT stop processing or signal an error and MUST continue processing the access modes as if those properties were not present.</p>
 
                   <p>Foreign-namespaced access modes are allowed in ACL resources, but they MUST NOT cause increased access.</p>
                 </div>

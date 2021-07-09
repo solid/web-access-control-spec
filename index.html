@@ -138,7 +138,7 @@ content: "";
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Web Access Control</h1>
-        <h2>Editor’s Draft, 2021-07-08</h2>
+        <h2>Editor’s Draft, 2021-07-09</h2>
 
         <dl id="document-identifier">
           <dt>This version</dt>
@@ -164,7 +164,7 @@ content: "";
 
         <dl id="document-modified">
           <dt>Modified</dt>
-          <dd><time content="2021-07-08T00:00:00Z" datatype="xsd:dateTime" datetime="2021-07-08T00:00:00Z" property="schema:dateModified">2021-07-08</time></dd>
+          <dd><time content="2021-07-09T00:00:00Z" datatype="xsd:dateTime" datetime="2021-07-09T00:00:00Z" property="schema:dateModified">2021-07-09</time></dd>
         </dl>
 
         <dl id="document-repository">
@@ -371,7 +371,7 @@ content: "";
 
               <p><dfn id="wac">Web Access Control</dfn> (<abbr title="Web Access Control">WAC</abbr>) is a decentralized cross-domain access control system providing a way for Linked Data systems to set authorization conditions on HTTP resources using the <dfn id="acl">Access Control List</dfn> (<abbr title="Access Control List">ACL</abbr>) model.</p>
 
-              <p id="wac-overview" rel="schema:hasPart" resource="#wac-overview"><span datatype="rdf:HTML" property="schema:description">The WAC specification describes how to enable applications to discover <a href="#authorization">Authorizations</a> associated with a given <a href="#resource">resource</a>, and to control such rules, as directed by an agent. Server manages the association between a resource and an <a href="#acl-resource">ACL resource</a>, and applies the authorization conditions on requested operations. Authorizations are described using the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a></cite> to express and determine access privileges of a requested resource. Any kind of access can be given to a resource as per the ACL ontology. This specification uses the <a href="#access-mode">access modes</a> currently defined by the ACL ontology, such as the class of operations to read, write, append and control resources. An Authorization may allow public access to resources or place the requirement for authenticated <a href="#agent">agents</a>. Resources and agents can be on different origins.</span></p>
+              <p id="wac-overview" rel="schema:hasPart" resource="#wac-overview"><span datatype="rdf:HTML" property="schema:description">The WAC specification describes how to enable applications to discover <a href="#authorization">Authorizations</a> associated with a given <a href="#resource">resource</a>, and to control such rules, as directed by an agent. Server manages the association between a resource and an <a href="#acl-resource">ACL resource</a>, and applies the authorization conditions on requested operations. Authorizations are described using the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a></cite> to express and determine access privileges of a requested resource. Any kind of access can be given to a resource as per the ACL ontology. This specification uses the <a href="#access-mode">access modes</a> currently defined by the ACL ontology, such as the class of operations to read, write, append and control resources. An Authorization can allow public access to resources or place the requirement for authenticated <a href="#agent">agents</a>. Resources and agents can be on different origins.</span></p>
 
               <div class="note" id="specification-orthogonality" inlist="" rel="schema:hasPart" resource="#specification-orthogonality">
                 <h4 property="schema:name"><span>Note</span>: Specification Orthogonality</h4>
@@ -562,7 +562,7 @@ content: "";
           <section id="authorization-rule" inlist="" rel="schema:hasPart" resource="#authorization-rule">
             <h2 property="schema:name">Authorization Rule</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p><a href="#authorization">Authorization</a> (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access permissions granting to agents the ability to perform operations on resources. Authorizations are described with RDF statements and may express any information. This section describes the following characteristics of an Authorization: <a href="#access-objects" rel="cito:discusses">access objects</a> to specify what can be accessed, <a href="#access-modes" rel="cito:discusses">access modes</a> to specify permissions, and <a href="#access-subjects" rel="cito:discusses">access subjects</a> to specify who can access the objects. See the <cite><a href="#authorization-conformance" rel="rdfs:seeAlso">Authorization Conformance</a></cite> section for applicable Authorizations towards <cite><a href="#authorization-evaluation" rel="rdfs:seeAlso">Authorization Evaluation</a></cite>.</p>
+              <p><a href="#authorization">Authorization</a> (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access permissions granting to agents the ability to perform operations on resources. Authorizations are described with RDF statements and can express any information. This section describes the following characteristics of an Authorization: <a href="#access-objects" rel="cito:discusses">access objects</a> to specify what can be accessed, <a href="#access-modes" rel="cito:discusses">access modes</a> to specify permissions, and <a href="#access-subjects" rel="cito:discusses">access subjects</a> to specify who can access the objects. See the <cite><a href="#authorization-conformance" rel="rdfs:seeAlso">Authorization Conformance</a></cite> section for applicable Authorizations towards <cite><a href="#authorization-evaluation" rel="rdfs:seeAlso">Authorization Evaluation</a></cite>.</p>
 
               <section id="access-objects" inlist="" rel="schema:hasPart" resource="#access-objects">
                 <h3 property="schema:name">Access Objects</h3>
@@ -652,7 +652,7 @@ content: "";
                   <div class="note" id="subject-verification" inlist="" rel="schema:hasPart" resource="#subject-verification">
                     <h3 property="schema:name"><span>Note</span>: Subject Verification</h3>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p>Servers may accept different authentication protocols as well as credential verification methods.</p>
+                      <p>Servers might accept different authentication protocols as well as credential verification methods.</p>
                     </div>
                   </div>
 
@@ -690,7 +690,7 @@ content: "";
 
                   <p id="effective-acl-resource-with-representation">When an ACL resource associated with a resource has a representation (<cite><a href="#acl-resource-representation" rel="rdfs:seeAlso">ACL Resource Representation</a></cite>), it is the <em>effective ACL resource</em> of the requested resource.</p>
 
-                  <p id="effective-acl-resource-without-representation">When an ACL resource associated with a resource does not have a representation (<cite><a href="#acl-resource-representation" rel="rdfs:seeAlso">ACL Resource Representation</a></cite>), no Authorizations can be immediately checked against the requested resource. In this case, a container resource’s ACL resource may apply on every access to a member resource, in specifying Authorizations for the requested resource.</p>
+                  <p id="effective-acl-resource-without-representation">When an ACL resource associated with a resource does not have a representation (<cite><a href="#acl-resource-representation" rel="rdfs:seeAlso">ACL Resource Representation</a></cite>), no Authorizations can be immediately checked against the requested resource. In this case, a container resource’s ACL resource might apply on every access to a member resource, in specifying Authorizations for the requested resource.</p>
 
                   <p id="effective-acl-resource-container-hierarchy">WAC has the property of being recursive with respect to container hierarchy, meaning that a member resource inherits Authorizations from the closest container resource (heading towards the root container).</p>
 
@@ -766,16 +766,16 @@ content: "";
                       <div class="note" id="container-permissions" inlist="" rel="schema:hasPart" resource="#container-permissions">
                         <h5 property="schema:name"><span>Note</span>: Container Permissions</h5>
                         <div datatype="rdf:HTML" property="schema:description">
-                          <p>When a server supports the creation of intermediate containers in the process of creating a resource, the server must match Authorization rules allowing <code>acl:Write</code> on each container.</p>
+                          <p>When a server supports the creation of intermediate containers in the process of creating a resource, the server applies the same requirements for the create operation for each container.</p>
 
-                          <p>When a server supports the recursive deletion of a container, the server must match Authorization rules allowing <code>acl:Write</code> on each member resource.</p>
+                          <p>When a server supports the recursive deletion of a container, the server applies the same requirements for the delete operation for each member resource.</p>
                         </div>
                       </div>
 
                       <div class="note" id="reinstated-resource-permissions" inlist="" rel="schema:hasPart" resource="#reinstated-resource-permissions">
                         <h5 property="schema:name"><span>Note</span>: Reinstated Resource Permissions</h5>
                         <div datatype="rdf:HTML" property="schema:description">
-                          <p>Implementations may perform cleanup tasks such as deleting the ACL resource that is associated with a resource when the resource is deleted. As deleted resources may be replaced by new resources with the same URI, access permissions on the new resource may differ when the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> is determined.</p>
+                          <p>Implementations might perform cleanup tasks such as deleting the ACL resource that is associated with a resource when the resource is deleted. As deleted resources can be replaced by new resources with the same URI, access permissions on the new resource can differ when the <cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite> is determined.</p>
                         </div>
                       </div>
 
@@ -786,7 +786,7 @@ content: "";
                         <div datatype="rdf:HTML" property="schema:description">
                           <p>When the target of the HTTP request is the ACL resource, the operation can only be allowed with the <code>acl:Control</code> access mode.</p>
 
-                          <p>Having <code>acl:Control</code> does not imply that the agent has <code>acl:Read</code> or <code>acl:Write</code> access to the resource itself, just to its corresponding ACL resource. For example, an agent with control access may disable their own write access (to prevent accidental over-writing of a resource by an application), but be able to change their access levels at a later point (since they retain <code>acl:Control</code> access).</p>
+                          <p>Having <code>acl:Control</code> does not imply that the agent has <code>acl:Read</code> or <code>acl:Write</code> access to the resource itself, just to its corresponding ACL resource. For example, an agent with control access can disable their own write access (to prevent accidental over-writing of a resource by an application), but be able to change their access levels at a later point (since they retain <code>acl:Control</code> access).</p>
 
                           <p>The HTTP <code>GET</code> method request targeting a resource can only be allowed with the <code>acl:Read</code> access mode.</p>
 
@@ -890,7 +890,7 @@ content: "";
 <code>    }</code>
 <code>  }</code>
 <code>}</code></pre>
-                        <figcaption property="schema:name"><code>ASK</code> query matching an Authorization given inputs <var>containerResource</var>, <var>agentClass</var> and <var>requiredMode</var> (which may be a subclass of another access mode).</figcaption>
+                        <figcaption property="schema:name"><code>ASK</code> query matching an Authorization given inputs <var>containerResource</var>, <var>agentClass</var> and <var>requiredMode</var> (which could be a subclass of another access mode).</figcaption>
                       </figure>
 
                       <p>The following query can be used to check if an agent is a member of any group that can access a resource:</p>
@@ -909,7 +909,7 @@ content: "";
 <code>    ?agentGroup vcard:hasMember $agent .</code>
 <code>  }</code>
 <code>}</code></pre>
-                        <figcaption property="schema:name"><code>ASK</code> query matching an Authorization given inputs <var>resource</var>, <var>agent</var> and <var>mode</var> (which may be a subclass of another access mode).</figcaption>
+                        <figcaption property="schema:name"><code>ASK</code> query matching an Authorization given inputs <var>resource</var>, <var>agent</var> and <var>mode</var>.</figcaption>
                       </figure>
                     </div>
                   </section>
@@ -963,7 +963,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p><code>access-mode</code> corresponds to the <cite><a href="#access-modes" rel="rdfs:seeAlso">Access Modes</a></cite> as defined in the ACL ontology (<code>acl:Read</code>, <code>acl:Write</code>, <code>acl:Append</code>, <code>acl:Control</code>).</p>
 
-                  <p>Client parsing algorithms for <code>WAC-Allow</code> header field-values should incorporate error handling. When the received message fails to match an allowed pattern, clients MUST ignore the received <code>WAC-Allow</code> header-field. When unrecognised access parameters (such as permission groups or access modes) are found, clients MUST continue processing the access parameters as if those properties were not present.</p>
+                  <p>Client parsing algorithms for <code>WAC-Allow</code> header field-values MUST incorporate error handling. When the received message fails to match an allowed pattern, clients MUST ignore the received <code>WAC-Allow</code> header-field. When unrecognised access parameters (such as permission groups or access modes) are found, clients MUST continue processing the access parameters as if those properties were not present.</p>
 
                   <p class="advisement">Source: <a href="https://github.com/solid/specification/issues/171" rel="cito:citesAsSourceDocument">issues/171</a>, <a href="https://github.com/solid/specification/issues/170" rel="cito:citesAsSourceDocument">issues/170</a>, <a href="https://github.com/solid/specification/issues/181" rel="cito:citesAsSourceDocument">issues/181</a>, <a href="https://gitter.im/solid/specification?at=60101295d8bdab47395e6775" rel="cito:citesAsSourceDocument">60101295d8bdab47395e6775</a>, <a href="https://github.com/solid/specification/pull/210">pull/210</a></p>
                 </div>
@@ -982,7 +982,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dt>Reference</dt>
                     <dd>This specification.</dd>
                     <dt>Notes</dt>
-                    <dd>Consumers of ACL resources should be aware of the source and chain of custody of the data.</dd>
+                    <dd>Consumers of ACL resources are encouraged to be aware of the source and chain of custody of the data.</dd>
                   </dl>
 
                   <p class="advisement">Source: <a href="https://github.com/solid/specification/issues/54" rel="cito:citesAsSourceDocument">issues/54</a>, <a href="https://github.com/solid/web-access-control-spec/issues/21" rel="cito:citesAsSourceDocument">issues/21</a></p>
@@ -994,16 +994,16 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
           <section id="extensions" inlist="" rel="schema:hasPart" resource="#extensions">
             <h2 property="schema:name">Extensions</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>Extensions incorporate additional features beyond what is defined in this specification. The use of extensions must not contradict nor cause the non-conformance of functionality defined in the WAC specification.</p>
+              <p>Extensions incorporate additional features beyond what is defined in this specification. Extensions MUST NOT contradict nor cause the non-conformance of functionality defined in the WAC specification.</p>
 
               <section id="authorization-extensions" inlist="" rel="schema:hasPart" resource="#authorization-extensions">
                 <h3 property="schema:name">Authorization Extensions</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
 
-                  <p id="extension-acl-authorization">As ACL resources are RDF sources; <a href="#authorization">Authorization</a> descriptions may be extended or limited by constraints, e.g., temporal or spatial constraints; and duties, e.g., payments, may be imposed on permissions; but no behaviour is defined by this specification. For example, the <cite><a href="https://www.w3.org/TR/odrl-model/" rel="cito:citesAsPotentialSolution">ODRL Information Model</a></cite> can be used to set obligations required to be met by agents prior to accessing a resource.</p>
+                  <p id="extension-acl-authorization">As ACL resources are RDF sources; <a href="#authorization">Authorization</a> descriptions can be extended or limited by constraints, e.g., temporal or spatial constraints; and duties, e.g., payments, can be imposed on permissions; but no behaviour is defined by this specification. For example, the <cite><a href="https://www.w3.org/TR/odrl-model/" rel="cito:citesAsPotentialSolution">ODRL Information Model</a></cite> can be used to set obligations required to be met by agents prior to accessing a resource.</p>
 
-                  <p id="extension-acl-accesstoclass">To allow access to a class of resources, implementations may want to use the <code>acl:accessToClass</code> predicate as defined in the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a></cite>.</p>
+                  <p id="extension-acl-accesstoclass">To allow access to a class of resources, implementations can use the <code>acl:accessToClass</code> predicate as defined in the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a></cite>.</p>
 
                   <p class="advisement">Source: <a href="https://github.com/solid/web-access-control-spec/issues/10" rel="cito:citesAsSourceDocument">issues/10</a>, <a href="https://github.com/solid/web-access-control-spec/issues/22" rel="cito:citesAsSourceDocument">issues/22</a>, <a href="https://github.com/solid/web-access-control-spec/pull/37" rel="cito:citesAsSourceDocument">pull/37</a>, <a href="https://github.com/solid/specification/issues/20" rel="cito:citesAsSourceDocument">issues/20</a></p>
                 </div>
@@ -1056,7 +1056,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p id="consider-additional-information-lookups">Servers are strongly discouraged from trusting the information returned by looking up an agent’s WebID for access control purposes. The server operator can also provide the server with other trusted information to include in the search for a reason to give the requester the access.</p>
 
-                  <p id="consider-authorization-integrity-authenticity">Transfer of <a href="#authorization">Authorizations</a> between a client and server over an open network creates the potential for those rules to be modified or disclosed without proper authorization. The requirements for the WAC protocol discussed in this specification do not include cryptographic protection of Authorization information, because it is assumed that this protection can be provided through HTTP over TLS. The path between client and application may be composed of multiple independent TLS connections, thus for end-to-end integrity and authenticity of content within an HTTP message, implementers can use mechanisms such as <cite><a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-message-signatures.html" rel="cito:citesAsPotentialSolution">Signing HTTP Messages</a></cite>. For cryptographic proof of Authorizations asserted by agents and protection from undetected modifications, implementers can use mechanisms such as <cite><a href="https://w3c-ccg.github.io/ld-proofs/" rel="cito:citesAsPotentialSolution">Linked Data Security</a></cite>.</p>
+                  <p id="consider-authorization-integrity-authenticity">Transfer of <a href="#authorization">Authorizations</a> between a client and server over an open network creates the potential for those rules to be modified or disclosed without proper authorization. The requirements for the WAC protocol discussed in this specification do not include cryptographic protection of Authorization information, because it is assumed that this protection can be provided through HTTP over TLS. The path between client and application might be composed of multiple independent TLS connections, thus for end-to-end integrity and authenticity of content within an HTTP message, implementers can use mechanisms such as <cite><a href="https://httpwg.org/http-extensions/draft-ietf-httpbis-message-signatures.html" rel="cito:citesAsPotentialSolution">Signing HTTP Messages</a></cite>. For cryptographic proof of Authorizations asserted by agents and protection from undetected modifications, implementers can use mechanisms such as <cite><a href="https://w3c-ccg.github.io/ld-proofs/" rel="cito:citesAsPotentialSolution">Linked Data Security</a></cite>.</p>
 
                   <p id="consider-acl-resource-activities">Implementations are encouraged to use mechanisms to record activities about ACL resources for the purpose of accountability and integrity, e.g., by having audit trails, notification of changes, reasons for change, preserving provenance information.</p>
 
@@ -1071,9 +1071,9 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>The class of read and write operations require discrete access permissions:</p>
 
-                  <p id="consider-append-read-diff">Access permission to append a new resource to a container resource is independent of access permission to read a container resource. Thus, servers are encouraged to prevent information leakage when a successful HTTP request appends a new resource to a container resource. For instance, while the knowledge of the URI-Reference in <code>Location</code> and <code>Content-Location</code> HTTP headers in the response of a <code>POST</code> does not in itself pose a security threat ([<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>]), servers should consider the risks when read access to the container is not granted to agents.</p>
+                  <p id="consider-append-read-diff">Access permission to append a new resource to a container resource is independent of access permission to read a container resource. Thus, servers are encouraged to prevent information leakage when a successful HTTP request appends a new resource to a container resource. For instance, while the knowledge of the URI-Reference in <code>Location</code> and <code>Content-Location</code> HTTP headers in the response of a <code>POST</code> does not in itself pose a security threat ([<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>]), servers can consider the risks when read access to the container is not granted to agents.</p>
 
-                  <p id="consider-delete-read-diff">Access permission to update a resource is independent of access permission to read a resource. Thus, servers are encouraged to prevent information leakage when an attempt to delete information in a resource may reveal the existence of the information. For instance, when an HTTP <code>PATCH</code> request uses SPARQL Update’s <code>DELETE DATA</code> operation, servers should consider the risks of disclosing information by the chosen status code when read access to the resource is not granted to agents.</p>
+                  <p id="consider-delete-read-diff">Access permission to update a resource is independent of access permission to read a resource. Thus, servers are encouraged to prevent information leakage when an attempt to delete information in a resource might reveal the existence of the information. For instance, when an HTTP <code>PATCH</code> request uses SPARQL Update’s <code>DELETE DATA</code> operation, servers can consider the risks of disclosing information by the chosen status code when read access to the resource is not granted to agents.</p>
                 </div>
               </section>
 
@@ -1106,10 +1106,10 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dd about="#security-privacy-review-minimum-data"><span datatype="rdf:HTML" property="schema:description">Yes.</span></dd>
 
                     <dt about="#security-privacy-review-personal-data" id="security-privacy-review-personal-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#personal-data">How do the features in your specification deal with personal information, personally-identifiable information (PII), or information derived from them?</a></dt>
-                    <dd about="#security-privacy-review-personal-data"><span datatype="rdf:HTML" property="schema:description">ACL resources may contain any data including that which identifies or refers to <cite><a href="#agent">agents</a></cite> and <cite><a href="#agent-group">agent groups</a></cite>. Access to ACL resources is only granted to <cite><a href="#access-subjects">Access Subjects</a></cite> with the <cite><a href="#acl-mode-control" rel="rdfs:seeAlso"><code>acl:Control</code></a></cite> access mode, and thus by definition, <a href="https://w3ctag.github.io/design-principles/#consent">meaningful consent</a> to any personal data that agents include about themselves is extended to other agents with control access on the ACL resource. Group resources are subject to the same Authorization conditions as any resource (that is not an ACL resource), and thus information may be exposed.</span></dd>
+                    <dd about="#security-privacy-review-personal-data"><span datatype="rdf:HTML" property="schema:description">ACL resources can contain any data including that which identifies or refers to <cite><a href="#agent">agents</a></cite> and <cite><a href="#agent-group">agent groups</a></cite>. Access to ACL resources is only granted to <cite><a href="#access-subjects">Access Subjects</a></cite> with the <cite><a href="#acl-mode-control" rel="rdfs:seeAlso"><code>acl:Control</code></a></cite> access mode, and thus by definition, <a href="https://w3ctag.github.io/design-principles/#consent">meaningful consent</a> to any personal data that agents include about themselves is extended to other agents with control access on the ACL resource. Group resources are subject to the same Authorization conditions as any resource (that is not an ACL resource), and thus information could be exposed.</span></dd>
 
                     <dt about="#security-privacy-review-sensitive-data" id="security-privacy-review-sensitive-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#sensitive-data">How do the features in your specification deal with sensitive information?</a></dt>
-                    <dd about="#security-privacy-review-sensitive-data"><span datatype="rdf:HTML" property="schema:description">Same implications as <cite><a href="#security-privacy-review-personal-data" rel="rdfs:seeAlso">personal information and personally-identifiable information</a></cite> in ACL resources and group resources. When including sensitive information, the sender should be aware that changes to a group resource’s ACL resource may allow non-members or new members to view membership details.</span></dd>
+                    <dd about="#security-privacy-review-sensitive-data"><span datatype="rdf:HTML" property="schema:description">Same implications as <cite><a href="#security-privacy-review-personal-data" rel="rdfs:seeAlso">personal information and personally-identifiable information</a></cite> in ACL resources and group resources. When including sensitive information, the sender can be aware that changes to a group resource’s Authorization can allow non-members or new members to view membership details.</span></dd>
 
                     <dt about="#security-privacy-review-persistent-origin-specific-state" id="security-privacy-review-persistent-origin-specific-state"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#persistent-origin-specific-state">Do the features in your specification introduce new state for an origin that persists across browsing sessions?</a></dt>
                     <dd about="#security-privacy-review-persistent-origin-specific-state"><span datatype="rdf:HTML" property="schema:description">No.</span></dd>
@@ -1118,7 +1118,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dd about="#security-privacy-review-underlying-platform-data"><span datatype="rdf:HTML" property="schema:description">No.</span></dd>
 
                     <dt about="#security-privacy-review-send-to-platform" id="security-privacy-review-send-to-platform"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#send-to-platform">Does this specification allow an origin to send data to the underlying platform?</a></dt>
-                    <dd about="#security-privacy-review-send-to-platform"><span datatype="rdf:HTML" property="schema:description">No. <cite><a href="#acl-resource" rel="cito:discusses">ACL resources</a></cite> are described within the framework of HTTP as RDF documents <cite><a href="#acl-resource-representation" rel="cito:discusses">represented with the Turtle syntax</a></cite>. Servers may be able to redirect ACL resources, (e.g., the <code>https:</code> URLs to <code>file:</code>, <code>data:</code>, or <code>blob:</code> URLs), but no behaviour is defined by this specification.</span></dd>
+                    <dd about="#security-privacy-review-send-to-platform"><span datatype="rdf:HTML" property="schema:description">No. <cite><a href="#acl-resource" rel="cito:discusses">ACL resources</a></cite> are described within the framework of HTTP as RDF documents <cite><a href="#acl-resource-representation" rel="cito:discusses">represented with the Turtle syntax</a></cite>. Servers might be able to redirect ACL resources, (e.g., the <code>https:</code> URLs to <code>file:</code>, <code>data:</code>, or <code>blob:</code> URLs), but no behaviour is defined by this specification.</span></dd>
 
                     <dt about="#security-privacy-review-sensor-data" id="security-privacy-review-sensor-data"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#sensor-data">Do features in this specification allow an origin access to sensors on a user’s device</a></dt>
                     <dd about="#security-privacy-review-sensor-data"><span datatype="rdf:HTML" property="schema:description">No.</span></dd>

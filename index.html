@@ -765,13 +765,13 @@ content: "";
 
                       <p>As container resources and member resources are hierarchically organised, requests to perform operations on resources are in the context of the applicable container (<cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite>).</p>
 
-                      <p id="server-read-resource">When an operation requests to read a resource, the server MUST match an Authorization allowing the <code>acl:Read</code> access privilege on the resource.</p>
+                      <p id="server-read-resource">A request for an operation to read a resource MUST be denied if the server cannot match an Authorization allowing the <code>acl:Read</code> access privilege on that resource.</p>
 
-                      <p id="server-create-operation">When an operation requests to create a resource as a member of a container resource, the server MUST match an Authorization allowing the <code>acl:Append</code> or <code>acl:Write</code> access privilege (as needed by the operation) on the resource to be created.</p>
+                      <p id="server-create-operation">A request for an operation to create a resource as a member of a container resource MUST be denied if the server cannot match an Authorization allowing the <code>acl:Append</code> or <code>acl:Write</code> access privilege on that resource.</p>
 
-                      <p id="server-update-operation">When an operation requests to update a resource, the server MUST match an Authorization allowing the <code>acl:Append</code> or <code>acl:Write</code> access privilege on the resource.</p>
+                      <p id="server-update-operation">A request for an operation to update a resource MUST be denied if the server cannot match an Authorization allowing the <code>acl:Append</code> or <code>acl:Write</code> access privilege on that resource.</p>
 
-                      <p id="server-delete-operation">When an operation requests to delete a resource, the server MUST match Authorizations allowing the <code>acl:Write</code> access privilege on the resource and the containing container.</p>
+                      <p id="server-delete-operation">A request for an operation to delete a resource MUST be denied if the server cannot match Authorizations allowing the <code>acl:Write</code> access privilege on that resource and its containing container.</p>
 
                       <div class="note" id="container-permissions" inlist="" rel="schema:hasPart" resource="#container-permissions">
                         <h5 property="schema:name"><span>Note</span>: Container Permissions</h5>

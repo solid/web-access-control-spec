@@ -9,7 +9,7 @@ The current WAC spec defines two agent classes:
 * `acl:AuthenticatedAgent` (allows access to any authenticated agent)
 
 This proposal adds a third one:
-* `acl:AuthenticatedAgent` (allows access to any paying agent)
+* `acl:PayingAgent` (allows access to any paying agent)
 
 For more information about how to use this agent class in combination with
 the `402 Payment Required` http response code and the `Pay` http response header,

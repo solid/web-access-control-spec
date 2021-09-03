@@ -14,4 +14,5 @@ This proposal adds a third one:
 For more information about how to use this agent class in combination with
 the `402 Payment Required` http response code and the `Pay` http response header,
 and about how to determine whether a given WebID
-is a paying agent for a given resource, see [Solid Webmonetization](https://github.com/solid/webmonetization/blob/main/README.md#requiring-payment-for-resources).
+is a paying agent for a given resource, see
+[Solid Webmonetization](https://github.com/solid/webmonetization/blob/main/README.md#requiring-payment-for-resources).

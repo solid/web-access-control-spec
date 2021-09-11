@@ -765,7 +765,7 @@ content: "";
 
                       <p>As container resources and member resources are hierarchically organised, requests to perform operations on resources are in the context of the applicable container (<cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite>).</p>
 
-                      <p about="" id="server-read-resource" rel="spec:requirement" resource="#server-read-resource">When an operation requests to read a resource, the server MUST match an Authorization allowing the <code>acl:Read</code> access privilege on the resource.</p>
+                      <p about="" id="server-read-operation" rel="spec:requirement" resource="#server-read-operation">When an operation requests to read a resource, the server MUST match an Authorization allowing the <code>acl:Read</code> access privilege on the resource.</p>
 
                       <p about="" id="server-create-operation" rel="spec:requirement" resource="#server-create-operation">When an operation requests to create a resource as a member of a container resource, the server MUST match an Authorization allowing the <code>acl:Append</code> or <code>acl:Write</code> access privilege (as needed by the operation) on the resource to be created.</p>
 

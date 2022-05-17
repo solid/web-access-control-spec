@@ -17,8 +17,11 @@ provide an extension of the rules of Linked Data, eg.
 [Solid Protocol](https://solidproject.org/TR/protocol),
 [LDP](https://www.w3.org/TR/ldp/).
 
-## Current version
-[Editor’s Draft](https://solid.github.io/web-access-control-spec/)
+## Work Items
+
+* Latest published version: https://solidproject.org/TR/wac
+* Editor’s Draft: https://solid.github.io/web-access-control-spec/
+
 
 ## Participation
 

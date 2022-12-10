@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
     <title>Web Access Control</title>
@@ -131,7 +131,7 @@ content: "";
   <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# mem: http://mementoweb.org/ns# qb: http://purl.org/linked-data/cube# schema: http://schema.org/ doap: http://usefulinc.com/ns/doap# deo: http://purl.org/spar/deo/ fabio: http://purl.org/spar/fabio/ cito: http://purl.org/spar/cito/ as: https://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# earl: http://www.w3.org/ns/earl# spec: http://www.w3.org/ns/spec# rel: https://www.w3.org/ns/iana/link-relations/relation# odrl: http://www.w3.org/ns/odrl/2/" typeof="schema:CreativeWork prov:Entity as:Article">
     <header>
       <address>
-        <a class="logo" href="https://solidproject.org/"><img height="66" width="72" alt="Solid Project" src="https://solidproject.org/TR/solid.svg"/></a>
+        <a class="logo" href="https://solidproject.org/"><img alt="Solid Project" height="66" src="https://solidproject.org/TR/solid.svg" width="72" /></a>
       </address>
     </header>
 
@@ -161,12 +161,12 @@ content: "";
           <div id="authors">
             <dl id="author-name">
               <dt>Editors</dt>
-              <dd id="Sarven-Capadisli"><span about="" rel="schema:creator schema:editor schema:author"><span about="https://csarven.ca/#i" typeof="schema:Person"><a rel="schema:url" href="https://csarven.ca/"><span about="https://csarven.ca/#i" property="schema:name"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></span></a></span></span></dd>
+              <dd id="Sarven-Capadisli"><span about="" rel="schema:creator schema:editor schema:author"><span about="https://csarven.ca/#i" typeof="schema:Person"><a href="https://csarven.ca/" rel="schema:url"><span about="https://csarven.ca/#i" property="schema:name"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></span></a></span></span></dd>
             </dl>
 
             <dl id="document-contributors">
               <dt>Contributors</dt>
-              <dd id="Tim-Berners-Lee"><span about="" rel="schema:editor schema:author"><span about="https://www.w3.org/People/Berners-Lee/card#i" typeof="schema:Person"><a rel="schema:url" href="https://www.w3.org/People/Berners-Lee/"><span about="https://www.w3.org/People/Berners-Lee/card#i" property="schema:name"><span property="schema:givenName">Tim</span> <span property="schema:familyName">Berners-Lee</span></span></a></span></span></dd>
+              <dd id="Tim-Berners-Lee"><span about="" rel="schema:editor schema:author"><span about="https://www.w3.org/People/Berners-Lee/card#i" typeof="schema:Person"><a href="https://www.w3.org/People/Berners-Lee/" rel="schema:url"><span about="https://www.w3.org/People/Berners-Lee/card#i" property="schema:name"><span property="schema:givenName">Tim</span> <span property="schema:familyName">Berners-Lee</span></span></a></span></span></dd>
             </dl>
           </div>
 
@@ -241,7 +241,7 @@ content: "";
                 <dd>
                   <dl id="document-permission" rel="odrl:permission" resource="#document-permission" typeof="odrl:Permission">
                     <dt>Assigner</dt>
-                    <dd><a rel="odrl:assigner" href="https://www.w3.org/community/solid/">W3C Solid Community Group</a></dd>
+                    <dd><a href="https://www.w3.org/community/solid/" rel="odrl:assigner">W3C Solid Community Group</a></dd>
                     <dt>Action</dt>
                     <dd>
                       <ul rel="odrl:action">
@@ -288,7 +288,7 @@ content: "";
 
           <section id="sotd" inlist="" rel="schema:hasPart" resource="#sotd">
             <h2 property="schema:name">Status of This Document</h2>
-            <div property="schema:description" datatype="rdf:HTML">
+            <div datatype="rdf:HTML" property="schema:description">
               <p>This section describes the status of this document at the time of its publication.</p>
 
               <p>This document was published by the <a href="https://www.w3.org/community/solid/">Solid Community Group</a> as an <em>Editor’s Draft</em>. The sections that have been incorporated have been reviewed following the <a href="https://github.com/solid/process">Solid process</a>. However, the information in this document is still subject to change. You are invited to <a href="https://github.com/solid/web-access-control-spec/issues">contribute</a> any feedback, comments, or questions you might have.</p>
@@ -859,7 +859,7 @@ content: "";
 
                       <p>The <code>ASK</code> queries below exemplify atomic graph patterns that can be executed against the default graph of an RDF dataset using named graphs for resources. The examples use query variables marked with "<var>?</var>" to indicate any value, and "<var>$</var>" to indicate inputs passed to the query, e.g., <samp>&lt;http://example.org/.acl&gt;</samp> as the IRI reference of the effective ACL resource of a request replaces <code>$aclResource</code> in the query, and likewise, <samp>acl:Write</samp> as input is intended to replace <code>$mode</code> in the examples.</p>
 
-                      <figure id="match-accessto-agent-mode" class="example listing" rel="schema:hasPart" resource="#match-accessto-agent-mode">
+                      <figure class="example listing" id="match-accessto-agent-mode" rel="schema:hasPart" resource="#match-accessto-agent-mode">
                         <p class="example-h"><span>Example</span>: Match an Authorization with a specific resource, agent and access mode.</p>
                         <pre about="#match-accessto-agent-mode" property="schema:description" typeof="fabio:Script">PREFIX acl: &lt;http://www.w3.org/ns/auth/acl#&gt;
 <code>PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;</code>
@@ -881,7 +881,7 @@ content: "";
 
                       <p>The following query is typically used in context of inheriting Authorizations (<code>acl:default</code>) from a container’s ACL resource. The query also demonstrates matching Authorizations that use a superclass of the required access mode (<cite><a href="#access-mode-classes" rel="rdfs:seeAlso">Access Mode Classes</a></cite>):</p>
 
-                      <figure id="match-default-agentclass-mode" class="example listing" rel="schema:hasPart" resource="#match-default-agentclass-mode">
+                      <figure class="example listing" id="match-default-agentclass-mode" rel="schema:hasPart" resource="#match-default-agentclass-mode">
                         <p class="example-h"><span>Example</span>: Match an Authorization with a specific container resource, agent class membership and access mode.</p>
                         <pre about="#match-default-agentclass-mode" property="schema:description" typeof="fabio:Script"><code>ASK {</code>
 <code>  GRAPH $aclResource {</code>
@@ -910,7 +910,7 @@ content: "";
 
                       <p>The following query can be used to check if an agent is a member of any group that can access a resource:</p>
 
-                      <figure id="match-accessto-agentgroup-mode" class="example listing" rel="schema:hasPart" resource="#match-accessto-agentgroup-mode">
+                      <figure class="example listing" id="match-accessto-agentgroup-mode" rel="schema:hasPart" resource="#match-accessto-agentgroup-mode">
                         <p class="example-h"><span>Example</span>: Match an Authorization with a specific resource, agent with any group membership, and specific access mode.</p>
                         <pre about="#match-accessto-agentgroup-mode" property="schema:description" typeof="fabio:Script"><code>ASK {</code>
 <code>  GRAPH $aclResource {</code>
@@ -1065,7 +1065,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>While this section attempts to highlight a set of security considerations, it is not a complete list. Implementers are urged to seek the advice of security professionals when implementing mission critical systems using the technology outlined in this specification.</p>
 
-                  <p id="consider-uri-http">Implementations are encouraged to follow the security considerations that are found in URI <cite><a href="https://datatracker.ietf.org/doc/html/rfc3986#section-7" rel="cito:citesForInformation">Generic Syntax</a></cite>, HTTP/1.1 <cite><a  href="https://datatracker.ietf.org/doc/html/rfc7230#section-9" rel="cito:citesForInformation">Message Syntax and Routing</a></cite> and <cite><a href="https://datatracker.ietf.org/doc/html/rfc7231#section-9" rel="cito:citesForInformation">Semantics and Content</a></cite>.</p>
+                  <p id="consider-uri-http">Implementations are encouraged to follow the security considerations that are found in URI <cite><a href="https://datatracker.ietf.org/doc/html/rfc3986#section-7" rel="cito:citesForInformation">Generic Syntax</a></cite>, HTTP/1.1 <cite><a href="https://datatracker.ietf.org/doc/html/rfc7230#section-9" rel="cito:citesForInformation">Message Syntax and Routing</a></cite> and <cite><a href="https://datatracker.ietf.org/doc/html/rfc7231#section-9" rel="cito:citesForInformation">Semantics and Content</a></cite>.</p>
 
                   <p id="consider-additional-information-lookups">Servers are strongly discouraged from trusting the information returned by looking up an agent’s WebID for access control purposes. The server operator can also provide the server with other trusted information to include in the search for a reason to give the requester the access.</p>
 

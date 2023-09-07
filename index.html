@@ -425,7 +425,7 @@ content: "";
                     <dd about="#uri" property="skos:definition">A <dfn>Uniform Resource Identifier</dfn> (<abbr title="Uniform Resource Identifier">URI</abbr>) provides the means for identifying resources [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>].</dd>
 
                     <dt about="#resource" property="skos:prefLabel" typeof="skos:Concept"><dfn id="resource">resource</dfn></dt>
-                    <dd about="#resource" property="skos:definition">A resource is the target of an HTTP request identified by a URI [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</dd>
+                    <dd about="#resource" property="skos:definition">A resource is the target of an HTTP request identified by a URI [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>].</dd>
 
                     <dt about="#container-resource" property="skos:prefLabel" typeof="skos:Concept"><dfn id="container-resource">container resource</dfn></dt>
                     <dd about="#container-resource" property="skos:definition">A container resource is a hierarchical collection of resources that contains other resources, including containers.</dd>
@@ -563,7 +563,7 @@ content: "";
 
                   <p about="" id="server-acl-without-representation" rel="spec:requirement" resource="#server-acl-without-representation"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Server">Servers</span> who want a resource to inherit Authorizations (<cite><a href="#effective-acl-resource" rel="rdfs:seeAlso">Effective ACL Resource</a></cite>) from a container resource  <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> have a representation for the ACL resource that is associated with the resource.</span></p>
 
-                  <p about="" id="server-get-acl-without-representation" rel="spec:requirement" resource="#server-get-acl-without-representation"><span property="spec:statement">When an authorized HTTP <code>GET</code> or <code>HEAD</code> request targets an ACL resource without an existing representation, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with the <code>404</code> status code as per [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>].</span></p>
+                  <p about="" id="server-get-acl-without-representation" rel="spec:requirement" resource="#server-get-acl-without-representation"><span property="spec:statement">When an authorized HTTP <code>GET</code> or <code>HEAD</code> request targets an ACL resource without an existing representation, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with the <code>404</code> status code as per [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>].</span></p>
 
                   <p about="" id="server-root-container-acl" rel="spec:requirement" resource="#server-root-container-acl"><span property="spec:statement">When an authorized HTTP <code>GET</code> or <code>HEAD</code> request targets <a href="#root-container">root container</a>’s ACL resource, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a representation.</span></p>
 
@@ -951,7 +951,7 @@ content: "";
               <section id="wac-allow" inlist="" rel="schema:hasPart" resource="#wac-allow">
                 <h3 property="schema:name">wac-allow HTTP Header</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The syntax for the <code>WAC-Allow</code> header, using the ABNF syntax defined in Section 1.2 of [<cite><a class="bibref" href="#bib-rfc7231">RFC7231</a></cite>], is:</p>
+                  <p>The syntax for the <code>WAC-Allow</code> header, using the ABNF syntax defined in Section 2.1 of [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>], is:</p>
 
                   <pre class="def">wac-allow        = "WAC-Allow" ":" OWS #access-param OWS
 access-param     = permission-group OWS "=" OWS access-modes
@@ -1066,7 +1066,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
 
                   <p>While this section attempts to highlight a set of security considerations, it is not a complete list. Implementers are urged to seek the advice of security professionals when implementing mission critical systems using the technology outlined in this specification.</p>
 
-                  <p id="consider-uri-http">Implementations are encouraged to follow the security considerations that are found in URI <cite><a href="https://datatracker.ietf.org/doc/html/rfc3986#section-7" rel="cito:citesForInformation">Generic Syntax</a></cite>, HTTP/1.1 <cite><a href="https://datatracker.ietf.org/doc/html/rfc7230#section-9" rel="cito:citesForInformation">Message Syntax and Routing</a></cite> and <cite><a href="https://datatracker.ietf.org/doc/html/rfc7231#section-9" rel="cito:citesForInformation">Semantics and Content</a></cite>.</p>
+                  <p id="consider-uri-http">Implementations are encouraged to follow the security considerations that are found in URI <cite><a href="https://datatracker.ietf.org/doc/html/rfc3986#section-7" rel="cito:citesForInformation">Generic Syntax</a></cite>, <cite><a href="https://www.rfc-editor.org/rfc/rfc9112#name-security-considerations" rel="cito:citesForInformation">HTTP/1.1</a></cite> and <cite><a href="https://www.rfc-editor.org/rfc/rfc9110#name-security-considerations" rel="cito:citesForInformation">HTTP Semantics</a></cite>.</p>
 
                   <p id="consider-additional-information-lookups">Servers are strongly discouraged from trusting the information returned by looking up an agent’s WebID for access control purposes. The server operator can also provide the server with other trusted information to include in the search for a reason to give the requester the access.</p>
 
@@ -1213,20 +1213,20 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dd><a href="https://www.w3.org/TR/rdf11-concepts/" rel="cito:citesAsAuthority"><cite>RDF 1.1 Concepts and Abstract Syntax</cite></a>. Richard Cyganiak; David Wood; Markus Lanthaler.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a></dd>
                     <dt id="bib-rfc2119">[RFC2119]</dt>
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc2119" rel="cito:citesAsAuthority"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. S. Bradner.  IETF. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a></dd>
-                    <dt id="bib-rfc3864">[RFC3864]</dt>
-                    <dd><a href="https://datatracker.ietf.org/doc/html/rfc3864" rel="cito:citesAsAuthority"><cite>Registration Procedures for Message Header Fields</cite></a>. G. Klyne; M. Nottingham; J. Mogul.  IETF. September 2004. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc3864">https://datatracker.ietf.org/doc/html/rfc3864</a></dd>
                     <dt id="bib-rfc3986">[RFC3986]</dt>
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc3986" rel="cito:citesAsAuthority"><cite>Uniform Resource Identifier (URI): Generic Syntax</cite></a>. T. Berners-Lee; R. Fielding; L. Masinter.  IETF. January 2005. Internet Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc3986">https://datatracker.ietf.org/doc/html/rfc3986</a></dd>
                     <dt id="bib-rfc5789">[RFC5789]</dt>
                     <dd><a href="https://httpwg.org/specs/rfc5789.html" rel="cito:citesAsAuthority"><cite>PATCH Method for HTTP</cite></a>. L. Dusseault; J. Snell.  IETF. March 2010. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc5789.html">https://httpwg.org/specs/rfc5789.html</a></dd>
                     <dt id="bib-rfc6454">[RFC6454]</dt>
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc6454" rel="cito:citesAsAuthority"><cite>The Web Origin Concept</cite></a>. A. Barth.  IETF. December 2011. Proposed Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc6454">https://datatracker.ietf.org/doc/html/rfc6454</a></dd>
-                    <dt id="bib-rfc7231">[RFC7231]</dt>
-                    <dd><a href="https://httpwg.org/specs/rfc7231.html" rel="cito:citesAsAuthority"><cite>Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content</cite></a>. R. Fielding, Ed.; J. Reschke, Ed..  IETF. June 2014. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc7231.html">https://httpwg.org/specs/rfc7231.html</a></dd>
                     <dt id="bib-rfc8174">[RFC8274]</dt>
                     <dd><a href="https://datatracker.ietf.org/doc/html/rfc8174" rel="cito:citesAsAuthority"><cite>Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</cite></a>. B. Leiba.  IETF. May 2017. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc8174">https://datatracker.ietf.org/doc/html/rfc8174</a></dd>
                     <dt id="bib-rfc8288">[RFC8288]</dt>
                     <dd><a href="https://httpwg.org/specs/rfc8288.html" rel="cito:citesAsAuthority"><cite>Web Linking</cite></a>. M. Nottingham.  IETF. October 2017. Proposed Standard. URL: <a href="https://httpwg.org/specs/rfc8288.html">https://httpwg.org/specs/rfc8288.html</a></dd>
+                    <dt id="bib-rfc9110">[RFC9110]</dt>
+                    <dd><a href="https://www.rfc-editor.org/rfc/rfc9110" rel="cito:citesAsAuthority"><cite>HTTP Semantics</cite></a>. R. Fielding, M. Nottingham, J. Reschke, Editors.  IETF. June 2022. Internet Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc9110">https://www.rfc-editor.org/rfc/rfc9110</a></dd>
+                    <dt id="bib-rfc9112">[RFC9112]</dt>
+                    <dd><a href="https://www.rfc-editor.org/rfc/rfc9112" rel="cito:citesAsAuthority"><cite>HTTP/1.1</cite></a>. R. Fielding, M. Nottingham, J. Reschke, Editors.  IETF. June 2022. Internet Standard. URL: <a href="https://www.rfc-editor.org/rfc/rfc9112">https://www.rfc-editor.org/rfc/rfc9112</a></dd>
                     <dt id="bib-turtle">[TURTLE]</dt>
                     <dd><a href="https://www.w3.org/TR/turtle/" rel="cito:citesAsAuthority"><cite>RDF 1.1 Turtle</cite></a>. Eric Prud'hommeaux; Gavin Carothers.  W3C. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/turtle/">https://www.w3.org/TR/turtle/</a></dd>
                     <dt id="bib-vcard-rdf">[VCARD-RDF]</dt>

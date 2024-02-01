@@ -808,7 +808,7 @@ content: "";
                             <dd>The HTTP <code>PUT</code> method requests to create or replace the resource state. <i>Creating</i> a new resource requires <code>acl:Append</code> and/or <code>acl:Write</code> access to the container as well as <code>acl:Write</code> access to the (new) resource. <i>Replacing</i> an existing resource requires only <code>acl:Write</code> access to the resource itself.</dd>
 
                             <dt id="http-patch"><code>PATCH</code></dt>
-                            <dd>As the processing of HTTP <code>PATCH</code> method request depends on the request semantics and content, <code>acl:Append</code> can allow requests to <em>insert</em> but not <em>delete<em> operations, whereas <code>acl:Write</code> would allow both operations. To create a new resource, <code>acl:Append</code> or <code>acl:Write</code> access mode to the container is additionally required.</dd>
+                            <dd>As the processing of HTTP <code>PATCH</code> method request depends on the request semantics and content, <code>acl:Append</code> can allow requests to <em>insert</em> but not <em>delete</em> operations, whereas <code>acl:Write</code> would allow both operations. To create a new resource, <code>acl:Append</code> or <code>acl:Write</code> access mode to the container is additionally required.</dd>
 
                             <dt id="http-delete"><code>DELETE</code></dt>
                             <dd>As the HTTP <code>DELETE</code> method requests to remove a resource, the <code>acl:Write</code> access mode would be required.</dd>

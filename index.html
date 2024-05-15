@@ -228,147 +228,151 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 
     <main>
       <article about="" typeof="schema:Article doap:Specification">
-        <h1 property="schema:name">Web Access Control</h1>
+        <div class="head">
+          <h1 property="schema:name">Web Access Control</h1>
 
-        <p id="w3c-state"><a href="https://www.w3.org/standards/types#reports" property="doap:revision" rel="rdf:type">Draft Community Group Report</a>, <time datetime="2024-05-12T00:00:00Z">12 May 2024</time></p>
+          <p id="w3c-state"><a href="https://www.w3.org/standards/types#reports" property="doap:revision" rel="rdf:type">Draft Community Group Report</a>, <time datetime="2024-05-12T00:00:00Z">12 May 2024</time></p>
 
-        <details open="">
-          <summary>More details about this document</summary>
+          <details open="">
+            <summary>More details about this document</summary>
 
-          <dl id="document-identifier">
-            <dt>This version</dt>
-            <dd><a href="https://solid.github.io/web-access-control-spec/" rel="owl:sameAs">https://solid.github.io/web-access-control-spec/</a></dd>
-          </dl>
+            <dl id="document-identifier">
+              <dt>This version</dt>
+              <dd><a href="https://solid.github.io/web-access-control-spec/" rel="owl:sameAs">https://solid.github.io/web-access-control-spec/</a></dd>
+            </dl>
 
-          <dl id="document-latest-published-version">
-            <dt>Latest published version</dt>
-            <dd><a href="https://solidproject.org/TR/wac" rel="rel:latest-version">https://solidproject.org/TR/wac</a></dd>
-          </dl>
+            <dl id="document-latest-published-version">
+              <dt>Latest published version</dt>
+              <dd><a href="https://solidproject.org/TR/wac" rel="rel:latest-version">https://solidproject.org/TR/wac</a></dd>
+            </dl>
 
-          <dl id="document-previous-version">
-            <dt>Previous version</dt>
-            <dd><a href="https://solidproject.org/TR/2022/wac-20220705" rel="rel:predecessor-version">https://solidproject.org/TR/2022/wac-20220705</a></dd>
-          </dl>
+            <dl id="document-previous-version">
+              <dt>Previous version</dt>
+              <dd><a href="https://solidproject.org/TR/2022/wac-20220705" rel="rel:predecessor-version">https://solidproject.org/TR/2022/wac-20220705</a></dd>
+            </dl>
 
-          <dl id="document-history">
-            <dt>History</dt>
-            <dd><a href="https://github.com/solid/web-access-control-spec/commits/main/index.html">Commit history</a></dd>
-          </dl>
+            <dl id="document-history">
+              <dt>History</dt>
+              <dd><a href="https://github.com/solid/web-access-control-spec/commits/main/index.html">Commit history</a></dd>
+            </dl>
 
-          <dl id="document-editors">
-            <dt>Editors</dt>
-            <dd id="Sarven-Capadisli"><span about="" rel="schema:creator schema:editor"><span about="https://csarven.ca/#i" typeof="schema:Person"><a href="https://csarven.ca/" rel="schema:url"><span about="https://csarven.ca/#i" property="schema:name"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></span></a></span></span></dd>
-          </dl>
+            <dl id="document-editors">
+              <dt>Editors</dt>
+              <dd id="Sarven-Capadisli"><span about="" rel="schema:creator schema:editor"><span about="https://csarven.ca/#i" typeof="schema:Person"><a href="https://csarven.ca/" rel="schema:url"><span about="https://csarven.ca/#i" property="schema:name"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></span></a></span></span></dd>
+            </dl>
 
-          <dl id="document-authors">
-            <dt>Authors</dt>
-            <dd id="Tim-Berners-Lee"><span about="" rel="schema:author"><span about="https://www.w3.org/People/Berners-Lee/card#i" typeof="schema:Person"><a href="https://www.w3.org/People/Berners-Lee/" rel="schema:url"><span about="https://www.w3.org/People/Berners-Lee/card#i" property="schema:name"><span property="schema:givenName">Tim</span> <span property="schema:familyName">Berners-Lee</span></span></a></span></span></dd>
-            <dd id="Henry-Story"><span about="" rel="schema:author"><span about="https://bblfish.net/profile/card#me" typeof="schema:Person"><a href="https://bblfish.net/" rel="schema:url"><span about="https://bblfish.net/profile/card#me" property="schema:name"><span property="schema:givenName">Henry</span> <span property="schema:familyName">Story</span></span></a></span></span></dd>
-            <dd><a about="" rel="schema:author" resource="https://csarven.ca/#i" href="https://csarven.ca/">Sarven Capadisli</a></dd>
-          </dl>
+            <dl id="document-authors">
+              <dt>Authors</dt>
+              <dd id="Tim-Berners-Lee"><span about="" rel="schema:author"><span about="https://www.w3.org/People/Berners-Lee/card#i" typeof="schema:Person"><a href="https://www.w3.org/People/Berners-Lee/" rel="schema:url"><span about="https://www.w3.org/People/Berners-Lee/card#i" property="schema:name"><span property="schema:givenName">Tim</span> <span property="schema:familyName">Berners-Lee</span></span></a></span></span></dd>
+              <dd id="Henry-Story"><span about="" rel="schema:author"><span about="https://bblfish.net/profile/card#me" typeof="schema:Person"><a href="https://bblfish.net/" rel="schema:url"><span about="https://bblfish.net/profile/card#me" property="schema:name"><span property="schema:givenName">Henry</span> <span property="schema:familyName">Story</span></span></a></span></span></dd>
+              <dd><a about="" rel="schema:author" resource="https://csarven.ca/#i" href="https://csarven.ca/">Sarven Capadisli</a></dd>
+            </dl>
 
-          <dl id="document-created">
-            <dt>Created</dt>
-            <dd><time content="2021-03-29T00:00:00Z" datatype="xsd:dateTime" datetime="2021-03-29T00:00:00Z" property="schema:dateCreated">2021-03-29</time></dd>
-          </dl>
+            <dl id="document-created">
+              <dt>Created</dt>
+              <dd><time content="2021-03-29T00:00:00Z" datatype="xsd:dateTime" datetime="2021-03-29T00:00:00Z" property="schema:dateCreated">2021-03-29</time></dd>
+            </dl>
 
-          <dl id="document-published">
-            <dt>Published</dt>
-            <dd><time content="2021-03-29T00:00:00Z" datatype="xsd:dateTime" datetime="2021-03-29T00:00:00Z" property="schema:datePublished">2021-03-29</time></dd>
-          </dl>
+            <dl id="document-published">
+              <dt>Published</dt>
+              <dd><time content="2021-03-29T00:00:00Z" datatype="xsd:dateTime" datetime="2021-03-29T00:00:00Z" property="schema:datePublished">2021-03-29</time></dd>
+            </dl>
 
-          <dl id="document-modified">
-            <dt>Modified</dt>
-            <dd><time content="2024-05-12T00:00:00Z" datatype="xsd:dateTime" datetime="2024-05-12T00:00:00Z" property="schema:dateModified">2024-05-12</time></dd>
-          </dl>
+            <dl id="document-modified">
+              <dt>Modified</dt>
+              <dd><time content="2024-05-12T00:00:00Z" datatype="xsd:dateTime" datetime="2024-05-12T00:00:00Z" property="schema:dateModified">2024-05-12</time></dd>
+            </dl>
 
-          <dl id="document-repository">
-            <dt>Repository</dt>
-            <dd><a href="https://github.com/solid/web-access-control-spec" rel="doap:repository">GitHub</a></dd>
-            <dd><a href="https://github.com/solid/web-access-control-spec/issues" rel="doap:bug-database">Issues</a></dd>
-          </dl>
+            <dl id="document-repository">
+              <dt>Repository</dt>
+              <dd><a href="https://github.com/solid/web-access-control-spec" rel="doap:repository">GitHub</a></dd>
+              <dd><a href="https://github.com/solid/web-access-control-spec/issues" rel="doap:bug-database">Issues</a></dd>
+            </dl>
 
-          <dl id="document-derived-from">
-            <dt>Derived From</dt>
-            <dd>
-              <ul>
-                <li><cite><a data-versiondate="2021-06-16T12:49:59Z" data-versionurl="https://web.archive.org/web/20210616124959/https://www.w3.org/wiki/WebAccessControl" href="https://www.w3.org/wiki/WebAccessControl" rel="prov:wasDerivedFrom">WebAccessControl</a></cite></li>
-                <li><cite><a data-versiondate="2021-06-16T12:53:07Z" data-versionurl="https://web.archive.org/web/20210616125307/https://github.com/solid/web-access-control-spec/blob/65034fd0fa1f270aff32af56cb59fd8949f64591/README.md" href="https://github.com/solid/web-access-control-spec/blob/65034fd0fa1f270aff32af56cb59fd8949f64591/README.md" rel="prov:wasDerivedFrom">solid/web-access-control-spec</a></cite></li>
-                <li><cite><a data-versiondate="2021-06-16T13:01:41Z" data-versionurl="https://web.archive.org/web/20210616130141/https://solidproject.org/TR/protocol" href="https://solidproject.org/TR/protocol" rel="prov:wasDerivedFrom">Solid Protocol</a></cite></li>
-              </ul>
-            </dd>
-          </dl>
+            <dl id="document-derived-from">
+              <dt>Derived From</dt>
+              <dd>
+                <ul>
+                  <li><cite><a data-versiondate="2021-06-16T12:49:59Z" data-versionurl="https://web.archive.org/web/20210616124959/https://www.w3.org/wiki/WebAccessControl" href="https://www.w3.org/wiki/WebAccessControl" rel="prov:wasDerivedFrom">WebAccessControl</a></cite></li>
+                  <li><cite><a data-versiondate="2021-06-16T12:53:07Z" data-versionurl="https://web.archive.org/web/20210616125307/https://github.com/solid/web-access-control-spec/blob/65034fd0fa1f270aff32af56cb59fd8949f64591/README.md" href="https://github.com/solid/web-access-control-spec/blob/65034fd0fa1f270aff32af56cb59fd8949f64591/README.md" rel="prov:wasDerivedFrom">solid/web-access-control-spec</a></cite></li>
+                  <li><cite><a data-versiondate="2021-06-16T13:01:41Z" data-versionurl="https://web.archive.org/web/20210616130141/https://solidproject.org/TR/protocol" href="https://solidproject.org/TR/protocol" rel="prov:wasDerivedFrom">Solid Protocol</a></cite></li>
+                </ul>
+              </dd>
+            </dl>
 
-          <dl id="document-language">
-            <dt>Language</dt>
-            <dd><span content="en" lang="" property="dcterms:language" xml:lang="">English</span></dd>
-          </dl>
+            <dl id="document-language">
+              <dt>Language</dt>
+              <dd><span content="en" lang="" property="dcterms:language" xml:lang="">English</span></dd>
+            </dl>
 
-          <dl id="document-inbox">
-            <dt>Notifications Inbox</dt>
-            <dd><a href="https://specs.solidcommunity.net/inbox/wac/" rel="ldp:inbox">https://specs.solidcommunity.net/inbox/wac/</a></dd>
-          </dl>
+            <dl id="document-inbox">
+              <dt>Notifications Inbox</dt>
+              <dd><a href="https://specs.solidcommunity.net/inbox/wac/" rel="ldp:inbox">https://specs.solidcommunity.net/inbox/wac/</a></dd>
+            </dl>
 
-          <dl id="document-status">
-            <dt>Document Status</dt>
-            <dd prefix="pso: http://purl.org/spar/pso/" rel="pso:holdsStatusInTime" resource="#f9378450-cea7-11eb-bc49-ab63ead938b8"><span rel="pso:withStatus" resource="http://purl.org/spar/pso/draft" typeof="pso:PublicationStatus">Editor’s Draft</span></dd>
-          </dl>
+            <dl id="document-status">
+              <dt>Document Status</dt>
+              <dd prefix="pso: http://purl.org/spar/pso/" rel="pso:holdsStatusInTime" resource="#f9378450-cea7-11eb-bc49-ab63ead938b8"><span rel="pso:withStatus" resource="http://purl.org/spar/pso/draft" typeof="pso:PublicationStatus">Editor’s Draft</span></dd>
+            </dl>
 
-          <dl id="document-in-reply-to">
-            <dt>In Reply To</dt>
-            <dd><a href="https://solidproject.org/origin" rel="as:inReplyTo">Solid Origin</a></dd>
-          </dl>
+            <dl id="document-in-reply-to">
+              <dt>In Reply To</dt>
+              <dd><a href="https://solidproject.org/origin" rel="as:inReplyTo">Solid Origin</a></dd>
+            </dl>
 
-          <dl id="document-policy">
-            <dt>Policy</dt>
-            <dd>
-              <dl id="document-policy-offer" rel="odrl:hasPolicy" resource="#document-policy-offer" typeof="odrl:Policy">
-                <dt>Rule</dt>
-                <dd><a about="#document-policy-offer" href="https://www.w3.org/TR/odrl-vocab/#term-Offer" typeof="odrl:Offer">Offer</a></dd>
-                <dt>Unique Identifier</dt>
-                <dd><a href="https://solid.github.io/web-access-control-spec/#document-policy-offer" rel="odrl:uid">https://solid.github.io/web-access-control-spec/#document-policy-offer</a></dd>
-                <dt>Target</dt>
-                <dd><a href="https://solid.github.io/web-access-control-spec/" rel="odrl:target">https://solid.github.io/web-access-control-spec/</a></dd>
-                <dt>Permission</dt>
-                <dd>
-                  <dl id="document-permission" rel="odrl:permission" resource="#document-permission" typeof="odrl:Permission">
-                    <dt>Assigner</dt>
-                    <dd><a href="https://www.w3.org/groups/cg/solid/" rel="odrl:assigner">W3C Solid Community Group</a></dd>
-                    <dt>Action</dt>
-                    <dd>
-                      <ul rel="odrl:action">
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-aggregate" resource="odrl:aggregate">Aggregate</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-archive" resource="odrl:archive">Archive</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-concurrentUse" resource="odrl:concurrentUse">Concurrent Use</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-DerivativeWorks" resource="http://creativecommons.org/ns#DerivativeWorks">Derivative Works</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-derive" resource="odrl:derive">Derive</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-digitize" resource="odrl:digitize">Digitize</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-display" resource="odrl:display">Display</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-Distribution" resource="http://creativecommons.org/ns#Distribution">Distribution</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-index" resource="odrl:index">Index</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-inform" resource="odrl:inform">Inform</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-install" resource="odrl:install">Install</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-Notice" resource="http://creativecommons.org/ns#Notice">Notice</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-present" resource="odrl:present">Present</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-print" resource="odrl:print">Print</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-read" resource="odrl:read">Read</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-reproduce" resource="odrl:reproduce">Reproduce</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-Reproduction" resource="http://creativecommons.org/ns#Reproduction">Reproduction</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-stream" resource="odrl:stream">Stream</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-synchronize" resource="odrl:synchronize">Synchronize</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-textToSpeech" resource="odrl:textToSpeech">Text-to-speech</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-transform" resource="odrl:transform">Transform</a></li>
-                        <li><a href="https://www.w3.org/TR/odrl-vocab/#term-translate" resource="odrl:translate">Translate</a></li>
-                      </ul>
-                    </dd>
-                  </dl>
-                </dd>
-              </dl>
-            </dd>
-          </dl>
-        </details>
+            <dl id="document-policy">
+              <dt>Policy</dt>
+              <dd>
+                <dl id="document-policy-offer" rel="odrl:hasPolicy" resource="#document-policy-offer" typeof="odrl:Policy">
+                  <dt>Rule</dt>
+                  <dd><a about="#document-policy-offer" href="https://www.w3.org/TR/odrl-vocab/#term-Offer" typeof="odrl:Offer">Offer</a></dd>
+                  <dt>Unique Identifier</dt>
+                  <dd><a href="https://solid.github.io/web-access-control-spec/#document-policy-offer" rel="odrl:uid">https://solid.github.io/web-access-control-spec/#document-policy-offer</a></dd>
+                  <dt>Target</dt>
+                  <dd><a href="https://solid.github.io/web-access-control-spec/" rel="odrl:target">https://solid.github.io/web-access-control-spec/</a></dd>
+                  <dt>Permission</dt>
+                  <dd>
+                    <dl id="document-permission" rel="odrl:permission" resource="#document-permission" typeof="odrl:Permission">
+                      <dt>Assigner</dt>
+                      <dd><a href="https://www.w3.org/groups/cg/solid/" rel="odrl:assigner">W3C Solid Community Group</a></dd>
+                      <dt>Action</dt>
+                      <dd>
+                        <ul rel="odrl:action">
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-aggregate" resource="odrl:aggregate">Aggregate</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-archive" resource="odrl:archive">Archive</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-concurrentUse" resource="odrl:concurrentUse">Concurrent Use</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-DerivativeWorks" resource="http://creativecommons.org/ns#DerivativeWorks">Derivative Works</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-derive" resource="odrl:derive">Derive</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-digitize" resource="odrl:digitize">Digitize</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-display" resource="odrl:display">Display</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-Distribution" resource="http://creativecommons.org/ns#Distribution">Distribution</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-index" resource="odrl:index">Index</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-inform" resource="odrl:inform">Inform</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-install" resource="odrl:install">Install</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-Notice" resource="http://creativecommons.org/ns#Notice">Notice</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-present" resource="odrl:present">Present</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-print" resource="odrl:print">Print</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-read" resource="odrl:read">Read</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-reproduce" resource="odrl:reproduce">Reproduce</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-Reproduction" resource="http://creativecommons.org/ns#Reproduction">Reproduction</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-stream" resource="odrl:stream">Stream</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-synchronize" resource="odrl:synchronize">Synchronize</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-textToSpeech" resource="odrl:textToSpeech">Text-to-speech</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-transform" resource="odrl:transform">Transform</a></li>
+                          <li><a href="https://www.w3.org/TR/odrl-vocab/#term-translate" resource="odrl:translate">Translate</a></li>
+                        </ul>
+                      </dd>
+                    </dl>
+                  </dd>
+                </dl>
+              </dd>
+            </dl>
+          </details>
 
-        <p class="copyright" rel="dcterms:rights" resource="#document-rights"><span property="dcterms:description"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2021–2024 the Contributors to Web Access Control, Version 1.0, published by the <a href="https://www.w3.org/groups/cg/solid/">Solid Community Group</a> under the <a about="" href="https://www.w3.org/community/about/agreements/cla/" rel="schema:license">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available. All code snippets are in the public domain, <a about="" href="https://creativecommons.org/public-domain/cc0/" rel="schema:license">CC0</a>.</span></p>
+          <p class="copyright" rel="dcterms:rights" resource="#document-rights"><span property="dcterms:description"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2021–2024 the Contributors to Web Access Control, Version 1.0, published by the <a href="https://www.w3.org/groups/cg/solid/">Solid Community Group</a> under the <a about="" href="https://www.w3.org/community/about/agreements/cla/" rel="schema:license">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available. All code snippets are in the public domain, <a about="" href="https://creativecommons.org/public-domain/cc0/" rel="schema:license">CC0</a>.</span></p>
+
+          <hr title="Separator for header" />
+        </div>
 
         <div datatype="rdf:HTML" id="content" property="schema:description">
           <section id="abstract">

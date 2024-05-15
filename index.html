@@ -951,9 +951,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 
                       <p>The <code>ASK</code> queries below exemplify atomic graph patterns that can be executed against the default graph of an RDF dataset using named graphs for resources. The examples use query variables marked with "<var>?</var>" to indicate any value, and "<var>$</var>" to indicate inputs passed to the query, e.g., <samp>&lt;http://example.org/.acl&gt;</samp> as the IRI reference of the effective ACL resource of a request replaces <code>$aclResource</code> in the query, and likewise, <samp>acl:Write</samp> as input is intended to replace <code>$mode</code> in the examples.</p>
 
-                      <figure class="example listing" id="match-accessto-agent-mode" rel="schema:hasPart" resource="#match-accessto-agent-mode">
-                        <p class="example-h"><span>Example</span>: Match an Authorization with a specific resource, agent and access mode.</p>
-                        <pre about="#match-accessto-agent-mode" property="schema:description" typeof="fabio:Script">PREFIX acl: &lt;http://www.w3.org/ns/auth/acl#&gt;
+                      <figure class="example listing" id="match-accessto-agent-mode" rel="schema:hasPart" resource="#match-accessto-agent-mode" typeof="schema:SoftwareSourceCode">
+                        <figcaption property="schema:name"><span>Example</span>: <span>Match an Authorization with a specific resource, agent and access mode.</span></figcaption>
+                        <pre property="schema:description">PREFIX acl: &lt;http://www.w3.org/ns/auth/acl#&gt;
 <code>PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;</code>
 <code>PREFIX vcard: &lt;http://www.w3.org/2006/vcard/ns#&gt;</code>
 <code></code>
@@ -966,16 +966,16 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 <code>      acl:mode $mode .</code>
 <code>  }</code>
 <code>}</code></pre>
-                        <figcaption property="schema:name"><code>ASK</code> query matching an Authorization given inputs <var>resource</var>, <var>agent</var> and <var>mode</var>.</figcaption>
+                        <p><code>ASK</code> query matching an Authorization given inputs <var>resource</var>, <var>agent</var> and <var>mode</var>.</p>
                       </figure>
 
                       <p>From here on, <code>PREFIX</code>s in the query are assumed to be present.</p>
 
                       <p>The following query is typically used in context of inheriting Authorizations (<code>acl:default</code>) from a container’s ACL resource. The query also demonstrates matching Authorizations that use a superclass of the required access mode (<cite><a href="#access-mode-classes" rel="rdfs:seeAlso">Access Mode Classes</a></cite>):</p>
 
-                      <figure class="example listing" id="match-default-agentclass-mode" rel="schema:hasPart" resource="#match-default-agentclass-mode">
-                        <p class="example-h"><span>Example</span>: Match an Authorization with a specific container resource, agent class membership and access mode.</p>
-                        <pre about="#match-default-agentclass-mode" property="schema:description" typeof="fabio:Script"><code>ASK {</code>
+                      <figure class="example listing" id="match-default-agentclass-mode" rel="schema:hasPart" resource="#match-default-agentclass-mode" typeof="schema:SoftwareSourceCode">
+                        <figcaption property="schema:name"><span>Example</span>: <span>Match an Authorization with a specific container resource, agent class membership and access mode.</span></figcaption>
+                        <pre property="schema:description"><code>ASK {</code>
 <code>  GRAPH $aclResource {</code>
 <code>    {</code>
 <code>      ?authorization</code>
@@ -997,14 +997,14 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 <code>    }</code>
 <code>  }</code>
 <code>}</code></pre>
-                        <figcaption property="schema:name"><code>ASK</code> query matching an Authorization given inputs <var>containerResource</var>, <var>agentClass</var> and <var>requiredMode</var> (which could be a subclass of another access mode).</figcaption>
+                        <p><code>ASK</code> query matching an Authorization given inputs <var>containerResource</var>, <var>agentClass</var> and <var>requiredMode</var> (which could be a subclass of another access mode).</p>
                       </figure>
 
                       <p>The following query can be used to check if an agent is a member of any group that can access a resource:</p>
 
-                      <figure class="example listing" id="match-accessto-agentgroup-mode" rel="schema:hasPart" resource="#match-accessto-agentgroup-mode">
-                        <p class="example-h"><span>Example</span>: Match an Authorization with a specific resource, agent with any group membership, and specific access mode.</p>
-                        <pre about="#match-accessto-agentgroup-mode" property="schema:description" typeof="fabio:Script"><code>ASK {</code>
+                      <figure class="example listing" id="match-accessto-agentgroup-mode" rel="schema:hasPart" resource="#match-accessto-agentgroup-mode" typeof="schema:SoftwareSourceCode">
+                        <figcaption property="schema:name"><span>Example</span>: <span>Match an Authorization with a specific resource, agent with any group membership, and specific access mode.</span></figcaption>
+                        <pre property="schema:description"><code>ASK {</code>
 <code>  GRAPH $aclResource {</code>
 <code>    ?authorization</code>
 <code>      a acl:Authorization ;</code>
@@ -1016,7 +1016,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 <code>    ?agentGroup vcard:hasMember $agent .</code>
 <code>  }</code>
 <code>}</code></pre>
-                        <figcaption property="schema:name"><code>ASK</code> query matching an Authorization given inputs <var>resource</var>, <var>agent</var> and <var>mode</var>.</figcaption>
+                        <p><code>ASK</code> query matching an Authorization given inputs <var>resource</var>, <var>agent</var> and <var>mode</var>.</p>
                       </figure>
                     </div>
                   </section>

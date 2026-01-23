@@ -682,12 +682,12 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <div datatype="rdf:HTML" property="schema:description">
                       <p>The ability to authenticate a <i>subject</i> &mdash; particularly to verify an asserted identity, role, attribute, capability, or similar &mdash; relies on the ability to identify the issuing agent &mdash; the <a href="#issuer">issuer</a> &mdash; of the corresponding assertion. To enable explicit definition of this trust relationship, the following properties are defined:</p>
                       <p id="acl-issuer">The <code>acl:issuer</code> predicate denotes an <a href="#issuer">issuer</a> being trusted to make correct assertions about a subject <a href="#agent">agent</a>.</p>
+                      <p id="acl-issuergroup">The <code>acl:issuerGroup</code> predicate denotes a <a href="#agent-group">group of agents</a> being trusted to make correct assertions about a subject <a href="#agent">agent</a>. The object of an <code>acl:issuerGroup</code> statement is an instance of <code>vcard:Group</code>, where the members of the group are specified with the <code>vcard:hasMember</code> predicate.</p>
                       <p id="acl-issuerclass">The <code>acl:issuerClass</code> predicate denotes a <a href="#agent-class">class of agents</a> being trusted to make correct assertions about a subject <a href="#agent">agent</a>.</p>
                       <p>One issuer class is defined here:</p>
                       <dl>
                         <dt id="acl-issuerclass-foaf-agent"><code>foaf:Agent</code></dt>
                         <dd>Accept assertions made by any agent, i.e., the public.</dd>
-                      <p id="acl-issuergroup">The <code>acl:issuerGroup</code> predicate denotes a <a href="#agent-group">group of agents</a> being trusted to make correct assertions about a subject <a href="#agent">agent</a>. The object of an <code>acl:issuerGroup</code> statement is an instance of <code>vcard:Group</code>, where the members of the group are specified with the <code>vcard:hasMember</code> predicate.</p>
                     </div>
                     <div class="note" id="subject-verification" inlist="" rel="schema:hasPart" resource="#subject-verification">
                       <h3 property="schema:name"><span>Note</span>: Subject Verification</h3>

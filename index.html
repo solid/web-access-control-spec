@@ -666,15 +666,15 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <h4 property="schema:name">Identifying the Subject Agent</h4>
                     <div datatype="rdf:HTML" property="schema:description">
                       <p id="acl-agent">The <code>acl:agent</code> predicate denotes an <a href="#agent">agent</a> being given the access permission.</p>
+                      <p id="acl-agentgroup">The <code>acl:agentGroup</code> predicate denotes a <a href="#agent-group">group of agents</a> being given the access permission. The object of an <code>acl:agentGroup</code> statement is an instance of <code>vcard:Group</code>, where the members of the group are specified with the <code>vcard:hasMember</code> predicate.</p>
                       <p id="acl-agentclass">The <code>acl:agentClass</code> predicate denotes a <a href="#agent-class">class of agents</a> being given the access permission.</p>
                       <p>Two agent classes are defined here:</p>
                       <dl>
                         <dt id="acl-agentclass-foaf-agent"><code>foaf:Agent</code></dt>
-                        <dd>Allows access to any agent, i.e., the public.</dd>
+                        <dd>Allows access by any agent, i.e., the public.</dd>
                         <dt id="acl-agentclass-authenticated-agent"><code>acl:AuthenticatedAgent</code></dt>
-                        <dd>Allows access to any authenticated agent.</dd>
+                        <dd>Allows access by any authenticated agent.</dd>
                       </dl>
-                      <p id="acl-agentgroup">The <code>acl:agentGroup</code> predicate denotes a <a href="#agent-group">group of agents</a> being given the access permission. The object of an <code>acl:agentGroup</code> statement is an instance of <code>vcard:Group</code>, where the members of the group are specified with the <code>vcard:hasMember</code> predicate.</p>
                     </div>
                   </section>
                   <section id="access-subject-issuer" inlist="" rel="schema:hasPart" resource="#access-subject-issuer">

@@ -225,7 +225,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
       <article about="" typeof="schema:Article">
         <div class="head">
           <h1 property="schema:name">Web Access Control</h1>
-          <p id="w3c-state">Editor’s Draft, <time datetime="2024-06-03T00:00:00Z">2024-06-03</time></p>
+          <p id="w3c-state">Editor’s Draft, <time datetime="2024-06-03T00:00:00Z">2026-03-24</time></p>
           <details open="">
             <summary>More details about this document</summary>
             <dl id="document-identifier">
@@ -253,6 +253,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <dd data-editor-id="2017" id="Tim-Berners-Lee"><span about="" rel="schema:author"><span about="https://www.w3.org/People/Berners-Lee/card#i" typeof="schema:Person"><a href="https://www.w3.org/People/Berners-Lee/" rel="schema:url"><span about="https://www.w3.org/People/Berners-Lee/card#i" property="schema:name"><span property="schema:givenName">Tim</span> <span property="schema:familyName">Berners-Lee</span></span></a></span></span></dd>
               <dd id="Henry-Story"><span about="" rel="schema:author"><span about="https://bblfish.net/profile/card#me" typeof="schema:Person"><a href="https://bblfish.net/" rel="schema:url"><span about="https://bblfish.net/profile/card#me" property="schema:name"><span property="schema:givenName">Henry</span> <span property="schema:familyName">Story</span></span></a></span></span></dd>
               <dd><a about="" href="https://csarven.ca/" rel="schema:author" resource="https://csarven.ca/#i">Sarven Capadisli</a></dd>
+              <dd data-editor-id="128292" id="Christoph-Braun"><span about="" rel="schema:author"><span about="https://uvdsl.solid.aifb.kit.edu/profile/card#me" typeof="schema:Person"><a href="https://aifb.kit.edu/web/Christoph_Braun/en" rel="schema:url"><span about="https://uvdsl.solid.aifb.kit.edu/profile/card#me" property="schema:name"><span property="schema:givenName">Christoph</span> <span property="schema:familyName">Braun</span></span></a></span></span></dd>
             </dl>
             <dl id="document-created">
               <dt>Created</dt>
@@ -264,7 +265,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             </dl>
             <dl id="document-modified">
               <dt>Modified</dt>
-              <dd><time content="2024-06-03T00:00:00Z" datatype="xsd:dateTime" datetime="2024-06-03T00:00:00Z" property="schema:dateModified">2024-06-03</time></dd>
+              <dd><time content="2026-03-24T00:00:00Z" datatype="xsd:dateTime" datetime="2026-03-24T00:00:00Z" property="schema:dateModified">2026-03-24</time></dd>
             </dl>
             <dl id="document-feedback">
               <dt>Feedback</dt>
@@ -290,7 +291,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             </dl>
             <dl id="document-version">
               <dt>Version</dt>
-              <dd><span lang="" property="schema:version" xml:lang="">1.0.0</span></dd>
+              <dd><span lang="" property="schema:version" xml:lang="">1.1.0</span></dd>
             </dl>
             <dl id="document-inbox">
               <dt>Notifications Inbox</dt>
@@ -348,7 +349,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               </dd>
             </dl>
           </details>
-          <p class="copyright" rel="dcterms:rights" resource="#document-rights"><span property="dcterms:description"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2021–2024 the Contributors to Web Access Control, Editor’s Draft, under the <a about="" href="https://www.w3.org/community/about/agreements/cla/" rel="schema:license">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available. All code snippets are in the public domain, <a about="" href="https://creativecommons.org/public-domain/cc0/" rel="schema:license">CC0</a>.</span></p>
+          <p class="copyright" rel="dcterms:rights" resource="#document-rights"><span property="dcterms:description"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2021–2026 the Contributors to Web Access Control, Editor’s Draft, under the <a about="" href="https://www.w3.org/community/about/agreements/cla/" rel="schema:license">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available. All code snippets are in the public domain, <a about="" href="https://creativecommons.org/public-domain/cc0/" rel="schema:license">CC0</a>.</span></p>
           <hr title="Separator for header" />
         </div>
         <div datatype="rdf:HTML" id="content" property="schema:description">
@@ -384,7 +385,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <p><a class="tocxref" href="#acl-resources"><bdi class="secno">3.</bdi> <span>ACL Resources</span></a></p>
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#acl-resource-discovery"><bdi class="secno">3.1</bdi> <span>ACL Resource Discovery</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#acl-resource-representation"><bdi class="secno">3.2</bdi> <span>ACL Resource Representation</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#acl-resource-condition-discovery"><bdi class="secno">3.2</bdi> <span>ACL Resource Condition Discovery</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#acl-resource-representation"><bdi class="secno">3.3</bdi> <span>ACL Resource Representation</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -393,6 +395,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <li class="tocline"><a class="tocxref" href="#access-objects"><bdi class="secno">4.1</bdi> <span>Access Objects</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#access-modes"><bdi class="secno">4.2</bdi> <span>Access Modes</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#access-subjects"><bdi class="secno">4.3</bdi> <span>Access Subjects</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#access-conditions"><bdi class="secno">4.4</bdi> <span>Access Conditions</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -404,9 +407,10 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <p><a class="tocxref" href="#authorization-evaluation"><bdi class="secno">5.3</bdi> <span>Authorization Evaluation</span></a></p>
                       <ol>
                         <li class="tocline"><a class="tocxref" href="#reading-writing-resources"><bdi class="secno">5.3.1</bdi> <span>Reading and Writing Resources</span></a></li>
-                        <li class="tocline"><a class="tocxref" href="#web-origin-authorization"><bdi class="secno">5.3.2</bdi> <span>Web Origin Authorization</span></a></li>
-                        <li class="tocline"><a class="tocxref" href="#authorization-matching"><bdi class="secno">5.3.3</bdi> <span>Authorization Matching</span></a></li>
-                        <li class="tocline"><a class="tocxref" href="#access-privileges"><bdi class="secno">5.3.4</bdi> <span>Access Privileges</span></a></li>
+                        <li class="tocline"><a class="tocxref" href="#condition-evaluation"><bdi class="secno">5.3.2</bdi> <span>Condition Evaluation</span></a></li>
+                        <li class="tocline"><a class="tocxref" href="#web-origin-authorization"><bdi class="secno">5.3.3</bdi> <span>Web Origin Authorization</span></a></li>
+                        <li class="tocline"><a class="tocxref" href="#authorization-matching"><bdi class="secno">5.3.4</bdi> <span>Authorization Matching</span></a></li>
+                        <li class="tocline"><a class="tocxref" href="#access-privileges"><bdi class="secno">5.3.5</bdi> <span>Access Privileges</span></a></li>
                       </ol>
                     </li>
                   </ol>
@@ -453,9 +457,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             <h2 about="#introduction" property="schema:name" typeof="deo:Introduction">Introduction</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p><em>This section is non-normative.</em></p>
-              <p id="motivation" rel="schema:hasPart" resource="#motivation" typeof="deo:Motivation"><span datatype="rdf:HTML" property="schema:description">Unauthorized access or modification of Web resources could lead to unintended loss, damage or disclosure of data. To support read-write operations within the framework of HTTP and meet the social requirements of decentralised applications, mechanisms for expressing and applying authorization conditions are needed.</span></p>
-              <p><dfn id="wac">Web Access Control</dfn> (<abbr title="Web Access Control">WAC</abbr>) is a decentralized cross-domain access control system providing a way for Linked Data systems to set authorization conditions on HTTP resources using the <dfn id="acl">Access Control List</dfn> (<abbr title="Access Control List">ACL</abbr>) model.</p>
-              <p id="wac-overview" rel="schema:hasPart" resource="#wac-overview"><span datatype="rdf:HTML" property="schema:description">The WAC specification describes how to enable applications to discover <a href="#authorization">Authorizations</a> associated with a given <a href="#resource">resource</a>, and to control such rules, as directed by an agent. Server manages the association between a resource and an <a href="#acl-resource">ACL resource</a>, and applies the authorization conditions on requested operations. Authorizations are described using the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a></cite> to express and determine access privileges of a requested resource. Any kind of access can be given to a resource as per the ACL ontology. This specification uses the <a href="#access-mode">access modes</a> currently defined by the ACL ontology, such as the class of operations to read, write, append and control resources. An Authorization can allow public access to resources or place the requirement for authenticated <a href="#agent">agents</a>. Resources and agents can be on different origins.</span></p>
+              <p id="motivation" rel="schema:hasPart" resource="#motivation" typeof="deo:Motivation"><span datatype="rdf:HTML" property="schema:description">Unauthorized access or modification of Web resources could lead to unintended loss, damage or disclosure of data. To support read-write operations within the framework of HTTP and meet the social requirements of decentralised applications, mechanisms for expressing and applying authorization rules.</span></p>
+              <p><dfn id="wac">Web Access Control</dfn> (<abbr title="Web Access Control">WAC</abbr>) is a decentralized cross-domain access control system providing a way for Linked Data systems to set authorization rules on HTTP resources using the <dfn id="acl">Access Control List</dfn> (<abbr title="Access Control List">ACL</abbr>) model.</p>
+              <p id="wac-overview" rel="schema:hasPart" resource="#wac-overview"><span datatype="rdf:HTML" property="schema:description">The WAC specification describes how to enable applications to discover <a href="#authorization">Authorizations</a> associated with a given <a href="#resource">resource</a>, and to control such rules, as directed by an agent. Server manages the association between a resource and an <a href="#acl-resource">ACL resource</a>, and applies the authorization rules on requested operations. Authorizations are described using the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a></cite> to express and determine access privileges of a requested resource. Any kind of access can be given to a resource as per the ACL ontology. This specification uses the <a href="#access-mode">access modes</a> currently defined by the ACL ontology, such as the class of operations to read, write, append and control resources. An Authorization can allow public access to resources or place the requirement for authenticated <a href="#agent">agents</a>. Resources and agents can be on different origins.</span></p>
               <div class="note" id="specification-orthogonality" inlist="" rel="schema:hasPart" resource="#specification-orthogonality">
                 <h4 property="schema:name"><span>Note</span>: Specification Orthogonality</h4>
                 <div datatype="rdf:HTML" property="schema:description">
@@ -473,8 +477,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 <div datatype="rdf:HTML" property="schema:description">
                   <p><em>This section is non-normative.</em></p>
                   <p property="skos:definition">The WAC specification defines the following terms. These terms are referenced throughout this specification.</p>
-                  <p><span rel="skos:hasTopConcept"><span resource="#uri"></span><span resource="#resource"></span><span resource="#container-resource"></span><span resource="#root-container"></span><span resource="#acl-resource"></span><span resource="#authorization"></span><span resource="#access-mode"></span><span resource="#agent"></span><span resource="#agent-group"></span><span resource="#agent-class"></span><span resource="#origin"></span></span></p>
-                  <dl>
+                  <dl rel="skos:hasTopConcept">
                     <dt about="#uri" property="skos:prefLabel" typeof="skos:Concept"><dfn id="uri">URI</dfn></dt>
                     <dd about="#uri" property="skos:definition">A <dfn>Uniform Resource Identifier</dfn> (<abbr title="Uniform Resource Identifier">URI</abbr>) provides the means for identifying resources [<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>].</dd>
                     <dt about="#resource" property="skos:prefLabel" typeof="skos:Concept"><dfn id="resource">resource</dfn></dt>
@@ -495,8 +498,14 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <dd about="#agent-group" property="skos:definition">An agent group is a group of persons or entities identified by a URI.</dd>
                     <dt about="#agent-class" property="skos:prefLabel" typeof="skos:Concept"><dfn id="agent-class">agent class</dfn></dt>
                     <dd about="#agent-class" property="skos:definition">An agent class is a class of persons or entities identified by a URI.</dd>
+                    <dt about="#issuer" property="skos:prefLabel" typeof="skos:Concept"><dfn id="issuer">issuer</dfn></dt>
+                    <dd about="#issuer" property="skos:definition">An issuer is an <a href="#agent">agent</a> that asserts characteristics of an <a href="#agent">agent</a>, such as identity, role, attribute, capability, or similar.</dd>
+                    <dt about="#client" property="skos:prefLabel" typeof="skos:Concept"><dfn id="client">client</dfn></dt>
+                    <dd about="#client" property="skos:definition">A client is a software <a href="#agent">agent</a> (application) which requests <a href="#resource">resources</a> on behalf of an <a href="#agent">agent</a> (possibly itself).</dd>
                     <dt about="#origin" property="skos:prefLabel" typeof="skos:Concept"><dfn id="origin">origin</dfn></dt>
                     <dd about="#origin" property="skos:definition">An origin indicates where an HTTP request originates from [<cite><a class="bibref" href="#bib-rfc6454">RFC6454</a></cite>].</dd>
+                    <dt about="#condition" property="skos:prefLabel" typeof="skos:Concept"><dfn id="condition">condition</dfn></dt>
+                    <dd about="#condition" property="skos:definition">A condition is an additional requirement on an <a href="#authorization">Authorization</a> that is evaluated as part of <a href="#authorization-evaluation">Authorization Evaluation</a>.</dd>
                   </dl>
                   <p>In addition to the terminology above, this specification also uses terminology from the [<cite><a class="bibref" href="#bib-infra">INFRA</a></cite>] specification. When INFRA terminology is used, such as <a href="https://infra.spec.whatwg.org/#strings">string</a> and <a href="https://infra.spec.whatwg.org/#booleans">boolean</a>, it is linked directly to that specification.</p>
                 </div>
@@ -557,7 +566,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
           <section id="acl-resources" inlist="" rel="schema:hasPart" resource="#acl-resources">
             <h2 property="schema:name">ACL Resources</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>This section describes ACL resource <a href="#acl-resource-discovery" rel="cito:discusses">discovery</a> and <a href="#acl-resource-representation" rel="cito:discusses">representation</a>.</p>
+              <p>This section describes ACL resource <a href="#acl-resource-discovery" rel="cito:discusses">discovery</a>, <a href="#acl-resource-condition-discovery" rel="cito:discusses">condition discovery</a>, and <a href="#acl-resource-representation" rel="cito:discusses">representation</a>.</p>
               <section id="acl-resource-discovery" inlist="" rel="schema:hasPart" resource="#acl-resource-discovery">
                 <h3 property="schema:name">ACL Resource Discovery</h3>
                 <div datatype="rdf:HTML" property="schema:description">
@@ -581,6 +590,13 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <p class="advisement">Source: <a href="https://github.com/solid/web-access-control-spec/issues/8" rel="cito:citesAsSourceDocument">issues/8</a>, <a href="https://github.com/solid/web-access-control-spec/issues/62" rel="cito:citesAsSourceDocument">issues/62</a>, <a href="https://github.com/solid/specification/issues/131" rel="cito:citesAsSourceDocument">issues/131</a>, <a href="https://github.com/solid/specification/issues/176" rel="cito:citesAsSourceDocument">issues/176</a></p>
                 </div>
               </section>
+              <section id="acl-resource-condition-discovery" inlist="" rel="schema:hasPart" resource="#acl-resource-condition-discovery">
+                <h3 property="schema:name">ACL Resource Condition Discovery</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p about="" id="server-link-condition" rel="spec:requirement" resource="#server-link-condition"><span property="spec:statement">When a server wants to enable applications to discover supported condition types (<cite><a href="#access-conditions" rel="rdfs:seeAlso">Access Conditions</a></cite>) for a given <a href="#effective-acl-resource">effective ACL resource</a>, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> advertise each supported condition type by responding to an HTTP request on the effective ACL resource including a <code>Link</code> header with the <code>rel</code> value of <code>http://www.w3.org/ns/auth/acl#condition</code> and the condition type as link target [<cite><a class="bibref" href="#bib-rfc8288">RFC8288</a></cite>].</span></p>
+                  <p about="" id="client-link-condition" rel="spec:requirement" resource="#client-link-condition"><span property="spec:statement"><span rel="spec:requirementSubject" resource="spec:Client">Clients</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> discover supported condition types (<cite><a href="#access-conditions" rel="rdfs:seeAlso">Access Conditions</a></cite>) by making an HTTP request on the <a href="#effective-acl-resource">effective ACL resource</a>, and checking the HTTP <code>Link</code> header with the <code>rel</code> parameter value of <code>http://www.w3.org/ns/auth/acl#condition</code>.</span></p>
+                </div>
+              </section>
               <section id="acl-resource-representation" inlist="" rel="schema:hasPart" resource="#acl-resource-representation">
                 <h3 property="schema:name">ACL Resource Representation</h3>
                 <div datatype="rdf:HTML" property="schema:description">
@@ -598,7 +614,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
           <section id="authorization-rule" inlist="" rel="schema:hasPart" resource="#authorization-rule">
             <h2 property="schema:name">Authorization Rule</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p><a href="#authorization">Authorization</a> (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access permissions granting to agents the ability to perform operations on resources. Authorizations are described with RDF statements and can express any information. This section describes the following characteristics of an Authorization: <a href="#access-objects" rel="cito:discusses">access objects</a> to specify what can be accessed, <a href="#access-modes" rel="cito:discusses">access modes</a> to specify permissions, and <a href="#access-subjects" rel="cito:discusses">access subjects</a> to specify who can access the objects. See the <cite><a href="#authorization-conformance" rel="rdfs:seeAlso">Authorization Conformance</a></cite> section for applicable Authorizations towards <cite><a href="#authorization-evaluation" rel="rdfs:seeAlso">Authorization Evaluation</a></cite>.</p>
+              <p><a href="#authorization">Authorization</a> (instance of <code>acl:Authorization</code>) is the most fundamental unit of access control describing access permissions granting to agents the ability to perform operations on resources. Authorizations are described with RDF statements and can express any information. This section describes the following characteristics of an Authorization: <a href="#access-objects" rel="cito:discusses">access objects</a> to specify what can be accessed, <a href="#access-modes" rel="cito:discusses">access modes</a> to specify permissions, <a href="#access-subjects" rel="cito:discusses">access subjects</a> to specify who can access the objects, and <a href="#access-conditions">access conditions</a> to specify additional requirements. See the <cite><a href="#authorization-conformance" rel="rdfs:seeAlso">Authorization Conformance</a></cite> section for applicable Authorizations towards <cite><a href="#authorization-evaluation" rel="rdfs:seeAlso">Authorization Evaluation</a></cite>.</p>
               <section id="access-objects" inlist="" rel="schema:hasPart" resource="#access-objects">
                 <h3 property="schema:name">Access Objects</h3>
                 <div datatype="rdf:HTML" property="schema:description">
@@ -651,6 +667,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The ability of a <em>subject</em> to access a resource can be granted to identifiable agents, a class of agents, a group of agents, or an origin.</p>
                   <p id="acl-agent">The <code>acl:agent</code> predicate denotes an <a href="#agent">agent</a> being given the access permission.</p>
+                  <p id="acl-agentgroup">The <code>acl:agentGroup</code> predicate denotes a <a href="#agent-group">group of agents</a> being given the access permission. The object of an <code>acl:agentGroup</code> statement is an instance of <code>vcard:Group</code>, where the members of the group are specified with the <code>vcard:hasMember</code> predicate.</p>
                   <p id="acl-agentclass">The <code>acl:agentClass</code> predicate denotes a <a href="#agent-class">class of agents</a> being given the access permission.</p>
                   <p>Two agent classes are defined here:</p>
                   <dl>
@@ -659,7 +676,6 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <dt id="acl-agentclass-authenticated-agent"><code>acl:AuthenticatedAgent</code></dt>
                     <dd>Allows access to any authenticated agent.</dd>
                   </dl>
-                  <p id="acl-agentgroup">The <code>acl:agentGroup</code> predicate denotes a <a href="#agent-group">group of agents</a> being given the access permission. The object of an <code>acl:agentGroup</code> statement is an instance of <code>vcard:Group</code>, where the members of the group are specified with the <code>vcard:hasMember</code> predicate.</p>
                   <p id="acl-origin">The <code>acl:origin</code> predicate denotes the <a href="#origin">origin</a> of an HTTP request that is being given the access permission.</p>
                   <div class="note" id="subject-verification" inlist="" rel="schema:hasPart" resource="#subject-verification">
                     <h3 property="schema:name"><span>Note</span>: Subject Verification</h3>
@@ -673,14 +689,43 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       <p>Typical web browsers use origin-based security to isolate content and prevent malicious interactions. While not designed to identify clients, it can complement security mechanisms such as mTLS-based authentication.</p>
                     </div>
                   </div>
-                  <div class="issue" id="client-identification" rel="schema:hasPart" resource="#client-identification">
-                    <h3 property="schema:name"><span>Issue</span>: Client Identification</h3>
-                    <div datatype="rdf:HTML" property="schema:description">
-                      <p>Distinguishing social entities and clients: <a href="https://github.com/solid/web-access-control-spec/issues/81" rel="cito:citesAsRelated">issues/81</a>.</p>
-                    </div>
-                  </div>
                   <p class="advisement">Source: <a href="https://github.com/solid/web-access-control-spec/issues/34" rel="cito:citesAsSourceDocument">issues/34</a>, <a href="https://github.com/solid/specification/issues/32" rel="cito:citesAsSourceDocument">issues/32</a>, <a href="https://github.com/solid/specification/issues/59">issues/59</a></p>
                 </div>
+              </section>
+              <section id="access-conditions" inlist="" rel="schema:hasPart" resource="#access-conditions">
+                <h3 property="schema:name">Access Conditions</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p id="acl-condition">The <code>acl:condition</code> predicate specifies a condition on an <a href="#authorization">Authorization</a> beyond <a href="#access-objects">access objects</a>, <a href="#access-modes">access modes</a>, and <a href="#access-subjects">access subjects</a>. The value of <code>acl:condition</code> entails <code>acl:Condition</code>. Supported condition types are discovered via <a href="#acl-resource-condition-discovery" rel="rdfs:seeAlso">ACL Resource Condition Discovery</a>.</p>
+                  <section id="access-client-condition" inlist="" rel="schema:hasPart" resource="#access-client-condition">
+                    <h4 property="schema:name">Client Condition</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>A <em>subject</em> <a href="#agent">agent</a> may interact with <a href="#resource">resources</a> using a <a href="#client">client</a>. An <code>acl:ClientCondition</code> defines which clients are permitted to act on behalf of the subject agent. The following properties are defined:</p>
+                      <p id="acl-client">The <code>acl:client</code> predicate denotes a <a href="#client">client</a> being allowed access when acting on behalf of the subject <a href="#agent">agent</a>.</p>
+                      <p id="acl-clientgroup">The <code>acl:clientGroup</code> predicate denotes a <a href="#agent-group">group of agents</a> being allowed access when acting on behalf of the subject <a href="#agent">agent</a>. The object of an <code>acl:clientGroup</code> statement is an instance of <code>vcard:Group</code>, where the members of the group are specified with the <code>vcard:hasMember</code> predicate.</p>
+                      <p id="acl-clientclass">The <code>acl:clientClass</code> predicate denotes a <a href="#agent-class">class of agents</a> being allowed access when acting on behalf of the subject <a href="#agent">agent</a>.</p>
+                      <p>One client class is defined here:</p>
+                      <dl>
+                        <dt id="acl-clientclass-foaf-agent"><code>foaf:Agent</code></dt>
+                        <dd>Allows any client, i.e., the public, on behalf of the subject agent.</dd>
+                      </dl>
+                    </div>
+                  </section>
+                  <section id="access-issuer-condition" inlist="" rel="schema:hasPart" resource="#access-issuer-condition">
+                    <h4 property="schema:name">Issuer Condition</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>The ability to authenticate a <em>subject</em> relies on the ability to identify the <a href="#issuer">issuer</a> of the corresponding assertion. An <code>acl:IssuerCondition</code> defines which issuers are trusted to make assertions about the subject <a href="#agent">agent</a>. The following properties are defined:</p>
+                      <p id="acl-issuer">The <code>acl:issuer</code> predicate denotes an <a href="#issuer">issuer</a> being trusted to make correct assertions about a subject <a href="#agent">agent</a>.</p>
+                      <p id="acl-issuergroup">The <code>acl:issuerGroup</code> predicate denotes a <a href="#agent-group">group of agents</a> being trusted to make correct assertions about a subject <a href="#agent">agent</a>. The object of an <code>acl:issuerGroup</code> statement is an instance of <code>vcard:Group</code>, where the members of the group are specified with the <code>vcard:hasMember</code> predicate.</p>
+                      <p id="acl-issuerclass">The <code>acl:issuerClass</code> predicate denotes a <a href="#agent-class">class of agents</a> being trusted to make correct assertions about a subject <a href="#agent">agent</a>.</p>
+                      <p>One issuer class is defined here:</p>
+                      <dl>
+                        <dt id="acl-issuerclass-foaf-agent"><code>foaf:Agent</code></dt>
+                        <dd>Accepts assertions made by any agent, i.e., the public.</dd>
+                      </dl>
+                    </div>
+                  </section>
+                </div>
+                <p class="advisement">Source: <a href="https://github.com/solid/web-access-control-spec/issues/81" rel="cito:citesAsSourceDocument">issues/81</a>, <a href="https://github.com/solid/web-access-control-spec/pull/133" rel="cito:citesAsSourceDocument">pull/133</a></p>
               </section>
             </div>
           </section>
@@ -726,6 +771,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <li>At least one <code>acl:accessTo</code> or <code>acl:default</code> property value (<cite><a href="#access-objects" rel="rdfs:seeAlso">Access Objects</a></cite>).</li>
                     <li>At least one <code>acl:mode</code> property value (<cite><a href="#access-modes" rel="rdfs:seeAlso">Access Modes</a></cite>).</li>
                     <li>At least one <code>acl:agent</code>, <code>acl:agentGroup</code>, <code>acl:agentClass</code> or <code>acl:origin</code> property value (<cite><a href="#access-subjects" rel="rdfs:seeAlso">Access Subjects</a></cite>).</li>
+                    <li>Any <code>acl:condition</code> property value (<cite><a href="#access-conditions" rel="rdfs:seeAlso">Access Conditions</a></cite>).</li>
                   </ul>
                   <p class="advisement">Source: <a href="https://github.com/solid/specification/issues/56" rel="cito:citesAsSourceDocument">issues/56</a>, <a href="https://github.com/solid/specification/issues/57" rel="cito:citesAsSourceDocument">issues/57</a>, <a href="https://github.com/solid/specification/issues/169" rel="cito:citesAsSourceDocument">issues/169</a>, <a href="https://github.com/solid/specification/issues/186" rel="cito:citesAsSourceDocument">issues/186</a>, <a href="https://github.com/solid/specification/issues/193" rel="cito:citesAsSourceDocument">issues/193</a>, <a href="https://github.com/solid/web-access-control-spec/issues/17" rel="cito:citesAsSourceDocument">issues/17</a>, <a href="https://github.com/solid/web-access-control-spec/issues/18" rel="cito:citesAsSourceDocument">issues/18</a>, <a href="https://github.com/solid/web-access-control-spec/issues/63" rel="cito:citesAsSourceDocument">issues/38</a>, <a href="https://github.com/solid/web-access-control-spec/issues/68" rel="cito:citesAsSourceDocument">issues/68</a>, <a href="https://github.com/solid/web-access-control-spec/issues/78" rel="cito:citesAsSourceDocument">issues/78</a>, <a href="https://github.com/fcrepo/fcrepo-specification/issues/145" rel="cito:citesAsSourceDocument">issues/145</a></p>
                 </div>
@@ -771,7 +817,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                             <dt id="http-post"><code>POST</code></dt>
                             <dd>The HTTP <code>POST</code> can be used to create a new resource in a container or add information to existing resources (but not remove resources or its contents) with either <code>acl:Append</code> or <code>acl:Write</code>.</dd>
                             <dt id="http-put"><code>PUT</code></dt>
-                            <dd>The HTTP <code>PUT</code> method requests to create or replace the resource state. <i>Creating</i> a new resource requires <code>acl:Append</code> and/or <code>acl:Write</code> access to the container as well as <code>acl:Write</code> access to the (new) resource. <i>Replacing</i> an existing resource requires only <code>acl:Write</code> access to the resource itself.</dd>
+                            <dd>The HTTP <code>PUT</code> method requests to create or replace the resource state. <em>Creating</em> a new resource requires <code>acl:Append</code> and/or <code>acl:Write</code> access to the container as well as <code>acl:Write</code> access to the (new) resource. <em>Replacing</em> an existing resource requires only <code>acl:Write</code> access to the resource itself.</dd>
                             <dt id="http-patch"><code>PATCH</code></dt>
                             <dd>As the processing of HTTP <code>PATCH</code> method request depends on the request semantics and content, <code>acl:Append</code> can allow requests to <em>insert</em> but not <em>delete</em> operations, whereas <code>acl:Write</code> would allow both operations. To create a new resource, <code>acl:Append</code> or <code>acl:Write</code> access mode to the container is additionally required.</dd>
                             <dt id="http-delete"><code>DELETE</code></dt>
@@ -780,6 +826,14 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                         </div>
                       </div>
                       <p class="advisement">Source: <a href="https://github.com/solid/web-access-control-spec/issues/47" rel="cito:citesAsSourceDocument">issues/47</a>, <a href="https://github.com/solid/specification/issues/132" rel="cito:citesAsSourceDocument">issues/132</a>, <a href="https://github.com/solid/specification/issues/197" rel="cito:citesAsSourceDocument">issues/197</a>, <a href="https://github.com/solid/specification/issues/246" rel="cito:citesAsSourceDocument">issues/246</a>, <a href="https://github.com/solid/web-access-control-spec/issues/122" rel="cito:citesAsSourceDocument">issues/122</a></p>
+                    </div>
+                  </section>
+                  <section id="condition-evaluation" inlist="" rel="schema:hasPart" resource="#condition-evaluation">
+                    <h4 property="schema:name">Condition Evaluation</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p about="" id="server-condition-evaluation" rel="spec:requirement" resource="#server-condition-evaluation"><span property="spec:statement">When an Authorization includes one or more <code>acl:condition</code> properties, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> only consider conditions whose types are signalled via <a href="#acl-resource-condition-discovery">ACL Resource Condition Discovery</a>. Conditions whose types are not signalled are not used in Authorization Evaluation.</span></p>
+                      <p about="" id="server-condition-evaluation-conjunctive" rel="spec:requirement" resource="#server-condition-evaluation-conjunctive"><span property="spec:statement">When an Authorization includes one or more <code>acl:condition</code> properties whose types are signalled, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> match an Authorization only when all such conditions are satisfied.</span></p>
+                      <p>This specification defines condition types in <cite><a href="#access-conditions" rel="rdfs:seeAlso">Access Conditions</a></cite>. Additional condition types can be defined as per <cite><a href="#authorization-extensions" rel="rdfs:seeAlso">Authorization Extensions</a></cite>.</p>
                     </div>
                   </section>
                   <section id="web-origin-authorization" inlist="" rel="schema:hasPart" resource="#web-origin-authorization">
@@ -874,6 +928,23 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 <code>  }</code>
 <code>}</code></pre>
                         <p><code>ASK</code> query matching an Authorization given inputs <var>resource</var>, <var>agent</var> and <var>mode</var>.</p>
+                      </figure>
+                      <p>The following query demonstrates matching an Authorization that includes multiple <code>acl:condition</code> values:</p>
+                      <figure class="example listing" id="match-accessto-agent-mode-conditions" rel="schema:hasPart" resource="#match-accessto-agent-mode-conditions" typeof="schema:SoftwareSourceCode">
+                        <figcaption property="schema:name"><span>Example</span>: <span>Match an Authorization with a specific resource, agent, access mode, client and issuer conditions.</span></figcaption>
+                        <pre property="schema:description"><code>ASK {</code>
+<code>  GRAPH $aclResource {</code>
+<code>    ?authorization</code>
+<code>      a acl:Authorization ;</code>
+<code>      acl:accessTo $resource ;</code>
+<code>      acl:agent $agent ;</code>
+<code>      acl:mode $mode ;</code>
+<code>      acl:condition</code>
+<code>        [ a acl:ClientCondition ; acl:client $client ] ,</code>
+<code>        [ a acl:IssuerCondition ; acl:issuer $issuer ] .</code>
+<code>  }</code>
+<code>}</code></pre>
+                        <p><code>ASK</code> query matching an Authorization given inputs <var>resource</var>, <var>agent</var>, <var>mode</var>, <var>client</var> and <var>issuer</var>.</p>
                       </figure>
                     </div>
                   </section>
@@ -988,6 +1059,8 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                   <p id="consider-authorization-integrity-authenticity">Transfer of <a href="#authorization">Authorizations</a> between a client and server over an open network creates the potential for those rules to be modified or disclosed without proper authorization. The requirements for the WAC protocol discussed in this specification do not include cryptographic protection of Authorization information, because it is assumed that this protection can be provided through HTTP over TLS. The path between client and application might be composed of multiple independent TLS connections, thus for end-to-end integrity and authenticity of content within an HTTP message, implementers can use mechanisms such as <cite><a href="https://www.rfc-editor.org/rfc/rfc9421" rel="cito:citesAsPotentialSolution">HTTP Message Signatures</a></cite>. For cryptographic proof of Authorizations asserted by agents and protection from undetected modifications, implementers can use mechanisms such as <cite><a href="https://w3c-ccg.github.io/ld-proofs/" rel="cito:citesAsPotentialSolution">Linked Data Security</a></cite>.</p>
                   <p id="consider-acl-resource-activities">Implementations are encouraged to use mechanisms to record activities about ACL resources for the purpose of accountability and integrity, e.g., by having audit trails, notification of changes, reasons for change, preserving provenance information.</p>
                   <p id="consider-provenance-accountability">Implementations that want to allow a class of write or control operations on resources are encouraged to require agents to be authenticated, e.g., for purposes of provenance or accountability.</p>
+                  <p about="" id="consider-client-agnostic-control" rel="spec:advisement" resource="#consider-client-agnostic-control"><span property="spec:statement">Implementations are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to consider scenarios in which Authorizations granting <code>acl:Control</code> are client-agnostic and issuer-agnostic, avoiding inadvertent <a href="#loss-of-control-mitigation" rel="rdfs:seeAlso">loss of control</a> if a client or issuer becomes unavailable or untrustworthy, as well as scenarios in which restricting control access to specific clients or issuers could expose the controller to manipulation through a malicious client or issuer.</span></p>
+                  <p about="" id="consider-condition-legacy" rel="spec:advisement" resource="#consider-condition-legacy"><span property="spec:statement">Implementations are <span rel="spec:advisementLevel" resource="spec:StronglyEncouraged">strongly encouraged</span> to be aware that Authorizations including <code>acl:condition</code> values evaluated by a server without condition support, such as following data migration from a conditions-aware server, could result in elevated access rights. Implementations are strongly encouraged to verify Authorizations with conditions against the condition capabilities of the server prior to deployment.</span></p>
                 </div>
               </section>
               <section id="privacy-considerations" inlist="" rel="schema:hasPart" resource="#privacy-considerations" typeof="spec:PrivacyConsiderations">
@@ -997,6 +1070,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                   <p>The class of read and write operations require discrete access permissions:</p>
                   <p id="consider-append-read-diff">Access permission to append a new resource to a container resource is independent of access permission to read a container resource. Thus, servers are encouraged to prevent information leakage when a successful HTTP request appends a new resource to a container resource. For instance, while the knowledge of the URI-Reference in <code>Location</code> and <code>Content-Location</code> HTTP headers in the response of a <code>POST</code> does not in itself pose a security threat ([<cite><a class="bibref" href="#bib-rfc3986">RFC3986</a></cite>]), servers can consider the risks when read access to the container is not granted to agents.</p>
                   <p id="consider-delete-read-diff">Access permission to update a resource is independent of access permission to read a resource. Thus, servers are encouraged to prevent information leakage when an attempt to delete information in a resource might reveal the existence of the information. For instance, when an HTTP <code>PATCH</code> request uses SPARQL Update’s <code>DELETE DATA</code> operation, servers can consider the risks of disclosing information by the chosen status code when read access to the resource is not granted to agents.</p>
+                  <p about="" id="consider-client-issuer-privacy" rel="spec:advisement" resource="#consider-client-issuer-privacy"><span property="spec:statement">Implementations are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to be aware that <code>acl:ClientCondition</code> and <code>acl:IssuerCondition</code> in an ACL resource extend the existing exposure of agent information to other agents with <code>acl:Control</code> access, additionally revealing which client applications and identity providers an agent uses.</span></p>
                 </div>
               </section>
               <section id="accessibility-considerations" inlist="" rel="schema:hasPart" resource="#accessibility-considerations" typeof="spec:AccessibilityConsiderations">
@@ -1044,7 +1118,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <dt about="#security-privacy-review-temporary-id" id="security-privacy-review-temporary-id"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#temporary-id" rel="cito:repliesTo">What temporary identifiers do the features in this specification create or expose to the web?</a></dt>
                     <dd about="#security-privacy-review-temporary-id" datatype="rdf:HTML" property="schema:description">None.</dd>
                     <dt about="#security-privacy-review-first-third-party" id="security-privacy-review-first-third-party"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#first-third-party" rel="cito:repliesTo">How does this specification distinguish between behaviour in first-party and third-party contexts?</a></dt>
-                    <dd about="#security-privacy-review-first-third-party" datatype="rdf:HTML" property="schema:description">When an HTTP request includes the <code>Origin</code> header (typical Web browsers use <a href="#origin-considerations" rel="cito:discusses">origin based security</a> to warn servers), <a href="#web-origin-authorization" rel="cito:discusses">Authorizations are matched</a> in context of the origin of the HTTP request in addition to requiring agent identification and allowed access modes. While the use of <code>Origin</code> is not intended as client identification, the implication is that unless servers have separate mechanisms to verify the original request made by an application, the <code>Origin</code> header’s field-value can differ. In order to distinguish social entities and clients supported by authentication protocols, an issue on <cite><a href="#client-identification" rel="cito:discusses">client identification</a></cite> is filed.</dd>
+                    <dd about="#security-privacy-review-first-third-party" datatype="rdf:HTML" property="schema:description">When an HTTP request includes the <code>Origin</code> header (typical Web browsers use <a href="#origin-considerations" rel="cito:discusses">origin based security</a> to warn servers), <a href="#web-origin-authorization" rel="cito:discusses">Authorizations are matched</a> in context of the origin of the HTTP request in addition to requiring agent identification and allowed access modes. While the use of <code>Origin</code> is not intended as client identification, the implication is that unless servers have separate mechanisms to verify the original request made by an application, the <code>Origin</code> header’s field-value can differ.</dd>
                     <dt about="#security-privacy-review-private-browsing" id="security-privacy-review-private-browsing"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#private-browsing" rel="cito:repliesTo">How do the features in this specification work in the context of a browser’s Private Browsing or Incognito mode?</a></dt>
                     <dd about="#security-privacy-review-private-browsing" datatype="rdf:HTML" property="schema:description">No different than <q>browser’s 'normal' state</q>.</dd>
                     <dt about="#security-privacy-review-considerations" id="security-privacy-review-considerations"><a href="https://www.w3.org/TR/security-privacy-questionnaire/#considerations" rel="cito:repliesTo">Does this specification have both "Security Considerations" and "Privacy Considerations" sections?</a></dt>
@@ -1084,6 +1158,51 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <td><a href="" rel="spec:changeSubject">Document</a></td>
                     <td property="spec:statement">Amend language and document details.</td>
                   </tr>
+                  <tr about="#b3f5363c-6fe1-4860-82c3-58487c103eb5" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/policies/process/#class-4" rel="spec:changeClass">4</a></td>
+                    <td><a href="#acl-resource-condition-discovery" rel="spec:changeSubject">#acl-resource-condition-discovery</a></td>
+                    <td property="spec:statement">Add requirements for <a href="#acl-resource-condition-discovery">ACL Resource Condition Discovery</a>.</td>
+                  </tr>
+                  <tr about="#c12b51b2-4abc-4726-88a5-07623c0c8c08" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/policies/process/#class-4" rel="spec:changeClass">4</a></td>
+                    <td><a href="#access-conditions" rel="spec:changeSubject">#access-conditions</a></td>
+                    <td property="spec:statement">Add <a href="#access-conditions">Access Conditions</a> section describing the condition requirement in an Authorization.</td>
+                  </tr>
+                  <tr about="#dad378e7-05ae-4582-a5cf-e6be8fcada57" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/policies/process/#class-4" rel="spec:changeClass">4</a></td>
+                    <td><a href="#authorization-conformance" rel="spec:changeSubject">#authorization-conformance</a></td>
+                    <td property="spec:statement">Update <a href="#authorization-conformance">Authorization Conformance</a> to include <code>acl:condition</code> as part of an applicable Authorization.</td>
+                  </tr>
+                  <tr about="#e52bf22c-124c-4af2-98f3-c27cdbc79270" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/policies/process/#class-4" rel="spec:changeClass">4</a></td>
+                    <td><a href="#condition-evaluation" rel="spec:changeSubject">#condition-evaluation</a></td>
+                    <td property="spec:statement">Add <a href="#condition-evaluation" rel="spec:changeSubject">Condition Evaluation</a> section describing the <a href="#server-condition-evaluation">evaluation of conditions</a> and their <a href="#server-condition-evaluation-conjunctive">conjunctive</a> requirement.</td>
+                  </tr>
+                  <tr about="#fc13b6f0-7cdf-463d-b973-de6f0f75c5d6" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/policies/process/#class-2" rel="spec:changeClass">2</a></td>
+                    <td><a href="#match-accessto-agent-mode-conditions" rel="spec:changeSubject">#match-accessto-agent-mode-conditions</a></td>
+                    <td property="spec:statement">Add <a href="#match-accessto-agent-mode-conditions">example query</a> demonstrating <a href="#access-conditions">access conditions</a> with <a href="#access-client-condition">client condition</a> and <a href="#access-issuer-condition">issuer condition</a>.</td>
+                  </tr>
+                  <tr about="#a2e78760-5f70-4fc1-95df-754478278bc9" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/policies/process/#class-2" rel="spec:changeClass">2</a></td>
+                    <td><a href="#consider-client-issuer-agnostic-control" rel="spec:changeSubject">#consider-client-issuer-agnostic-control</a></td>
+                    <td property="spec:statement">Add security consideration advisement for <a href="#consider-client-agnostic-control">client-issuer-agnostic</a> control scenarios.</td>
+                  </tr>
+                  <tr about="#b26d849b-0ceb-4c62-981b-0cd58da07567" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/policies/process/#class-2" rel="spec:changeClass">2</a></td>
+                    <td><a href="#consider-condition-legacy" rel="spec:changeSubject">#consider-condition-legacy</a></td>
+                    <td property="spec:statement">Add security consideration advisement for <a href="#consider-condition-legacy">condition-unaware</a> server scenarios.</td>
+                  </tr>
+                  <tr about="#c77de7da-d990-4f07-9dba-710f5c850d88" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/policies/process/#class-2" rel="spec:changeClass">2</a></td>
+                    <td><a href="#consider-client-issuer-privacy" rel="spec:changeSubject">#consider-client-issuer-privacy</a></td>
+                    <td property="spec:statement">Add privacy consideration advisement for <a href="#consider-client-issuer-privacy">client and issuer</a> information exposure.</td>
+                  </tr>
+                  <tr about="#c77de7da-d990-4f07-9dba-710f5c850d88" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/policies/process/#class-2" rel="spec:changeClass">2</a></td>
+                    <td><a href="#security-privacy-review-first-third-party" rel="spec:changeSubject">#security-privacy-review-first-third-party</a></td>
+                    <td property="spec:statement">Amend <a href="#security-privacy-review-first-third-party">first- and third-party context</a> in security and privacy review.</td>
+                  </tr>
                 </tbody>
                 <tfoot>
                   <tr>
@@ -1116,6 +1235,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                 <li>Aaron Coburn</li>
                 <li>Abdurrahman Ibrahim Ghanem</li>
                 <li>Alain Bourgeois</li>
+                <li>Alexander James Phillips</li>
                 <li>Amy Guy</li>
                 <li>Andreas Kuckartz</li>
                 <li>Andrei Sambra</li>
@@ -1126,6 +1246,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                 <li>Benjamin Goering</li>
                 <li>Beth Porter</li>
                 <li>Bob Ferris</li>
+                <li>Christoph Braun</li>
                 <li>Dan Brickley</li>
                 <li>David Booth</li>
                 <li>dbernstein</li>
@@ -1167,6 +1288,7 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                 <li>Pierre-Antoine Champin</li>
                 <li>Pieter Colpaert</li>
                 <li>Reese Hodge</li>
+                <li>Rosse Horne</li>
                 <li>Ruben Taelman</li>
                 <li>Ruben Verborgh</li>
                 <li>Sandro Hawke</li>

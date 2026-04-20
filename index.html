@@ -427,8 +427,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <ol>
                     <li class="tocline"><a class="tocxref" href="#authorization-extensions"><bdi class="secno">7.1</bdi> <span>Authorization Extensions</span></a></li>
                     <li class="tocline"><a class="tocxref" href="#access-mode-extensions"><bdi class="secno">7.2</bdi> <span>Access Mode Extensions</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#permission-inheritance-extensions"><bdi class="secno">7.3</bdi> <span>Permission Inheritance Extensions</span></a></li>
-                    <li class="tocline"><a class="tocxref" href="#distinct-effective-acl-resource-extensions"><bdi class="secno">7.4</bdi> <span>Distinct Effective ACL Resource Extensions</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#access-condition-extensions"><bdi class="secno">7.3</bdi> <span>Access Condition Extensions</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#permission-inheritance-extensions"><bdi class="secno">7.4</bdi> <span>Permission Inheritance Extensions</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#distinct-effective-acl-resource-extensions"><bdi class="secno">7.5</bdi> <span>Distinct Effective ACL Resource Extensions</span></a></li>
                   </ol>
                 </li>
                 <li class="tocline">
@@ -701,7 +702,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <section id="access-conditions" inlist="" rel="schema:hasPart" resource="#access-conditions">
                 <h3 property="schema:name">Access Conditions</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p id="acl-condition">The <code>acl:condition</code> predicate specifies a condition on an <a href="#authorization">Authorization</a> beyond <a href="#access-objects">access objects</a>, <a href="#access-modes">access modes</a>, and <a href="#access-subjects">access subjects</a>. The value of <code>acl:condition</code> entails <code>acl:Condition</code>. Supported condition types are discovered via <a href="#acl-resource-condition-discovery" rel="rdfs:seeAlso">ACL Resource Condition Discovery</a>.</p>
+                  <p id="acl-condition">The <code>acl:condition</code> predicate specifies a condition on an <a href="#authorization">Authorization</a> beyond <a href="#access-objects">access objects</a>, <a href="#access-modes">access modes</a>, and <a href="#access-subjects">access subjects</a>. The value of <code>acl:condition</code> entails <code>acl:Condition</code>. Supported condition types are discovered via <a href="#acl-resource-condition-discovery" rel="rdfs:seeAlso">ACL Resource Condition Discovery</a>. The requirements for new access conditions is explained in the <cite><a href="#access-condition-extensions" rel="rdfs:seeAlso">Access Condition Extensions</a></cite> section.</p>
                   <section id="access-client-condition" inlist="" rel="schema:hasPart" resource="#access-client-condition">
                     <h4 property="schema:name">Client Condition</h4>
                     <div datatype="rdf:HTML" property="schema:description">
@@ -1032,6 +1033,12 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p id="extension-acl-mode">An extension to access modes is any mode that is defined in the <cite><a href="http://www.w3.org/ns/auth/acl" rel="cito:citesAsAuthority">ACL ontology</a></cite>, i.e., as a subclass of <code>acl:Access</code>, but not described in this specification (<cite><a href="#access-modes" rel="rdfs:seeAlso">Access Modes</a></cite>). Consumers of Authorizations that encounter unrecognised access modes MUST NOT stop processing or signal an error and MUST continue processing the access modes as if those properties were not present.</p>
                   <p>Foreign-namespaced access modes are allowed in ACL resources, but they MUST NOT cause increased access.</p>
+                </div>
+              </section>
+              <section id="access-condition-extensions" inlist="" rel="schema:hasPart" resource="#access-condition-extensions">
+                <h3 property="schema:name">Access Condition Extensions</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p id="extension-acl-condition">An extension to access conditions is any condition type not described in this specification (<cite><a href="#access-conditions" rel="rdfs:seeAlso">Access Conditions</a></cite>), including foreign-namespaced types, which need not explicitly declare <code>a acl:Condition</code>. Consumers of Authorizations that encounter condition types they do not support MUST NOT stop processing or signal an error and MUST continue processing the access conditions as if those properties were not present.</p>
                 </div>
               </section>
               <section id="permission-inheritance-extensions" inlist="" rel="schema:hasPart" resource="#permission-inheritance-extensions">

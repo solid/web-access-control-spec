@@ -613,6 +613,12 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   <p about="" id="server-get-acl-without-representation" rel="spec:requirement" resource="#server-get-acl-without-representation"><span property="spec:statement">When an authorized HTTP <code>GET</code> or <code>HEAD</code> request targets an ACL resource without an existing representation, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with the <code>404</code> status code as per [<cite><a class="bibref" href="#bib-rfc9110">RFC9110</a></cite>].</span></p>
                   <p about="" id="server-root-container-acl" rel="spec:requirement" resource="#server-root-container-acl"><span property="spec:statement">When an authorized HTTP <code>GET</code> or <code>HEAD</code> request targets <a href="#root-container">root container</a>’s ACL resource, the <span rel="spec:requirementSubject" resource="spec:Server">server</span> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a representation.</span></p>
                   <p about="" id="server-root-container-acl-authorization-control" rel="spec:requirement" resource="#server-root-container-acl-authorization-control"><span property="spec:statement">The ACL resource of the root container <span rel="spec:requirementSubject" resource="spec:Server"></span><span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> include an Authorization allowing the <code>acl:Control</code> access privilege (<cite><a href="#acl-mode-control" rel="rdfs:seeAlso"><code>acl:Control</code></a></cite> access mode).</span></p>
+                  <div class="note" id="iri-blank-node" inlist="" rel="schema:hasPart" resource="#iri-blank-node">
+                    <h4 property="schema:name"><span>Note</span>: IRIs and Blank Nodes</h4>
+                    <div datatype="rdf:HTML" property="schema:description">
+                      <p>Implementations are encouraged to use named resources (IRIs) rather than blank nodes when describing Authorizations and their properties, as blank nodes may not be referenceable by operations that require explicit node identification.</p>
+                    </div>
+                  </div>
                   <p class="advisement">Source: <a href="https://github.com/solid/web-access-control-spec/issues/45" rel="cito:citesAsSourceDocument">issues/45</a></p>
                 </div>
               </section>
@@ -946,9 +952,13 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 <code>      acl:accessTo $resource ;</code>
 <code>      acl:agent $agent ;</code>
 <code>      acl:mode $mode ;</code>
-<code>      acl:condition</code>
-<code>        [ a acl:ClientCondition ; acl:client $client ] ,</code>
-<code>        [ a acl:IssuerCondition ; acl:issuer $issuer ] .</code>
+<code>      acl:condition ?clientCondition, ?issuerCondition .</code>
+<code>    ?clientCondition</code>
+<code>      a acl:ClientCondition ;</code>
+<code>      acl:client $client .</code>
+<code>    ?issuerCondition</code>
+<code>      a acl:IssuerCondition ;</code>
+<code>      acl:issuer $issuer .</code>
 <code>  }</code>
 <code>}</code></pre>
                         <p><code>ASK</code> query matching an Authorization given inputs <var>resource</var>, <var>agent</var>, <var>mode</var>, <var>client</var> and <var>issuer</var>.</p>
@@ -1231,6 +1241,11 @@ access-mode      = "read" / "write" / "append" / "control"</pre>
                     <td><a href="https://www.w3.org/policies/process/#class-2" rel="spec:changeClass">2</a></td>
                     <td><a href="#consider-condition-control" rel="spec:changeSubject">#consider-condition-control</a></td>
                     <td property="spec:statement">Add security consideration advisement for <a href="#consider-condition-control">preserving Authorization integrity with conditions</a>.</td>
+                  </tr>
+                  <tr about="#a4c93556-7b58-463d-99cd-8848fbb4e0e1" typeof="spec:Change">
+                    <td><a href="https://www.w3.org/policies/process/#class-2" rel="spec:changeClass">2</a></td>
+                    <td><a href="#iri-blank-node" rel="spec:changeSubject">#iri-blank-node</a></td>
+                    <td property="spec:statement">Add note <a href="#iri-blank-node">encouraging use of IRIs over blank nodes</a> for describing Authorizations.</td>
                   </tr>
                 </tbody>
                 <tfoot>
